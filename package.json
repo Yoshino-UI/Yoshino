@@ -1,0 +1,19 @@
+{
+  "name": "yoshino",
+  "version": "0.0.1",
+  "description": "react-ui based on rc-component！ ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShanaMaid/Yoshino.git"
+  },
+  "author": "ShanaMaid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShanaMaid/Yoshino/issues"
+  },
+  "homepage": "https://github.com/ShanaMaid/Yoshino#readme"
+}
