@@ -20,12 +20,7 @@ module.exports = {
     },
     {
       name: '组件',
-      sections: [
-        {
-          name: '数据展示',
-          components: 'components/{CircleProgress,Icon,PreviewImage,Table}/index.tsx',
-        },
-      ]
+      components: 'components/{Icon,Breadcrumb}/index.tsx',
     }
   ],
 };
