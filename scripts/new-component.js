@@ -49,9 +49,10 @@ export interface I${component}State {
 export class ${component} extends Component<I${component}Props, I${component}State> {
   render() {
     const {className, style} = this.props;
+    const preCls = 'yoshino-${capitalizeFirstLetter(component)}';
     return (
       <div
-        className={classNames(className, 'yoshino-${capitalizeFirstLetter(component)}')}
+        className={classNames(className, preCls)}
         style={style}
       >
       ${component}

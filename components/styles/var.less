@@ -7,6 +7,10 @@
 @line-height-base: 1.5;
 @transition-base: all .3s cubic-bezier(.645,.045,.355,1);
 
+@primary-color: #f63; // 主色调
+@primary-color-active:rgb(250, 87, 33);
+@primary-color-hover: rgb(240, 134, 99);
+
 //font
 @font-size-base: 14px;
 @font-size-small: 12px;
@@ -34,9 +38,9 @@
 @button-danger-color: #f04134;
 @button-danger-color-active: #d73435;
 
-@button-primary-bg-color: #108ee9;
-@button-primary-hover-bg-color: #49a9ee;
-@button-primary-active-bg-color: #0e77ca;
+@button-primary-bg-color: @primary-color;
+@button-primary-hover-bg-color: @primary-color-hover;
+@button-primary-active-bg-color: @primary-color-active;
 
 @button-disabled-bg-color: #f7f7f7;
 @button-height-size-base: 28px;

@@ -27,8 +27,8 @@
     "new": "node scripts/new-component.js",
     "precommit": "npm run lint",
     "lint:ts": "tslint -p .",
-    "lint:css": "stylelint 'components/**/**.css'",
-    "lint": "npm run lint:css && npm run lint:ts",
+    "lint:less": "stylelint 'components/**/**.less --syntax less'",
+    "lint": "npm run lint:less && npm run lint:ts",
     "test": "jest"
   },
   "jest": {
@@ -91,6 +91,7 @@
     "postcss-cli": "^4.1.1",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
+    "postcss-less": "^1.1.5",
     "postcss-loader": "^2.1.1",
     "postcss-nested": "^3.0.0",
     "postcss-px2rem": "^0.3.0",
