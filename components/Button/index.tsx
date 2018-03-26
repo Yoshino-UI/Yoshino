@@ -7,11 +7,26 @@ import '../styles/common/reset.less';
 import './index.less';
 
 export interface IButtonProps extends IBaseComponent {
+  /**
+   * 是否禁用
+   */
   disabled?: boolean;
+  /**
+   * 按钮类型
+   */
   type?: 'primary' | 'dashed' | 'danger';
-  shape: 'circle';
-  size: 'small' | 'large';
-  ghost: boolean;
+  /**
+   * 默认正常形式
+   */
+  shape?: 'circle';
+  /**
+   * 默认default
+   */
+  size?: 'small' | 'large';
+  /**
+   * 幽灵模式，默认false
+   */
+  ghost?: boolean;
 }
 
 export interface IButtonState {
