@@ -1,0 +1,53 @@
+/* 全局样式重置 */
+
+/* 设置所有盒子大小计算边框内 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 消除阴影和边框 */
+iframe,
+img,
+input,
+textarea,
+select {
+  appearance: none;
+  border: 0;
+  outline: none;
+}
+
+/* 去除输入框上下箭头 */
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 去除虚线 */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* 去除下划线 */
+a {
+  text-decoration: none;
+}
+
+/* 隐藏搜索框clear按钮 */
+::-ms-clear {
+  display: none;
+}
+
+::-webkit-search-decoration,
+::-webkit-search-cancel-button,
+::-webkit-search-results-button,
+::-webkit-search-results-decoration {
+  display: none;
+}
+

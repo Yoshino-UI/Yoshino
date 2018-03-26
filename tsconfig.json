@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "target": "es5",
+    "rootDir": "components",
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": [
+    "components"
+  ],
+  "exclude": [
+    "components/*/__tests__"
+  ]
+}

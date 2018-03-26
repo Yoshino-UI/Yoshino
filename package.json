@@ -2,10 +2,13 @@
   "name": "yoshino",
   "version": "0.0.1",
   "description": "react-ui based on rc-component！ ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "lib/index",
+  "keywords": [
+    "react",
+    "UI",
+    "component",
+    "pc"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShanaMaid/Yoshino.git"
@@ -15,5 +18,99 @@
   "bugs": {
     "url": "https://github.com/ShanaMaid/Yoshino/issues"
   },
-  "homepage": "https://github.com/ShanaMaid/Yoshino#readme"
+  "homepage": "https://github.com/ShanaMaid/Yoshino#readme",
+  "jsnext:main": "es/index",
+  "typings": "components/index",
+  "scripts": {
+    "dev": "styleguidist server",
+    "build": "styleguidist build",
+    "new": "node scripts/new-component.js",
+    "precommit": "npm run lint",
+    "lint:ts": "tslint -p .",
+    "lint:css": "stylelint 'components/**/**.css'",
+    "lint": "npm run lint:css && npm run lint:ts",
+    "test": "jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/scripts/jest.setup.js"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+      "^.+\\.css?$": "<rootDir>/scripts/jest.setup.js",
+      "^.+\\.svg?$": "<rootDir>/scripts/jest.setup.js"
+    },
+    "testRegex": "(/__tests__/.*\\.test)\\.tsx?$",
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "js",
+      "json"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "components/**/*.tsx",
+      "components/**/*.ts",
+      "!components/**/*.d.ts"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary"
+    ]
+  },
+  "engines": {
+    "node": ">= 7.0.0"
+  },
+  "dependencies": {
+    "@types/classnames": "*",
+    "@types/date-fns": "*",
+    "@types/prop-types": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@types/react-transition-group": "*",
+    "classnames": "*",
+    "date-fns": "*",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "prop-types": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-transition-group": "*",
+    "tslib": "*",
+    "url-loader": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.1.4",
+    "@types/react-test-renderer": "^16.0.1",
+    "css-loader": "^0.28.10",
+    "cz-conventional-changelog": "^2.1.0",
+    "file-loader": "^1.1.11",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "postcss-cli": "^4.1.1",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.1",
+    "postcss-nested": "^3.0.0",
+    "postcss-px2rem": "^0.3.0",
+    "postcss-remove-root": "0.0.2",
+    "react-docgen-typescript": "^1.2.5",
+    "react-styleguidist": "^6.2.6",
+    "react-test-renderer": "^16.1.1",
+    "style-loader": "^0.19.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.2.0",
+    "ts-jest": "^22.4.1",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.7.2",
+    "webpack": "^3.11.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

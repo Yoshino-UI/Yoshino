@@ -1,0 +1,13 @@
+a {
+  text-decoration:none;
+  outline: none;
+  cursor: pointer;
+  color: @font-color-base;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+  &:active, &:hover, &:focus {
+    text-decoration: underline;
+    color: @link-color;
+  }
+}
+
