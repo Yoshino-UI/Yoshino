@@ -43,7 +43,7 @@ export interface ICardState {
  */
 export class Card extends Component<ICardProps, ICardState> {
   render() {
-    const {className, style, title, extra, border, shadow, hover, hoverName = 'hvr-glow'} = this.props;
+    const {className, style, title, extra, border, shadow, hover, hoverName = 'hvr-glow', ...otherProps} = this.props;
     const preCls = 'yoshino-card';
     const cardCls = {
       [`${preCls}-border`]: border,
@@ -54,6 +54,7 @@ export class Card extends Component<ICardProps, ICardState> {
       <div
         className={classNames(className, preCls, cardCls)}
         style={style}
+        {...otherProps}
       >
         <div className={`${preCls}-head`}>
           <div className={`${preCls}-title`}>{title}</div>

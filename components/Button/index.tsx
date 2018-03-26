@@ -38,7 +38,7 @@ export interface IButtonState {
  */
 export class Button extends Component<IButtonProps, IButtonState> {
   render() {
-    const {className, style, disabled, type, shape, size, ghost = false} = this.props;
+    const {className, style, disabled, type, shape, size, ghost = false, ...otherProps} = this.props;
     const preCls = 'yoshino-button';
     const btnCls = {
       [`${preCls}-${type}`]: type && !disabled || type === 'dashed',
@@ -51,6 +51,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
         className={classNames(className, preCls, btnCls)}
         style={style}
         disabled={disabled}
+        {...otherProps}
       >
         <span>{this.props.children}</span>
       </button>

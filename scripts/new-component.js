@@ -48,12 +48,13 @@ export interface I${component}State {
  */
 export class ${component} extends Component<I${component}Props, I${component}State> {
   render() {
-    const {className, style} = this.props;
+    const {className, style, ...otherProps} = this.props;
     const preCls = 'yoshino-${capitalizeFirstLetter(component)}';
     return (
       <div
         className={classNames(className, preCls)}
         style={style}
+        {...otherProps}
       >
       ${component}
       </div>

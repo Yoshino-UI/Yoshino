@@ -23,12 +23,13 @@ export interface IIconState {
  */
 export class Icon extends Component<IIconProps, IIconState> {
   render() {
-    const {className, style, type} = this.props;
+    const {className, style, type, ...otherProps} = this.props;
     const preCls = 'yoshino-icon';
     return (
       <i
         className={classNames(className, preCls, `${preCls}-${type}`)}
         style={style}
+        {...otherProps}
       />
     );
   }

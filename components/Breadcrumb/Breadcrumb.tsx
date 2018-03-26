@@ -29,12 +29,13 @@ export interface IBreadcrumbState {
 export class Breadcrumb extends Component<IBreadcrumbProps, IBreadcrumbState> {
   static Item: ReactNode;
   render() {
-    const {className, style, separator = '/'} = this.props;
+    const {className, style, separator = '/', ...otherProps} = this.props;
     const preCls = 'yoshino-breadcrumb';
     return (
       <div
         className={classNames(className, preCls)}
         style={style}
+        {...otherProps}
       >
         {
           React.Children.map(this.props.children, (child) => {

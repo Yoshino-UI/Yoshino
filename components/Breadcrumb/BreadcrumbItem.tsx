@@ -19,11 +19,13 @@ export interface IBreadcrumbItemState {
  */
 export class BreadcrumbItem extends Component<IBreadcrumbItemProps, IBreadcrumbItemState> {
   render() {
-    const {className, style} = this.props;
+    const {className, style, ...otherProps} = this.props;
+    const preCls = 'yoshino-breadcrumb-item';
     return (
       <span
-        className={classNames(className, 'yoshino-breadcrumb-item')}
+        className={classNames(className, preCls)}
         style={style}
+        {...otherProps}
       >
         {this.props.children}
       </span>
