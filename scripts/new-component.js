@@ -18,7 +18,7 @@ function writeFile(fileName, content, component) {
 
 function fileIndexScss(component) {
   const content = `@import '../styles/var.less';
-  
+
 @cssPreCls: yoshino-${capitalizeFirstLetter(component)};
 .@{cssPreCls} {
 
@@ -28,6 +28,16 @@ function fileIndexScss(component) {
 }
 
 function fileIndexTsx(component) {
+  const content = `import ${component} from './${component}';
+import { I${component}Props } from './${component}';
+
+export {I${component}Props};
+export default ${component};
+`;
+  writeFile('index.tsx', content, component);
+}
+
+function fileComponentTsx(component) {
   const content = `
 import {Component} from 'react';
 import * as React from 'react';
@@ -65,7 +75,7 @@ export class ${component} extends Component<I${component}Props, I${component}Sta
 
 export default ${component};
 `;
-  writeFile('index.tsx', content, component);
+  writeFile(`${component}.tsx`, content, component);
 }
 
 function fileReadmeMd(component) {
@@ -129,6 +139,7 @@ ${component} 组件已经存在！
 fs.mkdirSync(path.resolve('components', component));
 fs.mkdirSync(path.resolve('components', component, '__tests__'));
 fileIndexScss(component);
+fileComponentTsx(component);
 fileIndexTsx(component);
 fileReadmeMd(component);
 fileTests(component);
