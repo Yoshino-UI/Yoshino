@@ -7,7 +7,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(tsx|ts)$/,
         use: ['ts-loader'],
         include: path.resolve('components'),
         exclude: [/__tests__/],

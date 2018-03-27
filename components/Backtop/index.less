@@ -1,0 +1,28 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-backtop;
+.@{cssPreCls} {
+  position: fixed;
+  z-index: 100;
+  cursor: pointer;
+  display: block;
+  border-radius: 4px;
+
+  &-default {
+    background-color: @primary-color;
+    border-radius: @border-radius-base;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    transition: all .2s ease-in-out;
+    display: block;
+
+    :hover {
+      background-color: @primary-color-hover;
+    }
+  }
+
+  i {
+    color: #fff;
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+}
