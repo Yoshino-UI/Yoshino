@@ -12,6 +12,21 @@
   &-default {
     width: 40px;
     height: 20px;
+
+    &::after {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &-small {
+    width: 26px;
+    height: 14px;
+
+    &::after {
+      width: 12px;
+      height: 12px;
+    }
   }
 
   &::after {
@@ -19,18 +34,28 @@
     display: block;
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
     border-radius: 50%;
     left: 1px;
-    top: 0;
+    top: 1px;
     background-color: white;
   }
 
   &-checked {
     background-color: @primary-color;
     &::after {
-      left: 19px;
+      left: 100%;
+    }
+  }
+
+  &-default&-checked {
+    &::after {
+      margin-left: -19px;
+    }
+  }
+
+  &-small&-checked {
+    &::after {
+      margin-left: -13px;
     }
   }
 
