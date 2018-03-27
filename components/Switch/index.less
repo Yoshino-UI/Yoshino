@@ -1,0 +1,42 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-switch;
+.@{cssPreCls} {
+  display: inline-block;
+  border-radius: 100px;
+  transition: @transition-base;
+  position: relative;
+  cursor: pointer;
+  background-color: @disabled-color;
+
+  &-default {
+    width: 40px;
+    height: 20px;
+  }
+
+  &::after {
+    transition: @transition-base;
+    display: block;
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    left: 1px;
+    top: 0;
+    background-color: white;
+  }
+
+  &-checked {
+    background-color: @primary-color;
+    &::after {
+      left: 19px;
+    }
+  }
+
+  &-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
