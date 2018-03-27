@@ -1,5 +1,6 @@
 const path = require('path');
 const packageJSON = require('./package.json');
+const os = require('os');
 
 module.exports = {
   title: packageJSON.name,
@@ -7,8 +8,13 @@ module.exports = {
   components: 'components/[A-Z]*/index.tsx',
   propsParser: require('react-docgen-typescript').parse,
   getComponentPathLine(componentPath) {
+    let name;
     // 提取组件名称
-    const name = /components\/([A-Z]\w*)\/index\.tsx/.exec(componentPath)[1];
+    if (os.platform() !== 'win32') {
+      name = /components\/([A-Z]\w*)\/index\.tsx/.exec(componentPath)[1];
+    } else {
+      name = /components\\([A-Z]\w*)\\index\.tsx/.exec(componentPath)[1];
+    }
     return `import { ${name} } from '${packageJSON.name}';`;
   },
   require: [
