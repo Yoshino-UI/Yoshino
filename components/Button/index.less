@@ -1,6 +1,6 @@
 @import '../styles/var.less';
-
-.yoshino-button {
+@cssPreCls: yoshino-button;
+.@{cssPreCls} {
   display: inline-block;
   border: @button-border;
   border-radius: @button-border-radius;
@@ -92,7 +92,7 @@
       background-color: transparent;
     }
 
-    &.yoshino-button {
+    &.@{cssPreCls} {
       &-primary {
         color: @button-primary-bg-color;
       }

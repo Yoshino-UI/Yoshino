@@ -18,8 +18,9 @@ function writeFile(fileName, content, component) {
 
 function fileIndexScss(component) {
   const content = `@import '../styles/var.less';
-
-.yoshino-${capitalizeFirstLetter(component)} {
+  
+@cssPreCls: yoshino-${capitalizeFirstLetter(component)};
+.@{cssPreCls} {
 
 }
 `;
