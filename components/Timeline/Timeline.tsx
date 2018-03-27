@@ -47,12 +47,22 @@ export interface ITimelineState {
 export class Timeline extends Component<ITimelineProps, ITimelineState> {
   // tslint:disable
   static Item: any;
+
+  static defaultProps = {
+    iconColor: '#f63',
+    iconLine: 2,
+    iconType: 'solid',
+    lineColor: '#e8e8e8',
+    lineType: 'solid',
+    iconWidth: 15,
+    lineWidth: 2,
+  }
   render() {
     const {
       className, style, children,
-      iconColor = '#f63', iconLine = 2, iconType = 'solid',
-      lineColor = '#e8e8e8', lineType = 'solid',
-      iconWidth = 15,  lineWidth = 2,
+      iconColor, iconLine, iconType,
+      lineColor, lineType,
+      iconWidth,  lineWidth,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-timeline';

@@ -58,6 +58,10 @@ export interface I${component}State {
  * **组件中文名称**-组件描述。
  */
 export class ${component} extends Component<I${component}Props, I${component}State> {
+  static defaultProps = {
+    
+  };
+
   render() {
     const {className, style, ...otherProps} = this.props;
     const preCls = 'yoshino-${capitalizeFirstLetter(component)}';

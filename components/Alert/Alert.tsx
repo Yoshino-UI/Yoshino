@@ -12,15 +12,15 @@ export interface IAlertProps extends IBaseComponent {
   /**
    * 文案类型
    */
-  type?: 'success' | 'info' | 'warning' | 'error';
+  type: 'success' | 'info' | 'warning' | 'error';
   /**
    * 是否显示关闭按钮
    */
-  closable?: boolean;
+  closable: boolean;
   /**
    * 是否显示图标
    */
-  showIcon?: boolean;
+  showIcon: boolean;
   /**
    * 自定义图标
    */
@@ -50,6 +50,12 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     show: true,
   };
 
+  static defaultProps = {
+    type: 'info',
+    showIcon: false,
+    closable: false,
+  };
+
   closeAlert = () => {
     this.setState({
       show: false,
@@ -58,8 +64,8 @@ export class Alert extends Component<IAlertProps, IAlertState> {
 
   render() {
     const {
-      className, style, showIcon = false,
-      type = 'info', closable = false,
+      className, style, showIcon,
+      type, closable,
       icon, title, ...otherProps,
     } = this.props;
     const {show} = this.state;

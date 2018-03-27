@@ -26,7 +26,7 @@ export interface IButtonProps extends IBaseComponent {
   /**
    * 幽灵模式，默认false
    */
-  ghost?: boolean;
+  ghost: boolean;
 }
 
 export interface IButtonState {
@@ -37,8 +37,12 @@ export interface IButtonState {
  * **组件中文名称**-组件描述。
  */
 export class Button extends Component<IButtonProps, IButtonState> {
+  static defaultProps = {
+    ghost: false,
+  };
+
   render() {
-    const {className, style, disabled, type, shape, size, ghost = false, ...otherProps} = this.props;
+    const {className, style, disabled, type, shape, size, ghost, ...otherProps} = this.props;
     const preCls = 'yoshino-button';
     const btnCls = {
       [`${preCls}-${type}`]: type && !disabled || type === 'dashed',

@@ -1,20 +1,20 @@
-export const backTop = (durations:number, callback: () => void | undefined) => {
+export const backTop = (durations: number, callback: () => void | undefined) => {
   let dom: HTMLElement;
   if (document.documentElement.scrollTop) {
-    dom = document.documentElement
+    dom = document.documentElement;
   } else {
-    dom = document.body
+    dom = document.body;
   }
-  const scrollTop = dom.scrollTop
-
-  for (var i = 60; i >= 0; i--) {
-    setTimeout((i => {
+  const scrollTop = dom.scrollTop;
+  // tslint:disable
+  for (let i = 60; i >= 0; i--) {
+    setTimeout(((i) => {
       return () => {
-        dom.scrollTop = scrollTop * i / 60
+        dom.scrollTop = scrollTop * i / 60;
         if (i === 0 && typeof callback === 'function') {
-          callback()
+          callback();
         }
-      }
-    })(i), durations * (1 - i / 60))
+      };
+    })(i), durations * (1 - i / 60));
   }
-}
+};

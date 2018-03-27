@@ -31,7 +31,7 @@ export interface ICardProps extends IBaseComponent {
   /**
    * hover特效
    */
-  hoverName?: string;
+  hoverName: string;
 }
 
 export interface ICardState {
@@ -42,8 +42,12 @@ export interface ICardState {
  * **组件中文名称**-组件描述。
  */
 export class Card extends Component<ICardProps, ICardState> {
+  static defaultProps = {
+    hoverName: 'hvr-glow',
+  };
+
   render() {
-    const {className, style, title, extra, border, shadow, hover, hoverName = 'hvr-glow', ...otherProps} = this.props;
+    const {className, style, title, extra, border, shadow, hover, hoverName, ...otherProps} = this.props;
     const preCls = 'yoshino-card';
     const cardCls = {
       [`${preCls}-border`]: border,

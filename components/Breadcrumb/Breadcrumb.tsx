@@ -12,7 +12,7 @@ export interface IBreadcrumbProps extends IBaseComponent {
   /**
    * 分隔符 - 默认为/
    */
-  separator?: string | ReactNode;
+  separator: string | ReactNode;
   /**
    * breadItem
    */
@@ -28,6 +28,11 @@ export interface IBreadcrumbState {
  */
 export class Breadcrumb extends Component<IBreadcrumbProps, IBreadcrumbState> {
   static Item: ReactNode;
+
+  static defaultProps = {
+    separator: '/',
+  };
+
   render() {
     const {className, style, separator = '/', ...otherProps} = this.props;
     const preCls = 'yoshino-breadcrumb';

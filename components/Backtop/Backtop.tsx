@@ -45,25 +45,25 @@ export interface IBacktopState {
 class Backtop extends Component<IBacktopProps, IBacktopState> {
   state = {
     show: false,
-  }
+  };
 
   static defaultProps = {
     height: 800,
     bottom: 50,
     right: 50,
     duration: 500,
-  }
+  };
 
   scrollListener = () => {
     const height = this.props.height ? this.props.height : 800;
     const top = document.documentElement.scrollTop || document.body.scrollTop;
     const show  = top >= height;
     this.setState({
-      show
+      show,
     });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     window.addEventListener('scroll', this.scrollListener, false);
     window.addEventListener('resize', this.scrollListener, false);
   }
@@ -84,7 +84,7 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
       bottom: `${bottom}px`,
     };
     return (
-      <RenderInRootDom boxClass="backtop">
+      <RenderInRootDom boxClass='backtop'>
         <div
           className={classNames(className, preCls)}
           style={{
@@ -97,7 +97,7 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
           {
             this.state.show ? children ?  children : (
             <div className={`${preCls}-default`}>
-              <Icon type="chevron-up"/>
+              <Icon type='chevron-up'/>
             </div>
             ) : null
           }
