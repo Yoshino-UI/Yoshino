@@ -20,7 +20,7 @@ module.exports = {
     },
     {
       name: '组件',
-      components: 'components/{Icon,Breadcrumb,Button,Card,Alert}/index.tsx',
+      components: 'components/{Icon,Breadcrumb,Button,Card,Alert,Timeline}/index.tsx',
     }
   ],
 };

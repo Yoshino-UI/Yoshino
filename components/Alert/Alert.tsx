@@ -6,7 +6,7 @@ import {IBaseComponent} from '../template/component';
 import '../styles/common/reset.less';
 import './index.less';
 import Transition from 'react-transition-group/Transition';
-import { Icon } from '../Icon';
+import Icon from '../Icon';
 
 export interface IAlertProps extends IBaseComponent {
   /**
@@ -32,7 +32,7 @@ export interface IAlertProps extends IBaseComponent {
   /**
    * closeCallback
    */
-  closeCallback?: () => void;
+  closeCallback: () => void;
 }
 
 export interface IAlertState {
@@ -95,7 +95,6 @@ export class Alert extends Component<IAlertProps, IAlertState> {
           if (this.props.closeCallback) {
             // 延迟100ms是为了避免阻塞transition unmount
             setTimeout(() => {
-              // ts-lint:disable
               this.props.closeCallback();
             }, 100);
           }

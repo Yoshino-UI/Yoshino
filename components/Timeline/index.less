@@ -2,5 +2,42 @@
 
 @cssPreCls: yoshino-timeline;
 .@{cssPreCls} {
+  .@{cssPreCls}-item:last-child {
+    .@{cssPreCls}-item-line {
+      display: none;
+    }
+  }
+}
 
+.@{cssPreCls}-item {
+  position: relative;
+
+  &-line{
+    position: absolute;
+    height: 100%;
+  }
+  
+  &-icon{
+    position: absolute;
+    box-sizing: border-box;
+    background-color: white;
+  }
+  
+  &-content{
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  &-customed{
+    position: absolute;
+  }
+
+  &-time{
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  &-des{
+    font-size: 16px;
+  }
 }
