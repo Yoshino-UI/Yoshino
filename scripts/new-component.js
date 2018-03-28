@@ -65,9 +65,12 @@ export class ${component} extends Component<I${component}Props, I${component}Sta
   render() {
     const {className, style, ...otherProps} = this.props;
     const preCls = 'yoshino-${capitalizeFirstLetter(component)}';
+    const clsName = classNames(
+      className, preCls
+    );
     return (
       <div
-        className={classNames(className, preCls)}
+        className={clsName)}
         style={style}
         {...otherProps}
       >
