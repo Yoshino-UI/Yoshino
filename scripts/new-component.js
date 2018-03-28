@@ -70,7 +70,7 @@ export class ${component} extends Component<I${component}Props, I${component}Sta
     );
     return (
       <div
-        className={clsName)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

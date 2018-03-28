@@ -1,0 +1,42 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-rate;
+.@{cssPreCls} {
+  &-item {
+    transition: @transition-quick;
+    display: inline-block;
+    position: relative;
+    margin: 0 2px;
+    cursor: pointer;
+
+    span {
+      color: @disabled-color;
+    }
+
+    div {
+      display: inline-block;
+    }
+
+    .@{cssPreCls}-first-child {
+     
+    }
+
+    .@{cssPreCls}-last-child {
+      width: 50%;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  &-hover {
+    span {
+      color: @primary-color;
+    }
+  }
+}

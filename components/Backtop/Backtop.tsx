@@ -29,7 +29,7 @@ export interface IBacktopProps extends IBaseComponent {
   /**
    * 回调函数
    */
-  callBack?: () => void;
+  onBackTop?: () => void;
 }
 
 export interface IBacktopState {
@@ -76,7 +76,7 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
     const {
       className, style, children,
       bottom, right, duration,
-      callBack,
+      onBackTop,
       ...otherProps} = this.props;
     const preCls = 'yoshino-backtop';
     const backtopStyle = {
@@ -92,7 +92,7 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
             ...backtopStyle,
           }}
           {...otherProps}
-          onClick={backTop.bind(this, duration, callBack)}
+          onClick={backTop.bind(this, duration, onBackTop)}
         >
           {
             this.state.show ? children ?  children : (

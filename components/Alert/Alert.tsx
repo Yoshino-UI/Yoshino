@@ -30,9 +30,9 @@ export interface IAlertProps extends IBaseComponent {
    */
   title: ReactNode | string;
   /**
-   * closeCallback
+   * onClose
    */
-  closeCallback: () => void;
+  onClose: () => void;
 }
 
 export interface IAlertState {
@@ -98,10 +98,10 @@ export class Alert extends Component<IAlertProps, IAlertState> {
         in={show}
         unmountOnExit
         onExited={() => {
-          if (this.props.closeCallback) {
+          if (this.props.onClose) {
             // 延迟100ms是为了避免阻塞transition unmount
             setTimeout(() => {
-              this.props.closeCallback();
+              this.props.onClose();
             }, 100);
           }
         }}

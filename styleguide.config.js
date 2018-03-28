@@ -26,7 +26,7 @@ module.exports = {
     },
     {
       name: '组件',
-      components: 'components/{Icon,Breadcrumb,Button,Card,Alert,Timeline,Backtop,Switch,Loading,Divider}/index.tsx',
+      components: 'components/{Icon,Breadcrumb,Button,Card,Alert,Timeline,Backtop,Switch,Loading,Divider,Rate}/index.tsx',
     }
   ],
 };

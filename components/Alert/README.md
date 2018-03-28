@@ -16,7 +16,7 @@
     showIcon
     title="成功提示文案"
     closable
-    closeCallback={() => alert('关闭了')}
+    onClose={() => alert('关闭了')}
   >
     <span>成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案成功提示文案</span>
   </Alert>
