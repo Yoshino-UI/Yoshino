@@ -30,7 +30,8 @@ module.exports = {
     },
     {
       name: '特效组件',
-      components: 'components/{Hover,}/index.tsx',
+      content: 'docs/effects.md',
+      components: 'components/{Hover,Ripple}/index.tsx',
     }
   ],
 };

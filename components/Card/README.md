@@ -13,7 +13,6 @@
   extra={(
   <div><span>更多</span><Icon type="more"/></div>
   )}
-  hover
   border
   shadow
 >

@@ -3,7 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/hover/hover.less';
 import '../styles/common/reset.less';
 import './index.less';
 
@@ -24,14 +23,6 @@ export interface ICardProps extends IBaseComponent {
    * 阴影
    */
   shadow?: boolean;
-  /**
-   * hover特效
-   */
-  hover?: boolean;
-  /**
-   * hover特效
-   */
-  hoverName: string;
 }
 
 export interface ICardState {
@@ -43,16 +34,14 @@ export interface ICardState {
  */
 export class Card extends Component<ICardProps, ICardState> {
   static defaultProps = {
-    hoverName: 'hvr-glow',
   };
 
   render() {
-    const {className, style, title, extra, border, shadow, hover, hoverName, ...otherProps} = this.props;
+    const {className, style, title, extra, border, shadow, ...otherProps} = this.props;
     const preCls = 'yoshino-card';
     const cardCls = {
       [`${preCls}-border`]: border,
       [`${preCls}-shadow`]: shadow,
-      [`yoshino-${hoverName}`]: hover,
     };
     return (
       <div
