@@ -1,0 +1,33 @@
+@import '../styles/var.less';
+@import '../styles/animation/progress.less';
+
+@cssPreCls: yoshino-progress;
+.@{cssPreCls} {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background-color: @disabled-color;
+  border-radius: 100px;
+
+  &-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: @primary-color;
+    border-radius: 100px;
+    transition: @transition-base;
+
+    &::before {
+      content: "";
+      opacity: 0;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: white;
+      border-radius: 100px;
+      animation: progress-animation 1.5s cubic-bezier(.645,.045,.355,1) infinite;;
+    }
+  }
+}
