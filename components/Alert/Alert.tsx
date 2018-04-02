@@ -43,7 +43,7 @@ export interface IAlertState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **警告提示**-警告提示，展现需要关注的信息。
  */
 export class Alert extends Component<IAlertProps, IAlertState> {
   state = {

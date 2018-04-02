@@ -24,7 +24,7 @@ export interface IBreadcrumbState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **面包屑导航**-显示当前页面路径
  */
 export class Breadcrumb extends Component<IBreadcrumbProps, IBreadcrumbState> {
   static Item: ReactNode;

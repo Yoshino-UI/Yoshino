@@ -40,7 +40,7 @@ export interface IBacktopState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **返回顶部**-返回页面顶部的操作按钮。
  */
 class Backtop extends Component<IBacktopProps, IBacktopState> {
   state = {

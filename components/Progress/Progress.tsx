@@ -26,7 +26,7 @@ export interface IProgressState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **进度条**-展示当前操作流程进度。
  */
 export class Progress extends Component<IProgressProps, IProgressState> {
   static defaultProps = {

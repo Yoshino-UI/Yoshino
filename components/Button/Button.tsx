@@ -34,7 +34,7 @@ export interface IButtonState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **按钮**-用于点击操作。
  */
 export class Button extends Component<IButtonProps, IButtonState> {
   static defaultProps = {

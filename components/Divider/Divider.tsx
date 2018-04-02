@@ -22,7 +22,7 @@ export interface IDividerState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **分割线**-一般用于分割段落或者内容划分
  */
 export class Divider extends Component<IDividerProps, IDividerState> {
   static defaultProps = {

@@ -27,7 +27,7 @@ export interface ILoadingState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **加载**-表示当前处于加载状态中。
  */
 export class Loading extends Component<ILoadingProps, ILoadingState> {
   static defaultProps = {

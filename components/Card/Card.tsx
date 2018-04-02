@@ -30,7 +30,7 @@ export interface ICardState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **卡片**-用于展示一些块状信息
  */
 export class Card extends Component<ICardProps, ICardState> {
   static defaultProps = {

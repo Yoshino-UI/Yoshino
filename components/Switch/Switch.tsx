@@ -30,7 +30,7 @@ export interface ISwitchState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **开关选择器**-切换开关状态。
  */
 export class Switch extends Component<ISwitchProps, ISwitchState> {
   state = {

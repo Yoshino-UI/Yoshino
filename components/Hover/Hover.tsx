@@ -19,7 +19,7 @@ export interface IHoverState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **悬浮特效**-包裹子代添加hover特效
  */
 export class Hover extends Component<IHoverProps, IHoverState> {
   static defaultProps = {

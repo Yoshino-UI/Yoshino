@@ -27,7 +27,7 @@ export interface IRippleState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **波纹特效**-为子代添加点击水波扩散的特效。
  */
 export class Ripple extends Component<IRippleProps, IRippleState> {
   static defaultProps = {

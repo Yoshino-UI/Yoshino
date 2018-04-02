@@ -40,7 +40,7 @@ export interface IRateState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **评分**-对目标进行评分操作。
  */
 export class Rate extends Component<IRateProps, IRateState> {
   state = {

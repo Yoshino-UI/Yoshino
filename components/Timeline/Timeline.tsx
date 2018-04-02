@@ -42,7 +42,7 @@ export interface ITimelineState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **时间轴**-用于展示不同时间节点上的信息。
  */
 export class Timeline extends Component<ITimelineProps, ITimelineState> {
   // tslint:disable

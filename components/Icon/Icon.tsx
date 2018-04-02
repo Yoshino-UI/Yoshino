@@ -19,7 +19,7 @@ export interface IIconState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **图标**-展示对应的矢量化图标。
  */
 export class Icon extends Component<IIconProps, IIconState> {
   render() {
