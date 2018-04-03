@@ -31,7 +31,7 @@ export interface IAvatarState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **头像**-用于表示用户头像信息
  */
 export class Avatar extends Component<IAvatarProps, IAvatarState> {
   static defaultProps = {

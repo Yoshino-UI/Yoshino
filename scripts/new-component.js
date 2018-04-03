@@ -88,7 +88,18 @@ export default ${component};
 function fileReadmeMd(component) {
   const content = `### 默认
 \`\`\`js
-<${component}/>
+<div>
+  <${component}/>
+  <${component}/>
+</div>
+\`\`\`
+
+### 自定义
+\`\`\`js
+<div>
+  <${component}/>
+  <${component}/>
+</div>
 \`\`\`
 `;
   writeFile('README.md', content, component);
