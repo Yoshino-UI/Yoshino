@@ -26,7 +26,7 @@ module.exports = {
     },
     {
       name: '通用组件',
-      components: 'components/{Icon,Breadcrumb,Button,Card,Alert,Timeline,Backtop,Switch,Loading,Divider,Rate,Progress}/index.tsx',
+      components: 'components/{Icon,Breadcrumb,Button,Card,Alert,Timeline,Backtop,Switch,Loading,Divider,Rate,Progress,Avatar}/index.tsx',
     },
     {
       name: '特效组件',

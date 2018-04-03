@@ -1,0 +1,69 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-avatar;
+.@{cssPreCls} {
+  display: inline-block;
+  text-align: center;
+  background-color: @avatar-bgColor-default;
+  color: white;
+  
+  &-circle {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &-square {
+    border-radius: @avatar-square-radius;
+    img {
+      border-radius: @avatar-square-radius;
+    }
+  }
+}
+
+.@{cssPreCls}-default {
+  width: @avatar-size-default;
+  height: @avatar-size-default;
+  line-height: @avatar-size-default;
+
+  img {
+    width: @avatar-size-default;
+    height: @avatar-size-default;
+  }
+
+  i {
+    font-size: @avatar-fontSize-default;
+    line-height: @avatar-size-default;
+  }
+}
+
+.@{cssPreCls}-small {
+  width: @avatar-size-small;
+  height: @avatar-size-small;
+  line-height: @avatar-size-small;
+  
+  img {
+    width: @avatar-size-small;
+    height: @avatar-size-small;
+  }
+
+  i {
+    font-size: @avatar-fontSize-small;
+    line-height: @avatar-size-small;
+  }
+}
+
+.@{cssPreCls}-large {
+  width: @avatar-size-large;
+  height: @avatar-size-large;
+  line-height: @avatar-size-large;
+  
+  img {
+    width: @avatar-size-large;
+    height: @avatar-size-large;
+  }
+
+  i {
+    font-size: @avatar-fontSize-large;
+    line-height: @avatar-size-large;
+  }
+}
