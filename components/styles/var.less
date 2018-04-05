@@ -12,7 +12,8 @@
 
 @border-radius-base: 2px;
 
-@primary-color: #f63; // 主色调
+@primary-color-number: 255,102,51;
+@primary-color: ~'rgb(@{primary-color-number})'; // 主色调
 @primary-color-active:rgb(250, 87, 33);
 @primary-color-hover: rgb(240, 134, 99);
 
@@ -50,6 +51,7 @@
 @button-primary-active-bg-color: @primary-color-active;
 
 @button-disabled-bg-color: #f7f7f7;
+
 @button-height-size-base: 28px;
 @button-height-size-small: 22px;
 @button-height-size-large: 32px;
@@ -83,3 +85,13 @@
 @tag-bgColor: #fafafa;
 @tag-border-color: #d9d9d9;
 @tag-font-color: rgba(0,0,0,.65);
+
+
+// input
+@input-size-small: 24px;
+@input-size-default: 32px;
+@input-size-large: 40px;
+@input-border: 1px solid #d9d9d9;
+@input-border-radius: 4px;
+@input-box-shadow: 0 0 0 2px ~'rgba(@{primary-color-number}, 0.2)';
+@input-extra-item-bgColor: #fafafa;

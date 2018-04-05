@@ -1,0 +1,116 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-input;
+.@{cssPreCls} {
+  border: @input-border;
+  border-radius: @input-border-radius;
+  width: 100%;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: @primary-color;
+  }
+
+  &:focus {
+    box-shadow: @input-box-shadow;
+  }
+
+  &-header,
+  &-footer {
+    border: @input-border;
+    border-radius: @input-border-radius;
+    display: table-cell;
+    text-align: center;
+    width: 1px;
+    padding: 0 7px;
+    background-color: @input-extra-item-bgColor;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+
+  }
+
+  &-header {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &-footer {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.@{cssPreCls}-default {
+  > input {
+    height: @input-size-default;
+    padding: 4px 11px;
+    font-size: @font-size-small;
+  }
+  
+
+  .@{cssPreCls}-footer,
+  .@{cssPreCls}-header {
+    > * {
+      // height: @input-size-default;
+    }
+  }
+}
+
+.@{cssPreCls}-small {
+  > input {
+    height: @input-size-small;
+    padding: 1px 7px;
+    font-size: @font-size-base;
+  }
+  
+
+  .@{cssPreCls}-footer,
+  .@{cssPreCls}-header {
+    > * {
+      // height: @input-size-small;
+    }
+  }
+}
+
+.@{cssPreCls}-large {
+  > input {
+    height: @input-size-large;
+    padding: 6px 11px;
+    font-size: @font-size-large;
+  }
+
+
+  .@{cssPreCls}-footer,
+  .@{cssPreCls}-header {
+    > * {
+      // height: @input-size-large;
+    }
+  }
+}
+
+.@{cssPreCls}-wrapper {
+  display: table;
+  line-height: 1;
+
+  .@{cssPreCls}:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+
+  .@{cssPreCls}:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .@{cssPreCls}:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+
+  
+}
+
