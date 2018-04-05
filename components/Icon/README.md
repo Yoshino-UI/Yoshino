@@ -14,25 +14,38 @@
 ### 图标
 ```js
 const {iconName} = require('./iconName.js');
-<div style= {{
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'flext-start',
+initialState = { tag: '' };
+<div>
+  <Input
+    value={state.tag}
+    size="large"
+    style={{width: '400px'}}
+    placeholder="输入关键词可以搜索对应icon"
+    onChange={(e) => {
+      setState({ tag: e.target.value })
+    }}
+  />
+  <div style= {{
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flext-start',
 
-}}>
-{
-  iconName.map((item) => {
-    return (
-      <div style= {{
-        width: 80,
-        textAlign: 'center',
-        padding: 5,
-      }}>
-        <Icon type={item.name} style={{fontSize: 25}}/>
-        <div style={{fontSize: 12}}>{item.name}</div>
-      </div>
-    )
-  })
-}
+  }}>
+  {
+    iconName.filter((item) => item.tag.indexOf(state.tag) !== -1).map((item) => {
+      return (
+        <div style= {{
+          width: 80,
+          textAlign: 'center',
+          padding: 5,
+        }}>
+          <Icon type={item.name} style={{fontSize: 25}}/>
+          <div style={{fontSize: 12}}>{item.name}</div>
+        </div>
+      )
+    })
+  }
+  </div>
 </div>
+
 ```
