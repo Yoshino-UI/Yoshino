@@ -1,0 +1,80 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-input-number;
+.@{cssPreCls} {
+  border: @input-border;
+  border-radius: @input-border-radius;
+  width: 100%;
+  padding-right: 25px !important;
+  
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: @primary-color;
+  }
+
+  &:focus {
+    box-shadow: @input-box-shadow;
+  }
+}
+
+.@{cssPreCls}-default {
+  height: @input-size-default;
+  padding: 4px 11px;
+  font-size: @font-size-small;
+}
+
+.@{cssPreCls}-small {
+  height: @input-size-small;
+  padding: 1px 7px;
+  font-size: @font-size-base;
+}
+
+.@{cssPreCls}-large {
+  height: @input-size-large;
+  padding: 6px 11px;
+  font-size: @font-size-large;
+}
+
+.@{cssPreCls}-wrapper {
+  width: 90px;
+  position: relative;
+  display: inline-block;
+
+  .@{cssPreCls}-control {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    border-left: @input-border;
+    line-height: 100%;
+
+    > div {
+      width: 100%;
+      height: 50%;
+      color: @input-border-color;
+      font-weight: bold;
+      
+      &:first-child {
+        border-bottom: @input-border;
+      }
+
+      &:hover {
+        color:@primary-color;
+        cursor: pointer;
+      }
+
+      i {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        transform: scale(0.8);
+        font-weight: 700;
+      }
+    }
+  }
+}
