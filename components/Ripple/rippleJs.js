@@ -7,12 +7,12 @@ const rippleJs = ({
   // var color;
 	// var opacity;
 	// var ripple_without_diameter;
-	var $element;  // 浮层
-
+	// var $element;  // 浮层
+	var $node;
 	var overlays = {
 		items: [],
 		get: function(){
-			// var $element;
+			var $element;
 			for(var i = 0; i < overlays.items.length; i++){
 				$element = overlays.items[i];
 				if($element.transition_phase === false) {
@@ -31,7 +31,7 @@ const rippleJs = ({
 			$element.transition_phase = 0;
 			$element.rid = overlays.items.length;
 			$element.next_transition = overlays.next_transition_generator($element);
-			document.body.appendChild($element);
+			$node = document.body.appendChild($element);
 			overlays.items.push($element);
 			return $element;
 		},
@@ -129,7 +129,7 @@ const rippleJs = ({
 	// 	销毁事件
 	return () => {
 		dom.removeEventListener("click", click, false);
-		document.body.removeChild($element);
+		document.body.removeChild($node);
 	}
 };
 

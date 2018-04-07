@@ -80,20 +80,28 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
   }
 
   onPlus = () => {
+    const {onChange, max} = this.props;
     const value =  this.state.value + this.props.step;
-    if (value <= this.props.max) {
+    if (value <= max) {
       this.setState({
         value,
       });
+      if (onChange) {
+        onChange(value);
+      }
     }
   }
 
   onMinus = () => {
+    const {onChange, min} = this.props;
     const value =  this.state.value - this.props.step;
-    if (value >= this.props.min) {
+    if (value >= min) {
       this.setState({
         value,
       });
+      if (onChange) {
+        onChange(value);
+      }
     }
   }
 
