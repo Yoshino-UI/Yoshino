@@ -7,11 +7,12 @@ const rippleJs = ({
   // var color;
 	// var opacity;
 	// var ripple_without_diameter;
+	var $element;  // 浮层
 
 	var overlays = {
 		items: [],
 		get: function(){
-			var $element;
+			// var $element;
 			for(var i = 0; i < overlays.items.length; i++){
 				$element = overlays.items[i];
 				if($element.transition_phase === false) {
@@ -128,6 +129,7 @@ const rippleJs = ({
 	// 	销毁事件
 	return () => {
 		dom.removeEventListener("click", click, false);
+		document.body.removeChild($element);
 	}
 };
 
