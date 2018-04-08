@@ -66,7 +66,7 @@ export class Timeline extends Component<ITimelineProps, ITimelineState> {
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-timeline';
-    const childrens = React.Children.toArray(children).filter(item => !!item);
+    const childrens = React.Children.toArray(children).filter(item => item);
   
     return (
       <div

@@ -11,6 +11,7 @@
 @transition-slow: all .5s cubic-bezier(.645,.045,.355,1);
 
 @border-radius-base: 2px;
+@border-radius-large: 4px;
 
 @primary-color-number: 255,102,51;
 @primary-color: ~'rgb(@{primary-color-number})'; // 主色调
@@ -38,7 +39,7 @@
 
 //button
 @button-border: 1px solid transparent;
-@button-border-radius: 4px; 
+@button-border-radius: @border-radius-large; 
 @button-padding: 0 15px;
 
 @button-border-color: #d9d9d9;
@@ -93,7 +94,12 @@
 @input-size-large: 40px;
 @input-border-color: #d9d9d9;
 @input-border: 1px solid @input-border-color;
-@input-border-radius: 4px;
+@input-border-radius: @border-radius-large;
 @input-box-shadow: 0 0 0 2px ~'rgba(@{primary-color-number}, 0.2)';
 @input-extra-item-bgColor: #fafafa;
+
+
+// pagination
+@pagination-size: 32px;
+@pagination-border: 1px solid #d9d9d9;
 

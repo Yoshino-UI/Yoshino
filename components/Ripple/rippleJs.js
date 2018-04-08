@@ -125,11 +125,12 @@ const rippleJs = ({
 		setTimeout($element.next_transition, 20);
 	}
 	dom.addEventListener("click", click, false);
-	
 	// 	销毁事件
-	return () => {
-		dom.removeEventListener("click", click, false);
-		document.body.removeChild($node);
+	return () => { 
+    dom.removeEventListener("click", click, false);
+    if ($node) {
+      document.body.removeChild($node);
+    }
 	}
 };
 

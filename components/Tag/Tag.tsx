@@ -82,7 +82,7 @@ export class Tag extends Component<ITagProps, ITagState> {
     const {show} = this.state;
     const preCls = 'yoshino-tag';
     const clsName = classNames(
-      className, preCls, !!color && mode !== 'geek' ? `${preCls}-color` : null,
+      className, preCls, color && mode !== 'geek' ? `${preCls}-color` : null,
     );
     const modeStyle = {
       custom: {
@@ -90,7 +90,7 @@ export class Tag extends Component<ITagProps, ITagState> {
       },
       geek: this.getGeekStyle(),
     };
-    const tagStyle = !!color ? modeStyle[mode] : {};
+    const tagStyle = color ? modeStyle[mode] : {};
     return (
       <Transition
         show={show}

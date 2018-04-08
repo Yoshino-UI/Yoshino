@@ -66,7 +66,7 @@ export class Input extends Component<IInputProps, IInputState> {
         className={clsName}
         style={style}
       >
-        {!!header ? (
+        {header ? (
           <span className={`${preCls}-header`} style={isValidElement(header) ? {padding: '0'} : {}}>{header}</span>
         ) : null}
         <input
@@ -75,7 +75,7 @@ export class Input extends Component<IInputProps, IInputState> {
           {...otherProps}
           onKeyDown={this.onEnter}
         />
-        {!!footer ? (
+        {footer ? (
           <span className={`${preCls}-footer`} style={isValidElement(footer) ? {padding: '0'} : {}}>{footer}</span>
         ) : null}
       </span>

@@ -1,0 +1,41 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-pagination;
+.@{cssPreCls} {
+  user-select: none;
+
+  &-item {
+    display: inline-block;
+    min-width: @pagination-size;
+    height: @pagination-size;
+    line-height: @pagination-size;
+    border: @pagination-border;
+    border-radius: @border-radius-large;
+    margin-right: 8px;
+    text-align: center;
+    font-size: @font-size-base;
+    cursor: pointer;
+
+    span {
+    }
+
+    &-active,
+    &:hover {
+      border-color: @primary-color;
+      color: @primary-color;
+    }
+
+    &-more {
+      border: none;
+    }
+  }
+
+  &-item:last-child {
+    margin-right: 0;
+  }
+
+  &-header,
+  &-footer {
+    padding: 0 5px;
+  }
+}
