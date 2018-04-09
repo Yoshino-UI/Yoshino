@@ -1,5 +1,5 @@
 
-import {Component, ReactNode, isValidElement} from 'react';
+import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
@@ -27,6 +27,14 @@ export interface IInputProps extends IBaseComponent {
    * 尾部
    */
   footer?: ReactNode | string;
+  /**
+   * 头部style
+   */
+  headerStyle?: { [key: string]: any }; // tslint:disable-line:no-any
+  /**
+   * 尾部style
+   */
+  footerStyle?: { [key: string]: any }; // tslint:disable-line:no-any
 }
 
 export interface IInputState {
@@ -56,7 +64,7 @@ export class Input extends Component<IInputProps, IInputState> {
   }
 
   render() {
-    const {className, style, size, header, footer, onEnter, ...otherProps} = this.props;
+    const {className, style, size, header, footer, headerStyle, footerStyle, onEnter, ...otherProps} = this.props;
     const preCls = 'yoshino-input';
     const clsName = classNames(
       className, `${preCls}-wrapper`, `${preCls}-${size}`,
@@ -67,7 +75,7 @@ export class Input extends Component<IInputProps, IInputState> {
         style={style}
       >
         {header ? (
-          <span className={`${preCls}-header`} style={isValidElement(header) ? {padding: '0'} : {}}>{header}</span>
+          <span className={`${preCls}-header`} style={headerStyle}>{header}</span>
         ) : null}
         <input
           type='text'
@@ -76,7 +84,7 @@ export class Input extends Component<IInputProps, IInputState> {
           onKeyDown={this.onEnter}
         />
         {footer ? (
-          <span className={`${preCls}-footer`} style={isValidElement(footer) ? {padding: '0'} : {}}>{footer}</span>
+          <span className={`${preCls}-footer`} style={footerStyle}>{footer}</span>
         ) : null}
       </span>
     );
