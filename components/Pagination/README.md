@@ -16,6 +16,8 @@ initialState = { current: 3 };
     onChange={(current) => {
       setState({current});
     }}
+    next="下一页"
+    previous="上一页"
   />
 </div>
 ```

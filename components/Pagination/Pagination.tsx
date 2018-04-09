@@ -1,5 +1,5 @@
 
-import {Component} from 'react';
+import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
@@ -32,6 +32,14 @@ export interface IPaginationProps extends IBaseComponent {
    * 显示页码块最多的个数
    */
   max: number;
+  /**
+   * 自定义文本-下一页
+   */
+  next: string | ReactNode;
+  /**
+   * 自定义文本-上一页
+   */
+  previous: string | ReactNode;
 }
 
 export interface IPaginationState {
@@ -54,9 +62,9 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
 
   renderPageList() {
     const preCls = 'yoshino-pagination';
-    const {total, pageSize, current, max} = this.props;
+    const {current, max} = this.props;
     const currentPage = current ? current : this.state.current;
-    const page = Math.ceil(total / pageSize);
+    const page = this.getPageSum();
     let list = [];
     // itemClsName  -  主要用于判断item-active
     const clsName = (counter: number) => {
@@ -126,11 +134,6 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   itemClick = (current: number) => {
-    if (!this.props.current) {
-      this.setState({
-        current,
-      });
-    }
     this.onChangeTrigger(current);
   }
 
@@ -141,34 +144,27 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
     }
     current = current - 1;
 
-    if (!this.props.current) {
-      this.setState({
-        current,
-      });
-    }
-
     this.onChangeTrigger(current);
   }
 
   onNext = () => {
     let current = this.props.current ? this.props.current : this.state.current;
-    const {total, pageSize} = this.props;
-    const page = Math.ceil(total / pageSize);
+    const page = this.getPageSum();
     if (current === page) {
       return;
     }
     current = current + 1;
 
-    if (!this.props.current) {
-      this.setState({
-        current,
-      });
-    }
     this.onChangeTrigger(current);
   }
 
   onChangeTrigger = (current: number) => {
     const {onChange, pageSize} = this.props;
+    if (!this.props.current) {
+      this.setState({
+        current,
+      });
+    }
     if (onChange) {
       onChange(current, pageSize);
     }
@@ -207,8 +203,8 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   render() {
-    const {className, style, onChange, total, pageSize, ...otherProps} = this.props;
-    const page = Math.ceil(total / pageSize);
+    const {className, style, onChange, total, pageSize, next, previous, ...otherProps} = this.props;
+    const page = this.getPageSum();
     const current = this.props.current ? this.props.current : this.state.current;
     const preCls = 'yoshino-pagination';
     const clsName = classNames(
@@ -225,7 +221,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
           onClick={this.onPrevious}
           style={current > 1 ? {} : {cursor: 'not-allowed'}}
         >
-          <span>pre</span>
+          <span>{previous ? previous : <Icon type='ios-arrow-back'/>}</span>
         </div>
         {this.renderPageList()}
         <div
@@ -233,7 +229,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
           onClick={this.onNext}
           style={current < page ? {} : {cursor: 'not-allowed'}}
         >
-          <span>next</span>
+          <span>{next ? next : <Icon type='ios-arrow-forward'/>}</span>
         </div>
       </div>
     );
