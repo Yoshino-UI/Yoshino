@@ -1,0 +1,62 @@
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-radio;
+.@{cssPreCls} {
+  display: inline-block;
+  height: @radio-size;
+  width: @radio-size;
+  font-size: @radio-size;
+  
+  border-radius: 50%;
+  border: 1px solid @radio-border-color;
+  vertical-align: middle;
+  position: relative;
+
+  &::after {
+    content: ' ';
+    display: block;
+    background: @primary-color;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transition: @transition-quick;
+  }
+
+  &-input {
+    display: none;
+  }
+
+  &-checked {
+    border-color: @primary-color;
+
+    &::after {
+      content: ' ';
+      display: block;
+      background: @primary-color;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      width: calc(@radio-size - 8px);
+      height: calc(@radio-size - 8px);
+    }
+  }
+
+  &-text {
+    margin: 0 10px;
+    font-size: @font-size-base;
+  }
+
+}
+
+.@{cssPreCls}-wrapper {
+  cursor: pointer;  
+}
+
+.@{cssPreCls}-disabled {
+  cursor: not-allowed;
+  color: @disabled-color;
+}

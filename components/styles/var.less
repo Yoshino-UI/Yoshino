@@ -28,6 +28,7 @@
 
 //Border
 @border-color-outline: #e3e8ee;
+@border-color: #d9d9d9;
 
 
 //Shadow
@@ -42,7 +43,7 @@
 @button-border-radius: @border-radius-large; 
 @button-padding: 0 15px;
 
-@button-border-color: #d9d9d9;
+@button-border-color: @border-color;
 
 @button-danger-color: #f04134;
 @button-danger-color-active: #d73435;
@@ -84,7 +85,7 @@
 
 // tag
 @tag-bgColor: #fafafa;
-@tag-border-color: #d9d9d9;
+@tag-border-color: @border-color;
 @tag-font-color: rgba(0,0,0,.65);
 
 
@@ -92,7 +93,7 @@
 @input-size-small: 24px;
 @input-size-default: 32px;
 @input-size-large: 40px;
-@input-border-color: #d9d9d9;
+@input-border-color: @border-color;
 @input-border: 1px solid @input-border-color;
 @input-border-radius: @border-radius-large;
 @input-box-shadow: 0 0 0 2px ~'rgba(@{primary-color-number}, 0.2)';
@@ -101,5 +102,9 @@
 
 // pagination
 @pagination-size: 32px;
-@pagination-border: 1px solid #d9d9d9;
+@pagination-border: 1px solid @border-color;
+
+// radio
+@radio-size: 16px;
+@radio-border-color: @border-color;
 
