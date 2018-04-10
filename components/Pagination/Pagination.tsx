@@ -29,17 +29,17 @@ export interface IPaginationProps extends IBaseComponent {
    */
   onChange?: (current: number, pageSize: number) => void;
   /**
-   * 显示页码块最多的个数
+   * 显示页码块最多的个数 - 默认值5
    */
   max: number;
   /**
    * 自定义文本-下一页
    */
-  next: string | ReactNode;
+  next?: string | ReactNode;
   /**
    * 自定义文本-上一页
    */
-  previous: string | ReactNode;
+  previous?: string | ReactNode;
 }
 
 export interface IPaginationState {
