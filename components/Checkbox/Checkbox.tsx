@@ -5,10 +5,10 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import '../styles/common/reset.less';
 import './index.less';
-import RadioGroup from './RadioGroup';
+import CheckboxGroup from './CheckboxGroup';
 
 // tslint:disable:no-any
-export interface IRadioProps extends IBaseComponent {
+export interface ICheckboxProps extends IBaseComponent {
   /**
    * 值
    */
@@ -26,19 +26,19 @@ export interface IRadioProps extends IBaseComponent {
    */
   name: string;
   /**
-   * 通知radioGroup
+   * 通知checkboxGroup
    */
   onChange: (value: any) => void;
 }
 
-export interface IRadioState {
+export interface ICheckboxState {
 
 }
 
 /**
  * **单选按钮**-用于从多个条件中筛选单个选项
  */
-export class Radio extends Component<IRadioProps, IRadioState> {
+export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
   static defaultProps = {
     disabled: false,
   };
@@ -51,11 +51,11 @@ export class Radio extends Component<IRadioProps, IRadioState> {
     onChange(value);
   }
 
-  static Group: typeof RadioGroup;
+  static Group: typeof CheckboxGroup;
 
   render() {
     const {className, style, name, value, checked, disabled, children, onChange, ...otherProps} = this.props;
-    const preCls = 'yoshino-radio';
+    const preCls = 'yoshino-checkbox';
     const clsName = classNames(
       className, preCls,
       {[`${preCls}-checked`]: checked},
@@ -75,7 +75,7 @@ export class Radio extends Component<IRadioProps, IRadioState> {
             style={style}
             {...otherProps}
           />
-          <input type='radio' className={`${preCls}-input`} {...{name, value, checked}}/>
+          <input type='checkbox' className={`${preCls}-input`} {...{name, value, checked}}/>
         </span>
         <span className={`${preCls}-text`}>{children}</span>
       </span>
@@ -83,4 +83,4 @@ export class Radio extends Component<IRadioProps, IRadioState> {
   }
 }
 
-export default Radio;
+export default Checkbox;

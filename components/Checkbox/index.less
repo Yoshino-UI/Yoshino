@@ -1,14 +1,13 @@
 @import '../styles/var.less';
 
-@cssPreCls: yoshino-radio;
+@cssPreCls: yoshino-checkbox;
 .@{cssPreCls} {
   display: inline-block;
-  height: @radio-size;
-  width: @radio-size;
-  font-size: @radio-size;
+  height: @checkbox-size;
+  width: @checkbox-size;
+  font-size: @checkbox-size;
   
-  border-radius: 50%;
-  border: 1px solid @radio-border-color;
+  border: 1px solid @checkbox-border-color;
   vertical-align: middle;
   position: relative;
 
@@ -33,9 +32,8 @@
 
     &::after {
       transform: translate(-50%, -50%);
-      border-radius: 50%;
-      width: calc(@radio-size - 8px);
-      height: calc(@radio-size - 8px);
+      width: calc(@checkbox-size - 8px);
+      height: calc(@checkbox-size - 8px);
     }
   }
 
