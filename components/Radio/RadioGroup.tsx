@@ -60,7 +60,7 @@ export class RadioGroup extends Component<IRadioGroupProps, IRadioGroupState> {
   render() {
     const {className, style, name, value, defaultValue, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-radio-group';
-    const inValue = value ? value : this.state.value;
+    const inValue = value !== undefined ? value : this.state.value;
     const clsName = classNames(
       className, preCls,
     );
