@@ -1,31 +1,31 @@
 ### 默认
 ```js
 <div>
-  <Button type="primary">Primary</Button>
+  <Button type="primary" onClick={() => console.log(1)}>Primary</Button>
   <Button>Default</Button>
-  <Button  type="dashed">Dashed</Button>
+  <Button type="dashed">Dashed</Button>
   <Button type="danger">Danger</Button>
-  <Button type="primary" shape="circle"><Icon type="arrow-up-a"/></Button>
+  <Button type="primary" shape="circle" icon="arrow-up-a"/>
 </div>
 ```
 
 ### 带图标
 ```js
 <div>
-  <Button type="primary"><Icon type="play"/>播放</Button>
-  <Button type="primary"><Icon type="pause"/>暂停</Button>
-  <Button type="primary"><Icon type="skip-backward"/>上一首</Button>
-  <Button type="primary">下一首<Icon type="skip-forward"/></Button>
+  <Button type="primary" icon="play">播放</Button>
+  <Button type="primary" icon="pause">暂停</Button>
+  <Button type="primary" icon="skip-backward">上一首</Button>
+  <Button type="primary" icon="skip-forward" tail>下一首</Button>
 </div>
 ```
 
 ### 各种样式
 ```js
 <div>
-  <Button type="primary" shape="circle"><Icon type="arrow-up-a"/></Button>
-  <Button shape="circle"><Icon type="arrow-up-a"/></Button>
-  <Button type="dashed" shape="circle"><Icon type="arrow-up-a"/></Button>
-  <Button type="danger" shape="circle"><Icon type="arrow-up-a"/></Button>
+  <Button type="primary" shape="circle" icon="arrow-up-a"/>
+  <Button shape="circle" icon="arrow-up-a"/>
+  <Button type="dashed" shape="circle" icon="arrow-up-a"/>
+  <Button type="danger" shape="circle" icon="arrow-up-a"/>
 </div>
 ```
 
@@ -46,5 +46,25 @@
   <Button ghost size="large">Default</Button>
   <Button ghost type="dashed">Dashed</Button>
   <Button ghost size="small" type="danger">Danger</Button>
+</div>
+```
+
+### 加载组件
+```js
+initialState = {loading: false};
+<div>
+  <Button
+    type="primary"
+    icon="play"
+    loading={state.loading}
+    onClick={() => {
+      setState({loading: true});
+      setTimeout(() => {
+        setState({loading: false});
+      }, 2000);
+    }}
+  >
+    播放
+  </Button>
 </div>
 ```

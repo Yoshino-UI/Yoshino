@@ -1,10 +1,11 @@
 
-import {Component} from 'react';
+import {Component, isValidElement, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import '../styles/common/reset.less';
 import './index.less';
+import Icon from '../Icon';
 
 export interface IButtonProps extends IBaseComponent {
   /**
@@ -27,6 +28,18 @@ export interface IButtonProps extends IBaseComponent {
    * 幽灵模式，默认false
    */
   ghost: boolean;
+  /**
+   * 图标
+   */
+  icon: string | ReactNode;
+  /**
+   * 加载状态
+   */
+  loading: boolean;
+  /**
+   * 图标位置
+   */
+  tail: boolean;
 }
 
 export interface IButtonState {
@@ -39,25 +52,42 @@ export interface IButtonState {
 export class Button extends Component<IButtonProps, IButtonState> {
   static defaultProps = {
     ghost: false,
+    loading: false,
+    tail: false,
   };
 
   render() {
-    const {className, style, disabled, type, shape, size, ghost, ...otherProps} = this.props;
+    const {
+      className, style, disabled, type,
+      shape, size, icon, ghost, children,
+      tail, loading, ...otherProps} = this.props;
     const preCls = 'yoshino-button';
     const btnCls = {
-      [`${preCls}-${type}`]: type && !disabled || type === 'dashed',
-      [`${preCls}-size-${size}`]: size && !disabled,
-      [`${preCls}-ghost`]: ghost && !disabled,
+      [`${preCls}-${type}`]: type && !disabled && !loading || type === 'dashed',
+      [`${preCls}-size-${size}`]: size && !disabled && !loading,
+      [`${preCls}-ghost`]: ghost && !disabled && !loading,
       [`${preCls}-shape-${shape}`]: shape === 'circle',
     };
+    const ban = loading || disabled;
+    const iconDiv = icon ? (
+      <span
+        className={`${preCls}-icon`}
+        style={shape !== 'circle' ? tail ? {marginLeft: '5px'} : {marginRight: '5px'} : {}}
+      >
+        {loading ? <Icon className={`${preCls}-load`} type='load-c'/> :
+        isValidElement(icon) ? icon : <Icon type={icon as string}/>}
+      </span>
+    ) : null;
     return (
       <button
         className={classNames(className, preCls, btnCls)}
         style={style}
-        disabled={disabled}
+        disabled={ban}
         {...otherProps}
       >
-        <span>{this.props.children}</span>
+        {tail ? null : iconDiv}
+        {children ? <span>{loading ? 'Loading..' : children}</span> : null}
+        {tail ? iconDiv : null}
       </button>
     );
   }

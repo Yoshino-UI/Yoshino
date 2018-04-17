@@ -15,11 +15,11 @@ export interface ILoadingProps extends IBaseComponent {
   /**
    * 大小，默认default
    */
-  size: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large';
   /**
    * 加载文本
    */
-  text: string | boolean;
+  text?: string | boolean;
 }
 
 export interface ILoadingState {
