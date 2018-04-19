@@ -1,0 +1,121 @@
+/*
+ * @Author: mikey.zhaopeng 
+ * @Date: 2018-04-19 12:55:38 
+ * @Last Modified by: zengjingyi
+ * @Last Modified time: 2018-04-19 18:23:11
+ */
+@import '../styles/var.less';
+
+@cssPreCls: yoshino-tooltip;
+.@{cssPreCls} {
+  position: absolute;
+  z-index: 1000;
+  
+  transition: opacity .3s cubic-bezier(.645,.045,.355,1);
+
+  &-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  &-content {
+    padding: 5px;
+    background: rgba(0,0,0,.75);
+    font-size: @font-size-small;
+    color: white;
+    border-radius: @border-radius-large;
+    position: relative;
+  }
+
+  &-top,
+  &-topLeft,
+  &-topRight {
+    .@{cssPreCls}-arrow {
+      bottom: 3px;
+      border-width: 5px 5px 0;
+      border-top-color: rgba(0,0,0,.75);
+    }
+
+    .@{cssPreCls}-content {
+      top: -8px;
+    }
+  }
+
+  &-topLeft > &-arrow,
+  &-bottomLeft > &-arrow {
+    left: 8px;
+  }
+
+  &-top > &-arrow,
+  &-bottom > &-arrow {
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  &-topRight > &-arrow,
+  &-bottomRight > &-arrow {
+    right: 8px;
+  }
+
+  &-bottom,
+  &-bottomLeft,
+  &-bottomRight {
+    .@{cssPreCls}-arrow {
+      top: 3px;
+      border-width: 0 5px 5px;
+      border-bottom-color: rgba(0,0,0,.75);
+    }
+
+    .@{cssPreCls}-content {
+      bottom: -8px;
+    }
+  }
+
+
+  &-left,
+  &-leftTop,
+  &-leftBottom {
+    .@{cssPreCls}-arrow {
+      right: 3px;
+      border-width: 5px 0 5px 5px;
+      border-left-color: rgba(0,0,0,.75);
+    }
+
+    .@{cssPreCls}-content {
+      left: -8px;
+    }
+  }
+
+  &-left > &-arrow,
+  &-right > &-arrow  {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-leftTop > &-arrow,
+  &-rightTop > &-arrow {
+    top: 8px;
+  }
+
+  &-leftBottom > &-arrow,
+  &-rightBottom > &-arrow {
+    bottom: 8px;
+  }
+
+  &-right,
+  &-rightTop,
+  &-rightBottom {
+    .@{cssPreCls}-arrow {
+      left: 3px;
+      border-width: 5px 5px 5px 0;
+      border-right-color: rgba(0,0,0,.75);
+    }
+
+    .@{cssPreCls}-content {
+      right: -8px;
+    }
+  }
+}

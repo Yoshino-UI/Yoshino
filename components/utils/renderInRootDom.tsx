@@ -4,7 +4,8 @@ import * as ReactDom from 'react-dom';
 interface IProps {
   // tslint:disable
   children: ReactElement<any>;
-  boxClass: string;
+  boxClass?: string;
+  callBack?: () => void; // 渲染回调 - 每次render都会调用
 }
 
 interface IStatus {
@@ -17,8 +18,11 @@ export class RenderInRootDom extends Component<IProps, IStatus> {
 
   // 在根节点下渲染children
   componentDidMount() {
+    const {boxClass} = this.props;
     this.box = document.createElement("div");
-    this.box.setAttribute('class', this.props.boxClass);
+    if (boxClass) {
+       this.box.setAttribute('class', boxClass);
+    }
     document.body.appendChild(this.box);
     this._renderLayer();
   }
@@ -36,7 +40,7 @@ export class RenderInRootDom extends Component<IProps, IStatus> {
 
   // 渲染方法
   _renderLayer() {
-    ReactDom.render(this.props.children, this.box);
+    ReactDom.render(this.props.children, this.box, this.props.callBack);
   }
 
   render() {
