@@ -36,7 +36,7 @@ export interface ITagState {
   show: boolean;
 }
 
-interface IGeekStyle {
+export interface IGeekStyle {
   color?: string;
   borderColor?: string;
   background?: string;

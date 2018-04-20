@@ -5,5 +5,5 @@ module.exports = {
     require('postcss-nested'),
     require('postcss-px2rem')({ remUnit: 16 }),
     require('postcss-remove-root'),
-  ]
+  ],
 };

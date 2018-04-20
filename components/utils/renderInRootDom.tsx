@@ -1,14 +1,14 @@
 import {Component, ReactElement} from 'react';
 import * as ReactDom from 'react-dom';
 
-interface IProps {
+export interface IProps {
   // tslint:disable
   children: ReactElement<any>;
   boxClass?: string;
   callBack?: () => void; // 渲染回调 - 每次render都会调用
 }
 
-interface IStatus {
+export interface IStatus {
 
 }
 

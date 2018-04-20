@@ -1,6 +1,13 @@
 const path = require('path');
 
 module.exports = {
+  entry: {
+    main: path.resolve(__dirname,'./components/Alert/'),
+  },
+  output: {
+    filename: '[name].js',
+    path: __dirname + '/dist'
+  },
   resolve: {
     extensions: ['ts', '.tsx', '.js']
   },

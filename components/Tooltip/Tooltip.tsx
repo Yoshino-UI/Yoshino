@@ -161,7 +161,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
       clearTimeout(this.timeoutHandle);
     }
 
-    this.timeoutHandle = setTimeout(() => {
+    this.timeoutHandle = window.setTimeout(() => {
       if (this.props.visible === undefined) {
         this.renderToolTipDisplay(visible);
       }

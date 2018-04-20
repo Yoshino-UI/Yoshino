@@ -45,14 +45,14 @@ export interface ITimelineItemProps extends IBaseComponent {
   parentLine: ILine;
 }
 
-interface IIcon {
+export interface IIcon {
   width: number;
   color: string;
   line: number;
   type: string;
 }
 
-interface ILine {
+export interface ILine {
   width: number;
   color: string;
   type: string;
