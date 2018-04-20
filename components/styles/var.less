@@ -27,10 +27,12 @@
 
 @font-weight-base: 500;
 
-//Border
+//border
 @border-color-outline: #e3e8ee;
 @border-color: #d9d9d9;
 
+// background
+@background-color: #fafafa;
 
 // Shadow
 @shadow-card: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
@@ -57,11 +59,11 @@
 @button-danger-color: #f04134;
 @button-danger-color-active: #d73435;
 
-@button-primary-bg-color: @primary-color;
-@button-primary-hover-bg-color: @primary-color-hover;
-@button-primary-active-bg-color: @primary-color-active;
+@button-primary-bgColor: @primary-color;
+@button-primary-hover-bgColor: @primary-color-hover;
+@button-primary-active-bgColor: @primary-color-active;
 
-@button-disabled-bg-color: #f7f7f7;
+@button-disabled-bgColor: #f7f7f7;
 
 @button-height-size-base: 28px;
 @button-height-size-small: 22px;
@@ -93,7 +95,7 @@
 
 
 // tag
-@tag-bgColor: #fafafa;
+@tag-bgColor: @background-color;
 @tag-border-color: @border-color;
 @tag-font-color: rgba(0,0,0,.65);
 
@@ -106,7 +108,7 @@
 @input-border: 1px solid @input-border-color;
 @input-border-radius: @border-radius-large;
 @input-box-shadow: 0 0 0 2px ~'rgba(@{primary-color-number}, 0.2)';
-@input-extra-item-bgColor: #fafafa;
+@input-extra-item-bgColor: @background-color;
 
 
 // pagination
@@ -128,5 +130,10 @@
 // slider
 @slider-bar-size: 14px;
 @slider-process-height: 4px;
+
+// collapse
+
+// panel
+@panel-bgColor: @background-color;
 
 
