@@ -66,6 +66,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
   timeoutHandle: number;
 
   toolTipId = `tooltip_${new Date().getTime() * Math.random()}`;
+  firsrRender = true; // 第一次渲染，用于控制tooltip首屏渲染时的display
 
   static defaultProps = {
     placement: 'top',
@@ -93,7 +94,11 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
       `${preCls}-${placement}`, overlayClassName,
     );
     const visible = this.getVisible();
-    const visiblestyle = visible ? {opacity: 1} : {opacity: 0};
+    const visiblestyle: {[key: string]: string | number} = visible ? {opacity: 1} : {opacity: 0};
+    if (this.firsrRender) {
+      visiblestyle.display = visible ? 'block' : 'none';
+      this.firsrRender = false;
+    }
     return (
       <RenderInRootDom callBack={this.resetTooltipPostion}>
         <div

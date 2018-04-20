@@ -39,6 +39,6 @@ initialState={visible: false};
 ### 点击展示
 ```js
 <div>
-    <Tooltip title="受控" placement="top" trigger="click"><Button>受控</Button></Tooltip>
+    <Tooltip title="受控" placement="top" trigger="click"><Button>点击展示</Button></Tooltip>
 </div>
 ```
