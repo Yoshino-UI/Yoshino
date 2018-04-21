@@ -1,9 +1,8 @@
 const path = require('path');
+const components = require('./scripts/components');
 
 module.exports = {
-  entry: {
-    main: path.resolve(__dirname,'./components/Alert/'),
-  },
+  entry: components,
   output: {
     filename: '[name].js',
     path: __dirname + '/dist'
@@ -34,5 +33,6 @@ module.exports = {
       },
     ]
   },
-  devtool: 'source-map'
+  // devtool: 'source-map'
+  devtool: false
 };
