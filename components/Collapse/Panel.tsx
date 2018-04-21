@@ -24,7 +24,7 @@ export interface IPanelProps extends IBaseComponent {
   /**
    * 激活
    */
-  active: false;
+  active: boolean;
   /**
    * 变化回调
    */

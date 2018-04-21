@@ -31,7 +31,7 @@ export interface ITooltipProps extends IBaseComponent {
   /**
    * 卡片样式
    */
-  overlayStyle: object;
+  overlayStyle: React.CSSProperties;
   /**
    * 触发行为
    */
@@ -94,7 +94,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
       `${preCls}-${placement}`, overlayClassName,
     );
     const visible = this.getVisible();
-    const visiblestyle: {[key: string]: string | number} = visible ? {opacity: 1} : {opacity: 0};
+    const visiblestyle: React.CSSProperties = visible ? {opacity: 1} : {opacity: 0};
     if (this.firsrRender) {
       visiblestyle.display = visible ? 'block' : 'none';
       this.firsrRender = false;
@@ -103,7 +103,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
       <RenderInRootDom callBack={this.resetTooltipPostion}>
         <div
           className={clsName}
-          style={{overlayStyle, ...visiblestyle}}
+          style={{...overlayStyle, ...visiblestyle}}
           {...otherProps}
           {...this.getTriggerAction()}
         >
@@ -115,7 +115,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
   }
 
   resetTooltipPostion = () => {
-    const children = ReactDOM.findDOMNode(this.refChildren);
+    const children = ReactDOM.findDOMNode(this.refChildren) as Element;
     const {placement} = this.props;
     const dom =  document.getElementsByClassName(this.toolTipId)[0] as HTMLElement;
     const domRect = dom.getBoundingClientRect() as DOMRect; // tooltip dom
