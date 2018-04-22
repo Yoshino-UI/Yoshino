@@ -3,8 +3,6 @@ import {Component, isValidElement, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface IButtonProps extends IBaseComponent {
@@ -78,9 +76,12 @@ export class Button extends Component<IButtonProps, IButtonState> {
         isValidElement(icon) ? icon : <Icon type={icon as string}/>}
       </span>
     ) : null;
+    const clsName = classNames(
+      preCls, btnCls, className,
+    );
     return (
       <button
-        className={classNames(className, preCls, btnCls)}
+        className={clsName}
         style={style}
         disabled={ban}
         {...otherProps}

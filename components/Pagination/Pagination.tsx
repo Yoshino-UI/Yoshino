@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface IPaginationProps extends IBaseComponent {
@@ -208,7 +206,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
     const current = this.props.current ? this.props.current : this.state.current;
     const preCls = 'yoshino-pagination';
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     return (
       <div

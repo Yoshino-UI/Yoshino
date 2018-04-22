@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface IInputProps extends IBaseComponent {
   /**
@@ -67,7 +65,7 @@ export class Input extends Component<IInputProps, IInputState> {
     const {className, style, size, header, footer, headerStyle, footerStyle, onEnter, ...otherProps} = this.props;
     const preCls = 'yoshino-input';
     const clsName = classNames(
-      className, `${preCls}-wrapper`, `${preCls}-${size}`,
+      `${preCls}-wrapper`, `${preCls}-${size}`, className,
     );
     return (
       <span

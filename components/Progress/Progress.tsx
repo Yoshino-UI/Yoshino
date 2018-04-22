@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface IProgressProps extends IBaseComponent {
   /**
@@ -37,7 +35,7 @@ export class Progress extends Component<IProgressProps, IProgressState> {
     const {className, style, percent, barColor, bgColor, ...otherProps} = this.props;
     const preCls = 'yoshino-progress';
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     const bgColorStyle = bgColor ? {backgroundColor: bgColor} : {};
     const barColorStyle = barColor ? {backgroundColor: barColor} : {};

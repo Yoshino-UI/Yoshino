@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import CheckboxGroup from './CheckboxGroup';
 
 // tslint:disable:no-any
@@ -57,8 +55,9 @@ export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
     const {className, style, name, value, checked, disabled, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-checkbox';
     const clsName = classNames(
-      className, preCls,
+      preCls,
       {[`${preCls}-checked`]: checked},
+      className,
     );
     const wrapperCls = classNames(
       `${preCls}-wrapper`,

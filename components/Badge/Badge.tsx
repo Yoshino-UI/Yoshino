@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface IBadgeProps extends IBaseComponent {
   /**
@@ -43,12 +41,12 @@ export class Badge extends Component<IBadgeProps, IBadgeState> {
     const {className, style, count, showZero, dotted, max, children, ...otherProps} = this.props;
     const preCls = 'yoshino-badge';
     const clsName = classNames(
-      className,
       {
         [`${preCls}-dot`]: !!dotted,
         [`${preCls}-count`]: !dotted,
         [`${preCls}-position`]: !!children,
       },
+      className,
     );
     return (
       <div className={preCls}>

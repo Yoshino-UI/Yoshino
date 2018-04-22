@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-radio;
-.@{cssPreCls} {
+@radio-prefix-cls: yoshino-radio;
+.@{radio-prefix-cls} {
   display: inline-block;
   height: @radio-size;
   width: @radio-size;
@@ -46,15 +44,15 @@
 
 }
 
-.@{cssPreCls}-wrapper {
+.@{radio-prefix-cls}-wrapper {
   cursor: pointer;  
 }
 
-.@{cssPreCls}-disabled {
+.@{radio-prefix-cls}-disabled {
   cursor: not-allowed;
   color: @color-disabled;
 
-  .@{cssPreCls}-checked {
+  .@{radio-prefix-cls}-checked {
     border-color: @color-disabled;
 
     &::after {

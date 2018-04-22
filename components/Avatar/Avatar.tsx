@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface IAvatarProps extends IBaseComponent {
@@ -44,8 +42,8 @@ export class Avatar extends Component<IAvatarProps, IAvatarState> {
     const {className, style, size, shape, icon, src, ...otherProps} = this.props;
     const preCls = 'yoshino-avatar';
     const clsName = classNames(
-      className, preCls, `${preCls}-${size}`,
-      `${preCls}-${shape}`,
+      preCls, `${preCls}-${size}`,
+      `${preCls}-${shape}`, className,
     );
     return (
       <div

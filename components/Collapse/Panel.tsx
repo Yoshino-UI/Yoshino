@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 import Transition from 'react-transition-group/Transition';
 
@@ -58,11 +56,12 @@ export class Panel extends Component<IPanelProps, IPanelState> {
     const {className, style, onChange, title, active, children, disabled, ...otherProps} = this.props;
     const preCls = 'yoshino-panel';
     const clsName = classNames(
-      className, preCls,
+      preCls,
       {
         [`${preCls}-active`]: active,
         [`${preCls}-disabled`]: disabled,
       },
+      className,
     );
     return (
       <div

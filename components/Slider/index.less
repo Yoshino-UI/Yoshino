@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-slider;
-.@{cssPreCls} {
+@slider-prefix-cls: yoshino-slider;
+.@{slider-prefix-cls} {
   position: relative;
   cursor: pointer;
 
@@ -39,7 +37,7 @@
   &-disabled {
     cursor: not-allowed;
 
-    .@{cssPreCls}-bar {
+    .@{slider-prefix-cls}-bar {
       background: @color-disabled;
       
       &::after {

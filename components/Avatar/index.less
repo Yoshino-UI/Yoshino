@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-avatar;
-.@{cssPreCls} {
+@avatar-prefix-cls: yoshino-avatar;
+.@{avatar-prefix-cls} {
   display: inline-block;
   text-align: center;
   background-color: @avatar-bgColor-default;
@@ -20,7 +18,7 @@
   }
 }
 
-.@{cssPreCls}-default {
+.@{avatar-prefix-cls}-default {
   width: @avatar-size-default;
   height: @avatar-size-default;
   line-height: @avatar-size-default;
@@ -36,7 +34,7 @@
   }
 }
 
-.@{cssPreCls}-small {
+.@{avatar-prefix-cls}-small {
   width: @avatar-size-small;
   height: @avatar-size-small;
   line-height: @avatar-size-small;
@@ -52,7 +50,7 @@
   }
 }
 
-.@{cssPreCls}-large {
+.@{avatar-prefix-cls}-large {
   width: @avatar-size-large;
   height: @avatar-size-large;
   line-height: @avatar-size-large;

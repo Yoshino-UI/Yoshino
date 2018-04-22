@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface IStepsItemProps extends IBaseComponent {
@@ -55,15 +53,17 @@ export class StepsItem extends Component<IStepsItemProps, IStepsItemState> {
       className, style, title,
       direction, value, size,
       current, status, icon,
-      children, ...otherProps} = this.props;
+      children, ...otherProps,
+    } = this.props;
     const preCls = 'yoshino-steps-item';
     const clsName = classNames(
-      className, preCls, `${preCls}-${size}`,
+      preCls, `${preCls}-${size}`,
       {
         [`${preCls}-process`]: current === value,
         [`${preCls}-wait`]: value > current,
         [`${preCls}-error`]: status === 'error',
       },
+      className,
     );
     const stepIcon = {
       error: <Icon type='close-round'/>,

@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-tag;
-.@{cssPreCls} {
+@tag-prefix-cls: yoshino-tag;
+.@{tag-prefix-cls} {
   display: inline-block;
   padding: 0 5px;
   height: 20px;
@@ -24,7 +22,7 @@
     border: transparent;
     color: white;
 
-    .@{cssPreCls}-close {
+    .@{tag-prefix-cls}-close {
       color: white;
     }
   }

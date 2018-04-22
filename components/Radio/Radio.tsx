@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import RadioGroup from './RadioGroup';
 
 // tslint:disable:no-any
@@ -57,8 +55,9 @@ export class Radio extends Component<IRadioProps, IRadioState> {
     const {className, style, name, value, checked, disabled, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-radio';
     const clsName = classNames(
-      className, preCls,
+      preCls,
       {[`${preCls}-checked`]: checked},
+      className,
     );
     const wrapperCls = classNames(
       `${preCls}-wrapper`,

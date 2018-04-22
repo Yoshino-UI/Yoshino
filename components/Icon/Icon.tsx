@@ -3,9 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponentNoChildren} from '../template/component';
-import '../styles/common/iconfont/ionicons.less';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface IIconProps extends IBaseComponentNoChildren {
   /**
@@ -29,9 +26,12 @@ export class Icon extends Component<IIconProps, IIconState> {
   render() {
     const {className, style, type, ...otherProps} = this.props;
     const preCls = 'yoshino-icon';
+    const clsName = classNames(
+      preCls,  `${preCls}-${type}`, className,
+    );
     return (
       <i
-        className={classNames(className, preCls, `${preCls}-${type}`)}
+        className={clsName}
         style={style}
         {...otherProps}
       />

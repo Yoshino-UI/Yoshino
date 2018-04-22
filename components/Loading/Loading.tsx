@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface ILoadingProps extends IBaseComponent {
@@ -41,9 +39,12 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
     const preCls = 'yoshino-loading';
     const iconType = `load-${type}`;
     const loadSize = `${preCls}-${size}`;
+    const clsName = classNames(
+      preCls, loadSize, className,
+    );
     return (
       <div
-        className={classNames(className, preCls, loadSize)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

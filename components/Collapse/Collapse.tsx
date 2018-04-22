@@ -5,8 +5,6 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Panel from './Panel';
 import {IPanelProps} from './Panel';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ICollapseProps extends IBaseComponent {
   /**
@@ -80,7 +78,7 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
     const {className, style, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-collapse';
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     const childrens = React.Children.toArray(children);
     const activeKey = this.getActiveKey();

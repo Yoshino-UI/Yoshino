@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 import Transition from '../utils/customTransition';
 
@@ -82,7 +80,9 @@ export class Tag extends Component<ITagProps, ITagState> {
     const {show} = this.state;
     const preCls = 'yoshino-tag';
     const clsName = classNames(
-      className, preCls, color && mode !== 'geek' ? `${preCls}-color` : null,
+      preCls,
+      {[`${preCls}-color`]: !!color && mode !== 'geek'},
+      className,
     );
     const modeStyle = {
       custom: {

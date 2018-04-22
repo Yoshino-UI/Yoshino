@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import { BreadcrumbItem } from './BreadcrumbItem';
 import {ReactNode} from 'react';
 
@@ -36,9 +34,12 @@ export class Breadcrumb extends Component<IBreadcrumbProps, IBreadcrumbState> {
   render() {
     const {className, style, separator = '/', ...otherProps} = this.props;
     const preCls = 'yoshino-breadcrumb';
+    const clsName = classNames(
+      preCls, className,
+    );
     return (
       <div
-        className={classNames(className, preCls)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

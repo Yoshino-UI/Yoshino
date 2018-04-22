@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ICardProps extends IBaseComponent {
   /**
@@ -43,9 +41,12 @@ export class Card extends Component<ICardProps, ICardState> {
       [`${preCls}-border`]: border,
       [`${preCls}-shadow`]: shadow,
     };
+    const clsName = classNames(
+      preCls, cardCls, className,
+    );
     return (
       <div
-        className={classNames(className, preCls, cardCls)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

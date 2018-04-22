@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ISwitchProps extends IBaseComponent {
   /**
@@ -64,9 +62,12 @@ export class Switch extends Component<ISwitchProps, ISwitchState> {
       [`${preCls}-checked`]: checked,
       [`${preCls}-disabled`]: disabled,
     };
+    const clsName = classNames(
+      preCls, `${preCls}-${size}`, switchCls, className,
+    );
     return (
       <div
-        className={classNames(className, preCls, `${preCls}-${size}`, switchCls)}
+        className={clsName}
         style={style}
         onClick={this.onClick}
       />

@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-alert;
-.@{cssPreCls} {
+@alert-prefix-cls: yoshino-alert;
+.@{alert-prefix-cls} {
   position: relative;
   padding: 8px 48px 8px 38px;
   border-radius: 4px;
@@ -63,13 +61,13 @@
   &-with-description {
     padding: 16px 16px 16px 60px;
 
-    .@{cssPreCls}-icon {
+    .@{alert-prefix-cls}-icon {
       position: absolute;
       font-size: 24px;
       top: 10px;
     }
 
-    .@{cssPreCls}-close {
+    .@{alert-prefix-cls}-close {
       font-size: 20px;
       right: 8px;
     }

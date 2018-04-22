@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface IRateProps extends IBaseComponent {
@@ -119,7 +117,7 @@ export class Rate extends Component<IRateProps, IRateState> {
     const {className, style, count} = this.props;
     const preCls = 'yoshino-rate';
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     return (
       <div

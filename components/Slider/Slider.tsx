@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ISliderProps extends IBaseComponent {
   /**
@@ -127,8 +125,9 @@ export class Slider extends Component<ISliderProps, ISliderState> {
     const {className, style, children, defaultValue, disabled, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-slider';
     const clsName = classNames(
-      className, preCls,
+      preCls,
       {[`${preCls}-disabled`]: disabled},
+      className,
     );
     const barStyle = {width: `${this.getPercent() * 100}%`};
     return (

@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-input-number;
-.@{cssPreCls} {
+@inputnumber-prefix-cls: yoshino-input-number;
+.@{inputnumber-prefix-cls} {
   border: @input-border;
   border-radius: @input-border-radius;
   width: 100%;
@@ -18,30 +16,30 @@
   }
 }
 
-.@{cssPreCls}-default {
+.@{inputnumber-prefix-cls}-default {
   height: @input-size-default;
   padding: 4px 11px;
   font-size: @font-size-small;
 }
 
-.@{cssPreCls}-small {
+.@{inputnumber-prefix-cls}-small {
   height: @input-size-small;
   padding: 1px 7px;
   font-size: @font-size-base;
 }
 
-.@{cssPreCls}-large {
+.@{inputnumber-prefix-cls}-large {
   height: @input-size-large;
   padding: 6px 11px;
   font-size: @font-size-large;
 }
 
-.@{cssPreCls}-wrapper {
+.@{inputnumber-prefix-cls}-wrapper {
   width: 90px;
   position: relative;
   display: inline-block;
 
-  .@{cssPreCls}-control {
+  .@{inputnumber-prefix-cls}-control {
     position: absolute;
     right: 0;
     top: 0;

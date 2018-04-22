@@ -1,7 +1,7 @@
 @import '../styles/var.less';
 
-@cssPreCls: yoshino-steps;
-.@{cssPreCls} {
+@steps-prefix-cls: yoshino-steps;
+.@{steps-prefix-cls} {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
@@ -51,7 +51,7 @@
 }
 
 
-@itemPreCls: ~'@{cssPreCls}-item';
+@itemPreCls: ~'@{steps-prefix-cls}-item';
 .@{itemPreCls} {
   overflow: hidden;
   flex: 1;

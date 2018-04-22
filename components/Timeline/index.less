@@ -1,15 +1,13 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-timeline;
-.@{cssPreCls} {
-  .@{cssPreCls}-item:last-child {
-    .@{cssPreCls}-item-line {
+@timeline-prefix-cls: yoshino-timeline;
+.@{timeline-prefix-cls} {
+  .@{timeline-prefix-cls}-item:last-child {
+    .@{timeline-prefix-cls}-item-line {
       display: none;
     }
   }
 }
 
-.@{cssPreCls}-item {
+.@{timeline-prefix-cls}-item {
   position: relative;
 
   &-line{

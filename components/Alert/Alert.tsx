@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Transition from 'react-transition-group/Transition';
 import Icon from '../Icon';
 
@@ -92,6 +90,9 @@ export class Alert extends Component<IAlertProps, IAlertState> {
       [`${preCls}-no-icon`]: !showIcon,
       [`${preCls}-with-description`]: !!this.props.children,
     };
+    const clsName = classNames(
+      preCls, alertCls, className,
+    );
     return (
       <Transition
         timeout={duration}
@@ -109,7 +110,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
         {
           (state: string) => (
             <div
-              className={classNames(className, preCls, alertCls)}
+              className={clsName}
               style={{
                 ...style,
                 ...defaultStyle,

@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface IDividerProps extends IBaseComponent {
   /**
@@ -35,9 +33,12 @@ export class Divider extends Component<IDividerProps, IDividerState> {
     const preCls = 'yoshino-divider';
     const textCls = `${preCls}-${textAlign}`;
     const dashedCls = {[`${preCls}-dashed`]: dashed};
+    const clsName = classNames(
+      preCls, textCls, dashedCls, className,
+    );
     return (
       <div
-        className={classNames(className, preCls, textCls, dashedCls)}
+        className={clsName}
         style={{
           ...style,
         }}

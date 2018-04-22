@@ -1,13 +1,5 @@
-/*
- * @Author: mikey.zhaopeng 
- * @Date: 2018-04-19 12:55:38 
- * @Last Modified by: zengjingyi
- * @Last Modified time: 2018-04-19 18:23:11
- */
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-tooltip;
-.@{cssPreCls} {
+@tooltip-prefix-cls: yoshino-tooltip;
+.@{tooltip-prefix-cls} {
   position: absolute;
   z-index: 1000;
   
@@ -33,13 +25,13 @@
   &-top,
   &-topLeft,
   &-topRight {
-    .@{cssPreCls}-arrow {
+    .@{tooltip-prefix-cls}-arrow {
       bottom: 3px;
       border-width: 5px 5px 0;
       border-top-color: rgba(0,0,0,.75);
     }
 
-    .@{cssPreCls}-content {
+    .@{tooltip-prefix-cls}-content {
       top: -8px;
     }
   }
@@ -63,13 +55,13 @@
   &-bottom,
   &-bottomLeft,
   &-bottomRight {
-    .@{cssPreCls}-arrow {
+    .@{tooltip-prefix-cls}-arrow {
       top: 3px;
       border-width: 0 5px 5px;
       border-bottom-color: rgba(0,0,0,.75);
     }
 
-    .@{cssPreCls}-content {
+    .@{tooltip-prefix-cls}-content {
       bottom: -8px;
     }
   }
@@ -78,13 +70,13 @@
   &-left,
   &-leftTop,
   &-leftBottom {
-    .@{cssPreCls}-arrow {
+    .@{tooltip-prefix-cls}-arrow {
       right: 3px;
       border-width: 5px 0 5px 5px;
       border-left-color: rgba(0,0,0,.75);
     }
 
-    .@{cssPreCls}-content {
+    .@{tooltip-prefix-cls}-content {
       left: -8px;
     }
   }
@@ -108,13 +100,13 @@
   &-right,
   &-rightTop,
   &-rightBottom {
-    .@{cssPreCls}-arrow {
+    .@{tooltip-prefix-cls}-arrow {
       left: 3px;
       border-width: 5px 5px 5px 0;
       border-right-color: rgba(0,0,0,.75);
     }
 
-    .@{cssPreCls}-content {
+    .@{tooltip-prefix-cls}-content {
       right: -8px;
     }
   }

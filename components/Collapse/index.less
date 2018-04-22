@@ -1,19 +1,17 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-collapse;
-.@{cssPreCls} {
+@collapse-prefix-cls: yoshino-collapse;
+.@{collapse-prefix-cls} {
   border-radius: @border-radius-large;
   border: 1px solid @border-color;
   overflow: hidden;
 
-  .@{cssPanel}:last-child {
+  .@{panel-prefix-cls}:last-child {
     border-bottom: none;
   }
 }
 
 
-@cssPanel: yoshino-panel;
-.@{cssPanel} {
+@panel-prefix-cls: yoshino-panel;
+.@{panel-prefix-cls} {
   position: relative;
   border-bottom: 1px solid @border-color;
   cursor: pointer;
@@ -49,7 +47,7 @@
   }
 
   &-active {
-    .@{cssPanel}-icon {
+    .@{panel-prefix-cls}-icon {
       transform: rotate(90deg);
     }
   }

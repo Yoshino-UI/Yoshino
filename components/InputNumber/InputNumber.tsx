@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 
 export interface IInputNumberProps extends IBaseComponent {
@@ -109,7 +107,7 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
     const {className, style, size, onChange, value, ...otherProps} = this.props;
     const preCls = 'yoshino-input-number';
     const clsName = classNames(
-      className, preCls, `${preCls}-${size}`,
+      preCls, `${preCls}-${size}`, className,
     );
     return (
       <div

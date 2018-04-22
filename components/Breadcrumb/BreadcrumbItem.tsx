@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponentNoChildren} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface IBreadcrumbItemProps extends IBaseComponentNoChildren {
 
@@ -21,9 +19,12 @@ export class BreadcrumbItem extends Component<IBreadcrumbItemProps, IBreadcrumbI
   render() {
     const {className, style, ...otherProps} = this.props;
     const preCls = 'yoshino-breadcrumb-item';
+    const clsName = classNames(
+      preCls, className,
+    );
     return (
       <span
-        className={classNames(className, preCls)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

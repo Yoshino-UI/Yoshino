@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-input;
-.@{cssPreCls} {
+@input-prefix-cls: yoshino-input;
+.@{input-prefix-cls} {
   border: @input-border;
   border-radius: @input-border-radius;
   width: 100%;
@@ -44,7 +42,7 @@
   }
 }
 
-.@{cssPreCls}-default {
+.@{input-prefix-cls}-default {
   > input {
     height: @input-size-default;
     padding: 4px 11px;
@@ -52,15 +50,15 @@
   }
   
 
-  .@{cssPreCls}-footer,
-  .@{cssPreCls}-header {
+  .@{input-prefix-cls}-footer,
+  .@{input-prefix-cls}-header {
     > * {
       // height: @input-size-default;
     }
   }
 }
 
-.@{cssPreCls}-small {
+.@{input-prefix-cls}-small {
   > input {
     height: @input-size-small;
     padding: 1px 7px;
@@ -68,15 +66,15 @@
   }
   
 
-  .@{cssPreCls}-footer,
-  .@{cssPreCls}-header {
+  .@{input-prefix-cls}-footer,
+  .@{input-prefix-cls}-header {
     > * {
       // height: @input-size-small;
     }
   }
 }
 
-.@{cssPreCls}-large {
+.@{input-prefix-cls}-large {
   > input {
     height: @input-size-large;
     padding: 6px 11px;
@@ -84,33 +82,30 @@
   }
 
 
-  .@{cssPreCls}-footer,
-  .@{cssPreCls}-header {
+  .@{input-prefix-cls}-footer,
+  .@{input-prefix-cls}-header {
     > * {
       // height: @input-size-large;
     }
   }
 }
 
-.@{cssPreCls}-wrapper {
+.@{input-prefix-cls}-wrapper {
   display: table;
   line-height: 1;
 
-  .@{cssPreCls}:not(:first-child):not(:last-child) {
+  .@{input-prefix-cls}:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
 
-  .@{cssPreCls}:not(:first-child) {
+  .@{input-prefix-cls}:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .@{cssPreCls}:not(:last-child) {
+  .@{input-prefix-cls}:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-
-
-  
 }
 

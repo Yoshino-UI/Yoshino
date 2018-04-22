@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import {ICheckboxProps} from './Checkbox';
 
 // tslint:disable:no-any
@@ -69,7 +67,7 @@ export class CheckboxGroup extends Component<ICheckboxGroupProps, ICheckboxGroup
     const preCls = 'yoshino-radio-group';
     const inValue = value ? value : this.state.value;
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     const childrens = React.Children.toArray(children).filter((item) => item);
     return (

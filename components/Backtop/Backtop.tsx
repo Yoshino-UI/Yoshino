@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import Icon from '../Icon';
 import { RenderInRootDom } from '../utils/renderInRootDom';
 import { backTop } from './assist';
@@ -79,6 +77,9 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
       onBackTop,
       ...otherProps} = this.props;
     const preCls = 'yoshino-backtop';
+    const clsName = classNames(
+      preCls, className,
+    );
     const backtopStyle = {
       right: `${right}px`,
       bottom: `${bottom}px`,
@@ -86,7 +87,7 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
     return (
       <RenderInRootDom boxClass='backtop'>
         <div
-          className={classNames(className, preCls)}
+          className={clsName}
           style={{
             ...style,
             ...backtopStyle,

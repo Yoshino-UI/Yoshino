@@ -1,7 +1,5 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-checkbox;
-.@{cssPreCls} {
+@checkbox-prefix-cls: yoshino-checkbox;
+.@{checkbox-prefix-cls} {
   display: inline-block;
   height: @checkbox-size;
   width: @checkbox-size;
@@ -44,15 +42,15 @@
 
 }
 
-.@{cssPreCls}-wrapper {
+.@{checkbox-prefix-cls}-wrapper {
   cursor: pointer;  
 }
 
-.@{cssPreCls}-disabled {
+.@{checkbox-prefix-cls}-disabled {
   cursor: not-allowed;
   color: @color-disabled;
 
-  .@{cssPreCls}-checked {
+  .@{checkbox-prefix-cls}-checked {
     border-color: @color-disabled;
 
     &::after {

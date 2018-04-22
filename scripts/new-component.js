@@ -17,14 +17,24 @@ function writeFile(fileName, content, component) {
 }
 
 function fileIndexScss(component) {
-  const content = `@import '../styles/var.less';
-
-@cssPreCls: yoshino-${capitalizeFirstLetter(component)};
-.@{cssPreCls} {
+  const name = capitalizeFirstLetter(component);
+  const content = `@${name}-prefix-cls: yoshino-${name};
+.@{${name}-prefix-cls} {
 
 }
 `;
   writeFile('index.less', content, component);
+}
+
+function addImportLess(component) {
+  const content = fs.readFileSync(path.resolve(`components/styles/components.less`), {
+    encoding: 'utf8',
+  });
+  const str = content + `
+@import '../${component}/index';`;
+  fs.writeFileSync(path.resolve(`components/styles/components.less`), str, {
+    encoding: 'utf8',
+  })
 }
 
 function fileIndexTsx(component) {
@@ -43,8 +53,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface I${component}Props extends IBaseComponent {
 
@@ -66,7 +74,7 @@ export class ${component} extends Component<I${component}Props, I${component}Sta
     const {className, style, ...otherProps} = this.props;
     const preCls = 'yoshino-${capitalizeFirstLetter(component)}';
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     return (
       <div
@@ -157,6 +165,7 @@ ${component} 组件已经存在！
 fs.mkdirSync(path.resolve('components', component));
 fs.mkdirSync(path.resolve('components', component, '__tests__'));
 fileIndexScss(component);
+addImportLess(component);
 fileComponentTsx(component);
 fileIndexTsx(component);
 fileReadmeMd(component);

@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ITimelineProps extends IBaseComponent {
   /**
@@ -67,10 +65,12 @@ export class Timeline extends Component<ITimelineProps, ITimelineState> {
     } = this.props;
     const preCls = 'yoshino-timeline';
     const childrens = React.Children.toArray(children).filter(item => item);
-  
+    const clsName = classNames(
+      preCls, className,
+    );
     return (
       <div
-        className={classNames(className, preCls)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

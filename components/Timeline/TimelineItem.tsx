@@ -3,8 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ITimelineItemProps extends IBaseComponent {
   /**
@@ -94,9 +92,12 @@ export class TimelineItem extends Component<ITimelineItemProps, ITimelineItemSta
     const contentStyle = {
       left: `${parentIcon.width * 2}px`,
     };
+    const clsName = classNames(
+      preCls, className,
+    );
     return (
       <div
-        className={classNames(className, preCls)}
+        className={clsName}
         style={style}
         {...otherProps}
       >

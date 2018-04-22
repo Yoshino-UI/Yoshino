@@ -3,9 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
-import '../styles/common/hover/hover.less';
 
 export interface IHoverProps extends IBaseComponent {
   /**
@@ -30,7 +27,7 @@ export class Hover extends Component<IHoverProps, IHoverState> {
     const {className, style, name, ...otherProps} = this.props;
     const preCls = 'yoshino-hover';
     const clsName = classNames(
-      className, preCls, `yoshino-hvr-${name}`,
+      preCls, `yoshino-hvr-${name}`, className,
     );
     return (
       <div

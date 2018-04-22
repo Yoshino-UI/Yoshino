@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import { StepsItem, IStepsItemProps } from './StepsItem';
 
 export interface IStepsProps extends IBaseComponent {
@@ -42,7 +40,7 @@ export class Steps extends Component<IStepsProps, IStepsState> {
     const {className, style, children, direction, size, current, ...otherProps} = this.props;
     const preCls = 'yoshino-steps';
     const clsName = classNames(
-      className, preCls, `${preCls}-${direction}`,
+      preCls, `${preCls}-${direction}`, className,
     );
     const childrens = React.Children.toArray(children).filter((item) => item);
     return (

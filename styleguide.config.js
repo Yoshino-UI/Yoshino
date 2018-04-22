@@ -18,6 +18,7 @@ module.exports = {
     return `import { ${name} } from '${packageJSON.name}';`;
   },
   require: [
+    path.resolve(__dirname, './components/styles/index.less'),
   ],
   sections: [
     {

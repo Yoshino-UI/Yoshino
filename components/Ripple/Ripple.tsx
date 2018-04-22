@@ -3,8 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import '../styles/common/reset.less';
-import './index.less';
 import rippleJs from './rippleJs';
 
 export interface IRippleProps extends IBaseComponent {
@@ -55,7 +53,7 @@ export class Ripple extends Component<IRippleProps, IRippleState> {
     const {className, style, children, ...otherProps} = this.props;
     const preCls = 'yoshino-ripple';
     const clsName = classNames(
-      className, preCls,
+      preCls, className,
     );
     return (
       <div

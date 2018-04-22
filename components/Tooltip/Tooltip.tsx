@@ -1,12 +1,9 @@
-
 import {Component} from 'react';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IBaseComponent} from '../template/component';
 import { RenderInRootDom } from '../utils/renderInRootDom';
-import '../styles/common/reset.less';
-import './index.less';
 
 export interface ITooltipProps extends IBaseComponent {
   /**
@@ -87,11 +84,13 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
       className, children, title, style,
       placement, overlayStyle, overlayClassName,
       mouseEnterDelay, mouseLeaveDelay,
-      onChange, ...otherProps} = this.props;
+      onChange, ...otherProps,
+    } = this.props;
     const preCls = 'yoshino-tooltip';
     const clsName = classNames(
-      className, preCls, this.toolTipId,
+      preCls, this.toolTipId,
       `${preCls}-${placement}`, overlayClassName,
+      className,
     );
     const visible = this.getVisible();
     const visiblestyle: React.CSSProperties = visible ? {opacity: 1} : {opacity: 0};

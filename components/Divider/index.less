@@ -1,8 +1,6 @@
-@import '../styles/var.less';
-
-@cssPreCls: yoshino-divider;
+@divider-prefix-cls: yoshino-divider;
 @line-color: #e8e8e8;
-.@{cssPreCls} {
+.@{divider-prefix-cls} {
   display: table;
   vertical-align: middle;
   position: relative;
@@ -35,7 +33,7 @@
   }
 }
 
-.@{cssPreCls}-center {
+.@{divider-prefix-cls}-center {
   &::before {
     width: 50%;
   }
@@ -45,7 +43,7 @@
   }
 }
 
-.@{cssPreCls}-left {
+.@{divider-prefix-cls}-left {
   &::before {
     width: 5%;
   }
@@ -55,7 +53,7 @@
   }
 }
 
-.@{cssPreCls}-right {
+.@{divider-prefix-cls}-right {
   &::before {
     width: 95%;
   }
