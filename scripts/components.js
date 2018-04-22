@@ -8,6 +8,7 @@ const dirSet = new Set(dir);
 dirSet.delete('styles');
 dirSet.delete('template');
 dirSet.delete('utils');
+dirSet.delete('index.tsx');
 
 const arr = Array.from(dirSet);
 

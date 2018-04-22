@@ -1,5 +1,5 @@
 import {Component, ReactElement} from 'react';
-import * as ReactDom from 'react-dom';
+import {unmountComponentAtNode, render} from 'react-dom';
 
 export interface IProps {
   // tslint:disable
@@ -34,13 +34,13 @@ export class RenderInRootDom extends Component<IProps, IStatus> {
 
   // 组件卸载时移除渲染节点
   componentWillUnmount() {
-    ReactDom.unmountComponentAtNode(this.box);
+    unmountComponentAtNode(this.box);
     document.body.removeChild(this.box);
   }
 
   // 渲染方法
   _renderLayer() {
-    ReactDom.render(this.props.children, this.box, this.props.callBack);
+    render(this.props.children, this.box, this.props.callBack);
   }
 
   render() {

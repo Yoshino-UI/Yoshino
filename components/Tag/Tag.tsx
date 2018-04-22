@@ -5,7 +5,6 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Icon from '../Icon';
 import Transition from '../utils/customTransition';
-
 import { getRGB } from '../utils/colorFormat';
 
 export interface ITagProps extends IBaseComponent {

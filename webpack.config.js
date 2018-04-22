@@ -2,10 +2,16 @@ const path = require('path');
 const components = require('./scripts/components');
 
 module.exports = {
-  entry: components,
+  // entry: components,
+  entry: {
+    yoshino: path.resolve(__dirname, './components/index.tsx'),
+  },
   output: {
     filename: '[name].js',
-    path: __dirname + '/dist'
+    path: __dirname + '/dist',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
+    library: 'Yoshino',
   },
   resolve: {
     extensions: ['ts', '.tsx', '.js']
