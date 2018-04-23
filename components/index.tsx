@@ -52,4 +52,4 @@ module.exports = {
   Tag,
   Timeline,
   Tooltip,
-};
+  };

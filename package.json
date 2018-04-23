@@ -24,6 +24,7 @@
   "scripts": {
     "dev": "styleguidist server",
     "build": "styleguidist build",
+    "build:yoshino": "node scripts/build.js",
     "new": "node scripts/new-component.js",
     "precommit": "npm run lint",
     "lint:ts": "tslint -p .",
@@ -73,6 +74,7 @@
     "date-fns": "*",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "postcss": "^6.0.21",
     "prop-types": "*",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -86,6 +88,9 @@
     "css-loader": "^0.28.11",
     "cz-conventional-changelog": "^2.1.0",
     "file-loader": "^1.1.11",
+    "gulp": "^3.9.1",
+    "gulp-less": "^4.0.0",
+    "gulp-postcss": "^7.0.1",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
@@ -93,6 +98,7 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^11.1.0",
     "postcss-less": "^1.1.5",
+    "postcss-less-engine": "^0.6.2",
     "postcss-loader": "^2.1.4",
     "postcss-nested": "^3.0.0",
     "postcss-px2rem": "^0.3.0",
@@ -108,7 +114,8 @@
     "tslint": "^5.9.1",
     "tslint-react": "^3.5.1",
     "typescript": "^2.8.3",
-    "webpack": "^4.5.0"
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.15"
   },
   "config": {
     "commitizen": {
