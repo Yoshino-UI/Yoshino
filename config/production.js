@@ -15,4 +15,5 @@ module.exports = {
     library: 'yoshino',
   },
   ...defaultConfig,
+  devtool: false  
 }
