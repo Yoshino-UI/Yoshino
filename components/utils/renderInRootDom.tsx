@@ -6,6 +6,7 @@ export interface IProps {
   children: ReactElement<any>;
   boxClass?: string;
   callBack?: () => void; // 渲染回调 - 每次render都会调用
+  mount?: boolean; // 用于开启懒加载 当为true时进行渲染
 }
 
 export interface IStatus {
@@ -15,32 +16,54 @@ export interface IStatus {
 // 根节点渲染HOC
 export class RenderInRootDom extends Component<IProps, IStatus> {
   box: HTMLElement;
+  renderFlag: boolean = false; // 判断是否已经渲染过
+  static defaultProps = {
+    mount: true,
+  }
 
-  // 在根节点下渲染children
-  componentDidMount() {
+  renderChild = () => {
     const {boxClass} = this.props;
     this.box = document.createElement("div");
     if (boxClass) {
-       this.box.setAttribute('class', boxClass);
+      this.box.setAttribute('class', boxClass);
     }
     document.body.appendChild(this.box);
     this._renderLayer();
   }
 
+  // 在根节点下渲染children
+  componentDidMount() {
+    const {mount} = this.props;
+    if (mount) {
+      this.renderChild();
+      this.renderFlag = true;
+    }
+  }
+
   // 节点更新
   componentDidUpdate() {
-    this._renderLayer();
+    const {mount} = this.props;
+    if (mount && !this.renderFlag) {
+      this.renderFlag = true;
+      this.renderChild();
+    } else {
+      this._renderLayer();
+    }
   }
 
   // 组件卸载时移除渲染节点
   componentWillUnmount() {
-    unmountComponentAtNode(this.box);
-    document.body.removeChild(this.box);
+    if (this.renderFlag) {
+      unmountComponentAtNode(this.box);
+      document.body.removeChild(this.box);
+    }
   }
 
   // 渲染方法
   _renderLayer() {
-    render(this.props.children, this.box, this.props.callBack);
+    if (this.renderFlag) {
+      render(this.props.children, this.box, this.props.callBack);
+    }
   }
 
   render() {

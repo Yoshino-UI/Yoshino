@@ -1,7 +1,43 @@
 @pop-prefix-cls: yoshino-pop;
+@pop-scale: scale(0.6);
 .@{pop-prefix-cls} {
   position: absolute;
   z-index: 1000;
-
   transition: transform .1s cubic-bezier(.645,.045,.355,1);
+  display: none;
+
+  &-appear {
+    display: block;
+    opacity: 0;
+    transform: @pop-scale;
+  }
+
+  &-enter {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-active-enter {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-done-enter {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-exit {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-active-exit {
+    display: block;
+  }
+
+  &-done-exit {
+    display: none;
+    transform: @pop-scale;
+  }
 }

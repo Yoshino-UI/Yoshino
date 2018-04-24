@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IBaseComponent} from '../template/component';
 import { RenderInRootDom } from '../utils/renderInRootDom';
+import { CSSTransition } from 'react-transition-group';
 
 export interface IPopProps extends IBaseComponent {
   /**
@@ -70,7 +71,6 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   scale = 0.6;
   popId = `pop_${new Date().getTime() * Math.random()}`; // pop唯一id
-  firsrRender = true; // 第一次渲染，用于控制设置pop位置
 
   static defaultProps = {
     placement: 'top',
@@ -94,47 +94,50 @@ export class Pop extends Component<IPopProps, IPopState> {
       onChange, content, ...otherProps,
     } = this.props;
     const preCls = 'yoshino-pop';
-    const clsName = classNames(
-      preCls, this.popId,
-      `${preCls}-${placement}`, overlayClassName,
-      className,
-    );
     const visible = this.getVisible();
-    const visiblestyle: React.CSSProperties =
-    visible ? {transform: 'scale(1)'} : {transform: `scale(${this.scale})`};
+    const transitionCls = {
+      appear: `${preCls}-appear`,
+      appearActive: `${preCls}-active-appear`,
+      enter: `${preCls}-enter`,
+      enterActive: `${preCls}-active-enter`,
+      enterDone: `${preCls}-done-enter`,
+      exit: `${preCls}-exit`,
+      exitActive: `${preCls}-active-exit`,
+      exitDone: `${preCls}-done-exit`,
+    };
 
-    if (this.animateTimeHandle.length > 0) {
-      this.animateTimeHandle.forEach((hanlde) => clearTimeout(hanlde));
-      this.animateTimeHandle = [];
-    }
-
-    if (visible) {
-      this.animateTimeHandle.push(window.setTimeout(() => {
-        const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
-        dom.style.zIndex = null;
-      }, 0));
-    } else {
-      this.animateTimeHandle.push(window.setTimeout(() => {
-        const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
-        dom.style.zIndex = '-1000';
-      }, 100));
-    }
-
-    let callBack;
-    if (this.firsrRender) {
-      callBack = this.resetPopPostion;
-      this.firsrRender = false;
-    }
     return (
-      <RenderInRootDom callBack={callBack}>
-        <div
-          className={clsName}
-          style={{...overlayStyle, ...visiblestyle}}
-          {...otherProps}
-          {...this.getTriggerAction()}
+      <RenderInRootDom mount={visible}>
+        <CSSTransition
+          timeout={100}
+          classNames={transitionCls}
+          in={visible}
+          onEnter={() => {
+            this.resetPopPostion();
+          }}
+          mountOnEnter
+          appear
         >
-         {content}
-        </div>
+          {
+            () => {
+              const clsName = classNames(
+                preCls, this.popId,
+                `${preCls}-${placement}`, overlayClassName,
+                className,
+              );
+              return (
+                <div
+                  className={clsName}
+                  style={{...overlayStyle}}
+                  {...otherProps}
+                  {...this.getTriggerAction()}
+                >
+                  {content}
+                </div>
+              );
+            }
+          }
+        </CSSTransition>
       </RenderInRootDom>
     );
   }
@@ -150,10 +153,9 @@ export class Pop extends Component<IPopProps, IPopState> {
     const childrenX = pageX + rect.left;  // 子元素x
     const childrenY = pageY + rect.top; // 子元素y
 
-    if (!this.getVisible()) {
-      domRect.height = domRect.height / this.scale;
-      domRect.width = domRect.width / this.scale;
-    }
+    // 回去缩放前的宽高
+    domRect.width = domRect.width / this.scale;
+    domRect.height = domRect.height / this.scale;
 
     // placement所对应的left top
     const config = {
@@ -180,23 +182,13 @@ export class Pop extends Component<IPopProps, IPopState> {
     return visible === undefined ? this.state.visible : visible;
   }
 
-  renderPopDisplay = (visible: boolean) => {
-    const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
-    dom.style.display = visible ? 'block' : 'none';
-  }
-
   onChangeTrigger = (visible: boolean) => {
-    const {onChange,  mouseEnterDelay, mouseLeaveDelay} = this.props;
-
-    if (this.timeoutHandle) {
+    const {onChange, mouseEnterDelay, mouseLeaveDelay} = this.props;
+    if (this.timeoutHandle !== undefined) {
       clearTimeout(this.timeoutHandle);
     }
 
     this.timeoutHandle = window.setTimeout(() => {
-      // if (this.props.visible === undefined) {
-      //   this.renderPopDisplay(visible);
-      // }
-      // this.resetPopPostion();
       if (onChange) {
         onChange(visible);
       }
