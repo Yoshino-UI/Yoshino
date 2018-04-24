@@ -66,7 +66,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
 
   static defaultProps = {
     placement: 'top',
-    mouseEnterDelay: 100,
+    mouseEnterDelay: 0,
     mouseLeaveDelay: 100,
     trigger: 'hover',
     overlayClassName: '',

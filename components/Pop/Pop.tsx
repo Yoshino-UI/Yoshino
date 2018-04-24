@@ -69,7 +69,7 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   animateTimeHandle: number[] = []; // 动画timeout句柄
 
-  scale = 0.6;
+  scale = 0.8;
   popId = `pop_${new Date().getTime() * Math.random()}`; // pop唯一id
 
   static defaultProps = {
@@ -109,7 +109,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     return (
       <RenderInRootDom mount={visible}>
         <CSSTransition
-          timeout={100}
+          timeout={25}
           classNames={transitionCls}
           in={visible}
           onEnter={() => {

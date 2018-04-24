@@ -1,9 +1,9 @@
 @pop-prefix-cls: yoshino-pop;
-@pop-scale: scale(0.6);
+@pop-scale: scale(0.8);
 .@{pop-prefix-cls} {
   position: absolute;
   z-index: 1000;
-  transition: transform .1s cubic-bezier(.645,.045,.355,1);
+  // transition: transform .1s cubic-bezier(.645,.045,.355,1);
   display: none;
 
   &-appear {
@@ -19,7 +19,7 @@
 
   &-active-enter {
     display: block;
-    transform: scale(1);
+    transform: @pop-scale;
   }
 
   &-done-enter {
@@ -29,11 +29,12 @@
 
   &-exit {
     display: block;
-    transform: @pop-scale;
+    transform: scale(1);
   }
 
   &-active-exit {
     display: block;
+    transform: @pop-scale;
   }
 
   &-done-exit {
