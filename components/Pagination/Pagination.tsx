@@ -64,6 +64,19 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
     const currentPage = current ? current : this.state.current;
     const page = this.getPageSum();
     let list = [];
+    let key = 0;
+    const paginationItem = (className: string, pageNo: number) => {
+      return (
+        <div
+          className={className}
+          onClick={this.itemClick.bind(this, pageNo)}
+          key={key++}
+        >
+          <span>{pageNo}</span>
+        </div>
+      );
+    };
+
     // itemClsName  -  主要用于判断item-active
     const clsName = (counter: number) => {
       return classNames(
@@ -76,7 +89,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
     if (page <= max + 2) {
       for (let counter = 1; counter <= page; counter++) {
         list.push(
-          <div className={clsName(counter)} onClick={this.itemClick.bind(this, counter)}><span>{counter}</span></div>,
+          paginationItem(clsName(counter), counter),
         );
       }
     } else {
@@ -85,11 +98,11 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
       const footer = [];
       if (currentPage >= max - 1) {
         header.push(
-          <div className={clsName(1)} onClick={this.itemClick.bind(this, 1)}><span>1</span></div>,
+          paginationItem(clsName(1), 1),
         );
         counter++;
         header.push(
-          <div className={`${preCls}-item ${preCls}-item-more`} onClick={this.onPreviousMore}>
+          <div className={`${preCls}-item ${preCls}-item-more`} onClick={this.onPreviousMore} key={key++}>
             <span><Icon type='more'/></span>
           </div>,
         );
@@ -97,32 +110,32 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
 
       if (currentPage < page - max + 2) {
         footer.push(
-          <div className={`${preCls}-item ${preCls}-item-more`} onClick={this.onNextMore}>
+          <div className={`${preCls}-item ${preCls}-item-more`} onClick={this.onNextMore} key={key++}>
             <span><Icon type='more'/></span>
           </div>,
         );
         footer.push(
-          <div className={clsName(page)} onClick={this.itemClick.bind(this, page)}><span>{page}</span></div>,
+          paginationItem(clsName(page), page),
         );
         counter++;
       }
       if (currentPage < max - 1) {
         for (let i = 1; i <= max - 1; i++) {
           list.push(
-            <div className={clsName(i)} onClick={this.itemClick.bind(this, i)}><span>{i}</span></div>,
+            paginationItem(clsName(i), i),
           );
         }
       } else if (currentPage >= page - max + 2) {
         for (let i = page - max + 2; i <= page; i++) {
           list.push(
-            <div className={clsName(i)} onClick={this.itemClick.bind(this, i)}><span>{i}</span></div>,
+            paginationItem(clsName(i), i),
           );
         }
       } else {
         const half = Math.floor((max - counter) / 2);
         for (let i = currentPage - half; i <= currentPage + half; i++) {
           list.push(
-            <div className={clsName(i)} onClick={this.itemClick.bind(this, i)}><span>{i}</span></div>,
+            paginationItem(clsName(i), i),
           );
         }
       }

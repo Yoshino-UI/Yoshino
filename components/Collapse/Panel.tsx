@@ -10,7 +10,7 @@ export interface IPanelProps extends IBaseComponent {
   /**
    * 标记，对应activekey
    */
-  keyId: string;
+  keyid: string;
   /**
    * 折叠板标题
    */
@@ -26,7 +26,7 @@ export interface IPanelProps extends IBaseComponent {
   /**
    * 变化回调
    */
-  onChange: (keyId: string) => void;
+  onChange: (keyid: string) => void;
 }
 
 export interface IPanelState {
@@ -45,11 +45,11 @@ export class Panel extends Component<IPanelProps, IPanelState> {
   };
 
   onChange = () => {
-    const {onChange, disabled, keyId} = this.props;
+    const {onChange, disabled, keyid} = this.props;
     if (disabled) {
       return;
     }
-    onChange(keyId);
+    onChange(keyid);
   }
 
   render() {

@@ -1,4 +1,6 @@
 @tooltip-prefix-cls: yoshino-tooltip;
+@pop-scale: scale(0.8);
+
 .@{tooltip-prefix-cls} {
   position: relative;
   z-index: 1000;
@@ -109,5 +111,47 @@
     .@{tooltip-prefix-cls}-content {
       right: -8px;
     }
+  }
+
+  // 动画样式
+  &-appear {
+    display: block;
+    opacity: 0;
+    transform: @pop-scale;
+  }
+
+  &-active-appear {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-enter {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-active-enter {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-done-enter {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-exit {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-active-exit {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-done-exit {
+    display: none;
+    transform: @pop-scale;
   }
 }

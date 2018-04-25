@@ -1,6 +1,21 @@
 const path = require('path');
 const packageJSON = require('./package.json');
 const os = require('os');
+const fs = require('fs');
+
+// 组件目录
+const componentsPath = path.resolve(__dirname, './components/');
+const dir = fs.readdirSync(componentsPath);
+const dirSet = new Set(dir);
+// 删除非组件目录
+dirSet.delete('styles');
+dirSet.delete('template');
+dirSet.delete('utils');
+dirSet.delete('index.tsx');
+dirSet.delete('Hover');
+dirSet.delete('Ripple');
+dirSet.delete('Pop');
+const componentStr = Array.from(dirSet).join(',');
 
 module.exports = {
   title: packageJSON.name,
@@ -27,7 +42,7 @@ module.exports = {
     },
     {
       name: '通用组件',
-      components: 'components/{Icon,Breadcrumb,Button,Card,Alert,Timeline,Backtop,Switch,Loading,Divider,Rate,Progress,Avatar,Badge,Tag,Input,InputNumber,Pagination,Radio,Steps,Checkbox,Slider,Tooltip,Collapse}/index.tsx',
+      components: `components/{${componentStr}}/index.tsx`,
     },
     {
       name: '特效组件',

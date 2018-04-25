@@ -3,9 +3,9 @@
 const Panel = Collapse.Panel;
 <div>
   <Collapse>
-    <Panel title="this is title" keyId="1">1111</Panel>
-    <Panel title="this is title" keyId="2">1111</Panel>
-    <Panel title="this is title" keyId="3" disabled>1111</Panel>    
+    <Panel title="this is title" keyid="1">1111</Panel>
+    <Panel title="this is title" keyid="2">1111</Panel>
+    <Panel title="this is title" keyid="3" disabled>1111</Panel>    
   </Collapse>
 </div>
 ```
@@ -15,9 +15,9 @@ const Panel = Collapse.Panel;
 const Panel = Collapse.Panel;
 <div>
   <Collapse accordion>
-    <Panel title="this is title" keyId="1">1111</Panel>
-    <Panel title="this is title" keyId="2">1111</Panel>
-    <Panel title="this is title" keyId="3">1111</Panel>    
+    <Panel title="this is title" keyid="1">1111</Panel>
+    <Panel title="this is title" keyid="2">1111</Panel>
+    <Panel title="this is title" keyid="3">1111</Panel>    
   </Collapse>
 </div>
 ```

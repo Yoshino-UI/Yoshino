@@ -28,7 +28,7 @@
 
 ### 受控
 ```js
-initialState={visible: true};
+initialState={visible: false};
 <div>
     <Tooltip title="受控" placement="top" visible={state.visible}><Button>受控</Button></Tooltip>
     <Switch checked={state.visible} onChange={() => setState({visible: !state.visible})}/>

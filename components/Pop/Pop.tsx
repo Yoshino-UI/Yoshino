@@ -58,6 +58,14 @@ export interface IPopProps extends IBaseComponent {
    * 进入时才渲染
    */
   mountOnEnter: boolean;
+  /**
+   * 过度动画样式
+   */
+  transitionCls: {[key: string]: string};
+  /**
+   * pop 宽高修改
+   */
+  setPopRect: (rect: {width: number; height: number}) => {width: number; height: number};
 }
 
 export interface IPopState {
@@ -96,20 +104,10 @@ export class Pop extends Component<IPopProps, IPopState> {
       className, children, title, style,
       placement, overlayStyle, overlayClassName,
       mouseEnterDelay, mouseLeaveDelay, mountOnEnter,
-      onChange, content, ...otherProps,
+      onChange, content, transitionCls, ...otherProps,
     } = this.props;
     const preCls = 'yoshino-pop';
     const visible = this.getVisible();
-    const transitionCls = {
-      appear: `${preCls}-appear`,
-      appearActive: `${preCls}-active-appear`,
-      enter: `${preCls}-enter`,
-      enterActive: `${preCls}-active-enter`,
-      enterDone: `${preCls}-done-enter`,
-      exit: `${preCls}-exit`,
-      exitActive: `${preCls}-active-exit`,
-      exitDone: `${preCls}-done-exit`,
-    };
     return (
       <RenderInRootDom mount={!mountOnEnter}>
         <CSSTransition
@@ -119,7 +117,7 @@ export class Pop extends Component<IPopProps, IPopState> {
           onEnter={() => {
             this.resetPopPostion();
           }}
-          mountOnEnter={mountOnEnter}
+          mountOnEnter={true}
           appear
         >
           {
@@ -149,18 +147,20 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   resetPopPostion = () => {
     const children = ReactDOM.findDOMNode(this.refChildren) as Element;
-    const {placement} = this.props;
+    const {placement, setPopRect} = this.props;
     const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
     const domRect = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
-    const rect = children.getBoundingClientRect() as DOMRect;
+    const rect = children.getBoundingClientRect() as DOMRect; // Pop - target - dom
     const pageY = window.pageYOffset;   // 当前滚动条y轴偏移量
     const pageX = window.pageXOffset;   // 当前滚动条x轴偏移量
     const childrenX = pageX + rect.left;  // 子元素x
     const childrenY = pageY + rect.top; // 子元素y
 
-    // 回去缩放前的宽高
-    domRect.width = domRect.width / this.scale;
-    domRect.height = domRect.height / this.scale;
+    if (setPopRect) {
+      const popRect = setPopRect(domRect);
+      domRect.width = popRect.width;
+      domRect.height = popRect.height;
+    }
 
     // placement所对应的left top
     const config = {
@@ -216,7 +216,6 @@ export class Pop extends Component<IPopProps, IPopState> {
       },
       click: {
         onClick: this.getVisible() ? hide : show,
-        onBlur: hide,
       },
     };
     return action[this.props.trigger];

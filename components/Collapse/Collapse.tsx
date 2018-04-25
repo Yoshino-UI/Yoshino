@@ -89,10 +89,11 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
         {...otherProps}
       >
         {
-          React.Children.map(childrens, (item: React.ReactElement<IPanelProps>) => {
+          React.Children.map(childrens, (item: React.ReactElement<IPanelProps>, index) => {
             return React.cloneElement(item, {
-              active: activeKey.indexOf(item.props.keyId) !== -1,
+              active: activeKey.indexOf(item.props.keyid) !== -1,
               onChange: this.onChange,
+              key: index,
             });
           })
         }

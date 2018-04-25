@@ -3,48 +3,5 @@
 .@{pop-prefix-cls} {
   position: absolute;
   z-index: 1000;
-  // transition: transform .1s cubic-bezier(.645,.045,.355,1);
-  display: none;
   outline: 0;
-  
-  &-appear {
-    display: block;
-    opacity: 0;
-    transform: @pop-scale;
-  }
-
-  &-active-appear {
-    display: block;
-    transform: scale(1);
-  }
-
-  &-enter {
-    display: block;
-    transform: @pop-scale;
-  }
-
-  &-active-enter {
-    display: block;
-    transform: @pop-scale;
-  }
-
-  &-done-enter {
-    display: block;
-    transform: scale(1);
-  }
-
-  &-exit {
-    display: block;
-    transform: scale(1);
-  }
-
-  &-active-exit {
-    display: block;
-    transform: @pop-scale;
-  }
-
-  &-done-exit {
-    display: none;
-    transform: @pop-scale;
-  }
 }
