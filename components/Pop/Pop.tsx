@@ -54,6 +54,10 @@ export interface IPopProps extends IBaseComponent {
    * 气泡框内容
    */
   content?: string | ReactNode;
+  /**
+   * 进入时才渲染
+   */
+  mountOnEnter: boolean;
 }
 
 export interface IPopState {
@@ -80,6 +84,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     overlayClassName: '',
     overlayStyle: {},
     defaultVisible: false,
+    mountOnEnter: false,
   };
 
   state = {
@@ -90,7 +95,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     const {
       className, children, title, style,
       placement, overlayStyle, overlayClassName,
-      mouseEnterDelay, mouseLeaveDelay,
+      mouseEnterDelay, mouseLeaveDelay, mountOnEnter,
       onChange, content, ...otherProps,
     } = this.props;
     const preCls = 'yoshino-pop';
@@ -105,9 +110,8 @@ export class Pop extends Component<IPopProps, IPopState> {
       exitActive: `${preCls}-active-exit`,
       exitDone: `${preCls}-done-exit`,
     };
-
     return (
-      <RenderInRootDom mount={visible}>
+      <RenderInRootDom mount={!mountOnEnter}>
         <CSSTransition
           timeout={25}
           classNames={transitionCls}
@@ -115,7 +119,7 @@ export class Pop extends Component<IPopProps, IPopState> {
           onEnter={() => {
             this.resetPopPostion();
           }}
-          mountOnEnter
+          mountOnEnter={mountOnEnter}
           appear
         >
           {
@@ -125,14 +129,15 @@ export class Pop extends Component<IPopProps, IPopState> {
                 `${preCls}-${placement}`, overlayClassName,
                 className,
               );
+              const child = React.Children.only(content);
               return (
                 <div
                   className={clsName}
                   style={{...overlayStyle}}
                   {...otherProps}
-                  {...this.getTriggerAction()}
+                  {...this.getConentTriggerAction()}
                 >
-                  {content}
+                  {child}
                 </div>
               );
             }
@@ -196,7 +201,8 @@ export class Pop extends Component<IPopProps, IPopState> {
     }, visible ? mouseEnterDelay : mouseLeaveDelay);
   }
 
-  getTriggerAction = () => {
+  // pop包裹对象trigger表现
+  getTargetTriggerAction = () => {
     const show =  this.onChangeTrigger.bind(this, true);
     const hide = this.onChangeTrigger.bind(this, false);
     const action = {
@@ -209,8 +215,25 @@ export class Pop extends Component<IPopProps, IPopState> {
         onBlur: hide,
       },
       click: {
-        onMouseDown: show,
-        onMouseUp: hide,
+        onClick: this.getVisible() ? hide : show,
+        onBlur: hide,
+      },
+    };
+    return action[this.props.trigger];
+  }
+
+  // pop - content triggert表现
+  getConentTriggerAction = () => {
+    const show =  this.onChangeTrigger.bind(this, true);
+    const hide = this.onChangeTrigger.bind(this, false);
+    const action = {
+      hover: {
+        onMouseOver: show,
+        onMouseOut: hide,
+      },
+      focus: {
+      },
+      click: {
       },
     };
     return action[this.props.trigger];
@@ -223,7 +246,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     return React.cloneElement(child, {
       // tslint:disable:no-any
       ref: (v: HTMLElement) => {this.refChildren = v},
-      ...this.getTriggerAction(),
+      ...this.getTargetTriggerAction(),
     }, child.props.children, this.renderPop());
   }
 }

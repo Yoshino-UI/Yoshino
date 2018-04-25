@@ -35,8 +35,8 @@ export class RenderInRootDom extends Component<IProps, IStatus> {
   componentDidMount() {
     const {mount} = this.props;
     if (mount) {
-      this.renderChild();
       this.renderFlag = true;
+      this.renderChild();
     }
   }
 

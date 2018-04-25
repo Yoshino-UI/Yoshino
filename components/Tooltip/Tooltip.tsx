@@ -48,6 +48,10 @@ export interface ITooltipProps extends IBaseComponent {
    *  变化回调
    */
   onChange: (visible: boolean) => void;
+  /**
+   * 进入时才渲染
+   */
+  mountOnEnter: boolean;
 }
 
 export interface ITooltipState {
@@ -72,6 +76,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
     overlayClassName: '',
     overlayStyle: {},
     defaultVisible: false,
+    mountOnEnter: false,
   };
 
   state = {

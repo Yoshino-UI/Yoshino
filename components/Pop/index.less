@@ -5,11 +5,17 @@
   z-index: 1000;
   // transition: transform .1s cubic-bezier(.645,.045,.355,1);
   display: none;
-
+  outline: 0;
+  
   &-appear {
     display: block;
     opacity: 0;
     transform: @pop-scale;
+  }
+
+  &-active-appear {
+    display: block;
+    transform: scale(1);
   }
 
   &-enter {
