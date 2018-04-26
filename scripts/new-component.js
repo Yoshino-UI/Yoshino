@@ -18,12 +18,17 @@ function writeFile(fileName, content, component) {
 
 function fileIndexScss(component) {
   const name = capitalizeFirstLetter(component);
-  const content = `@${name}-prefix-cls: yoshino-${name};
+  const path = `${component}/style`;
+  const content = `@import './var.less';
+
+@${name}-prefix-cls: ~"@{css-prefix}-${name}";
 .@{${name}-prefix-cls} {
 
 }
 `;
-  writeFile('index.less', content, component);
+  writeFile('index.less', content, path);
+  const varLess = `@import '../../styles/var.less';`;
+  writeFile('var.less', varLess, path);
 }
 
 function addImportLess(component) {
@@ -31,7 +36,7 @@ function addImportLess(component) {
     encoding: 'utf8',
   });
   const str = content + `
-@import '../${component}/index';`;
+@import '../${component}/style/index';`;
   fs.writeFileSync(path.resolve(`components/styles/components.less`), str, {
     encoding: 'utf8',
   })
@@ -163,6 +168,7 @@ ${component} 组件已经存在！
 
 // 生成文件
 fs.mkdirSync(path.resolve('components', component));
+fs.mkdirSync(path.resolve('components', component, 'style'));
 fs.mkdirSync(path.resolve('components', component, '__tests__'));
 fileIndexScss(component);
 addImportLess(component);
