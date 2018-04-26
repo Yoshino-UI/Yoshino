@@ -1,0 +1,35 @@
+@import './var.less';
+
+@badge-prefix-cls:  ~"@{css-prefix}-badge";
+.@{badge-prefix-cls} {
+  display: inline-block;
+  position: relative;
+
+  span {
+    display: inline-block;
+    background-color: @badge-bgColor;
+    border-radius: @badge-dot-size;
+    border: 1px solid white;
+    font-size: @font-size-small;
+    color: white;
+  
+  }
+
+  &-position {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(50%) translateY(-40%);    
+  }
+
+  &-dot {
+    width: @badge-dot-size;
+    height: @badge-dot-size;
+  }
+
+  &-count{
+    padding: 0 6px;
+    height: 20px;
+    line-height: 20px;
+  }
+}

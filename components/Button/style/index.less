@@ -1,0 +1,126 @@
+@import './var.less';
+
+@button-prefix-cls:  ~"@{css-prefix}-button";
+.@{button-prefix-cls} {
+  display: inline-block;
+  border: @button-border;
+  border-radius: @button-border-radius;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  padding: @button-padding;
+  font-size: @font-size-small;
+  line-height: @line-height-base;
+  height: @button-height-size-base;
+  transition: @transition-base;
+  background-color: white;
+  border-color: @button-border-color;
+
+  &:disabled {
+    background-color: @button-disabled-bgColor;
+    cursor: not-allowed;
+    color: @button-border-color;
+    &:hover, &:focus {
+      border-color: @button-border-color;
+      color: @button-border-color;
+    }
+  }
+
+  &:hover, &:focus {
+    border-color: @button-primary-bgColor;
+    color: @button-primary-bgColor;
+  }
+
+  &:active {
+    color: @button-primary-active-bgColor;
+  }
+
+  &-primary {
+    color: white;
+    background-color: @button-primary-bgColor;
+    border-color: @button-primary-bgColor;
+
+    &:hover, &:focus {
+      background-color: @button-primary-hover-bgColor;
+      color: white;
+    }
+
+    &:active {
+      background-color: @button-primary-active-bgColor;
+    }
+  }
+
+  &-dashed {
+    color: @button-primary-bgColor;
+    border-style:  dashed; 
+
+  }
+
+  &-danger {
+    background-color: @button-disabled-bgColor;
+    color: @button-danger-color;
+
+    &:hover, &:focus {
+      background-color: @button-danger-color;
+      border-color: @button-danger-color;
+      color: white;
+    }
+
+    &:active {
+      background-color: @button-danger-color-active;
+      border-color: @button-danger-color-active;
+    }
+  }
+
+  &-size-small {
+    padding: 0 7px;
+    font-size: @font-size-small;
+    border-radius: 4px;
+    height: @button-height-size-small;
+  }
+
+  &-size-large {
+    padding: 0 15px;
+    height: 32px;
+    font-size: @font-size-base;
+    height: @button-height-size-large;
+  }
+
+  &-ghost {
+    background-color: transparent;
+    color: white;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+
+    &.@{button-prefix-cls} {
+      &-primary {
+        color: @button-primary-bgColor;
+      }
+      
+      &-danger {
+        color: @button-danger-color;
+        border-color: @button-danger-color;
+
+        &:active {
+          color: @button-danger-color-active;
+          border-color: @button-danger-color-active;
+        }
+      }
+    }
+  }
+
+  &-shape {
+    &-circle {
+      border-radius: 28px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      font-size: @font-size-base;
+    }
+  }
+
+  &-load {
+    animation: rotate 1s infinite linear;
+  }
+}

@@ -1,0 +1,66 @@
+@import './var.less';
+
+@divider-prefix-cls:  ~"@{css-prefix}-divider";
+@line-color: #e8e8e8;
+.@{divider-prefix-cls} {
+  display: table;
+  vertical-align: middle;
+  position: relative;
+  margin: 10px 0;
+  height: 1px;
+  width: 100%;
+
+  &-text {
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 50%;
+    border-top: 1px solid @line-color;
+    transform: translateY(50%);
+  }
+
+  &-dashed {
+    &::before,
+    &::after {
+      border-top-style: dashed;
+    }
+  }
+}
+
+.@{divider-prefix-cls}-center {
+  &::before {
+    width: 50%;
+  }
+
+  &::after {
+    width: 50%;
+  }
+}
+
+.@{divider-prefix-cls}-left {
+  &::before {
+    width: 5%;
+  }
+
+  &::after {
+    width: 95%;
+  }
+}
+
+.@{divider-prefix-cls}-right {
+  &::before {
+    width: 95%;
+  }
+
+  &::after {
+    width: 5%;
+  }
+}

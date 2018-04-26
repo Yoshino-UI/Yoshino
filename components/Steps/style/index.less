@@ -1,0 +1,183 @@
+@import './var.less';
+
+@steps-prefix-cls:  ~"@{css-prefix}-steps";
+.@{steps-prefix-cls} {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  
+  > * {
+    transition: @transition-base;
+  }
+
+  &-horizontal {
+
+  }
+
+  &-vertical {
+    flex-direction: column;
+
+    .@{itemPreCls}-title::after {
+      display: none;
+    }
+
+    .@{itemPreCls} {
+      margin-bottom: 10px;
+
+      &-content {
+        max-width: 100%;
+        display: block;
+        overflow: hidden;
+        min-height: 50px;
+      }
+    }
+  }
+
+
+  .@{itemPreCls}:last-child {
+    flex: none;
+    
+    .@{itemPreCls}-title::after {
+      display: none;
+    }
+  }
+
+  .@{itemPreCls}:last-child {
+    .@{itemPreCls}-line-vertical {
+      display: none;
+    }
+  }
+}
+
+
+@itemPreCls: ~'@{steps-prefix-cls}-item';
+.@{itemPreCls} {
+  overflow: hidden;
+  flex: 1;
+  margin-right: 10px;
+  position: relative;
+
+  &-process {
+    .@{itemPreCls}-icon {
+      background-color: @primary-color;
+      color: white;
+    }
+
+    .@{itemPreCls}-title::after,
+    .@{itemPreCls}-line-vertical {
+      background-color: @color-unactive;
+    }
+  }
+
+  &-wait {
+    color: @color-unactive;
+    .@{itemPreCls}-icon {
+      color: @color-unactive;
+      border-color: @color-unactive;
+    }
+
+    .@{itemPreCls}-title::after,
+    .@{itemPreCls}-line-vertical {
+      background-color: @color-unactive;
+    }
+  }
+
+  &-error {
+    color: @color-error;
+    .@{itemPreCls}-icon {
+      color: @color-error;;
+      border-color: @color-error;;
+      background-color: white;
+    }
+
+    .@{itemPreCls}-title::after,
+    .@{itemPreCls}-line-vertical {
+      background-color: @color-error;;
+    }
+  }
+
+  &-icon {
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid @primary-color;
+    text-align: center;
+    line-height: 100%;
+    vertical-align: top;
+    margin-right: 10px;
+    color:  @primary-color;
+    position: relative;
+    float: left;
+  }
+
+  &-content {
+    display: inline-block;
+    max-width: 150px;
+  }
+
+  &-title {
+    font-weight: @font-weight-base;
+    padding-right: 15px;
+    position: relative;
+
+    &::after {
+      display: inline-block;
+      position: absolute;
+      content: ' ';
+      left: 100%;
+      top: 50%;
+      height: 1px;
+      width: 9999px;
+      background: @primary-color;
+    }
+  }
+
+  &-line-vertical {
+    position: absolute;
+    display: inline-block;
+    content: ' ';
+    width: 1px;
+    left: 50%;
+    height: 9999px;
+    background-color: @primary-color;
+  }
+}
+
+.@{itemPreCls}-small {
+  font-size: @font-size-base;
+  .@{itemPreCls}-icon {
+    width: @steps-size-small;
+    height: @steps-size-small;
+    line-height: @steps-size-small;
+  }
+
+  .@{itemPreCls}-title {
+    line-height: @steps-size-small;
+    
+    &::after {
+    }
+  }
+
+  .@{itemPreCls}-line-vertical {
+    top: ~'calc(@{steps-size-default} + 10px)';
+  }
+}
+
+.@{itemPreCls}-default {
+  font-size: @font-size-large;
+
+  .@{itemPreCls}-icon {
+    width: @steps-size-default;
+    height: @steps-size-default;
+    line-height: @steps-size-default;
+  }
+
+  .@{itemPreCls}-title {
+    line-height: @steps-size-default;
+    &::after {
+    }
+  }
+
+  .@{itemPreCls}-line-vertical {
+    top: ~'calc(@{steps-size-default} + 10px)';
+  }
+}

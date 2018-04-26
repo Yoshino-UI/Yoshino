@@ -1,0 +1,67 @@
+@import './var.less';
+
+@switch-prefix-cls:  ~"@{css-prefix}-switch";
+.@{switch-prefix-cls} {
+  display: inline-block;
+  border-radius: 100px;
+  transition: @transition-base;
+  position: relative;
+  cursor: pointer;
+  background-color: @color-unactive;
+
+  &-default {
+    width: 40px;
+    height: 20px;
+
+    &::after {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &-small {
+    width: 26px;
+    height: 14px;
+
+    &::after {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &::after {
+    transition: @transition-base;
+    display: block;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    left: 1px;
+    top: 1px;
+    background-color: white;
+  }
+
+  &-checked {
+    background-color: @primary-color;
+    &::after {
+      left: 100%;
+    }
+  }
+
+  &-default&-checked {
+    &::after {
+      margin-left: -19px;
+    }
+  }
+
+  &-small&-checked {
+    &::after {
+      margin-left: -13px;
+    }
+  }
+
+  &-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}

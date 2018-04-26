@@ -1,0 +1,159 @@
+@import './var.less';
+
+@tooltip-prefix-cls:  ~"@{css-prefix}-tooltip";
+@pop-scale: scale(0.8);
+
+.@{tooltip-prefix-cls} {
+  position: relative;
+  z-index: 1000;
+  
+  transition: opacity .3s cubic-bezier(.645,.045,.355,1);
+
+  &-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  &-content {
+    padding: 5px;
+    background: rgba(0,0,0,.75);
+    font-size: @font-size-small;
+    color: white;
+    border-radius: @border-radius-large;
+    position: relative;
+  }
+
+  &-top,
+  &-topLeft,
+  &-topRight {
+    .@{tooltip-prefix-cls}-arrow {
+      bottom: 3px;
+      border-width: 5px 5px 0;
+      border-top-color: rgba(0,0,0,.75);
+    }
+
+    .@{tooltip-prefix-cls}-content {
+      top: -8px;
+    }
+  }
+
+  &-topLeft > &-arrow,
+  &-bottomLeft > &-arrow {
+    left: 8px;
+  }
+
+  &-top > &-arrow,
+  &-bottom > &-arrow {
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  &-topRight > &-arrow,
+  &-bottomRight > &-arrow {
+    right: 8px;
+  }
+
+  &-bottom,
+  &-bottomLeft,
+  &-bottomRight {
+    .@{tooltip-prefix-cls}-arrow {
+      top: 3px;
+      border-width: 0 5px 5px;
+      border-bottom-color: rgba(0,0,0,.75);
+    }
+
+    .@{tooltip-prefix-cls}-content {
+      bottom: -8px;
+    }
+  }
+
+
+  &-left,
+  &-leftTop,
+  &-leftBottom {
+    .@{tooltip-prefix-cls}-arrow {
+      right: 3px;
+      border-width: 5px 0 5px 5px;
+      border-left-color: rgba(0,0,0,.75);
+    }
+
+    .@{tooltip-prefix-cls}-content {
+      left: -8px;
+    }
+  }
+
+  &-left > &-arrow,
+  &-right > &-arrow  {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-leftTop > &-arrow,
+  &-rightTop > &-arrow {
+    top: 8px;
+  }
+
+  &-leftBottom > &-arrow,
+  &-rightBottom > &-arrow {
+    bottom: 8px;
+  }
+
+  &-right,
+  &-rightTop,
+  &-rightBottom {
+    .@{tooltip-prefix-cls}-arrow {
+      left: 3px;
+      border-width: 5px 5px 5px 0;
+      border-right-color: rgba(0,0,0,.75);
+    }
+
+    .@{tooltip-prefix-cls}-content {
+      right: -8px;
+    }
+  }
+
+  // 动画样式
+  &-appear {
+    display: block;
+    opacity: 0;
+    transform: @pop-scale;
+  }
+
+  &-active-appear {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-enter {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-active-enter {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-done-enter {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-exit {
+    display: block;
+    transform: scale(1);
+  }
+
+  &-active-exit {
+    display: block;
+    transform: @pop-scale;
+  }
+
+  &-done-exit {
+    display: none;
+    transform: @pop-scale;
+  }
+}

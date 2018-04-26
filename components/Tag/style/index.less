@@ -1,0 +1,31 @@
+@import './var.less';
+
+@tag-prefix-cls:  ~"@{css-prefix}-tag";
+.@{tag-prefix-cls} {
+  display: inline-block;
+  padding: 0 5px;
+  height: 20px;
+  line-height: 20px;
+  font-size: @font-size-small;
+  border-radius: @border-radius-base;
+  background-color: @tag-bgColor;
+  border: 1px solid @tag-border-color;
+  color: @tag-font-color;
+  cursor: pointer;
+
+
+  &-close {
+    font-size: 12px;
+    margin-left: 5px;
+    transform: scale(0.7);
+  }
+
+  &-color {
+    border: transparent;
+    color: white;
+
+    .@{tag-prefix-cls}-close {
+      color: white;
+    }
+  }
+}

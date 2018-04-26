@@ -1,0 +1,61 @@
+@import './var.less';
+
+@collapse-prefix-cls:  ~"@{css-prefix}-collapse";
+.@{collapse-prefix-cls} {
+  border-radius: @border-radius-large;
+  border: 1px solid @border-color;
+  overflow: hidden;
+
+  .@{panel-prefix-cls}:last-child {
+    border-bottom: none;
+  }
+}
+
+
+@panel-prefix-cls:  ~"@{css-prefix}-panel";
+.@{panel-prefix-cls} {
+  position: relative;
+  border-bottom: 1px solid @border-color;
+  cursor: pointer;
+
+  &-title {
+    font-size: @font-size-base;
+    background-color: @panel-bgColor;
+    padding: 12px 0 12px 40px;
+  }
+
+  &-icon {
+    position: absolute;
+    left: 16px;
+    top: 0;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 44px;
+    transition: @transition-base;
+  }
+
+  &-content {
+    transition: height .3s cubic-bezier(.645,.045,.355,1);
+    border-top: 1px solid @border-color;
+    padding: 0 16px;
+
+    &-close {
+      display: none;
+    }
+  }
+
+  &-inner {
+    padding: 16px 0;
+  }
+
+  &-active {
+    .@{panel-prefix-cls}-icon {
+      transform: rotate(90deg);
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    color: @color-disabled;
+  }
+}

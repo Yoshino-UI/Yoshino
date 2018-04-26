@@ -1,0 +1,51 @@
+@import './var.less';
+
+@slider-prefix-cls:  ~"@{css-prefix}-slider";
+.@{slider-prefix-cls} {
+  position: relative;
+  cursor: pointer;
+
+  &-process {
+    width: 100%;
+    height: @slider-process-height;
+    background: @color-unactive;
+    border-radius: @border-radius-large;
+  }
+
+  &-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: @slider-process-height;
+    background: @primary-color;
+    border-radius: @border-radius-large;
+    
+    &::after {
+      display: inline-block;
+      content: ' ';
+      border-radius: 50%;
+      position: absolute;
+      width: @slider-bar-size;
+      height: @slider-bar-size;
+      top: @slider-process-height / 2;
+      right: -@slider-process-height / 2;
+      border: 2px solid @primary-color;
+      background-color: white;
+      transform: translate(0, -50%);
+      cursor: pointer;
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+
+    .@{slider-prefix-cls}-bar {
+      background: @color-disabled;
+      
+      &::after {
+        cursor: not-allowed;
+        border-color: @color-disabled;
+      }
+    }
+  }
+}

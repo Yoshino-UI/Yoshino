@@ -1,0 +1,80 @@
+@import './var.less';
+
+@inputnumber-prefix-cls:  ~"@{css-prefix}-input-number";
+.@{inputnumber-prefix-cls} {
+  border: @input-border;
+  border-radius: @input-border-radius;
+  width: 100%;
+  padding-right: 25px !important;
+  
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: @primary-color;
+  }
+
+  &:focus {
+    box-shadow: @input-box-shadow;
+  }
+}
+
+.@{inputnumber-prefix-cls}-default {
+  height: @input-size-default;
+  padding: 4px 11px;
+  font-size: @font-size-small;
+}
+
+.@{inputnumber-prefix-cls}-small {
+  height: @input-size-small;
+  padding: 1px 7px;
+  font-size: @font-size-base;
+}
+
+.@{inputnumber-prefix-cls}-large {
+  height: @input-size-large;
+  padding: 6px 11px;
+  font-size: @font-size-large;
+}
+
+.@{inputnumber-prefix-cls}-wrapper {
+  width: 90px;
+  position: relative;
+  display: inline-block;
+
+  .@{inputnumber-prefix-cls}-control {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    border-left: @input-border;
+    line-height: 100%;
+
+    > div {
+      width: 100%;
+      height: 50%;
+      color: @input-border-color;
+      font-weight: bold;
+      
+      &:first-child {
+        border-bottom: @input-border;
+      }
+
+      &:hover {
+        color:@primary-color;
+        cursor: pointer;
+      }
+
+      i {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        transform: scale(0.8);
+        font-weight: 700;
+      }
+    }
+  }
+}
