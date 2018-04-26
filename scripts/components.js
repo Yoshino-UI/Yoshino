@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const allComponents = require('./allComponents');
 
 // 组件目录
 const componentsPath = path.resolve(__dirname, '../components/');
@@ -9,24 +10,16 @@ if (fs.existsSync(path.resolve(componentsPath, './index.tsx'))) {
   fs.unlink(path.resolve(componentsPath, './index.tsx'));
 }
 
-const dir = fs.readdirSync(componentsPath);
-const dirSet = new Set(dir);
-// 删除非组件目录
-dirSet.delete('styles');
-dirSet.delete('template');
-dirSet.delete('utils');
-
 // 生成webpack entry配置
-const arr = Array.from(dirSet);
 const components = {};
-arr.forEach((item) => {
-  components[`components/${item}`] = path.resolve(componentsPath, `./${item}`);
+allComponents.forEach((item) => {
+  components[`components/${item}/index`] = path.resolve(componentsPath, `./${item}`);
 })
 
 // 生成index.tsx
 let importStr = '';
 let exportStr = `module.exports = {\r\n`;
-arr.forEach((item) => {
+allComponents.forEach((item) => {
   importStr += `import ${item} from './${item}';\r\n`;
   exportStr += `  ${item},\r\n`;
 })

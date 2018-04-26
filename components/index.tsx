@@ -13,7 +13,9 @@ import Icon from './Icon';
 import Input from './Input';
 import InputNumber from './InputNumber';
 import Loading from './Loading';
+import Menu from './Menu';
 import Pagination from './Pagination';
+import Pop from './Pop';
 import Progress from './Progress';
 import Radio from './Radio';
 import Rate from './Rate';
@@ -41,7 +43,9 @@ module.exports = {
   Input,
   InputNumber,
   Loading,
+  Menu,
   Pagination,
+  Pop,
   Progress,
   Radio,
   Rate,
