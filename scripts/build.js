@@ -11,12 +11,12 @@ if (fs.existsSync(libPath)) {
   console.log('清空lib');
 }
 
-console.log('开始webpack打包');
+console.log('开始tsc编译');
 
-// wbepack打包
-const webpack = path.resolve(__dirname, '../config/production.js');
-execSync(`webpack --config ${webpack}`);
-console.log('webpack打包完成');
+// tsc编译
+const tsc = path.resolve(__dirname, '../node_modules', '.bin', 'tsc');
+execSync(`${tsc} --outDir lib/components/ --declaration`);
+console.log('结束tsc编译');
 
 console.log('开始gulp打包');
 // gulp打包
