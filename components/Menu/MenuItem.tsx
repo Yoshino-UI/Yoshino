@@ -1,0 +1,79 @@
+
+import {Component} from 'react';
+import * as React from 'react';
+import * as classNames from 'classnames';
+import {IBaseComponent} from '../template/component';
+
+export interface IMenuItemProps extends IBaseComponent {
+  /**
+   * 组件深度 - 用于控制paddingLeft
+   */
+  deep: number;
+  /**
+   * 激活key
+   */
+  activeKey: string;
+  /**
+   * 唯一id
+   */
+  keyId: string;
+  /**
+   * 选项 - 变化回调
+   */
+  onSelect: (activeKey: string) => void;
+  /**
+   * 禁用
+   */
+  disabled: boolean;
+}
+
+export interface IMenuItemState {
+
+}
+
+/**
+ * **菜单**-提供导航功能
+ */
+export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
+  static defaultProps = {
+    active: false,
+    disabled: false,
+  };
+
+  onSelect = () => {
+    const {onSelect, keyId, disabled} = this.props;
+    if (disabled) {
+      return;
+    }
+    onSelect(keyId);
+  }
+
+  render() {
+    const {
+      className, style, children, deep,
+      activeKey, keyId, onSelect, disabled,
+      ...otherProps,
+    } = this.props;
+    const preCls = 'yoshino-menu-item';
+    const clsName = classNames(
+      preCls, className,
+      {
+        [`${preCls}-active`]: activeKey === keyId,
+        [`${preCls}-disabled`]: disabled,
+      },
+    );
+    const paddingLeft = `${deep * 24}px`;
+    return (
+      <li
+        className={clsName}
+        style={{paddingLeft, ...style}}
+        onClick={this.onSelect}
+        {...otherProps}
+      >
+        {children}
+      </li>
+    );
+  }
+}
+
+export default MenuItem;

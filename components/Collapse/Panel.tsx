@@ -37,7 +37,7 @@ export interface IPanelState {
  * **面板**-折叠版的子项
  */
 export class Panel extends Component<IPanelProps, IPanelState> {
-  refContent: HTMLElement;
+  refContainer: HTMLElement;
   refInner: HTMLElement;
 
   static defaultProps = {
@@ -79,24 +79,24 @@ export class Panel extends Component<IPanelProps, IPanelState> {
           in={active}
           mountOnEnter
           onEnter={() => {
-            this.refContent.style.height = '0px';
-            this.refContent.style.display = 'none';
+            this.refContainer.style.height = '0px';
+            this.refContainer.style.display = 'none';
           }}
           onEntering={() => {
-            this.refContent.style.display = 'block';
+            this.refContainer.style.display = 'block';
             const height = this.refInner.clientHeight;
-            this.refContent.style.height = `${height + 1}px`;
+            this.refContainer.style.height = `${height + 1}px`;
           }}
           onEntered={() => {
             const height = this.refInner.clientHeight;
-            this.refContent.style.height = `${height + 1}px`;
+            this.refContainer.style.height = `${height + 1}px`;
           }}
           onExiting={() => {
-            this.refContent.style.height = '0px';
+            this.refContainer.style.height = '0px';
           }}
           onExited={() => {
-            this.refContent.style.height = '0px';
-            this.refContent.style.display = 'none';
+            this.refContainer.style.height = '0px';
+            this.refContainer.style.display = 'none';
           }}
         >
           {
@@ -110,7 +110,7 @@ export class Panel extends Component<IPanelProps, IPanelState> {
                   className={contentCls}
                   ref={(v: HTMLElement | null) => {
                     if (v) {
-                      this.refContent = v;
+                      this.refContainer = v;
                     }
                   }}
                 >
