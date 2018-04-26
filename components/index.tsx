@@ -27,7 +27,7 @@ import Tag from './Tag';
 import Timeline from './Timeline';
 import Tooltip from './Tooltip';
 
-module.exports = {
+export {
   Alert,
   Avatar,
   Backtop,

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "react-ui based on rc-component！ ",
   "main": "lib/index",
+  "module": "es6/index",
   "keywords": [
     "react",
     "UI",

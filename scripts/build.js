@@ -4,18 +4,32 @@ const fs = require('fs');
 
 console.log('=============开始打包=============');
 
-// 删除lib
+// 删除lib es6
 const libPath = path.resolve(__dirname, '../lib');
+const es6Path = path.resolve(__dirname, '../lib');
+
 if (fs.existsSync(libPath)) {
   deleteFolder(libPath);
   console.log('清空lib');
 }
 
-console.log('开始tsc编译');
+if (fs.existsSync(es6Path)) {
+  deleteFolder(es6Path);
+  console.log('清空es6');
+}
 
+// 更新index.tsx
+const updateEntry = path.resolve(__dirname, './updateEntry.js');
+console.log('开始更新组件库入口文件');
+execSync(`node ${updateEntry}`);
+console.log('完成更新组件库入口文件');
+
+console.log('开始tsc编译');
 // tsc编译
 const tsc = path.resolve(__dirname, '../node_modules', '.bin', 'tsc');
-execSync(`${tsc} --outDir lib/components/ --declaration`);
+execSync(`${tsc} --outDir lib/ --declaration`);
+execSync(`${tsc} --outDir es6/ --module es6 --declaration`);
+
 console.log('结束tsc编译');
 
 console.log('开始gulp打包');
