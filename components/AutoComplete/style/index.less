@@ -16,7 +16,7 @@
     background-color: white;
     box-shadow: @shadow-base;
     font-size: @font-size-base;
-
+  
     .@{auto-complete-prefix-cls}-item {
       &:first-child {
         border-radius: @border-radius-large @border-radius-large 0 0;
@@ -39,35 +39,33 @@
     }
   }
 
-  // 动画样式
-  &-appear {
-  }
-
-  &-active-appear {
-    display: block;
-  }
-
   &-enter {
     display: block;
+    transform: scaleY(1);
   }
 
   &-active-enter {
     display: block;
+    transform: scaleY(0.8);
   }
 
   &-done-enter {
     display: block;
+    transform: scaleY(1);    
   }
 
   &-exit {
     display: block;
+    transform: scaleY(1);    
   }
 
   &-active-exit {
     display: block;
+    transform: scaleY(0.8);
   }
 
   &-done-exit {
     display: none;
+    transform: scaleY(0.8);
   }
 }

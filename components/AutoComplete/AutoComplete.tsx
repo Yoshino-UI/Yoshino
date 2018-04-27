@@ -91,7 +91,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
       this.setState({options});
     } else {
       const options =  dataSource.filter((item) => {
-        return String(item).match(value);
+        return String(item).match(new RegExp(value));
       });
       this.setState({options});
     }
@@ -165,7 +165,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
           value={inValue}
         />
         <CSSTransition
-          timeout={50}
+          timeout={100}
           classNames={transitionCls}
           in={this.state.show && options.length > 0}
           appear
