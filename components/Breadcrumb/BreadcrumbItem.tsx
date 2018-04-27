@@ -2,9 +2,9 @@
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponentNoChildren} from '../template/component';
+import {IBaseComponent} from '../template/component';
 
-export interface IBreadcrumbItemProps extends IBaseComponentNoChildren {
+export interface IBreadcrumbItemProps extends IBaseComponent {
 
 }
 

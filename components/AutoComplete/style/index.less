@@ -1,0 +1,73 @@
+@import './var.less';
+
+@auto-complete-prefix-cls: ~"@{css-prefix}-auto-complete";
+.@{auto-complete-prefix-cls} {
+  position: relative;
+
+  * {
+    transition: @transition-quick;
+  }
+
+  &-list {
+    position: absolute;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: @border-radius-large;
+    background-color: white;
+    box-shadow: @shadow-base;
+    font-size: @font-size-base;
+
+    .@{auto-complete-prefix-cls}-item {
+      &:first-child {
+        border-radius: @border-radius-large @border-radius-large 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 @border-radius-large @border-radius-large;
+      }
+    }
+  }
+
+  &-item {
+    padding: 5px 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &-active {
+      background: @primary-color-choosed;
+    }
+  }
+
+  // 动画样式
+  &-appear {
+  }
+
+  &-active-appear {
+    display: block;
+  }
+
+  &-enter {
+    display: block;
+  }
+
+  &-active-enter {
+    display: block;
+  }
+
+  &-done-enter {
+    display: block;
+  }
+
+  &-exit {
+    display: block;
+  }
+
+  &-active-exit {
+    display: block;
+  }
+
+  &-done-exit {
+    display: none;
+  }
+}

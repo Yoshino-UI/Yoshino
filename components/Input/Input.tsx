@@ -1,22 +1,30 @@
-
-import {Component, ReactNode} from 'react';
+// tslint:disable
+import {Component, ReactNode, CSSProperties} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IAbstractInput} from '../template/component';
 
-export interface IInputProps extends IBaseComponent {
+export interface IInputProps extends IAbstractInput {
+  /**
+   * 受控 - 输入框的值
+   */
+  value?: any;
   /**
    * 输入框的值
    */
-  value: string;
+  defaultValue?: any;
   /**
    * 组件大小
    */
-  size: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large';
   /**
    * 回车回调事件
    */
   onEnter?: () => void;
+  /**
+   * 变化回调
+   */
+  onChange?: (value: any) => void;
   /**
    * 头部
    */
@@ -28,11 +36,11 @@ export interface IInputProps extends IBaseComponent {
   /**
    * 头部style
    */
-  headerStyle?: { [key: string]: any }; // tslint:disable-line:no-any
+  headerStyle?: CSSProperties; // tslint:disable-line:no-any
   /**
    * 尾部style
    */
-  footerStyle?: { [key: string]: any }; // tslint:disable-line:no-any
+  footerStyle?: CSSProperties; // tslint:disable-line:no-any
 }
 
 export interface IInputState {
@@ -46,27 +54,50 @@ export interface IInputState {
  * **输入框**-用于获取用书通过键盘输入的内容
  */
 export class Input extends Component<IInputProps, IInputState> {
-  state = {
-    value: this.props.value ? this.props.value : '',
-  };
-
   static defaultProps = {
     size: 'default',
+    defaultValue: '',
   };
 
+  state = {
+    value: this.props.defaultValue,
+  };
+
+  getValue = () => {
+    const {value} = this.props;
+    return value !== undefined ? value : this.state.value;
+  }
+
+  onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {onChange} = this.props;
+    if (onChange) {
+      onChange(e.target.value);
+    }
+    this.setState({value: e.target.value});
+  }
+
   onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const {onEnter} = this.props;
+    const {onEnter, onKeyDown} = this.props;
     if (e.keyCode === 13 && onEnter) {
       onEnter();
+    }
+    if (onKeyDown) {
+      onKeyDown(e);
     }
   }
 
   render() {
-    const {className, style, size, header, footer, headerStyle, footerStyle, onEnter, ...otherProps} = this.props;
+    const {
+      className, style, size, header,
+      footer, headerStyle, footerStyle,
+      onEnter, onChange, value,
+      ...otherProps,
+    } = this.props;
     const preCls = 'yoshino-input';
     const clsName = classNames(
       `${preCls}-wrapper`, `${preCls}-${size}`, className,
     );
+    const inValue = this.getValue();
     return (
       <span
         className={clsName}
@@ -80,6 +111,8 @@ export class Input extends Component<IInputProps, IInputState> {
           className={preCls}
           {...otherProps}
           onKeyDown={this.onEnter}
+          onChange={this.onChange}
+          value={inValue}
         />
         {footer ? (
           <span className={`${preCls}-footer`} style={footerStyle}>{footer}</span>

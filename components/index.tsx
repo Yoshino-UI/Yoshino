@@ -1,4 +1,5 @@
 import Alert from './Alert';
+import AutoComplete from './AutoComplete';
 import Avatar from './Avatar';
 import Backtop from './Backtop';
 import Badge from './Badge';
@@ -29,6 +30,7 @@ import Tooltip from './Tooltip';
 
 export {
   Alert,
+  AutoComplete,
   Avatar,
   Backtop,
   Badge,
