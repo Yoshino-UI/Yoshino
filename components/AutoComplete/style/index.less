@@ -16,6 +16,7 @@
     background-color: white;
     box-shadow: @shadow-base;
     font-size: @font-size-base;
+    transform-origin: 50% 0;
   
     .@{auto-complete-prefix-cls}-item {
       &:first-child {
@@ -41,12 +42,12 @@
 
   &-enter {
     display: block;
-    transform: scaleY(1);
+    transform: scaleY(0.8);
   }
 
   &-active-enter {
     display: block;
-    transform: scaleY(0.8);
+    transform: scaleY(1);
   }
 
   &-done-enter {
@@ -61,11 +62,11 @@
 
   &-active-exit {
     display: block;
-    transform: scaleY(0.8);
+    transform: scaleY(0.4);
   }
 
   &-done-exit {
     display: none;
-    transform: scaleY(0.8);
+    transform: scaleY(0.4);
   }
 }

@@ -121,7 +121,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     // 延时下拉框消失，否侧列表的子项click将不生效
     setTimeout(() => {
       this.setState({show: false});
-    }, 10);
+    }, 100);
   }
 
   // 显示list
@@ -165,7 +165,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
           value={inValue}
         />
         <CSSTransition
-          timeout={100}
+          timeout={50}
           classNames={transitionCls}
           in={this.state.show && options.length > 0}
           appear
