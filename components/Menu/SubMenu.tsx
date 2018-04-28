@@ -10,7 +10,7 @@ export interface ISubMenuProps extends IBaseComponent {
   /**
    * 组件深度 - 用于控制paddingLeft
    */
-  deep: number;
+  deep?: number;
   /**
    * 标题
    */
@@ -22,23 +22,23 @@ export interface ISubMenuProps extends IBaseComponent {
   /**
    * 激活key
    */
-  activeKey: string;
+  activeKey?: string;
   /**
    * 展开的key
    */
-  openKeys: string[];
+  openKeys?: string[];
   /**
    * 选项 - 变化回调
    */
-  onSelect: (activeKey: string) => void;
+  onSelect?: (activeKey: string) => void;
   /**
    * 展开回调
    */
-  onOpenChange: (openKey: string) => void;
+  onOpenChange?: (openKey: string) => void;
   /**
    * 禁用
    */
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export interface ISubMenuState {
@@ -62,13 +62,16 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
     if (disabled) {
       return;
     }
-    onOpenChange(keyId);
+
+    if (onOpenChange) {
+      onOpenChange(keyId);
+    }
   }
 
   render() {
     const {
       className, style, children, title, deep,
-      activeKey, onSelect, onOpenChange, openKeys,
+      activeKey, onSelect, onOpenChange, openKeys = [],
       keyId, disabled,
       ...otherProps,
     } = this.props;
@@ -82,7 +85,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
       },
     );
     const childrens = React.Children.toArray(children);
-    const paddingLeft = `${deep * 24}px`;
+    const paddingLeft = `${deep as number * 24}px`;
     return (
       <React.Fragment>
         <li
@@ -139,7 +142,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
                         // tslint:disable
                         React.Children.map(childrens, (children: ReactElement<any>) => {
                           return React.cloneElement(children, {
-                            deep: deep + 1,
+                            deep: deep as number + 1,
                             activeKey,
                             openKeys,
                             onSelect,

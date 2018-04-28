@@ -23,7 +23,7 @@ export interface IMenuProps extends IBaseComponent {
   /**
    * 非受控 - 展开key
    */
-  defaultOpenKeys: string[];
+  defaultOpenKeys?: string[];
   /**
    * item - 选中回调
    */
@@ -54,7 +54,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
 
   state = {
     activeKey: this.props.defaultActiveKey,
-    openKeys: this.props.defaultOpenKeys,
+    openKeys: this.props.defaultOpenKeys as string[],
   };
 
   getActiveKey = () => {

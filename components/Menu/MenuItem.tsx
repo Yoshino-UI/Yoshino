@@ -8,11 +8,11 @@ export interface IMenuItemProps extends IBaseComponent {
   /**
    * 组件深度 - 用于控制paddingLeft
    */
-  deep: number;
+  deep?: number;
   /**
    * 激活key
    */
-  activeKey: string;
+  activeKey?: string;
   /**
    * 唯一id
    */
@@ -20,11 +20,11 @@ export interface IMenuItemProps extends IBaseComponent {
   /**
    * 选项 - 变化回调
    */
-  onSelect: (activeKey: string) => void;
+  onSelect?: (activeKey: string) => void;
   /**
    * 禁用
    */
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export interface IMenuItemState {
@@ -45,7 +45,9 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
     if (disabled) {
       return;
     }
-    onSelect(keyId);
+    if (onSelect) {
+      onSelect(keyId);
+    }
   }
 
   render() {
@@ -62,7 +64,7 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
         [`${preCls}-disabled`]: disabled,
       },
     );
-    const paddingLeft = `${deep * 24}px`;
+    const paddingLeft = `${deep as number * 24}px`;
     return (
       <li
         className={clsName}

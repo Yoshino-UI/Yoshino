@@ -8,7 +8,7 @@ export interface IMenuItemGroupProps extends IBaseComponent {
   /**
    * 组件深度 - 用于控制paddingLeft
    */
-  deep: number;
+  deep?: number;
   /**
    * 标题
    */
@@ -20,7 +20,7 @@ export interface IMenuItemGroupProps extends IBaseComponent {
   /**
    * 激活key
    */
-  activeKey: string;
+  activeKey?: string;
   /**
    * 选项 - 变化回调
    */
@@ -28,7 +28,7 @@ export interface IMenuItemGroupProps extends IBaseComponent {
   /**
    * 展开回调
    */
-  onOpenChange: (openKeys: string[]) => void;
+  onOpenChange?: (openKeys: string[]) => void;
 }
 
 export interface IMenuItemGroupState {
@@ -53,7 +53,7 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
       preCls, className,
     );
     const childrens = React.Children.toArray(children);
-    const paddingLeft = `${deep * 24}px`;
+    const paddingLeft = `${deep as number * 24}px`;
     return (
       <div
         className={clsName}
@@ -71,7 +71,7 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
             // tslint:disable
             React.Children.map(childrens, (child: ReactElement<any>) => {
               return React.cloneElement(child, {
-                deep: deep + 1,
+                deep: deep as number + 1,
                 activeKey,
                 onSelect,
               });
