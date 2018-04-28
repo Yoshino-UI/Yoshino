@@ -10,6 +10,7 @@ module.exports = {
   output: {
     filename: 'build.js',
     path: path.resolve(__dirname, './build'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -38,12 +39,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('./docs/index.html'),
-      title: 'Yoshino-UI'
+      inject: false,
     }),
   ],
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, "build"),
     compress: false,
-    port: 9000
+    port: 9000,
   },
 };

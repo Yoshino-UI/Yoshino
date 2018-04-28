@@ -21,8 +21,8 @@ initialState = { tag: '' };
     size="large"
     style={{width: '400px'}}
     placeholder="输入关键词可以搜索对应icon"
-    onChange={(e) => {
-      setState({ tag: e.target.value })
+    onChange={(v) => {
+      setState({ tag: v })
     }}
   />
   <div style= {{
