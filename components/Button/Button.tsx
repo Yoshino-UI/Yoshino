@@ -25,19 +25,19 @@ export interface IButtonProps extends IBaseComponent {
   /**
    * 幽灵模式，默认false
    */
-  ghost: boolean;
+  ghost?: boolean;
   /**
    * 图标
    */
-  icon: string | ReactNode;
+  icon?: string | ReactNode;
   /**
    * 加载状态
    */
-  loading: boolean;
+  loading?: boolean;
   /**
    * 图标位置
    */
-  tail: boolean;
+  tail?: boolean;
 }
 
 export interface IButtonState {
