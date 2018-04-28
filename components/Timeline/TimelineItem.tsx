@@ -74,17 +74,15 @@ export class TimelineItem extends Component<ITimelineItemProps, ITimelineItemSta
     } = this.props;
     const preCls = 'yoshino-timeline-item';
     const lineStyle = {
-      borderLeft: `
-      ${lineType ? lineType : parentLine.type}
-      ${parentLine.width}px
-      ${lineColor ? lineColor : parentLine.color}`,
+      borderLeftColor: `{lineColor ? lineColor : parentLine.color}`,
+      borderLeftWidth: `${parentLine.width}px`,
+      borderLeftStyle: `${lineType ? lineType : parentLine.type}`,
       left: `${parentIcon.width / 2 - parentLine.width / 2}px`,
     };
     const iconStyle = {
-      border: `
-      ${iconType ? iconType : parentIcon.type}
-      ${iconLine ? iconLine : parentIcon.line}px
-      ${ iconColor ? iconColor : parentIcon.color}`,
+      borderStyle: `${iconType ? iconType : parentIcon.type}`,
+      borderWidth: `${iconLine ? iconLine : parentIcon.line}px`,
+      borderColor: `${ iconColor ? iconColor : parentIcon.color}`,
       width: `${parentIcon.width}px`,
       height: `${parentIcon.width}px`,
       borderRadius: '50%',
@@ -101,7 +99,7 @@ export class TimelineItem extends Component<ITimelineItemProps, ITimelineItemSta
         style={style}
         {...otherProps}
       >
-        <div className={`${preCls}-line`} style={lineStyle}/>
+        <div className={`${preCls}-line`} style={lineStyle as React.CSSProperties}/>
         <div className={`${preCls}-icon`}>
           {icon ? icon : <div style={iconStyle}/>}
         </div>

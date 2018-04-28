@@ -47,10 +47,10 @@ export class Timeline extends Component<ITimelineProps, ITimelineState> {
   static Item: any;
 
   static defaultProps = {
-    iconColor: '#f63',
+    iconColor: '',
     iconLine: 2,
     iconType: 'solid',
-    lineColor: '#e8e8e8',
+    lineColor: '',
     lineType: 'solid',
     iconWidth: 15,
     lineWidth: 2,

@@ -13,12 +13,16 @@ gulp.task('less', function () {
       plugins: [autoprefix],
     }))
     .pipe(cleanCSS())
-    .pipe(gulp.dest(path.resolve('../lib')));
+    .pipe(gulp.dest(path.resolve('../lib')))
+    .pipe(gulp.dest(path.resolve('../es6')));
 });
 
 gulp.task('font', function () {
   return gulp.src(path.resolve('../components/styles/common/iconfont/fonts/*'))
-    .pipe(gulp.dest(path.resolve('../lib/fonts')));
+    .pipe(gulp.dest(path.resolve('../lib/Icon/fonts')))
+    .pipe(gulp.dest(path.resolve('../lib/fonts')))
+    .pipe(gulp.dest(path.resolve('../es6/Icon/fonts')))
+    .pipe(gulp.dest(path.resolve('../es6/fonts')));    
 });
 
 // 单个组件打包less
