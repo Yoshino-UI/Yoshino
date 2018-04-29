@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Switch, Route, Router } from 'react-router';
+import { Switch, Route, Router, Redirect } from 'react-router';
 import createHashHistory from 'history/createBrowserHistory';
 import Index from './index';
 import Components from './components/index';
@@ -30,6 +30,8 @@ export default class App extends Component {
               )
             })
           }
+          <Redirect from="/components" to="/components/"/>
+          <Route component={Index}/>
         </Switch>
       </Router>
     )
