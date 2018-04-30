@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Switch, Route, Router, Redirect } from 'react-router';
 import createHashHistory from 'history/createBrowserHistory';
 import Index from './index';
-import Components from './components/index';
+import Components from './pages/index';
 
 const Routes = [
   {

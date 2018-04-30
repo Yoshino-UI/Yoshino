@@ -47,7 +47,7 @@ export default [
       },
       {
         name: 'Switch(开关)',
-        keyId: 'icon',
+        keyId: 'switch',
       },
     ],
   },

@@ -3,12 +3,17 @@ import { Component } from 'react';
 import { Switch, Route, Router } from 'react-router';
 import createHashHistory from 'history/createBrowserHistory';
 import Button from './Button';
+import Index from './Index/index';
 import {Menu} from '../../components/';
 import './index.less';
 import menuObj from './menu';
 import { MenuItem } from '../../components/Menu/MenuItem';
 
 const Routes = [
+  {
+    component: Index,
+    path: '',
+  },
   {
     component: Button,
     path: 'button'
@@ -31,7 +36,7 @@ export default class Components extends Component {
             Yoshino
           </div>
         </div>
-        <div className={`${preCls}-container`}>
+        <div className={`${preCls}-wrapper`}>
           <div className={`${preCls}-menu`}>
           <Menu
             style={{ width: 256 }}
@@ -60,18 +65,21 @@ export default class Components extends Component {
             </SubMenu>
           </Menu>
           </div>
+          <div className={`${preCls}-container`}>
+            <Router history={history}>
+              <Switch>
+                {
+                  Routes.map((item, key) => {
+                    return (
+                      <Route {...item} path={`/components/${item.path}`} key={key} exact/>
+                    )
+                  })
+                }
+              </Switch>
+            </Router>
+          </div>
         </div>
-        <Router history={history}>
-          <Switch>
-            {
-              Routes.map((item, key) => {
-                return (
-                  <Route {...item} path={`/components/${item.path}`} key={key} exact/>
-                )
-              })
-            }
-          </Switch>
-        </Router>
+        
       </div>
     )
   }

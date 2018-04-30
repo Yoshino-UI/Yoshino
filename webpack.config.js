@@ -33,6 +33,10 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
         use: ['url-loader'],
       },
+      {
+        test: /\.md$/,
+        use: ['raw-loader'],
+      },
     ]
   },
   devtool: 'source-map',
