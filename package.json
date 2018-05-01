@@ -28,6 +28,7 @@
     "build": "styleguidist build",
     "build:yoshino": "node scripts/build.js",
     "new": "node scripts/new-component.js",
+    "new:docs": "node scripts/new-docs.js",
     "precommit": "npm run lint",
     "lint:ts": "tslint -p .",
     "lint:less": "stylelint 'components/**/**.less --syntax less'",

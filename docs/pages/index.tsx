@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { Switch, Route } from 'react-router';
-import Button from './Button';
-import Yoshino from './Yoshino';
-import Logs from './Logs/index';
-import Start from './Start/index';
 import {Menu} from '../../components/';
 import './index.less';
 import menuObj from './menu';
 import { MenuItem } from '../../components/Menu/MenuItem';
 import { RouteComponentProps } from 'react-router';
-
+import Routes from './routes';
 
 
 export interface IProps  extends RouteComponentProps<{name: string}>{
@@ -19,24 +15,6 @@ export interface IProps  extends RouteComponentProps<{name: string}>{
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-const Routes = [
-  {
-    component: Yoshino,
-    path: '/components/yoshino',
-  },
-  {
-    component: Start,
-    path: '/components/start',
-  },
-  {
-    component: Logs,
-    path: '/components/logs',
-  },
-  {
-    component: Button,
-    path: '/components/button'
-  }
-];
 
 export default class Components extends Component<IProps> {
   pushHistory = (url: string) => {

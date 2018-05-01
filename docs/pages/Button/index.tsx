@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Component } from 'react';
-import './index.less';
 import * as md from './index.md';
 import Markdown from '../../componens/Markdown/';
 import CodeBox from '../../componens/CodeBox/';
@@ -25,7 +24,7 @@ import ButtonDisabledDemo from './demo/buttonDisabled';
 import * as buttonDisabledMd from './demo/buttonDisabled.md';
 const buttonDisabledCode = require('!raw-loader!./demo/buttonDisabled');
 
-export default class Index extends Component {
+export default class ButtonPage extends Component {
   render() {
     return (
       <div className="">

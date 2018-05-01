@@ -13,7 +13,11 @@
 
 ### 图标
 ```js
-const {iconName} = require('./iconName.js');
+const {iconName: {
+  name: string;
+  tag: string;
+}} = require('./iconName.js');
+
 initialState = { tag: '' };
 <div>
   <Input
