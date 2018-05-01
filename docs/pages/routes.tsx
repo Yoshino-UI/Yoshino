@@ -3,6 +3,7 @@ import Logs from './Logs/index';
 import Start from './Start/index';
 import Button from './Button';
 import Icon from './Icon';
+import AutoComplete from './AutoComplete';
 
 
 export default [
@@ -25,5 +26,9 @@ export default [
   {
     component: Icon,
     path: '/components/icon'
-  }
+  },
+  {
+    component: AutoComplete,
+    path: '/components/autocomplete'
+  },
 ];
