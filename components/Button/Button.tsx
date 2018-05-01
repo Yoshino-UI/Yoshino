@@ -13,7 +13,7 @@ export interface IButtonProps extends IBaseComponent {
   /**
    * 按钮类型
    */
-  type?: 'primary' | 'dashed' | 'danger';
+  type?: 'primary' | 'dashed' | 'danger' | 'default';
   /**
    * 默认正常形式
    */
@@ -52,6 +52,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
     ghost: false,
     loading: false,
     tail: false,
+    type: 'default',
   };
 
   render() {

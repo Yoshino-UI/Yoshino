@@ -1,9 +1,21 @@
 import {ReactNode} from 'react';
 
+// 通用事件
+export interface IEvent {
+  // tslint:disable
+  onEnter?: any;
+  onKeyDown?: any;
+  onKeyUp?: any;
+  onChange?: any;
+  onClick?: any;
+  onFocus?: any;
+  onBlur?: any;
+}
+
 /**
  * 所有组件都应该实现的
  */
-export interface IBaseComponent {
+export interface IBaseComponent extends IEvent {
   /**
    * 子元素
    */
@@ -27,6 +39,8 @@ export interface IAbstractInput extends IBaseComponent {
   maxLength?: number;
   disabled?: boolean;
   readOnly?: boolean;
+  autoComplete?: string;
+  autoFocus?: boolean;
   onEnter?: React.FormEventHandler<HTMLInputElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
@@ -34,6 +48,4 @@ export interface IAbstractInput extends IBaseComponent {
   onClick?: React.FormEventHandler<HTMLInputElement>;
   onFocus?: React.FormEventHandler<HTMLInputElement>;
   onBlur?: React.FormEventHandler<HTMLInputElement>;
-  autoComplete?: string;
-  autoFocus?: boolean;
 }

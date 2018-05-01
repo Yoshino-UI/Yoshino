@@ -4,15 +4,18 @@ import { Switch, Route, Router, Redirect } from 'react-router';
 import createHashHistory from 'history/createBrowserHistory';
 import Index from './index';
 import Components from './pages/index';
+import { RouteProps } from 'react-router';
 
-const Routes = [
+
+const Routes: RouteProps[] = [
   {
     component: Index,
     path: '/',
+    exact: true,
   },
   {
     component: Components,
-    path: '/components/*',
+    path: '/components/:name',
   },
 ];
 
@@ -26,12 +29,11 @@ export default class App extends Component {
           {
             Routes.map((item, key) => {
               return (
-                <Route {...item} key={key} exact/>
+                <Route {...item} key={key}/>
               )
             })
           }
-          <Redirect from="/components" to="/components/"/>
-          <Route component={Index}/>
+          <Redirect from="/components" to='/components/yoshino'/>
         </Switch>
       </Router>
     )

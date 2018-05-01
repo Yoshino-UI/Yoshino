@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
-import * as md from './intro.md';
-import Markdown from '../../componens/markdown';
+import * as md from './logs.md';
+import Markdown from '../../componens/Markdown';
 
-export default class Index extends Component {
+export default class Logs extends Component {
   render() {
     return (
       <div className="">
