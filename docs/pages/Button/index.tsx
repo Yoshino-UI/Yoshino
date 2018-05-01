@@ -3,6 +3,8 @@ import { Component } from 'react';
 import * as md from './index.md';
 import Markdown from '../../componens/Markdown/';
 import CodeBox from '../../componens/CodeBox/';
+import ApiBox from '../../componens/ApiBox/';
+import Api from './api';
 
 import ButtonTypeDemo from './demo/buttonType';
 import * as buttonTypeMd from './demo/buttonType.md';
@@ -38,6 +40,8 @@ export default class ButtonPage extends Component {
         <CodeBox text={buttonGhostMd} demo={<ButtonGhostDemo/>} code={buttonGhostCode}/>
 
         <CodeBox text={buttonDisabledMd} demo={<ButtonDisabledDemo/>} code={buttonDisabledCode}/>
+
+        <ApiBox {...Api}/>
       </div>
     )
   }

@@ -21,7 +21,7 @@ export interface IButtonProps extends IBaseComponent {
   /**
    * 默认default
    */
-  size?: 'small' | 'large';
+  size?: 'small' | 'large' | 'default';
   /**
    * 幽灵模式，默认false
    */
@@ -53,6 +53,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
     loading: false,
     tail: false,
     type: 'default',
+    size: 'default',
   };
 
   render() {

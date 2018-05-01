@@ -9,7 +9,7 @@ export interface IProps {
   code?: string;
 }
 
-export default class Codebox extends Component<IProps> {
+export default class CodeBox extends Component<IProps> {
 
   componentDidMount() {
     
