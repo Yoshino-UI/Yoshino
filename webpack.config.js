@@ -23,7 +23,12 @@ module.exports = {
       {
         test: /\.(css|less)$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
-        include: [path.resolve('components'), path.resolve('scripts'), path.resolve('docs')],
+        include: [
+          path.resolve('components'),
+          path.resolve('scripts'),
+          path.resolve('docs'),
+          path.resolve('node_modules/prismjs/themes/'),
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)$/,

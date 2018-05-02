@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
 import * as md from './index.md';
-import Markdown from '../../componens/Markdown/';
-import CodeBox from '../../componens/CodeBox/';
+import Markdown from '../../components/Markdown/';
+import CodeBox from '../../components/CodeBox/';
 
 import IconDemo from './demo/iconDemo';
 import * as iconMd from './demo/iconDemo.md';

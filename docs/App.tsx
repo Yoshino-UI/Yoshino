@@ -33,12 +33,7 @@ export default class App extends Component {
               )
             })
           }
-<<<<<<< HEAD
-          <Redirect from="/components" to="/components/"/>
-          <Route component={Index}/>
-=======
           <Redirect from="/components" to='/components/yoshino'/>
->>>>>>> eead5d7134113bd5bb617f03e84d08e42e6a7594
         </Switch>
       </Router>
     )

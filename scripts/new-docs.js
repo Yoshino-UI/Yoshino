@@ -25,6 +25,8 @@ import { Component } from 'react';
 import * as md from './index.md';
 import Markdown from '../../componens/Markdown/';
 import CodeBox from '../../componens/CodeBox/';
+import ApiBox from '../../components/ApiBox/';
+import Api from './api';
 
 import ${component}Demo from './demo/${low}Demo';
 import * as ${low}DemoMd from './demo/${low}Demo.md';
@@ -36,6 +38,8 @@ export default class ${component}Page extends Component {
       <div>
         <Markdown text={md}/>
         <CodeBox text={${low}DemoMd} demo={<${component}Demo/>} code={${low}DemoCode}/>
+
+        <ApiBox {...Api}/>
       </div>
     )
   }
@@ -53,6 +57,29 @@ function fileReadmeMd(component) {
 `;
   writeFile('index.md', content, component);
 }
+
+function fileApiTsx(component) {
+  const content = `export default {
+  title: "API",
+  json: [
+    {
+      props: "",
+      intro: "",
+      type: "",
+      defaultValue: "",
+    },
+    {
+      props: "",
+      intro: "",
+      type: "",
+      defaultValue: "",
+    },
+  ]
+}
+`;
+  writeFile('api.tsx', content, component);
+}
+
 
 function demoReadmeMd(component) {
   const low = capitalizeFirstLetter(component); // 小写
@@ -98,6 +125,7 @@ fs.mkdirSync(path.resolve('./docs/pages/', component));
 fs.mkdirSync(path.resolve('./docs/pages/', component, 'demo'));
 fileDocsTsx(component);
 fileReadmeMd(component);
+fileApiTsx(component);
 demoReadmeMd(component);
 demoTsx(component);
 

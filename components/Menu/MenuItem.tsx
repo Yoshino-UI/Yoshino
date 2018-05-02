@@ -1,4 +1,3 @@
-
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
@@ -48,12 +47,9 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
     if (onSelect) {
       onSelect(keyId);
     }
-<<<<<<< HEAD
-=======
     if (onClick) {
       onClick();
     }
->>>>>>> eead5d7134113bd5bb617f03e84d08e42e6a7594
   }
 
   render() {

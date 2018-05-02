@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import './index.less';
 import Markdown from '../Markdown';
+import * as Prism from 'prismjs';
+require('prismjs/components/prism-jsx.min');
+require('../../../node_modules/prismjs/themes/prism.css')
 
 export interface IProps {
   text: any;
@@ -12,14 +15,13 @@ export interface IProps {
 export default class CodeBox extends Component<IProps> {
 
   componentDidMount() {
-    
   }
 
   render() {
     const {code, text, demo} = this.props;
-    const demoHTML = `\`\`\`jsx
-${code}
-\`\`\``;
+    const demoHTML = {__html: code ? Prism.highlight(code as string, Prism.languages.jsx) : ''};
+// console.log(Prism.highlight(code as string, Prism.languages.js))
+
     return (
       <div className="code-box">
         <div className="code-box-intro">
@@ -30,9 +32,9 @@ ${code}
         </div>
         {
           code ? 
-          <div className="code-box-demo">
-            <Markdown text={demoHTML}/>
-          </div> : null
+          <pre>
+            <code className="language-jsx" dangerouslySetInnerHTML={demoHTML}/>
+          </pre> : null
         }
       </div>
     );

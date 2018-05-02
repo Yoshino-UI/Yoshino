@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
 import * as md from './index.md';
-import Markdown from '../../componens/Markdown/';
-import CodeBox from '../../componens/CodeBox/';
-import ApiBox from '../../componens/ApiBox/';
+import Markdown from '../../components/Markdown/';
+import CodeBox from '../../components/CodeBox/';
+import ApiBox from '../../components/ApiBox/';
 import Api from './api';
 
 import ButtonTypeDemo from './demo/buttonType';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import * as md from './logs.md';
-import Markdown from '../../componens/Markdown';
+import Markdown from '../../components/Markdown';
 
 export default class Logs extends Component {
   render() {
