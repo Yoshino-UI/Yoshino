@@ -18,6 +18,10 @@
     cursor: pointer;
     margin: 4px 0;
     position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 40px;
     
     &:hover {
       color: @primary-color;
@@ -66,7 +70,10 @@
     font-size: @font-size-base;
     height: 40px;
     line-height: 40px;
-    color: @color-disabled;    
+    color: @color-disabled;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;    
   }
 }
 
@@ -80,6 +87,9 @@
   margin: 4px 0;
   transition: @transition-base;
   position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   
   &:hover:not(&-disabled) {
     color: @primary-color;

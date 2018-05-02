@@ -41,13 +41,19 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
   };
 
   onSelect = () => {
-    const {onSelect, keyId, disabled} = this.props;
+    const {onSelect, keyId, disabled, onClick} = this.props;
     if (disabled) {
       return;
     }
     if (onSelect) {
       onSelect(keyId);
     }
+<<<<<<< HEAD
+=======
+    if (onClick) {
+      onClick();
+    }
+>>>>>>> eead5d7134113bd5bb617f03e84d08e42e6a7594
   }
 
   render() {
@@ -67,10 +73,10 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
     const paddingLeft = `${deep as number * 24}px`;
     return (
       <li
+        {...otherProps}
         className={clsName}
         style={{paddingLeft, ...style}}
         onClick={this.onSelect}
-        {...otherProps}
       >
         {children}
       </li>
