@@ -9,10 +9,6 @@ export interface IIconProps extends IBaseComponent {
    * 图标名称
    */
   type: string;
-  /**
-   * 点击事件
-   */
-  onClick?: () => void;
 }
 
 export interface IIconState {

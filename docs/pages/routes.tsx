@@ -4,6 +4,8 @@ import Start from './Start/index';
 import Button from './Button';
 import Icon from './Icon';
 import AutoComplete from './AutoComplete';
+import CheckBox from './CheckBox';
+
 
 
 export default [
@@ -30,5 +32,9 @@ export default [
   {
     component: AutoComplete,
     path: '/components/autocomplete'
+  },
+  {
+    component: CheckBox,
+    path: '/components/checkbox'
   },
 ];

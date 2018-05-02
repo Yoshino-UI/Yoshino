@@ -3,6 +3,8 @@ import { Component } from 'react';
 import * as md from './index.md';
 import Markdown from '../../components/Markdown/';
 import CodeBox from '../../components/CodeBox/';
+import ApiBox from '../../components/ApiBox/';
+import Api from './api';
 
 import IconDemo from './demo/iconDemo';
 import * as iconMd from './demo/iconDemo.md';
@@ -19,6 +21,8 @@ export default class IconPage extends Component {
         <CodeBox text={iconMd} demo={<IconDemo/>} code={iconCode}/>
 
         <CodeBox text={iconSearchMd} demo={<IconSearch/>}/>
+
+        <ApiBox api={Api}/>
       </div>
     )
   }

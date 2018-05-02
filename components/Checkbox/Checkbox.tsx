@@ -14,7 +14,7 @@ export interface ICheckboxProps extends IBaseComponent {
   /**
    * 是否选中
    */
-  checked: boolean;
+  checked?: boolean;
   /**
    * 是否禁用
    */
@@ -22,11 +22,11 @@ export interface ICheckboxProps extends IBaseComponent {
   /**
    * 组名
    */
-  name: string;
+  name?: string;
   /**
    * 通知checkboxGroup
    */
-  onChange: (value: any) => void;
+  onChange?: (value: any) => void;
 }
 
 export interface ICheckboxState {
@@ -39,6 +39,7 @@ export interface ICheckboxState {
 export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
   static defaultProps = {
     disabled: false,
+    checked: false,
   };
 
   onChange = (value: any) => {
@@ -46,7 +47,9 @@ export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
     if (disabled) {
       return;
     }
-    onChange(value);
+    if (onChange) {
+      onChange(value);
+    }
   }
 
   static Group: typeof CheckboxGroup;

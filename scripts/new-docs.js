@@ -23,8 +23,8 @@ function fileDocsTsx(component) {
   const content = `import * as React from 'react';
 import { Component } from 'react';
 import * as md from './index.md';
-import Markdown from '../../componens/Markdown/';
-import CodeBox from '../../componens/CodeBox/';
+import Markdown from '../../components/Markdown/';
+import CodeBox from '../../components/CodeBox/';
 import ApiBox from '../../components/ApiBox/';
 import Api from './api';
 
@@ -39,7 +39,7 @@ export default class ${component}Page extends Component {
         <Markdown text={md}/>
         <CodeBox text={${low}DemoMd} demo={<${component}Demo/>} code={${low}DemoCode}/>
 
-        <ApiBox {...Api}/>
+        <ApiBox api={Api}/>
       </div>
     )
   }
@@ -59,23 +59,25 @@ function fileReadmeMd(component) {
 }
 
 function fileApiTsx(component) {
-  const content = `export default {
-  title: "API",
-  json: [
-    {
-      props: "",
-      intro: "",
-      type: "",
-      defaultValue: "",
-    },
-    {
-      props: "",
-      intro: "",
-      type: "",
-      defaultValue: "",
-    },
-  ]
-}
+  const content = `export default [
+  {
+    title: "API",
+    json: [
+      {
+        props: "",
+        intro: "",
+        type: "",
+        defaultValue: "",
+      },
+      {
+        props: "",
+        intro: "",
+        type: "",
+        defaultValue: "",
+      },
+    ]
+  }
+]
 `;
   writeFile('api.tsx', content, component);
 }

@@ -41,7 +41,7 @@ export default class ButtonPage extends Component {
 
         <CodeBox text={buttonDisabledMd} demo={<ButtonDisabledDemo/>} code={buttonDisabledCode}/>
 
-        <ApiBox {...Api}/>
+        <ApiBox api={Api}/>
       </div>
     )
   }

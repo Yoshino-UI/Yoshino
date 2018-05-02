@@ -18,11 +18,11 @@ export interface ICheckboxGroupProps extends IBaseComponent {
   /**
    * 变化回调
    */
-  onChange: (values: any[]) => void;
+  onChange?: (values: any[]) => void;
   /**
    * 默认值
    */
-  defaultValue: any[];
+  defaultValue?: any[];
 }
 
 export interface ICheckboxGroupState {
@@ -34,7 +34,7 @@ export interface ICheckboxGroupState {
  */
 export class CheckboxGroup extends Component<ICheckboxGroupProps, ICheckboxGroupState> {
   static defaultProps = {
-
+    defaultValue: [],
   };
 
   state = {

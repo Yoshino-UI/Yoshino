@@ -3,6 +3,8 @@ import { Component } from 'react';
 import * as md from './index.md';
 import Markdown from '../../components/Markdown/';
 import CodeBox from '../../components/CodeBox/';
+import ApiBox from '../../components/ApiBox/';
+import Api from './api';
 
 import AutoCompleteDemo from './demo/autoCompleteDemo';
 import * as autoCompleteDemoMd from './demo/autoCompleteDemo.md';
@@ -20,6 +22,8 @@ export default class AutoCompletePage extends Component {
         <CodeBox text={autoCompleteDemoMd} demo={<AutoCompleteDemo/>} code={autoCompleteDemoCode}/>
 
         <CodeBox text={autoCompleteFilterMd} demo={<AutoCompleteFilter/>} code={autoCompleteFilterCode}/>
+        
+        <ApiBox api={Api}/>
       </div>
     )
   }
