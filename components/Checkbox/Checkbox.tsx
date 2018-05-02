@@ -20,10 +20,6 @@ export interface ICheckboxProps extends IBaseComponent {
    */
   disabled?: boolean;
   /**
-   * 组名
-   */
-  name?: string;
-  /**
    * 通知checkboxGroup
    */
   onChange?: (value: any) => void;
@@ -55,7 +51,7 @@ export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
   static Group: typeof CheckboxGroup;
 
   render() {
-    const {className, style, name, value, checked, disabled, children, onChange, ...otherProps} = this.props;
+    const {className, style, value, checked, disabled, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-checkbox';
     const clsName = classNames(
       preCls,
@@ -77,7 +73,7 @@ export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
             style={style}
             {...otherProps}
           />
-          <input type='checkbox' className={`${preCls}-input`} {...{name, value, checked}}/>
+          <input type='checkbox' className={`${preCls}-input`} {...{value, checked}}/>
         </span>
         <span className={`${preCls}-text`}>{children}</span>
       </span>

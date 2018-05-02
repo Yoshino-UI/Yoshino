@@ -10,11 +10,7 @@ export interface ICheckboxGroupProps extends IBaseComponent {
   /**
    * 选中的值
    */
-  value?: any;
-  /**
-   * 子元素的name
-   */
-  name: string;
+  value?: any[];
   /**
    * 变化回调
    */
@@ -38,7 +34,7 @@ export class CheckboxGroup extends Component<ICheckboxGroupProps, ICheckboxGroup
   };
 
   state = {
-    value: this.props.defaultValue,
+    value: this.props.defaultValue as any[],
   };
 
   onChange = (value: any) => {
@@ -46,8 +42,8 @@ export class CheckboxGroup extends Component<ICheckboxGroupProps, ICheckboxGroup
   }
 
   onChangeTrigger = (value: any) => {
-    const {onChange, value: valueProps} = this.props;
-    const values =  valueProps ? valueProps : this.state.value;
+    const {onChange} = this.props;
+    const values =  this.getValue();
 
     if (values.indexOf(value) !== -1) {
       values.splice(values.indexOf(value), 1);
@@ -62,10 +58,15 @@ export class CheckboxGroup extends Component<ICheckboxGroupProps, ICheckboxGroup
     }
   }
 
+  getValue = () => {
+    const {value} = this.props;
+    return value !== undefined ? value : this.state.value;
+  }
+
   render() {
-    const {className, style, name, value, defaultValue, children, onChange, ...otherProps} = this.props;
+    const {className, style, value, defaultValue, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-radio-group';
-    const inValue = value ? value : this.state.value;
+    const inValue = this.getValue();
     const clsName = classNames(
       preCls, className,
     );
@@ -79,7 +80,6 @@ export class CheckboxGroup extends Component<ICheckboxGroupProps, ICheckboxGroup
        {
          React.Children.map(childrens, (ele: React.ReactElement<ICheckboxProps>) => {
           return React.cloneElement(ele, {
-            name,
             checked: inValue.indexOf(ele.props.value) !== -1,
             onChange: this.onChange,
           });

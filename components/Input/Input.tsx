@@ -8,11 +8,11 @@ export interface IInputProps extends IAbstractInput {
   /**
    * 受控 - 输入框的值
    */
-  value?: any;
+  value?: string;
   /**
    * 输入框的值
    */
-  defaultValue?: any;
+  defaultValue?: string;
   /**
    * 组件大小
    */
@@ -21,10 +21,6 @@ export interface IInputProps extends IAbstractInput {
    * 回车回调事件
    */
   onEnter?: () => void;
-  /**
-   * 变化回调
-   */
-  onChange?: (value: any) => void;
   /**
    * 头部
    */
@@ -60,7 +56,7 @@ export class Input extends Component<IInputProps, IInputState> {
   };
 
   state = {
-    value: this.props.defaultValue,
+    value: this.props.defaultValue as string,
   };
 
   getValue = () => {
@@ -71,7 +67,7 @@ export class Input extends Component<IInputProps, IInputState> {
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
     if (onChange) {
-      onChange(e.target.value);
+      onChange(e);
     }
     this.setState({value: e.target.value});
   }

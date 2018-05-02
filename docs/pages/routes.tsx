@@ -5,7 +5,7 @@ import Button from './Button';
 import Icon from './Icon';
 import AutoComplete from './AutoComplete';
 import CheckBox from './CheckBox';
-
+import Input from './Input';
 
 
 export default [
@@ -36,5 +36,9 @@ export default [
   {
     component: CheckBox,
     path: '/components/checkbox'
+  },
+  {
+    component: Input,
+    path: '/components/Input'
   },
 ];

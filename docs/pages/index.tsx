@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { Switch, Route } from 'react-router';
+import { Link } from 'react-router-dom';
 import {Menu} from '../../components/';
 import './index.less';
 import menuObj from './menu';
@@ -28,7 +29,7 @@ export default class Components extends Component<IProps> {
       <div>
         <div className={`${preCls}-header`}>
           <div className={`${preCls}-logo`}>
-            Yoshino
+            <Link to='/'>Yoshino</Link>
           </div>
         </div>
         <div className={`${preCls}-wrapper`}>
