@@ -7,6 +7,8 @@ import AutoComplete from './AutoComplete';
 import CheckBox from './CheckBox';
 import Input from './Input';
 import InputNumber from './InputNumber';
+import Rate from './Rate';
+import Radio from './Radio';
 
 
 
@@ -46,5 +48,13 @@ export default [
   {
     component: InputNumber,
     path: '/components/inputnumber'
+  },
+  {
+    component: Rate,
+    path: '/components/rate'
+  },
+  {
+    component: Radio,
+    path: '/components/radio'
   },
 ];

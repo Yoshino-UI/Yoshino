@@ -9,19 +9,19 @@ export interface IRateProps extends IBaseComponent {
   /**
    * 总数
    */
-  count: number;
+  count?: number;
   /**
    * 初始值
    */
-  value: number;
+  value?: number;
   /**
    * 是否允许半值
    */
-  half: boolean;
+  half?: boolean;
   /**
    * 是否允许清除
    */
-  clear: boolean;
+  clear?: boolean;
   /**
    * 变化回调
    */
@@ -29,7 +29,7 @@ export interface IRateProps extends IBaseComponent {
   /**
    * 自定义字符
    */
-  character: string | ReactNode;
+  character?: string | ReactNode;
 }
 
 export interface IRateState {
@@ -42,8 +42,8 @@ export interface IRateState {
  */
 export class Rate extends Component<IRateProps, IRateState> {
   state = {
-    tempValue: this.props.value,
-    value: this.props.value,
+    tempValue: this.props.value as number,
+    value: this.props.value as number,
   };
 
   static defaultProps = {

@@ -32,6 +32,10 @@ import ${component}Demo from './demo/${low}Demo';
 import * as ${low}DemoMd from './demo/${low}Demo.md';
 const ${low}DemoCode = require('!raw-loader!./demo/${low}Demo');
 
+import ${component}Custom from './demo/${low}Custom';
+import * as ${low}CustomMd from './demo/${low}Custom.md';
+const ${low}CustomCode = require('!raw-loader!./demo/${low}Custom');
+
 export default class ${component}Page extends Component {
   render() {
     return (
@@ -39,6 +43,7 @@ export default class ${component}Page extends Component {
         <Markdown text={md}/>
         <CodeBox text={${low}DemoMd} demo={<${component}Demo/>} code={${low}DemoCode}/>
 
+        <CodeBox text={${low}CustomMd} demo={<${component}Custom/>} code={${low}CustomCode}/>
         <ApiBox api={Api}/>
       </div>
     )
@@ -88,6 +93,7 @@ function demoReadmeMd(component) {
   const content = `#### 
 `;
   writeFile(`demo/${low}Demo.md`, content, component);
+  writeFile(`demo/${low}Custom.md`, content, component);
 }
 
 function demoTsx(component) {
@@ -105,6 +111,7 @@ export default function () {
 }
 `;
   writeFile(`demo/${low}Demo.tsx`, content, component);
+  writeFile(`demo/${low}Custom.tsx`, content, component);
 }
 
 

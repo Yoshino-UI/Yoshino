@@ -10,19 +10,15 @@ export interface IRadioGroupProps extends IBaseComponent {
   /**
    * 选中的值
    */
-  value: any;
-  /**
-   * 子元素的name
-   */
-  name: string;
+  value?: any;
   /**
    * 变化回调
    */
-  onChange: (value: any) => void;
+  onChange?: (value: any) => void;
   /**
    * 默认值
    */
-  defaultValue: any;
+  defaultValue?: any;
 }
 
 export interface IRadioGroupState {
@@ -34,7 +30,7 @@ export interface IRadioGroupState {
  */
 export class RadioGroup extends Component<IRadioGroupProps, IRadioGroupState> {
   static defaultProps = {
-
+    defaultValue: '',
   };
 
   state = {
@@ -55,10 +51,15 @@ export class RadioGroup extends Component<IRadioGroupProps, IRadioGroupState> {
     }
   }
 
+  getValue = () => {
+    const {value} = this.props;
+    return value !== undefined ? value : this.state.value;
+  }
+
   render() {
-    const {className, style, name, value, defaultValue, children, onChange, ...otherProps} = this.props;
+    const {className, style, value, defaultValue, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-radio-group';
-    const inValue = value !== undefined ? value : this.state.value;
+    const inValue = this.getValue();
     const clsName = classNames(
       preCls, className,
     );
@@ -72,7 +73,6 @@ export class RadioGroup extends Component<IRadioGroupProps, IRadioGroupState> {
        {
          React.Children.map(childrens, (ele: React.ReactElement<IRadioProps>) => {
           return React.cloneElement(ele, {
-            name,
             checked: ele.props.value === inValue,
             onChange: this.onChange,
           });

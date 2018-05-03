@@ -10,23 +10,19 @@ export interface IRadioProps extends IBaseComponent {
   /**
    * 值
    */
-  value: any;
+  value?: any;
   /**
    * 是否选中
    */
-  checked: boolean;
+  checked?: boolean;
   /**
    * 是否禁用
    */
   disabled?: boolean;
   /**
-   * 组名
-   */
-  name: string;
-  /**
    * 通知radioGroup
    */
-  onChange: (value: any) => void;
+  onChange?: (value: any) => void;
 }
 
 export interface IRadioState {
@@ -39,6 +35,7 @@ export interface IRadioState {
 export class Radio extends Component<IRadioProps, IRadioState> {
   static defaultProps = {
     disabled: false,
+    checked: false,
   };
 
   onChange = (value: any) => {
@@ -46,13 +43,15 @@ export class Radio extends Component<IRadioProps, IRadioState> {
     if (disabled) {
       return;
     }
-    onChange(value);
+    if (onChange) {
+      onChange(value);
+    }
   }
 
   static Group: typeof RadioGroup;
 
   render() {
-    const {className, style, name, value, checked, disabled, children, onChange, ...otherProps} = this.props;
+    const {className, style, value, checked, disabled, children, onChange, ...otherProps} = this.props;
     const preCls = 'yoshino-radio';
     const clsName = classNames(
       preCls,
@@ -65,6 +64,7 @@ export class Radio extends Component<IRadioProps, IRadioState> {
     );
     return (
       <span
+        {...otherProps}
         className={wrapperCls}
         onClick={this.onChange.bind(this, value)}
       >
@@ -72,11 +72,10 @@ export class Radio extends Component<IRadioProps, IRadioState> {
           <span
             className={clsName}
             style={style}
-            {...otherProps}
           />
           <input type='radio' className={`${preCls}-input`} {...{name, value, checked}}/>
         </span>
-        <span className={`${preCls}-text`}>{children}</span>
+        {children ? <span className={`${preCls}-text`}>{children}</span> : null}
       </span>
     );
   }
