@@ -11,6 +11,5 @@
 ```js
 <div>
   <InputNumber value={-10} step={25} min={-100} max={100}/>
-  <InputNumber/>
 </div>
 ```

@@ -9,11 +9,11 @@ export interface IInputNumberProps extends IBaseComponent {
   /**
    * 输入框的值
    */
-  value: number;
+  value?: number;
   /**
    * 组件大小
    */
-  size: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large';
   /**
    * 变化回调事件
    */
@@ -21,14 +21,23 @@ export interface IInputNumberProps extends IBaseComponent {
   /**
    * 最小值
    */
-  min: number;
+  min?: number;
   /**
    * 最大值
    */
-  max: number;
+  max?: number;
   /**
    * 步长
    */
+  step?: number;
+}
+
+export interface IInputNumberDefaultProps extends IBaseComponent {
+  value: number;
+  size: 'small' | 'default' | 'large';
+  onChange: (value: number) => void;
+  min: number;
+  max: number;
   step: number;
 }
 
@@ -52,11 +61,11 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
   };
 
   state = {
-    value: this.props.value,
+    value: this.props.value as number,
   };
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {onChange, max, min} = this.props;
+    const {onChange, max, min} = this.props as IInputNumberDefaultProps;
     const value = e.target.value;
     if (value === '' || value === '-') {
       this.setState({
@@ -78,8 +87,8 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
   }
 
   onPlus = () => {
-    const {onChange, max} = this.props;
-    const value =  this.state.value + this.props.step;
+    const {onChange, max, step} = this.props as IInputNumberDefaultProps;
+    const value =  this.state.value + step;
     if (value <= max) {
       this.setState({
         value,
@@ -91,8 +100,8 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
   }
 
   onMinus = () => {
-    const {onChange, min} = this.props;
-    const value =  this.state.value - this.props.step;
+    const {onChange, min, step} = this.props as IInputNumberDefaultProps;
+    const value =  this.state.value - step;
     if (value >= min) {
       this.setState({
         value,
