@@ -8,7 +8,7 @@ export interface ISwitchProps extends IBaseComponent {
   /**
    * 大小 可选值
    */
-  size: 'default' | 'small';
+  size?: 'default' | 'small';
   /**
    * 变化时回调函数
    */
@@ -16,11 +16,15 @@ export interface ISwitchProps extends IBaseComponent {
   /**
    * 当前是否选中
    */
-  checked: boolean;
+  checked?: boolean;
+  /**
+   * 初始
+   */
+  defaultChecked?: boolean;
   /**
    * 是否禁用
    */
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export interface ISwitchState {
@@ -32,20 +36,20 @@ export interface ISwitchState {
  */
 export class Switch extends Component<ISwitchProps, ISwitchState> {
   state = {
-    checked: this.props.checked,
+    checked: this.props.defaultChecked as boolean,
   };
 
   static defaultProps = {
     size: 'default',
-    checked: false,
     disabled: false,
+    defaultChecked: false,
   };
 
   onClick = () => {
     if (this.props.disabled) {
-      return -1;
+      return;
     }
-    const checked = !this.state.checked;
+    const checked = !this.getChecked();
     this.setState({
       checked,
     });
@@ -54,9 +58,14 @@ export class Switch extends Component<ISwitchProps, ISwitchState> {
     }
   }
 
+  getChecked = () => {
+    const {checked} = this.props;
+    return checked !== undefined ? checked : this.state.checked;
+  }
+
   render() {
     const {className, style, size, disabled} = this.props;
-    const {checked} = this.state;
+    const checked = this.getChecked();
     const preCls = 'yoshino-switch';
     const switchCls = {
       [`${preCls}-checked`]: checked,

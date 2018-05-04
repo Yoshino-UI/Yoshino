@@ -12,7 +12,7 @@ export interface ISliderProps extends IBaseComponent {
   /**
    * 滑块值 - 非受控
    */
-  defaultValue: number;
+  defaultValue?: number;
   /**
    * 变化回调
    */
@@ -20,14 +20,21 @@ export interface ISliderProps extends IBaseComponent {
   /**
    * 最大值
    */
-  max: number;
+  max?: number;
   /**
    * 最小值
    */
-  min: number;
+  min?: number;
   /**
    * 禁用
    */
+  disabled?: boolean;
+}
+
+export interface ISliderDefaultProps extends IBaseComponent {
+  defaultValue: number;
+  max: number;
+  min: number;
   disabled: boolean;
 }
 
@@ -42,23 +49,24 @@ export class Slider extends Component<ISliderProps, ISliderState> {
   refSlider: HTMLElement;
   moving: boolean = false; // 当前是否处于拖动状态
 
-  static defaultProps = {
-    default: 0,
+  static defaultProps: ISliderDefaultProps = {
+    defaultValue: 0,
     max: 100,
     min: 0,
     disabled: false,
   };
 
   state = {
-    value: this.props.defaultValue,
+    value: this.props.defaultValue as number,
   };
 
   getValue = () => {
-    return this.props.value !== undefined ? this.props.value : this.state.value;
+    const {value} = this.props;
+    return value !== undefined ? value : this.state.value;
   }
 
   getPercent = () => {
-    const {max, min} = this.props;
+    const {max, min} = this.props as ISliderDefaultProps;
     const value = this.getValue();
     const range = max - min;
     const percent = (value - min) / range;
@@ -66,7 +74,7 @@ export class Slider extends Component<ISliderProps, ISliderState> {
   }
 
   onSliderClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const {max, min} = this.props;
+    const {max, min} = this.props  as ISliderDefaultProps;
     const slider = this.refSlider;
     const sliderRect = slider.getBoundingClientRect() as DOMRect;
     const sliderWidth = sliderRect.width;  // 滑动条宽度
@@ -77,7 +85,7 @@ export class Slider extends Component<ISliderProps, ISliderState> {
   }
 
   onSliderMouseDown = () => {
-    const {max, min} = this.props;
+    const {max, min} = this.props as ISliderDefaultProps;
     const slider = this.refSlider;
     const sliderRect = slider.getBoundingClientRect() as DOMRect;
     const sliderWidth = sliderRect.width;  // 滑动条宽度

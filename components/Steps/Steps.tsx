@@ -9,7 +9,7 @@ export interface IStepsProps extends IBaseComponent {
   /**
    * 方向 'vertical' | 'horizontal'
    */
-  direction: 'vertical' | 'horizontal';
+  direction?: 'vertical' | 'horizontal';
   /**
    * 当前步骤  从0开始计数
    */
@@ -17,7 +17,12 @@ export interface IStepsProps extends IBaseComponent {
   /**
    * 大小
    */
+  size?: 'default' | 'small';
+}
+
+export interface IStepsDefaultProps extends IStepsProps {
   size: 'default' | 'small';
+  direction: 'vertical' | 'horizontal';
 }
 
 export interface IStepsState {
@@ -37,7 +42,11 @@ export class Steps extends Component<IStepsProps, IStepsState> {
   static Item: typeof StepsItem;
 
   render() {
-    const {className, style, children, direction, size, current, ...otherProps} = this.props;
+    const {
+      className, style, children,
+      direction, size, current,
+      ...otherProps,
+    } = this.props as IStepsDefaultProps;
     const preCls = 'yoshino-steps';
     const clsName = classNames(
       preCls, `${preCls}-${direction}`, className,

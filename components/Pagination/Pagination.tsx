@@ -13,13 +13,13 @@ export interface IPaginationProps extends IBaseComponent {
   /**
    * 默认当前页数
    */
-  defaultCurrent: number;
+  defaultCurrent?: number;
   /**
    * 每页条数
    */
-  pageSize: number;
+  pageSize?: number;
   /**
-   * 总页数
+   * 总条数
    */
   total: number;
   /**
@@ -29,7 +29,7 @@ export interface IPaginationProps extends IBaseComponent {
   /**
    * 显示页码块最多的个数 - 默认值5
    */
-  max: number;
+  max?: number;
   /**
    * 自定义文本-下一页
    */
@@ -38,6 +38,12 @@ export interface IPaginationProps extends IBaseComponent {
    * 自定义文本-上一页
    */
   previous?: string | ReactNode;
+}
+
+export interface IPaginationDefaultProps extends IPaginationProps {
+  defaultCurrent: number;
+  max: number;
+  pageSize: number;
 }
 
 export interface IPaginationState {
@@ -55,13 +61,13 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   };
 
   state = {
-    current: this.props.defaultCurrent,
+    current: this.props.defaultCurrent as number,
   };
 
   renderPageList() {
     const preCls = 'yoshino-pagination';
-    const {current, max} = this.props;
-    const currentPage = current ? current : this.state.current;
+    const {max} = this.props as IPaginationDefaultProps;
+    const currentPage = this.getCurrent();
     const page = this.getPageSum();
     let list = [];
     let key = 0;
@@ -149,7 +155,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   onPrevious = () => {
-    let current = this.props.current ? this.props.current : this.state.current;
+    let current = this.getCurrent();
     if (current === 1) {
       return;
     }
@@ -159,7 +165,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   onNext = () => {
-    let current = this.props.current ? this.props.current : this.state.current;
+    let current = this.getCurrent();
     const page = this.getPageSum();
     if (current === page) {
       return;
@@ -170,7 +176,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   onChangeTrigger = (current: number) => {
-    const {onChange, pageSize} = this.props;
+    const {onChange, pageSize} = this.props as IPaginationDefaultProps;
     if (!this.props.current) {
       this.setState({
         current,
@@ -182,9 +188,9 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   onNextMore = () => {
-    const current = this.props.current ? this.props.current : this.state.current;
+    const current = this.getCurrent();
     const pageSum = this.getPageSum();
-    const {max} = this.props;
+    const {max} = this.props as IPaginationDefaultProps;
     const pageNo = current + max - 2;
     const jump = pageNo < pageSum ? pageNo : pageSum;
     if (!this.props.current) {
@@ -196,8 +202,8 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   onPreviousMore = () => {
-    const current = this.props.current ? this.props.current : this.state.current;
-    const {max} = this.props;
+    const current = this.getCurrent();
+    const {max} = this.props as IPaginationDefaultProps;
     const pageNo = current - max - 2;
     const jump = pageNo >= 1 ? pageNo : 1;
     if (!this.props.current) {
@@ -209,14 +215,19 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   getPageSum = () => {
-    const {total, pageSize} = this.props;
+    const {total, pageSize} = this.props as IPaginationDefaultProps;
     return Math.ceil(total / pageSize);
+  }
+
+  getCurrent = () => {
+    const {current} = this.props;
+    return current !== undefined ? current : this.state.current;
   }
 
   render() {
     const {className, style, onChange, total, pageSize, next, previous, ...otherProps} = this.props;
     const page = this.getPageSum();
-    const current = this.props.current ? this.props.current : this.state.current;
+    const current = this.getCurrent();
     const preCls = 'yoshino-pagination';
     const clsName = classNames(
       preCls, className,

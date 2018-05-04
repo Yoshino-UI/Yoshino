@@ -10,19 +10,19 @@ export interface ICollapseProps extends IBaseComponent {
   /**
    * 受控 - 激活key
    */
-  activeKey?: string[];
+  activeKeys?: string[];
   /**
    * 非受控 - 激活key
    */
-  defaultActiveKey: string[];
+  defaultActiveKeys?: string[];
   /**
    * 手风琴模式
    */
-  accordion: boolean;
+  accordion?: boolean;
   /**
    * 变化回调
    */
-  onChange?: (activeKey: string[]) => void;
+  onChange?: (activeKeys: string[]) => void;
 }
 
 export interface ICollapseState {
@@ -36,41 +36,41 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
   static Panel: typeof Panel;
 
   static defaultProps = {
-    defaultActiveKey: [],
+    defaultActiveKeys: [],
     accordion: false,
   };
 
   state = {
-    activeKey: this.props.defaultActiveKey,
+    activeKeys: this.props.defaultActiveKeys as string[],
   };
 
   getActiveKey = () => {
-    const {activeKey} = this.props;
-    return activeKey === undefined ? this.state.activeKey : activeKey;
+    const {activeKeys} = this.props;
+    return activeKeys === undefined ? this.state.activeKeys : activeKeys;
   }
 
   onChange = (key: string) => {
-    const activeKey = this.getActiveKey();
+    const activeKeys = this.getActiveKey();
     const {accordion} = this.props;
-    if (activeKey.indexOf(key) !== -1) {
-      activeKey.splice(activeKey.indexOf(key), 1);
+    if (activeKeys.indexOf(key) !== -1) {
+      activeKeys.splice(activeKeys.indexOf(key), 1);
     } else {
       if (accordion) {
-        activeKey[0] = key;
+        activeKeys[0] = key;
       } else {
-        activeKey.push(key);
+        activeKeys.push(key);
       }
     }
-    this.onChangeTrigger(activeKey);
+    this.onChangeTrigger(activeKeys);
   }
 
-  onChangeTrigger = (activeKey: string[]) => {
+  onChangeTrigger = (activeKeys: string[]) => {
     const {onChange} = this.props;
     if (onChange) {
-      onChange(activeKey);
+      onChange(activeKeys);
     }
     this.setState({
-      activeKey,
+      activeKeys,
     });
   }
 
@@ -81,7 +81,7 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
       preCls, className,
     );
     const childrens = React.Children.toArray(children);
-    const activeKey = this.getActiveKey();
+    const activeKeys = this.getActiveKey();
     return (
       <div
         className={clsName}
@@ -91,7 +91,7 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
         {
           React.Children.map(childrens, (item: React.ReactElement<IPanelProps>, index) => {
             return React.cloneElement(item, {
-              active: activeKey.indexOf(item.props.keyid) !== -1,
+              active: activeKeys.indexOf(item.props.keyId) !== -1,
               onChange: this.onChange,
               key: index,
             });

@@ -11,19 +11,19 @@ export interface ITagProps extends IBaseComponent {
   /**
    * 标签模式
    */
-  mode: 'custom' | 'geek';
+  mode?: 'custom' | 'geek';
   /**
    * 可否关闭
    */
-  closeable: boolean;
+  closeable?: boolean;
   /**
    * 颜色
    */
-  color: string;
+  color?: string;
   /**
    * 关闭回调
    */
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export interface ITagState {
@@ -75,7 +75,11 @@ export class Tag extends Component<ITagProps, ITagState> {
   }
 
   render() {
-    const {className, style, children, closeable, color, onClose, mode, ...otherProps} = this.props;
+    const {
+      className, style, children, closeable,
+      color, onClose, mode = 'custom',
+      ...otherProps,
+    } = this.props;
     const {show} = this.state;
     const preCls = 'yoshino-tag';
     const clsName = classNames(

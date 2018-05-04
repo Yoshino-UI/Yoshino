@@ -9,6 +9,25 @@ import Input from './Input';
 import InputNumber from './InputNumber';
 import Rate from './Rate';
 import Radio from './Radio';
+import Slider from './Slider';
+import Switch from './Switch';
+import Avatar from './Avatar';
+import Badge from './Badge';
+import Card from './Card';
+import Collapse from './Collapse';
+import Tag from './Tag';
+import Tooltip from './Tooltip';
+import Timeline from './Timeline';
+import Breadcrumb from './Breadcrumb';
+import Menu from './Menu/';
+import Pagination from './Pagination';
+import Steps from './Steps';
+import Loading from './Loading';
+import Progress from './Progress';
+import BackTop from './BackTop';
+import Divider from './Divider';
+
+
 
 
 
@@ -57,4 +76,73 @@ export default [
     component: Radio,
     path: '/components/radio'
   },
+  {
+    component: Slider,
+    path: '/components/slider'
+  },
+  {
+    component: Switch,
+    path: '/components/switch'
+  },
+  {
+    component: Avatar,
+    path: '/components/avatar'
+  },
+  {
+    component: Badge,
+    path: '/components/badge'
+  },
+  {
+    component: Card,
+    path: '/components/card'
+  },
+  {
+    component: Collapse,
+    path: '/components/collapse'
+  },
+  {
+    component: Tag,
+    path: '/components/tag'
+  },
+
+  {
+    component: Tooltip,
+    path: '/components/tooltip'
+  },
+  {
+    component: Timeline,
+    path: '/components/timeline'
+  },
+  {
+    component: Breadcrumb,
+    path: '/components/breadcrumb'
+  },
+  {
+    component: Menu,
+    path: '/components/menu'
+  },
+  {
+    component: Pagination,
+    path: '/components/pagination'
+  },
+  {
+    component: Steps,
+    path: '/components/steps'
+  },
+  {
+    component: Loading,
+    path: '/components/loading'
+  },
+  {
+    component: Progress,
+    path: '/components/progress'
+  },
+  {
+    component: BackTop,
+    path: '/components/backtop'
+  },
+  {
+    component: Divider,
+    path: '/components/divider',
+  }
 ];

@@ -17,23 +17,28 @@ export interface IStepsItemProps extends IBaseComponent {
   /**
    * steps方向
    */
-  direction: 'vertical' | 'horizontal';
+  direction?: 'vertical' | 'horizontal';
   /**
    * 步骤值
    */
-  value: number;
+  value?: number;
   /**
    * 大小
    */
-  size: 'default' | 'small';
+  size?: 'default' | 'small';
   /**
    * steps的步骤值
    */
-  current: number;
+  current?: number;
   /**
    * 当前步骤状态
    */
-  status: 'error' | 'finished';
+  status?: 'error' | 'finished';
+}
+
+export interface IStepsItemDefaultProps extends IStepsItemProps {
+  value: number;
+  current: number;
 }
 
 export interface IStepsItemState {
@@ -54,7 +59,7 @@ export class StepsItem extends Component<IStepsItemProps, IStepsItemState> {
       direction, value, size,
       current, status, icon,
       children, ...otherProps,
-    } = this.props;
+    } = this.props as IStepsItemDefaultProps;
     const preCls = 'yoshino-steps-item';
     const clsName = classNames(
       preCls, `${preCls}-${size}`,

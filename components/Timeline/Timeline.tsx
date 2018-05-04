@@ -3,6 +3,7 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
+import TimelineItem from './TimelineItem';
 
 export interface ITimelineProps extends IBaseComponent {
   /**
@@ -44,7 +45,7 @@ export interface ITimelineState {
  */
 export class Timeline extends Component<ITimelineProps, ITimelineState> {
   // tslint:disable
-  static Item: any;
+  static Item: typeof TimelineItem;
 
   static defaultProps = {
     iconColor: '',

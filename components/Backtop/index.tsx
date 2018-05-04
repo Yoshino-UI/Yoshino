@@ -1,5 +1,5 @@
 import Backtop from './Backtop';
-import { IBacktopProps } from './Backtop';
+import { IBackTopProps } from './Backtop';
 
-export {IBacktopProps};
+export {IBackTopProps};
 export default Backtop;

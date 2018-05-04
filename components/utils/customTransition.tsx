@@ -7,7 +7,7 @@ export interface ICustomTransitionProps {
   /**
    * 关闭回调
    */
-  onClose: () => void;
+  onClose?: () => void;
   /**
    * 控制显示
    */

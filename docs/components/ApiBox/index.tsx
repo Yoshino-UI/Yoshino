@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import Markdown from '../Markdown';
+import './index.less';
 
 export interface IProps {
   api: Array<{

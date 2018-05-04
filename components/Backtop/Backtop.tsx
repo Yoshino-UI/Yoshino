@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import { RenderInRootDom } from '../utils/renderInRootDom';
 import { backTop } from './assist';
 
-export interface IBacktopProps extends IBaseComponent {
+export interface IBackTopProps extends IBaseComponent {
   /**
    * 距离底部距离
    */
@@ -30,7 +30,7 @@ export interface IBacktopProps extends IBaseComponent {
   onBackTop?: () => void;
 }
 
-export interface IBacktopState {
+export interface IBackTopState {
   /**
    * 是否显示backtop
    */
@@ -40,7 +40,7 @@ export interface IBacktopState {
 /**
  * **返回顶部**-返回页面顶部的操作按钮。
  */
-class Backtop extends Component<IBacktopProps, IBacktopState> {
+class BackTop extends Component<IBackTopProps, IBackTopState> {
   state = {
     show: false,
   };
@@ -108,4 +108,4 @@ class Backtop extends Component<IBacktopProps, IBacktopState> {
   }
 }
 
-export default Backtop;
+export default BackTop;

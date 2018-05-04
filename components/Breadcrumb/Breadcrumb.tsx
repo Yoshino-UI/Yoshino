@@ -3,18 +3,14 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import { BreadcrumbItem } from './BreadcrumbItem';
 import {ReactNode} from 'react';
+import BreadcrumbItem from './BreadcrumbItem';
 
 export interface IBreadcrumbProps extends IBaseComponent {
   /**
    * 分隔符 - 默认为/
    */
-  separator: string | ReactNode;
-  /**
-   * breadItem
-   */
-  children: BreadcrumbItem;
+  separator?: string | ReactNode;
 }
 
 export interface IBreadcrumbState {
@@ -25,7 +21,7 @@ export interface IBreadcrumbState {
  * **面包屑导航**-显示当前页面路径
  */
 export class Breadcrumb extends Component<IBreadcrumbProps, IBreadcrumbState> {
-  static Item: ReactNode;
+  static Item: typeof BreadcrumbItem;
 
   static defaultProps = {
     separator: '/',

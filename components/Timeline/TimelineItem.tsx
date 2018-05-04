@@ -36,10 +36,15 @@ export interface ITimelineItemProps extends IBaseComponent {
   /**
    * icon - 来自父组件timeline
    */
-  parentIcon: IIcon;
+  parentIcon?: IIcon;
   /**
    * line - 来自父组件timeline
    */
+  parentLine?: ILine;
+}
+
+export interface ITimelineItemDefaultProps extends ITimelineItemProps {
+  parentIcon: IIcon;
   parentLine: ILine;
 }
 
@@ -71,7 +76,7 @@ export class TimelineItem extends Component<ITimelineItemProps, ITimelineItemSta
       lineColor, lineType, icon,
       parentIcon, parentLine,
       children, ...otherProps,
-    } = this.props;
+    } = this.props as ITimelineItemDefaultProps;
     const preCls = 'yoshino-timeline-item';
     const lineStyle = {
       borderLeftColor: `{lineColor ? lineColor : parentLine.color}`,

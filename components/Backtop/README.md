@@ -1,9 +1,9 @@
 ### 默认
 ```js
-<Backtop/>
+<BackTop/>
 ```
 
 ### 自定义
 ```js
-<Backtop bottom="100" right="20" height="100" onBackTop={() => alert('到顶了！')}>回到顶部</Backtop>
+<BackTop bottom="100" right="20" height="100" onBackTop={() => alert('到顶了！')}>回到顶部</BackTop>
 ```

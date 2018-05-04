@@ -8,11 +8,11 @@ export interface IDividerProps extends IBaseComponent {
   /**
    * 是否虚线
    */
-  dashed: boolean;
+  dashed?: boolean;
   /**
    * 文本表现
    */
-  textAlign: 'left' | 'center' | 'right';
+  textAlign?: 'left' | 'center' | 'right';
 }
 
 export interface IDividerState {

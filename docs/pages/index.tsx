@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-import {Menu} from '../../components/';
+import {Menu, BackTop} from '../../components/';
 import './index.less';
 import menuObj from './menu';
 import { MenuItem } from '../../components/Menu/MenuItem';
@@ -27,6 +27,7 @@ export default class Components extends Component<IProps> {
     const current = this.props.match.params.name;
     return (
       <div>
+        <BackTop/>
         <div className={`${preCls}-header`}>
           <div className={`${preCls}-logo`}>
             <Link to='/'>Yoshino</Link>
@@ -70,6 +71,9 @@ export default class Components extends Component<IProps> {
                   )
                 })
               }
+              <Route render={()=> {
+                return <Redirect to="/components/"/>
+              }}/>
             </Switch>
           </div>
         </div>

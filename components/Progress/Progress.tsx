@@ -8,11 +8,11 @@ export interface IProgressProps extends IBaseComponent {
   /**
    * 进度条背景色
    */
-  bgColor: string;
+  bgColor?: string;
   /**
    * 进度条颜色
    */
-  barColor: string;
+  barColor?: string;
   /**
    * 当前百分比
    */

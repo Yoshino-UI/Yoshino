@@ -12,7 +12,7 @@ export interface ICardProps extends IBaseComponent {
   /**
    * 更多
    */
-  extra: ReactNode;
+  extra?: ReactNode;
   /**
    * 边框
    */
@@ -32,6 +32,8 @@ export interface ICardState {
  */
 export class Card extends Component<ICardProps, ICardState> {
   static defaultProps = {
+    border: true,
+    shadow: false,
   };
 
   render() {
@@ -52,7 +54,7 @@ export class Card extends Component<ICardProps, ICardState> {
       >
         <div className={`${preCls}-head`}>
           <div className={`${preCls}-title`}>{title}</div>
-          <div className={`${preCls}-extra`}>{extra}</div>
+          {extra ? <div className={`${preCls}-extra`}>{extra}</div> : null}
         </div>
         <div className={`${preCls}-body`}>{this.props.children}</div>
       </div>

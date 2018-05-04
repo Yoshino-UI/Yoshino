@@ -9,15 +9,15 @@ export interface IAvatarProps extends IBaseComponent {
   /**
    * 头像尺寸
    */
-  size: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large';
   /**
    * 形状
    */
-  shape: 'circle' | 'square';
+  shape?: 'circle' | 'square';
   /**
    * 图标 - 与Icon相同
    */
-  icon: string;
+  icon?: string;
   /**
    * 图片资源
    */
@@ -53,7 +53,7 @@ export class Avatar extends Component<IAvatarProps, IAvatarState> {
       >
         {
           !src ? (
-            <Icon type={icon}/>
+            <Icon type={icon as string}/>
           ) : (
             <img src={src}/>
           )

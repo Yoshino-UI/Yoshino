@@ -99,7 +99,7 @@ export default [
       },
       {
         name: 'Pagination(分页)',
-        keyId: 'pagnination',
+        keyId: 'pagination',
       },
       {
         name: 'Steps(步骤条)',

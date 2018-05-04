@@ -10,34 +10,34 @@ export interface IPopProps extends IBaseComponent {
   /**
    * 气泡框位置
    */
-  placement: 'top' | 'left' | 'right' |
+  placement?: 'top' | 'left' | 'right' |
   'bottom' | 'topLeft' | 'topRight' |
   'bottomLeft' | 'bottomRight' | 'leftTop' |
   'leftBottom' | 'rightTop' | 'rightBottom';
   /**
    * 鼠标移入后延时多少才显示 Pop， 单位: ms
    */
-  mouseEnterDelay: number;
+  mouseEnterDelay?: number;
   /**
    * 鼠标移出后延时多少才隐藏 Pop，单位：ms
    */
-  mouseLeaveDelay: number;
+  mouseLeaveDelay?: number;
   /**
    * 卡片类名
    */
-  overlayClassName: string;
+  overlayClassName?: string;
   /**
    * 卡片样式
    */
-  overlayStyle: React.CSSProperties;
+  overlayStyle?: React.CSSProperties;
   /**
    * 触发行为
    */
-  trigger: 'hover' | 'focus' | 'click';
+  trigger?: 'hover' | 'focus' | 'click';
   /**
    * 内容
    */
-  title: string;
+  title?: string;
   /**
    * 受控-是否可见
    */
@@ -45,11 +45,11 @@ export interface IPopProps extends IBaseComponent {
   /**
    * 是否可见
    */
-  defaultVisible: boolean;
+  defaultVisible?: boolean;
   /**
    *  变化回调
    */
-  onChange: (visible: boolean) => void;
+  onChange?: (visible: boolean) => void;
   /**
    * 气泡框内容
    */
@@ -57,7 +57,7 @@ export interface IPopProps extends IBaseComponent {
   /**
    * 进入时才渲染
    */
-  mountOnEnter: boolean;
+  mountOnEnter?: boolean;
   /**
    * 过度动画样式
    */
@@ -65,7 +65,7 @@ export interface IPopProps extends IBaseComponent {
   /**
    * pop 宽高修改
    */
-  setPopRect: (rect: {width: number; height: number}) => {width: number; height: number};
+  setPopRect?: (rect: {width: number; height: number}) => {width: number; height: number};
 }
 
 export interface IPopState {
@@ -96,7 +96,7 @@ export class Pop extends Component<IPopProps, IPopState> {
   };
 
   state = {
-    visible: this.props.defaultVisible,
+    visible: this.props.defaultVisible as boolean,
   };
 
   renderPop = () => {
@@ -109,7 +109,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     const preCls = 'yoshino-pop';
     const visible = this.getVisible();
     return (
-      <RenderInRootDom mount={!mountOnEnter}>
+      <RenderInRootDom>
         <CSSTransition
           timeout={25}
           classNames={transitionCls}
@@ -147,7 +147,7 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   resetPopPostion = () => {
     const children = ReactDOM.findDOMNode(this.refChildren) as Element;
-    const {placement, setPopRect} = this.props;
+    const {placement = 'top', setPopRect} = this.props;
     const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
     const domRect = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
     const rect = children.getBoundingClientRect() as DOMRect; // Pop - target - dom
@@ -205,6 +205,7 @@ export class Pop extends Component<IPopProps, IPopState> {
   getTargetTriggerAction = () => {
     const show =  this.onChangeTrigger.bind(this, true);
     const hide = this.onChangeTrigger.bind(this, false);
+    const {trigger = 'hover'} = this.props;
     const action = {
       hover: {
         onMouseOver: show,
@@ -218,13 +219,14 @@ export class Pop extends Component<IPopProps, IPopState> {
         onClick: this.getVisible() ? hide : show,
       },
     };
-    return action[this.props.trigger];
+    return action[trigger];
   }
 
   // pop - content triggert表现
   getConentTriggerAction = () => {
     const show =  this.onChangeTrigger.bind(this, true);
     const hide = this.onChangeTrigger.bind(this, false);
+    const {trigger = 'hover'} = this.props;
     const action = {
       hover: {
         onMouseOver: show,
@@ -235,7 +237,7 @@ export class Pop extends Component<IPopProps, IPopState> {
       click: {
       },
     };
-    return action[this.props.trigger];
+    return action[trigger];
   }
 
   render() {

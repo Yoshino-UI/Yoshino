@@ -34,6 +34,9 @@ export default class App extends Component {
             })
           }
           <Redirect from="/components" to='/components/yoshino'/>
+          <Route render={()=> {
+            return <Redirect to="/"/>
+          }}/>
         </Switch>
       </Router>
     )

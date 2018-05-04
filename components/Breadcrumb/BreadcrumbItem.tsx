@@ -13,7 +13,7 @@ export interface IBreadcrumbItemState {
 }
 
 /**
- * **组件中文名称**-组件描述。
+ * **面包屑导航**-显示网站的层级结构，告知用户当前所在位置，以及在需要向上级导航时使用。
  */
 export class BreadcrumbItem extends Component<IBreadcrumbItemProps, IBreadcrumbItemState> {
   render() {

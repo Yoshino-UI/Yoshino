@@ -12,7 +12,7 @@ npm install yoshino
 ```
 
 ## 介绍
-`yoshino`组件库提供简单样式组件，可以通过[yoshino-icing](https://github.com/Yoshino-UI/yoshino-icing)根据项目进行定制化开发。
+`yoshino`组件库提供简单样式组件，可以通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
 
 将yoshino组件库less抽离出来维护，让开发者自定义维护。
 例如需要自定义Alert样式
@@ -26,7 +26,7 @@ myAlert.less为用户自定义样式
 yoshino-icing根据开发者需要自定义的组件自定义生成对应开发模版
 
 ```js
-yoshino-icing new Alert
+yoshino new Alert
 ```
 
 ## 开发贡献流程

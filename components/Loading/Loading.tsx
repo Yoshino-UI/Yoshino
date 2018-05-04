@@ -9,7 +9,7 @@ export interface ILoadingProps extends IBaseComponent {
   /**
    * loading类型
    */
-  type: 'a' | 'b' | 'c' | 'd';
+  type?: 'a' | 'b' | 'c' | 'd';
   /**
    * 大小，默认default
    */

@@ -8,19 +8,19 @@ export interface IBadgeProps extends IBaseComponent {
   /**
    * 展示的数字
    */
-  count: number;
+  count?: number;
   /**
    * 展示数字最大值
    */
-  max: number;
+  max?: number;
   /**
    * count为0的时候是否显示徽标
    */
-  showZero: boolean;
+  showZero?: boolean;
   /**
    * 不显示数字
    */
-  dotted: boolean;
+  dotted?: boolean;
 }
 
 export interface IBadgeState {
@@ -35,6 +35,7 @@ export class Badge extends Component<IBadgeProps, IBadgeState> {
     max: 99,
     showZero: false,
     dotted: false,
+    count: 0,
   };
 
   render() {
@@ -56,7 +57,7 @@ export class Badge extends Component<IBadgeProps, IBadgeState> {
           style={style}
           {...otherProps}
         >
-          {!!dotted ? null : (count >= max ? `${max}+` : count)}
+          {!!dotted ? null : ((count as number) >= (max as number) ? `${max}+` : count)}
         </span>
       </div>
     );

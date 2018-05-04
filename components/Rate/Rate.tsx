@@ -125,7 +125,7 @@ export class Rate extends Component<IRateProps, IRateState> {
         style={style}
         onMouseOut={this.onMouseOut}
       >
-        {this.showCharater(count)}
+        {this.showCharater(count as number)}
       </div>
     );
   }
