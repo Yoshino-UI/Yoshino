@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Checkbox  from '../../../../components/Checkbox';
+import { Checkbox } from '../../../../components/';
 
 export default class CheckboxDemo extends React.Component {
   state = {

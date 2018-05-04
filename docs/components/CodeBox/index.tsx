@@ -19,8 +19,8 @@ export default class CodeBox extends Component<IProps> {
 
   render() {
     const {code, text, demo} = this.props;
-    const demoHTML = {__html: code ? Prism.highlight(code as string, Prism.languages.jsx) : ''};
-// console.log(Prism.highlight(code as string, Prism.languages.js))
+    const loader = code ? (code as string).replace(new RegExp('../../../../components/','g'), 'yoshino') : '';
+    const demoHTML = {__html: Prism.highlight(loader, Prism.languages.jsx)};
 
     return (
       <div className="code-box">

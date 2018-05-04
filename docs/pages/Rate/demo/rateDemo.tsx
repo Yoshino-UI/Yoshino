@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Rate  from '../../../../components/Rate';
+import { Rate } from '../../../../components/';
 
 export default function () {
   return (

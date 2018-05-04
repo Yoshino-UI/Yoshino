@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Input  from '../../../../components/Input';
-import Icon from '../../../../components/Icon';
+import { Input, Icon}  from '../../../../components/';
 
 export default function () {
   return (

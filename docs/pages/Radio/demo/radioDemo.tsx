@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Radio  from '../../../../components/Radio';
+import { Radio } from '../../../../components/';
 
 export default class App extends React.Component {
   state = {

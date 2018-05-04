@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button  from '../../../../components/Button';
+import { Button } from '../../../../components/';
 
 export default class ButtonLoading extends React.Component {
   state = {

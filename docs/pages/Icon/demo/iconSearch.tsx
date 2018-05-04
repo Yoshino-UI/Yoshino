@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Icon  from '../../../../components/Icon';
-import Input  from '../../../../components/Input';
+import { Icon, Input } from '../../../../components/';
 
 const {iconName} :{iconName: Array<{
   tag: string;

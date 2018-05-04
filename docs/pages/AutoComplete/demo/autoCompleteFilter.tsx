@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AutoComplete  from '../../../../components/AutoComplete';
+import { AutoComplete } from '../../../../components/';
 
 export default class AutoCompleteFilter extends React.Component {
   state = {

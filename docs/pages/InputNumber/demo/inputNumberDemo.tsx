@@ -1,5 +1,5 @@
 import * as React from 'react';
-import InputNumber  from '../../../../components/InputNumber';
+import { InputNumber } from '../../../../components/';
 
 export default function () {
   return (

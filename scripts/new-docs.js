@@ -99,7 +99,7 @@ function demoReadmeMd(component) {
 function demoTsx(component) {
   const low = capitalizeFirstLetter(component); // 小写
   const content = `import * as React from 'react';
-import ${component}  from '../../../../components/${component}';
+import { ${component} } from '../../../../components/';
 
 export default function () {
   return (
