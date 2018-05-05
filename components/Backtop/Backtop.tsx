@@ -46,14 +46,14 @@ class BackTop extends Component<IBackTopProps, IBackTopState> {
   };
 
   static defaultProps = {
-    height: 800,
+    height: 200,
     bottom: 50,
     right: 50,
     duration: 500,
   };
 
   scrollListener = () => {
-    const height = this.props.height ? this.props.height : 800;
+    const height = this.props.height ? this.props.height : 200;
     const top = document.documentElement.scrollTop || document.body.scrollTop;
     const show  = top >= height;
     this.setState({

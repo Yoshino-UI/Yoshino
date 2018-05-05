@@ -1,5 +1,6 @@
 import Yoshino from './Yoshino';
 import Logs from './Logs/index';
+import FAQ from './FAQ/index';
 import Start from './Start/index';
 import Button from './Button';
 import Icon from './Icon';
@@ -39,6 +40,10 @@ export default [
   {
     component: Start,
     path: '/components/start',
+  },
+  {
+    component: FAQ,
+    path: '/components/faq',
   },
   {
     component: Logs,

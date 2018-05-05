@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Switch, Route, Router, Redirect } from 'react-router';
-import createHashHistory from 'history/createBrowserHistory';
+import { Switch, Route, HashRouter as Router, Redirect } from 'react-router-dom';
 import Index from './index';
 import Components from './pages/index';
 import { RouteProps } from 'react-router';
@@ -19,12 +18,11 @@ const Routes: RouteProps[] = [
   },
 ];
 
-const history = createHashHistory();
 
 export default class App extends Component {
   render() {
     return (
-      <Router history={history}>
+      <Router>
         <Switch>
           {
             Routes.map((item, key) => {

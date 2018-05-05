@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {Menu, BackTop} from '../../components/';
 import './index.less';
@@ -43,6 +43,7 @@ export default class Components extends Component<IProps> {
             <Menu.Item keyId="yoshino" onClick={this.pushHistory.bind(this, 'yoshino')}>Yoshino</Menu.Item>
             <Menu.Item keyId="start" onClick={this.pushHistory.bind(this, 'start')}>快速开始</Menu.Item>
             <Menu.Item keyId="logs" onClick={this.pushHistory.bind(this, 'logs')}>更新日志</Menu.Item>
+            <Menu.Item keyId="faq" onClick={this.pushHistory.bind(this, 'faq')}>FAQ</Menu.Item>
             <SubMenu title="组件" keyId="components">
               {
                 menuObj.map((item) => {
@@ -77,7 +78,9 @@ export default class Components extends Component<IProps> {
             </Switch>
           </div>
         </div>
-        
+        <div className={`${preCls}-footer`}>
+         
+        </div>
       </div>
     )
   }

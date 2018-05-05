@@ -1,0 +1,16 @@
+build/
+node_modules/
+scripts/
+styleguide/
+config/
+docs/
+.*.swp
+.*.swp
+._*
+.DS_Store
+.git
+.hg
+.lock-wscript
+.svn
+.wafpickle-*
+

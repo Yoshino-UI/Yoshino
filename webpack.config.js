@@ -49,7 +49,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('./docs/index.html'),
-      inject: false,
+      favicon: path.resolve('./docs/favicon.ico'),
     }),
   ],
   devServer: {

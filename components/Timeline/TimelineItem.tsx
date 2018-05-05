@@ -28,7 +28,7 @@ export interface ITimelineItemProps extends IBaseComponent {
   /**
    * 时间
    */
-  time?: string;
+  time?: string | ReactNode;
   /**
    * 自定义icon
    */
