@@ -29,6 +29,8 @@ console.log('开始tsc编译');
 const tsc = path.resolve(__dirname, '../node_modules', '.bin', 'tsc');
 execSync(`${tsc} --outDir lib/ --declaration`);
 execSync(`${tsc} --outDir es6/ --module es6 --declaration`);
+execSync(`${tsc} --outDir lib/ --allowJs`);
+execSync(`${tsc} --outDir es6/ --module es6 --allowJs`);
 
 console.log('结束tsc编译');
 

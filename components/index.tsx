@@ -1,7 +1,7 @@
 import Alert from './Alert';
 import AutoComplete from './AutoComplete';
 import Avatar from './Avatar';
-import BackTop from './BackTop';
+import Backtop from './Backtop';
 import Badge from './Badge';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
@@ -32,7 +32,7 @@ export {
   Alert,
   AutoComplete,
   Avatar,
-  BackTop,
+  Backtop,
   Badge,
   Breadcrumb,
   Button,
