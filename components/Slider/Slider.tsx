@@ -78,7 +78,7 @@ export class Slider extends Component<ISliderProps, ISliderState> {
     const slider = this.refSlider;
     const sliderRect = slider.getBoundingClientRect() as DOMRect;
     const sliderWidth = sliderRect.width;  // 滑动条宽度
-    const left = e.clientX - sliderRect.x; // 点击位置相对滑动条偏移量
+    const left = e.clientX - (sliderRect.x || sliderRect.left); // 点击位置相对滑动条偏移量
     const percent = +(left / sliderWidth).toFixed(4);
     this.onChangeTrigger(min + Math.round((max - min) * percent));
     this.moving = false;
@@ -91,7 +91,7 @@ export class Slider extends Component<ISliderProps, ISliderState> {
     const sliderWidth = sliderRect.width;  // 滑动条宽度
 
     const bodyMouseMove = (e: MouseEvent) => {
-      const left = e.clientX - sliderRect.x; // 点击位置相对滑动条偏移量
+      const left = e.clientX - (sliderRect.x || sliderRect.left); // 点击位置相对滑动条偏移量
 
       // 当前偏移量处于滑动条外 不进行value刷新
       if (left < 0 || left > sliderWidth) {
