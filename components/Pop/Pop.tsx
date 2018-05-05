@@ -149,19 +149,19 @@ export class Pop extends Component<IPopProps, IPopState> {
     const children = ReactDOM.findDOMNode(this.refChildren) as Element;
     const {placement = 'top', setPopRect} = this.props;
     const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
-    const domRect = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
+    const domRectReal = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
     const rect = children.getBoundingClientRect() as DOMRect; // Pop - target - dom
     const pageY = window.pageYOffset;   // 当前滚动条y轴偏移量
     const pageX = window.pageXOffset;   // 当前滚动条x轴偏移量
     const childrenX = pageX + rect.left;  // 子元素x
     const childrenY = pageY + rect.top; // 子元素y
-
+    // 解决部分浏览器rect不可修改的问题
+    const domRect = {width: domRectReal.width, height: domRectReal.height};
     if (setPopRect) {
       const popRect = setPopRect(domRect);
       domRect.width = popRect.width;
       domRect.height = popRect.height;
     }
-
     // placement所对应的left top
     const config = {
       top: {left: childrenX + rect.width / 2 - domRect.width / 2, top: childrenY - domRect.height},

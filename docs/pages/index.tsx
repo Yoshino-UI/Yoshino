@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import {Menu, BackTop} from '../../components/';
+import {Menu, Backtop} from '../../components/';
 import './index.less';
 import menuObj from './menu';
 import { MenuItem } from '../../components/Menu/MenuItem';
@@ -27,7 +27,7 @@ export default class Components extends Component<IProps> {
     const current = this.props.match.params.name;
     return (
       <div>
-        <BackTop/>
+        <Backtop/>
         <div className={`${preCls}-header`}>
           <div className={`${preCls}-logo`}>
             <Link to='/'>Yoshino</Link>
