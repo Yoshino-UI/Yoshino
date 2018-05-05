@@ -4,8 +4,8 @@
 [![download](https://img.shields.io/npm/dt/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino)
 
 ## 官网
-![首页](https://yoshino-ui.github.io)
-![文档](https://yoshino-ui.github.io/components)
+[首页](https://yoshino-ui.github.io)
+[文档](https://yoshino-ui.github.io/#/components/yoshino)
 
 ## 介绍
 `yoshino`组件库提供简单样式组件，可以通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
