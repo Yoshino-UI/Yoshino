@@ -86,7 +86,7 @@ export class Input extends Component<IInputProps, IInputState> {
     const {
       className, style, size, header,
       footer, headerStyle, footerStyle,
-      onEnter, onChange, value,
+      onEnter, onChange, value, defaultValue,
       ...otherProps,
     } = this.props;
     const preCls = 'yoshino-input';
