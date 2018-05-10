@@ -13,4 +13,15 @@ docs/
 .lock-wscript
 .svn
 .wafpickle-*
+components/
+tsconfig.json
+tslint.json
+webpack.config.js
+.gitattributes
+.gitignore
+.stylelintrc
+LICENSE
+postcss.config.js
+styleguide.confgi.js
+
 
