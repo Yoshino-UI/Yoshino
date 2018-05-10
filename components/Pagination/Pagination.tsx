@@ -225,7 +225,11 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   render() {
-    const {className, style, onChange, total, pageSize, next, previous, ...otherProps} = this.props;
+    const {
+      className, style, onChange, total,
+      pageSize, next, previous,
+      defaultCurrent, ...otherProps,
+    } = this.props;
     const page = this.getPageSum();
     const current = this.getCurrent();
     const preCls = 'yoshino-pagination';

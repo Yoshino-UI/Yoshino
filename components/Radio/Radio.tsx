@@ -73,7 +73,7 @@ export class Radio extends Component<IRadioProps, IRadioState> {
             className={clsName}
             style={style}
           />
-          <input type='radio' className={`${preCls}-input`} {...{name, value, checked}}/>
+          {/* <input type='radio' className={`${preCls}-input`} {...{name, value, checked}}/> */}
         </span>
         {children ? <span className={`${preCls}-text`}>{children}</span> : null}
       </span>

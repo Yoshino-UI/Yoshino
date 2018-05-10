@@ -45,8 +45,7 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
   render() {
     const {
       className, style, children, deep, title,
-      activeKey, onSelect, onOpenChange,
-      ...otherProps,
+      activeKey, onSelect,
     } = this.props;
     const preCls = 'yoshino-menu-item-group';
     const clsName = classNames(
@@ -58,7 +57,6 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
       <div
         className={clsName}
         style={style}
-        {...otherProps}
       >
         <div
           className={`${preCls}-title`}

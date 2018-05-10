@@ -55,7 +55,11 @@ export class Panel extends Component<IPanelProps, IPanelState> {
   }
 
   render() {
-    const {className, style, onChange, title, active, children, disabled, ...otherProps} = this.props;
+    const {
+      className, style, onChange,
+      title, active, children, disabled,
+      keyId, ...otherProps,
+    } = this.props;
     const preCls = 'yoshino-panel';
     const clsName = classNames(
       preCls,

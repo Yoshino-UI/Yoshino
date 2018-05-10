@@ -50,7 +50,6 @@ export interface IStepsItemState {
  */
 export class StepsItem extends Component<IStepsItemProps, IStepsItemState> {
   static defaultProps = {
-    error: false,
   };
 
   render() {

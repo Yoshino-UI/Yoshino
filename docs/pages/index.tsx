@@ -52,7 +52,7 @@ export default class Components extends Component<IProps> {
                       {
                         item.children.map((item) => {
                           return (
-                            <MenuItem keyId={item.keyId} onClick={this.pushHistory.bind(this, item.keyId)}>{item.name}</MenuItem>
+                            <MenuItem key={item.keyId} keyId={item.keyId} onClick={this.pushHistory.bind(this, item.keyId)}>{item.name}</MenuItem>
                           )
                         })
                       }

@@ -35,7 +35,6 @@ export interface IMenuItemState {
  */
 export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
   static defaultProps = {
-    active: false,
     disabled: false,
   };
 
@@ -55,8 +54,7 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
   render() {
     const {
       className, style, children, deep,
-      activeKey, keyId, onSelect, disabled,
-      ...otherProps,
+      activeKey, keyId, disabled,
     } = this.props;
     const preCls = 'yoshino-menu-item';
     const clsName = classNames(
@@ -69,10 +67,10 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
     const paddingLeft = `${deep as number * 24}px`;
     return (
       <li
-        {...otherProps}
         className={clsName}
         style={{paddingLeft, ...style}}
         onClick={this.onSelect}
+        key={keyId}
       >
         {children}
       </li>

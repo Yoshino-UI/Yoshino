@@ -134,7 +134,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     const {
       className, style, dataSource,
       onFilter, value, onChange,
-      ...otherProps,
+      activeFirstOption, ...otherProps,
     } = this.props;
     const preCls = 'yoshino-auto-complete';
     const clsName = classNames(

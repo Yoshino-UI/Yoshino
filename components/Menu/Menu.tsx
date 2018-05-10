@@ -49,7 +49,6 @@ export class Menu extends Component<IMenuProps, IMenuState> {
   static defaultProps = {
     defaultActiveKey: '',
     defaultOpenKeys: [],
-    accordion: false,
   };
 
   state = {
@@ -102,7 +101,11 @@ export class Menu extends Component<IMenuProps, IMenuState> {
   }
 
   render() {
-    const {className, style, children, onSelect, ...otherProps} = this.props;
+    const {
+      className, style, children,
+      onSelect, defaultActiveKey,
+      onOpenChange, defaultOpenKeys,
+      ...otherProps} = this.props;
     const preCls = 'yoshino-menu';
     const clsName = classNames(
       preCls, className,

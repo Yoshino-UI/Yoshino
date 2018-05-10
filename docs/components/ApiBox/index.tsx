@@ -22,7 +22,7 @@ export default class ApiBox extends Component<IProps> {
     return (
       <div className="api-box">
         {
-          api.map((item) => {
+          api.map((item, key) => {
             const {title, json} = item;
             let md = `#### ${title}\r\n|属性|说明|类型|默认值|\r\n|-|-|-|-|`;
             json.forEach((item) => {
@@ -33,7 +33,7 @@ export default class ApiBox extends Component<IProps> {
               md += `\r\n|${str}|`;
             });
             return (
-              <div className="api-box-item">
+              <div className="api-box-item" key={key}>
                 <Markdown text={md}/>
               </div>
             )

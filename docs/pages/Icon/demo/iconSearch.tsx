@@ -30,13 +30,16 @@ export default class IconSearch extends React.Component {
 
         }}>
         {
-          iconName.filter((item) => item.tag.indexOf(this.state.tag) !== -1).map((item) => {
+          iconName.filter((item) => item.tag.indexOf(this.state.tag) !== -1).map((item, key) => {
             return (
-              <div style= {{
+              <div
+                key={key}
+                style= {{
                 width: 80,
                 textAlign: 'center',
                 padding: 5,
-              }}>
+                }}
+              >
                 <Icon type={item.name} style={{fontSize: 25}}/>
                 <div style={{fontSize: 12}}>{item.name}</div>
               </div>
