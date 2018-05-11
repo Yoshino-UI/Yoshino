@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Component } from 'react';
 import * as marked from 'marked';
 import './index.less';
-
+import * as Prism from 'prismjs';
+require('prismjs/components/prism-jsx.min');
+require('../../../node_modules/prismjs/themes/prism.css');
 export interface IProps {
   text: any;
 }
@@ -18,7 +20,11 @@ export default class Markdown extends Component<IProps> {
       smartLists: true,
       smartypants: false,
       highlight (code, lang) {
-        return require('highlight.js').highlight(lang, code).value
+        if (lang === 'jsx') {
+          return Prism.highlight(code, Prism.languages.jsx);
+        } else {
+          return require('highlight.js').highlight(lang, code).value;
+        }
       }
     });
     return (

@@ -4,7 +4,7 @@ import './index.less';
 import Markdown from '../Markdown';
 import * as Prism from 'prismjs';
 require('prismjs/components/prism-jsx.min');
-require('../../../node_modules/prismjs/themes/prism.css')
+require('../../../node_modules/prismjs/themes/prism.css');
 
 export interface IProps {
   text: any;
