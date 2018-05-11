@@ -98,26 +98,6 @@ export default ${component};
   writeFile(`${component}.tsx`, content, component);
 }
 
-function fileReadmeMd(component) {
-  const content = `### 默认
-\`\`\`js
-<div>
-  <${component}/>
-  <${component}/>
-</div>
-\`\`\`
-
-### 自定义
-\`\`\`js
-<div>
-  <${component}/>
-  <${component}/>
-</div>
-\`\`\`
-`;
-  writeFile('README.md', content, component);
-}
-
 function fileTests(component) {
   const content = `import * as renderer from 'react-test-renderer';
 import * as React from 'react';
@@ -174,12 +154,12 @@ fileIndexScss(component);
 addImportLess(component);
 fileComponentTsx(component);
 fileIndexTsx(component);
-fileReadmeMd(component);
 fileTests(component);
 fileE2ETests(component);
 
-console.info('添加到组件代码 git');
-execSync(`git add components/${component}`);
-
 console.info(`组件成功添加到 ./components/${component} 目录下。`);
+
+const newDocs = path.resolve(__dirname, './new-docs.js');
+execSync(`node ${newDocs} ${component}`);
+
 

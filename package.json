@@ -23,10 +23,9 @@
   "jsnext:main": "es/index",
   "typings": "components/index",
   "scripts": {
-    "dev": "styleguidist server",
-    "start:dev": "webpack-dev-server",
-    "build": "styleguidist build",
-    "build:yoshino": "node scripts/build.js",
+    "dev": "webpack-dev-server",
+    "build": "node scripts/build.js",
+    "site": "webpack",
     "new": "node scripts/new-component.js",
     "new:docs": "node scripts/new-docs.js",
     "precommit": "npm run lint",
