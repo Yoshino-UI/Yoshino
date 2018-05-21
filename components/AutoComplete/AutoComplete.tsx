@@ -82,9 +82,8 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     }
   }
 
-  onFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+  onFilter = (value: string) => {
     const {onFilter, dataSource} = this.props;
-    const value = e.target.value;
     this.onChangeTrigger(value);
 
     if (onFilter) {

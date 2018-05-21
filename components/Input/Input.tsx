@@ -4,15 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IAbstractInput} from '../template/component';
 
-export interface IInputProps extends IAbstractInput {
-  /**
-   * 受控 - 输入框的值
-   */
-  value?: string;
-  /**
-   * 输入框的值
-   */
-  defaultValue?: string;
+export interface IInputProps extends IAbstractInput<string> {
   /**
    * 组件大小
    */
@@ -66,10 +58,11 @@ export class Input extends Component<IInputProps, IInputState> {
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {onChange} = this.props;
+    const value = e.target.value;
     if (onChange) {
-      onChange(e);
+      onChange(value);
     }
-    this.setState({value: e.target.value});
+    this.setState({value});
   }
 
   onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {

@@ -30,7 +30,9 @@ export interface IBaseComponent extends IEvent {
   style?: React.CSSProperties; // tslint:disable-line:no-any
 }
 
-export interface IAbstractInput extends IBaseComponent {
+export interface IAbstractInput<T> extends IBaseComponent {
+  value?: T;
+  defaultValue?: T;
   placeholder?: string;
   type?: string;
   id?: string;
@@ -44,7 +46,7 @@ export interface IAbstractInput extends IBaseComponent {
   onEnter?: React.FormEventHandler<HTMLInputElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
   onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (value: T) => void;
   onClick?: React.FormEventHandler<HTMLInputElement>;
   onFocus?: React.FormEventHandler<HTMLInputElement>;
   onBlur?: React.FormEventHandler<HTMLInputElement>;

@@ -2,22 +2,14 @@
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IAbstractInput} from '../template/component';
 import Icon from '../Icon';
 
-export interface IInputNumberProps extends IBaseComponent {
-  /**
-   * 输入框的值
-   */
-  value?: number;
+export interface IInputNumberProps extends IAbstractInput<number> {
   /**
    * 组件大小
    */
   size?: 'small' | 'default' | 'large';
-  /**
-   * 变化回调事件
-   */
-  onChange?: (value: number) => void;
   /**
    * 最小值
    */
@@ -32,7 +24,7 @@ export interface IInputNumberProps extends IBaseComponent {
   step?: number;
 }
 
-export interface IInputNumberDefaultProps extends IBaseComponent {
+export interface IInputNumberDefaultProps extends IAbstractInput<number> {
   value: number;
   size: 'small' | 'default' | 'large';
   onChange: (value: number) => void;
@@ -113,7 +105,7 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
   }
 
   render() {
-    const {className, style, size, onChange, value, ...otherProps} = this.props;
+    const {className, style, size, onChange, value, defaultValue, ...otherProps} = this.props;
     const preCls = 'yoshino-input-number';
     const clsName = classNames(
       preCls, `${preCls}-${size}`, className,

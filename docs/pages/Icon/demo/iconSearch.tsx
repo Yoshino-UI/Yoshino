@@ -19,8 +19,8 @@ export default class IconSearch extends React.Component {
           size="large"
           style={{width: '400px'}}
           placeholder="输入关键词可以搜索对应icon"
-          onChange={(e) => {
-            this.setState({ tag: e.target.value })
+          onChange={(value) => {
+            this.setState({ tag: value })
           }}
         />
         <div style= {{
