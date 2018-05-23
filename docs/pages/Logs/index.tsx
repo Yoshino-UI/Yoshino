@@ -3,6 +3,8 @@ import { Component } from 'react';
 import * as md from './logs.md';
 import * as v010md from './logs/0.1.0.md';
 import * as v011md from './logs/0.1.1.md';
+import * as v012md from './logs/0.1.2.md';
+import * as v013md from './logs/0.1.3.md';
 import Markdown from '../../components/Markdown';
 import {Timeline} from '../../../components/';
 import './index.less';
@@ -14,6 +16,12 @@ export default class Logs extends Component {
         <Markdown text={md}/>
         <div style={{marginTop: 40}}>
           <Timeline>
+            <Timeline.Item time={<h2>v 0.1.3</h2>}>
+              <Markdown text={v013md}/>
+            </Timeline.Item>
+            <Timeline.Item time={<h2>v 0.1.2</h2>}>
+              <Markdown text={v012md}/>
+            </Timeline.Item>
             <Timeline.Item time={<h2>v 0.1.1</h2>}>
               <Markdown text={v011md}/>
             </Timeline.Item>
