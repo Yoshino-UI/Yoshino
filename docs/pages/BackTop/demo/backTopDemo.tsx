@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Backtop } from '../../../../components/';
+import { BackTop } from '../../../../components/';
 
 export default function () {
   return (
     <div>
-      <Backtop/>
+      <BackTop/>
     </div>
   )
 }
