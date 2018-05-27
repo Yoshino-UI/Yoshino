@@ -135,4 +135,14 @@ export default [
       },
     ],
   },
+  {
+    name: '特效组件',
+    keyId: 'effects',
+    children: [
+      {
+        name: 'Ripple(波纹)',
+        keyId: 'ripple',
+      },
+    ],
+  },
 ];

@@ -13,11 +13,11 @@ export interface IRippleProps extends IBaseComponent {
   /**
    * 波纹透明度
    */
-  opacity: number;
+  opacity?: number;
   /**
    * 波纹直径
    */
-  diameter: number;
+  diameter?: number;
 }
 
 export interface IRippleState {
@@ -29,7 +29,6 @@ export interface IRippleState {
  */
 export class Ripple extends Component<IRippleProps, IRippleState> {
   static defaultProps = {
-    color: '#4285f4',
     opacity: 0.3,
     diameter: 10,
   };

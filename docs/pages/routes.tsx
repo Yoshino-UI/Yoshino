@@ -27,10 +27,7 @@ import Loading from './Loading';
 import Progress from './Progress';
 import BackTop from './BackTop';
 import Divider from './Divider';
-
-
-
-
+import Ripple from './Ripple';
 
 export default [
   {
@@ -149,5 +146,9 @@ export default [
   {
     component: Divider,
     path: '/components/divider',
-  }
+  },
+  {
+    component: Ripple,
+    path: '/components/ripple',
+  },
 ];
