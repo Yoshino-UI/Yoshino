@@ -112,6 +112,10 @@ export default [
     keyId: 'feedback',
     children: [
       {
+        name: 'Alert(提示)',
+        keyId: 'alert',
+      },
+      {
         name: 'Loading(加载中)',
         keyId: 'loading',
       },

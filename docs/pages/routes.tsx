@@ -28,6 +28,7 @@ import Progress from './Progress';
 import BackTop from './BackTop';
 import Divider from './Divider';
 import Ripple from './Ripple';
+import Alert from './Alert';
 
 export default [
   {
@@ -150,5 +151,9 @@ export default [
   {
     component: Ripple,
     path: '/components/ripple',
+  },
+  {
+    component: Alert,
+    path: '/components/alert',
   },
 ];

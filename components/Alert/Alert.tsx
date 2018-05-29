@@ -14,15 +14,15 @@ export interface IAlertProps extends IBaseComponent {
   /**
    * 是否显示关闭按钮
    */
-  closable: boolean;
+  closable?: boolean;
   /**
    * 是否显示图标
    */
-  showIcon: boolean;
+  showIcon?: boolean;
   /**
    * 自定义图标
    */
-  icon: ReactNode;
+  icon?: ReactNode;
   /**
    * 标题
    */
@@ -30,7 +30,7 @@ export interface IAlertProps extends IBaseComponent {
   /**
    * onClose
    */
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export interface IAlertState {
@@ -49,7 +49,6 @@ export class Alert extends Component<IAlertProps, IAlertState> {
   };
 
   static defaultProps = {
-    type: 'info',
     showIcon: false,
     closable: false,
   };
@@ -100,10 +99,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
         unmountOnExit
         onExited={() => {
           if (this.props.onClose) {
-            // 延迟100ms是为了避免阻塞transition unmount
-            setTimeout(() => {
-              this.props.onClose();
-            }, 100);
+            this.props.onClose();
           }
         }}
       >
