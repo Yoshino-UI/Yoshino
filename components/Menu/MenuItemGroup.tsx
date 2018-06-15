@@ -29,6 +29,10 @@ export interface IMenuItemGroupProps extends IBaseComponent {
    * 展开回调
    */
   onOpenChange?: (openKeys: string[]) => void;
+  /**
+   * 偏移量
+   */
+  offset?: number;
 }
 
 export interface IMenuItemGroupState {
@@ -45,14 +49,14 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
   render() {
     const {
       className, style, children, deep, title,
-      activeKey, onSelect,
+      activeKey, onSelect, offset,
     } = this.props;
     const preCls = 'yoshino-menu-item-group';
     const clsName = classNames(
       preCls, className,
     );
     const childrens = React.Children.toArray(children);
-    const paddingLeft = `${deep as number * 24}px`;
+    const paddingLeft = `${deep as number * (offset as number)}px`;
     return (
       <div
         className={clsName}
@@ -72,6 +76,7 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
                 deep: deep as number + 1,
                 activeKey,
                 onSelect,
+                offset,
               });
             })
           }

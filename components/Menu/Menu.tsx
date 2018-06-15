@@ -32,6 +32,10 @@ export interface IMenuProps extends IBaseComponent {
    * 展开回调
    */
   onOpenChange?: (openKeys: string[]) => void;
+  /**
+   * 偏移量
+   */
+  offset?: number;
 }
 
 export interface IMenuState {
@@ -49,6 +53,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
   static defaultProps = {
     defaultActiveKey: '',
     defaultOpenKeys: [],
+    offset: 24,
   };
 
   state = {
@@ -105,6 +110,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
       className, style, children,
       onSelect, defaultActiveKey,
       onOpenChange, defaultOpenKeys,
+      offset,
       ...otherProps} = this.props;
     const preCls = 'yoshino-menu';
     const clsName = classNames(
@@ -128,6 +134,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
               openKeys,
               onSelect: this.onSelect,
               onOpenChange: this.onOpenChange,
+              offset,
             });
           })
         }

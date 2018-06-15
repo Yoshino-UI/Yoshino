@@ -38,6 +38,12 @@ export default [
         type: "(openKeys: string[]) => void",
         defaultValue: "-",
       },
+      {
+        props: "offset",
+        intro: "菜单子项偏移量",
+        type: "number",
+        defaultValue: "24",
+      },
     ]
   },
   {

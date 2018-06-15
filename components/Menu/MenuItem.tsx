@@ -24,6 +24,10 @@ export interface IMenuItemProps extends IBaseComponent {
    * 禁用
    */
   disabled?: boolean;
+  /**
+   * 偏移量
+   */
+  offset?: number;
 }
 
 export interface IMenuItemState {
@@ -54,7 +58,7 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
   render() {
     const {
       className, style, children, deep,
-      activeKey, keyId, disabled,
+      activeKey, keyId, disabled, offset,
     } = this.props;
     const preCls = 'yoshino-menu-item';
     const clsName = classNames(
@@ -64,7 +68,7 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
         [`${preCls}-disabled`]: disabled,
       },
     );
-    const paddingLeft = `${deep as number * 24}px`;
+    const paddingLeft = `${deep as number * (offset as number)}px`;
     return (
       <li
         className={clsName}

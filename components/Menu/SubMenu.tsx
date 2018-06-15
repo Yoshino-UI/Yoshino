@@ -39,6 +39,10 @@ export interface ISubMenuProps extends IBaseComponent {
    * 禁用
    */
   disabled?: boolean;
+  /**
+   * 偏移量
+   */
+  offset?: number;
 }
 
 export interface ISubMenuState {
@@ -72,7 +76,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
     const {
       className, style, children, title, deep,
       activeKey, onSelect, onOpenChange, openKeys = [],
-      keyId, disabled,
+      keyId, disabled, offset,
       ...otherProps,
     } = this.props;
     const preCls = 'yoshino-sub-menu';
@@ -85,7 +89,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
       },
     );
     const childrens = React.Children.toArray(children);
-    const paddingLeft = `${deep as number * 24}px`;
+    const paddingLeft = `${deep as number * (offset as number)}px`;
     return (
       <React.Fragment>
         <li
@@ -147,6 +151,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
                             openKeys,
                             onSelect,
                             onOpenChange,
+                            offset,
                           });
                         })
                       }
