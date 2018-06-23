@@ -70,14 +70,10 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     const transitionStyles: {
       [index: string]: object;
     } = {
-      exiting: { opacity: 0},
-      exited: { opacity: 0 },
+      exiting: { transform: 'scaleY(0.3)'},
+      exited: { display: 'none' },
     };
-    const duration = 500;
-    const defaultStyle = {
-      transition: `opacity ${duration}ms ease-in-out`,
-      opacity: 1,
-    };
+    const duration = 200;
     const defaultIcon = {
       success: 'checkmark-circled',
       info: 'information-circled',
@@ -109,7 +105,6 @@ export class Alert extends Component<IAlertProps, IAlertState> {
               className={clsName}
               style={{
                 ...style,
-                ...defaultStyle,
                 ...transitionStyles[state],
               }}
               {...otherProps}
