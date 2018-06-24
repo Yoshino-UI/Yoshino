@@ -112,12 +112,14 @@ export class Alert extends Component<IAlertProps, IAlertState> {
             <span style={{display: showIcon ? 'inline-block' : 'none'}} className={`${preCls}-icon`}>
               {icon ? icon : (<Icon type={defaultIcon[type]}/>)}
             </span>
-            <p className={`${preCls}-message`}>{title}</p>
-            {
-              this.props.children ? (
-                <p className={`${preCls}-description`}>{this.props.children}</p>
-              ) : null
-            }
+            <div className={showIcon && this.props.children ? `${preCls}-has-icon-description` : ''}>
+              <p className={`${preCls}-message`}>{title}</p>
+              {
+                this.props.children ? (
+                  <p className={`${preCls}-description`}>{this.props.children}</p>
+                ) : null
+              }
+            </div>
             {
               closable ? (
                 <span className={`${preCls}-close`} onClick={this.closeAlert}>
