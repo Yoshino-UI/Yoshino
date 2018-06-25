@@ -15,6 +15,7 @@ import Input from './Input';
 import InputNumber from './InputNumber';
 import Loading from './Loading';
 import Menu from './Menu';
+import Notification from './Notification';
 import Pagination from './Pagination';
 import Pop from './Pop';
 import Progress from './Progress';
@@ -46,6 +47,7 @@ export {
   InputNumber,
   Loading,
   Menu,
+  Notification,
   Pagination,
   Pop,
   Progress,

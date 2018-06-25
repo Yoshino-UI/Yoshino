@@ -29,6 +29,7 @@ import BackTop from './BackTop';
 import Divider from './Divider';
 import Ripple from './Ripple';
 import Alert from './Alert';
+import Notification from './Notification';
 
 export default [
   {
@@ -155,5 +156,9 @@ export default [
   {
     component: Alert,
     path: '/components/alert',
+  },
+  {
+    component: Notification,
+    path: '/components/notification',
   },
 ];

@@ -120,6 +120,10 @@ export default [
         keyId: 'loading',
       },
       {
+        name: 'Notification(通知提醒框)',
+        keyId: 'notification',
+      },
+      {
         name: 'Progress(进度条)',
         keyId: 'progress',
       },
