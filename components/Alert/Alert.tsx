@@ -10,7 +10,7 @@ export interface IAlertProps extends IBaseComponent {
   /**
    * 文案类型
    */
-  type: 'success' | 'info' | 'warning' | 'error';
+  type: 'success' | 'info' | 'warning' | 'error' | 'normal';
   /**
    * 是否显示关闭按钮
    */
@@ -79,6 +79,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
       info: 'information-circled',
       warning: 'android-alert',
       error: 'close-circled',
+      normal: '',
     };
     const alertCls = {
       [`${preCls}-${type}`]: true,
@@ -109,9 +110,13 @@ export class Alert extends Component<IAlertProps, IAlertState> {
               }}
               {...otherProps}
             >
-            <span style={{display: showIcon ? 'inline-block' : 'none'}} className={`${preCls}-icon`}>
-              {icon ? icon : (<Icon type={defaultIcon[type]}/>)}
-            </span>
+            {
+              showIcon &&  (icon || type !== 'normal') ? (
+                <span className={`${preCls}-icon`}>
+                  {icon ? icon : (<Icon type={defaultIcon[type]}/>)}
+                </span>
+              ) : null
+            }
             <div className={showIcon && this.props.children ? `${preCls}-has-icon-description` : ''}>
               <p className={`${preCls}-message`}>{title}</p>
               {

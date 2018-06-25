@@ -50,6 +50,14 @@
     }
   }
 
+  &-normal {
+    border: 1px solid @primary-color-hover;
+    background-color: @primary-color-choosed;
+    .@{css-prefix}-icon {
+      color: @primary-color;
+    }
+  }
+
   &-no-icon {
     padding: 8px 48px 8px 16px;
   }
@@ -84,11 +92,13 @@
 
   &-message {
     color: rgba(0,0,0,.85);
+    font-size: @font-size-large;
   }
 
   &-description {
-    font-size: @font-size-small;
+    font-size: @font-size-base;
     padding-top: 5px;
+
   }
 
   &-close {
