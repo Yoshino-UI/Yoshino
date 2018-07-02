@@ -122,6 +122,7 @@ const renderNotifications = (
   });
 
   insertContainer();
+  return alertKey;
 };
 
 const closeNotification = (key: string | number) => {
