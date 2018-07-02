@@ -36,8 +36,10 @@ console.log('结束tsc编译');
 
 console.log('开始gulp打包');
 // gulp打包
-const gulp = path.resolve(__dirname, './gulpLess.js');
-execSync(`gulp --gulpfile ${gulp}`);
+const gulpEntry = path.resolve(__dirname, './gulpLess.js');
+const gulp = path.resolve(__dirname, '../node_modules', '.bin', 'gulp');
+
+execSync(`${gulp} --gulpfile ${gulpEntry}`);
 console.log('gulp打包完成');
 
 console.log('=============打包结束=============');

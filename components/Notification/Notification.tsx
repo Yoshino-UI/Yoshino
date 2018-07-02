@@ -4,7 +4,7 @@ import {ReactNode} from 'react';
 import {render} from 'react-dom';
 // import { CSSProperties } from 'react';
 
-interface INotification  {
+export interface INotification  {
   key?: string | number;
   duration?: number;
   icon?: ReactNode;
@@ -13,7 +13,7 @@ interface INotification  {
   onClose?: () => void;
 }
 
-interface INotificationConfig {
+export interface INotificationConfig {
   vertical?: number;
   horizontal?: number;
   duration?: number;

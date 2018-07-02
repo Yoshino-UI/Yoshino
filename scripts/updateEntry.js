@@ -8,7 +8,7 @@ const componentsPath = path.resolve(__dirname, '../components/');
 
 // 删除index.tsx
 if (fs.existsSync(path.resolve(componentsPath, './index.tsx'))) {
-  fs.unlink(path.resolve(componentsPath, './index.tsx'));
+  fs.unlinkSync(path.resolve(componentsPath, './index.tsx'));
 }
 
 let importStr = '';
