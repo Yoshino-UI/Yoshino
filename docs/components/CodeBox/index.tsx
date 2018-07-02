@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import './index.less';
 import Markdown from '../Markdown';
+import { Collapse } from '../../../components/';
 import * as Prism from 'prismjs';
 require('prismjs/components/prism-jsx.min');
 require('../../../node_modules/prismjs/themes/prism.css');
@@ -11,6 +12,8 @@ export interface IProps {
   demo: ReactNode;
   code?: string;
 }
+
+const Panel = Collapse.Panel;
 
 export default class CodeBox extends Component<IProps> {
 
@@ -32,9 +35,14 @@ export default class CodeBox extends Component<IProps> {
         </div>
         {
           code ? 
-          <pre>
-            <code className="language-jsx" dangerouslySetInnerHTML={demoHTML}/>
-          </pre> : null
+          <Collapse accordion>
+            <Panel title="点击查看源码" keyId="1">
+              <pre>
+                <code className="language-jsx" dangerouslySetInnerHTML={demoHTML}/>
+              </pre>
+            </Panel>
+          </Collapse>
+           : null
         }
       </div>
     );
