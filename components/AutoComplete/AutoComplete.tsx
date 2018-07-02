@@ -69,16 +69,18 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     const {options, active} = this.state;
     const keyCode = e.keyCode;
     if (keyCode === 40) {
-      const next = active + 1 > options.length ? 0 : active + 1;
+      const next = active + 1 >= options.length ? 0 : active + 1;
       this.setState({active: next});
     } else if (keyCode === 38) {
-      const pre = active - 1 < 0 ? 0 : active - 1;
+      const pre = active - 1 < 0 ? options.length - 1 : active - 1;
       this.setState({active: pre});
     }
 
     if (keyCode === 13) {
       this.onChangeTrigger(this.state.options[active]);
       this.hideList();
+    } else {
+      this.showList();
     }
   }
 
