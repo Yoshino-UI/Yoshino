@@ -65,7 +65,7 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
   refChildren: HTMLElement;
   timeoutHandle: number;
 
-  sacle = 0.8;
+  scale = 0.8;
 
   static defaultProps = {
     placement: 'top',
@@ -83,8 +83,8 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
   };
 
   setPopRect = (rect: {width: number; height: number}): {width: number; height: number} => {
-    const width = rect.width / this.sacle;
-    const height = rect.height / this.sacle;
+    const width = rect.width / this.scale;
+    const height = rect.height / this.scale;
     return {width, height};
   }
 
