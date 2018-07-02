@@ -36,7 +36,7 @@ export default class CodeBox extends Component<IProps> {
         {
           code ? 
           <Collapse accordion>
-            <Panel title="点击查看源码" keyId="1">
+            <Panel title="点击查看源码" keyId={Math.random() + ''}>
               <pre>
                 <code className="language-jsx" dangerouslySetInnerHTML={demoHTML}/>
               </pre>

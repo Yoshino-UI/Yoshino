@@ -36,7 +36,6 @@ export default class Components extends Component<IProps> {
         <div className={`${preCls}-wrapper`}>
           <div className={`${preCls}-menu`}>
           <Menu
-            style={{ width: 256 }}
             defaultActiveKey={current}
             defaultOpenKeys={['components']}
           >

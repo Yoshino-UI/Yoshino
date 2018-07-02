@@ -83,6 +83,7 @@ export class Panel extends Component<IPanelProps, IPanelState> {
           timeout={300}
           in={active}
           mountOnEnter
+          appear
           onEnter={() => {
             this.refContainer.style.height = '0px';
             this.refContainer.style.display = 'none';
