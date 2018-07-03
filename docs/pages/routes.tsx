@@ -30,6 +30,8 @@ import Divider from './Divider';
 import Ripple from './Ripple';
 import Alert from './Alert';
 import Notification from './Notification';
+import Transitions from './Transitions';
+
 
 export default [
   {
@@ -160,5 +162,9 @@ export default [
   {
     component: Notification,
     path: '/components/notification',
+  },
+  {
+    component: Transitions,
+    path: '/components/transitions',
   },
 ];

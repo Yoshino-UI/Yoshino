@@ -3,8 +3,10 @@ import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import { Transition } from 'react-transition-group';
+import Transitions from '../Transitions';
 import Icon from '../Icon';
+
+const Expand = Transitions.Expand;
 
 export interface ISubMenuProps extends IBaseComponent {
   /**
@@ -53,10 +55,6 @@ export interface ISubMenuState {
  * **菜单**-提供导航功能
  */
 export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
-  refList: HTMLElement;
-  refContainer: HTMLElement;
-  listHeight: number = 0;
-
   static defaultProps = {
     disabled: false,
   };
@@ -105,62 +103,28 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
             {title}
             <Icon type='chevron-up' className={`${preCls}-icon`}/>
           </div>
-          <Transition
-            in={show}
+          <Expand
             timeout={300}
-            appear
-            mountOnEnter
-            onEnter={() => {
-              this.refContainer.style.height = '0px';
-              this.refContainer.style.display = 'none';
-            }}
-            onEntering={() => {
-              this.refContainer.style.display = '';
-              const height = this.refList.clientHeight;
-              this.refContainer.style.height = `${height + 1}px`;
-            }}
-            onEntered={() => {
-              this.refContainer.style.height = '';
-            }}
-            onExit={() => {
-              const height = this.refList.clientHeight;
-              this.refContainer.style.height = `${height + 1}px`;
-            }}
-            onExiting={() => {
-              // 可能是react-transition的一个bug，直接执行会导致onExit中的高度设置无效
-              setTimeout(() => {
-                this.refContainer.style.height = '0px';
-              }, 0);
-            }}
-            onExited={() => {
-              this.refContainer.style.height = '';
-              this.refContainer.style.display = 'none';
-            }}
+            active={show}
           >
-            {
-              () => {
-                return (
-                  <div className={`${preCls}-container`} ref={(v) => this.refContainer = v as HTMLElement}>
-                    <ul className={`${preCls}-list`} ref={(v) => this.refList = v as HTMLElement}>
-                      {
-                        // tslint:disable
-                        React.Children.map(childrens, (children: ReactElement<any>) => {
-                          return React.cloneElement(children, {
-                            deep: deep as number + 1,
-                            activeKey,
-                            openKeys,
-                            onSelect,
-                            onOpenChange,
-                            offset,
-                          });
-                        })
-                      }
-                    </ul>
-                  </div>
-                )
-              }
-            }
-          </Transition>
+            <div className={`${preCls}-container`}>
+              <ul className={`${preCls}-list`}>
+                {
+                  // tslint:disable
+                  React.Children.map(childrens, (children: ReactElement<any>) => {
+                    return React.cloneElement(children, {
+                      deep: deep as number + 1,
+                      activeKey,
+                      openKeys,
+                      onSelect,
+                      onOpenChange,
+                      offset,
+                    });
+                  })
+                }
+              </ul>
+            </div>
+          </Expand>
         </li>
       </React.Fragment>
     );

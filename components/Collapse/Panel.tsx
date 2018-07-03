@@ -4,7 +4,9 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Icon from '../Icon';
-import Transition from 'react-transition-group/Transition';
+import Transitions from '../Transitions';
+
+const Expand = Transitions.Expand;
 
 export interface IPanelProps extends IBaseComponent {
   /**
@@ -37,8 +39,6 @@ export interface IPanelState {
  * **面板**-折叠版的子项
  */
 export class Panel extends Component<IPanelProps, IPanelState> {
-  refContainer: HTMLElement;
-  refInner: HTMLElement;
 
   static defaultProps = {
     disabled: false,
@@ -79,62 +79,20 @@ export class Panel extends Component<IPanelProps, IPanelState> {
           <Icon type='ios-arrow-right' className={`${preCls}-icon`}/>
           {title}
         </div>
-        <Transition
+        <Expand
           timeout={300}
-          in={active}
-          mountOnEnter
-          appear
-          onEnter={() => {
-            this.refContainer.style.height = '0px';
-            this.refContainer.style.display = 'none';
-          }}
-          onEntering={() => {
-            this.refContainer.style.display = 'block';
-            const height = this.refInner.clientHeight;
-            this.refContainer.style.height = `${height + 1}px`;
-          }}
-          onEntered={() => {
-            const height = this.refInner.clientHeight;
-            this.refContainer.style.height = `${height + 1}px`;
-          }}
-          onExiting={() => {
-            this.refContainer.style.height = '0px';
-          }}
-          onExited={() => {
-            this.refContainer.style.height = '0px';
-            this.refContainer.style.display = 'none';
-          }}
+          active={active as boolean}
         >
-          {
-            (state: string) => {
-              const contentCls  = classNames(
-                `${preCls}-content`,
-                {[`${preCls}-content-close`]: state === 'exited'},
-              );
-              return (
-                <div
-                  className={contentCls}
-                  ref={(v: HTMLElement | null) => {
-                    if (v) {
-                      this.refContainer = v;
-                    }
-                  }}
-                >
-                  <div
-                    className={`${preCls}-inner`}
-                    ref={(v: HTMLElement | null) => {
-                      if (v) {
-                        this.refInner = v;
-                      }
-                    }}
-                  >
-                    {children}
-                  </div>
-                </div>
-              );
-            }
-          }
-        </Transition>
+          <div
+            className={`${preCls}-content`}
+          >
+            <div
+              className={`${preCls}-inner`}
+            >
+              {children}
+            </div>
+          </div>
+        </Expand>
       </div>
     );
   }

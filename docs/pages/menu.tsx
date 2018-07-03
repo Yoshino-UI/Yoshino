@@ -151,6 +151,10 @@ export default [
         name: 'Ripple(波纹)',
         keyId: 'ripple',
       },
+      {
+        name: 'Transitions(过渡动画)',
+        keyId: 'transitions',
+      },
     ],
   },
 ];

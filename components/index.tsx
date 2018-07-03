@@ -28,6 +28,7 @@ import Switch from './Switch';
 import Tag from './Tag';
 import Timeline from './Timeline';
 import Tooltip from './Tooltip';
+import Transitions from './Transitions';
 
 export {
   Alert,
@@ -60,4 +61,5 @@ export {
   Tag,
   Timeline,
   Tooltip,
+  Transitions,
   };

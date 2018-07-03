@@ -25,7 +25,7 @@ export default class ApiBox extends Component<IProps> {
         {
           api.map((item, key) => {
             const {title, json, intro}  = item;
-            let md = `#### ${title}\r\n${intro}\r\n\r\n|属性|说明|类型|默认值|\r\n|-|-|-|-|`;
+            let md = `#### ${title}\r\n${intro || ''}\r\n\r\n|属性|说明|类型|默认值|\r\n|-|-|-|-|`;
             json.forEach((item) => {
               const {props, intro, type, defaultValue} = item;
               const arr = [props, intro, type, defaultValue];
