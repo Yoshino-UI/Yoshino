@@ -24,6 +24,7 @@ interface IStack {
   key: number | string;
   timeoutId: number;
   element: JSX.Element;
+  ref?: Alert;
 }
 
 let config = {
@@ -81,7 +82,13 @@ const insertContainer = () => {
   render((
     <React.Fragment>
       {
-        notificationStack.map((item) => item.element)
+        notificationStack.map((item) => React.cloneElement(item.element, {
+          ref: (v: Alert) => {
+            if (v) {
+              item.ref = v;
+            }
+          },
+        }))
       }
     </React.Fragment>
   ), container);
@@ -129,12 +136,12 @@ const closeNotification = (key: string | number) => {
   for (let index = 0; index < notificationStack.length; index++) {
     const item = notificationStack[index];
     if (item.key === key) {
+      const ref = notificationStack[index].ref as Alert;
+      ref.closeAlert();
       notificationStack.splice(index, 1);
       break;
     }
   }
-
-  insertContainer();
 };
 
 const setNotificationConfig = (props: INotificationConfig) => {
