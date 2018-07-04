@@ -55,14 +55,12 @@ module.exports = {
     }),
     new ForkTsCheckerWebpackPlugin(),
     new HappyPack({
-      // 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件
       id: 'ts',
       loaders: [
         {
           loader: 'ts-loader',
           options: {
             happyPackMode: true,
-            // disable type checker - we will use it in fork plugin
             transpileOnly: true,
           },
         },
