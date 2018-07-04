@@ -82,12 +82,6 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
     visible: this.props.defaultVisible as boolean,
   };
 
-  setPopRect = (rect: {width: number; height: number}): {width: number; height: number} => {
-    const width = rect.width / this.scale;
-    const height = rect.height / this.scale;
-    return {width, height};
-  }
-
   render() {
     const {children, title, placement} = this.props;
     // tslint:disable
@@ -96,16 +90,6 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
     const contentCls = classNames(
       preCls, `${preCls}-${placement}`,
     );
-    const transitionCls = {
-      appear: `${preCls}-appear`,
-      appearActive: `${preCls}-active-appear`,
-      enter: `${preCls}-enter`,
-      enterActive: `${preCls}-active-enter`,
-      enterDone: `${preCls}-done-enter`,
-      exit: `${preCls}-exit`,
-      exitActive: `${preCls}-active-exit`,
-      exitDone: `${preCls}-done-exit`,
-    };
     const content = (
       <div className={contentCls}>
         <div className={`${preCls}-content`}>{title}</div>
@@ -116,8 +100,6 @@ export class Tooltip extends Component<ITooltipProps, ITooltipState> {
       <Pop
         {...this.props}
         content={content}
-        setPopRect={this.setPopRect}
-        transitionCls={transitionCls}
       >
         {child}
       </Pop>

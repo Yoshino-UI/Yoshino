@@ -4,7 +4,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IBaseComponent} from '../template/component';
 import { RenderInRootDom } from '../utils/renderInRootDom';
-import { CSSTransition } from 'react-transition-group';
 
 export interface IPopProps extends IBaseComponent {
   /**
@@ -35,10 +34,6 @@ export interface IPopProps extends IBaseComponent {
    */
   trigger?: 'hover' | 'focus' | 'click';
   /**
-   * 内容
-   */
-  title?: string;
-  /**
    * 受控-是否可见
    */
   visible?: boolean;
@@ -58,14 +53,6 @@ export interface IPopProps extends IBaseComponent {
    * 进入时才渲染
    */
   mountOnEnter?: boolean;
-  /**
-   * 过度动画样式
-   */
-  transitionCls: {[key: string]: string};
-  /**
-   * pop 宽高修改
-   */
-  setPopRect?: (rect: {width: number; height: number}) => {width: number; height: number};
 }
 
 export interface IPopState {
@@ -81,7 +68,6 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   animateTimeHandle: number[] = []; // 动画timeout句柄
 
-  scale = 0.8;
   popId = `pop_${new Date().getTime() * Math.random()}`; // pop唯一id
 
   static defaultProps = {
@@ -101,53 +87,40 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   renderPop = () => {
     const {
-      className, children, title, style,
+      className, children, style, defaultVisible,
       placement, overlayStyle, overlayClassName,
       mouseEnterDelay, mouseLeaveDelay, mountOnEnter,
-      onChange, content, transitionCls, ...otherProps,
+      onChange, content, visible,
+      ...otherProps
     } = this.props;
     const preCls = 'yoshino-pop';
-    const visible = this.getVisible();
+    const clsName = classNames(
+      preCls, this.popId,
+      `${preCls}-${placement}`, overlayClassName,
+      className,
+    );
+    const child = React.Children.only(content);
+
     return (
-      <RenderInRootDom>
-        <CSSTransition
-          timeout={25}
-          classNames={transitionCls}
-          in={visible}
-          onEnter={() => {
-            this.resetPopPostion();
-          }}
-          mountOnEnter={true}
-          appear
-        >
-          {
-            () => {
-              const clsName = classNames(
-                preCls, this.popId,
-                `${preCls}-${placement}`, overlayClassName,
-                className,
-              );
-              const child = React.Children.only(content);
-              return (
-                <div
-                  className={clsName}
-                  style={{...overlayStyle}}
-                  {...otherProps}
-                  {...this.getConentTriggerAction()}
-                >
-                  {child}
-                </div>
-              );
-            }
-          }
-        </CSSTransition>
-      </RenderInRootDom>
+      this.getVisible() ? (
+        <RenderInRootDom callBack={this.resetPopPostion}>
+          <div
+            className={clsName}
+            style={{...overlayStyle}}
+            {...otherProps}
+            {...this.getConentTriggerAction()}
+          >
+            {child}
+          </div>
+        </RenderInRootDom>
+      )
+      : null
     );
   }
 
   resetPopPostion = () => {
     const children = ReactDOM.findDOMNode(this.refChildren) as Element;
-    const {placement = 'top', setPopRect} = this.props;
+    const {placement = 'top'} = this.props;
     const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
     const domRectReal = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
     const rect = children.getBoundingClientRect() as DOMRect; // Pop - target - dom
@@ -157,11 +130,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     const childrenY = pageY + rect.top; // 子元素y
     // 解决部分浏览器rect不可修改的问题
     const domRect = {width: domRectReal.width, height: domRectReal.height};
-    if (setPopRect) {
-      const popRect = setPopRect(domRect);
-      domRect.width = popRect.width;
-      domRect.height = popRect.height;
-    }
+
     // placement所对应的left top
     const config = {
       top: {left: childrenX + rect.width / 2 - domRect.width / 2, top: childrenY - domRect.height},
