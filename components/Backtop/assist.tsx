@@ -1,4 +1,4 @@
-export const backTop = (durations: number, callback: () => void | undefined) => {
+export const backTop = (durations: number, callback?: () => void | undefined) => {
   let dom: HTMLElement;
   if (document.documentElement.scrollTop) {
     dom = document.documentElement;
