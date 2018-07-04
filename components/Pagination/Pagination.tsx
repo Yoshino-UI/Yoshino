@@ -228,7 +228,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
     const {
       className, style, onChange, total,
       pageSize, next, previous,
-      defaultCurrent, ...otherProps,
+      defaultCurrent, ...otherProps
     } = this.props;
     const page = this.getPageSum();
     const current = this.getCurrent();

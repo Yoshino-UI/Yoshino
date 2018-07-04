@@ -57,7 +57,7 @@ export class StepsItem extends Component<IStepsItemProps, IStepsItemState> {
       className, style, title,
       direction, value, size,
       current, status, icon,
-      children, ...otherProps,
+      children, ...otherProps
     } = this.props as IStepsItemDefaultProps;
     const preCls = 'yoshino-steps-item';
     const clsName = classNames(

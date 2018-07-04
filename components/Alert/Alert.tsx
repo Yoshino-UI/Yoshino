@@ -63,7 +63,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     const {
       className, style, showIcon,
       type, closable,
-      icon, title, ...otherProps,
+      icon, title, ...otherProps
     } = this.props;
     const {show} = this.state;
     const preCls = 'yoshino-alert';

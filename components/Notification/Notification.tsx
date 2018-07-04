@@ -105,7 +105,7 @@ const renderNotifications = (
   }
   const {
     key, duration, message, icon,
-    ...otherProps,
+    ...otherProps
   } = props;
   const alertKey = key || (new Date().getDate() * Math.random());
 

@@ -78,7 +78,7 @@ export class Tag extends Component<ITagProps, ITagState> {
     const {
       className, style, children, closeable,
       color, onClose, mode = 'custom',
-      ...otherProps,
+      ...otherProps
     } = this.props;
     const {show} = this.state;
     const preCls = 'yoshino-tag';

@@ -75,7 +75,7 @@ export class TimelineItem extends Component<ITimelineItemProps, ITimelineItemSta
       iconColor, iconLine, iconType,
       lineColor, lineType, icon,
       parentIcon, parentLine,
-      children, ...otherProps,
+      children, ...otherProps
     } = this.props as ITimelineItemDefaultProps;
     const preCls = 'yoshino-timeline-item';
     const lineStyle = {

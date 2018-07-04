@@ -54,7 +54,7 @@ export class Checkbox extends Component<ICheckboxProps, ICheckboxState> {
     const {
       className, style, value,
       checked, disabled, children,
-      onChange, ...otherProps,
+      onChange, ...otherProps
     } = this.props;
     const preCls = 'yoshino-checkbox';
     const clsName = classNames(

@@ -78,7 +78,7 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
     const {
       className, style, children,
       onChange, accordion, defaultActiveKeys,
-      ...otherProps,
+      ...otherProps
     } = this.props;
     const preCls = 'yoshino-collapse';
     const clsName = classNames(

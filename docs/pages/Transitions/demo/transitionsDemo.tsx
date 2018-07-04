@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { Transitions, Button } from '../../../../components/';
-import './index.less'
+import './index.less';
 
 const {Expand} = Transitions;
 
 export default class App extends React.Component {
   state = {
     active: false,
-  }
+  };
 
   onExpand = () => {
     const {active} = this.state;
     this.setState({active: !active});
   }
 
-  render () {
+  render() {
     const height = 200;
     const {active} = this.state;
     const style: React.CSSProperties = {
@@ -30,11 +30,12 @@ export default class App extends React.Component {
         >
           <div
             className='transitions-expand-demo-box'
-            style={style}>
+            style={style}
+          >
             高度是{height}px
           </div>
         </Expand>
       </div>
-    )
+    );
   }
 }

@@ -75,7 +75,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
       className, style, children, title, deep,
       activeKey, onSelect, onOpenChange, openKeys = [],
       keyId, disabled, offset,
-      ...otherProps,
+      ...otherProps
     } = this.props;
     const preCls = 'yoshino-sub-menu';
     const show = openKeys.indexOf(keyId) !== -1;

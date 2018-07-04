@@ -45,7 +45,7 @@ export class Steps extends Component<IStepsProps, IStepsState> {
     const {
       className, style, children,
       direction, size, current,
-      ...otherProps,
+      ...otherProps
     } = this.props as IStepsDefaultProps;
     const preCls = 'yoshino-steps';
     const clsName = classNames(
