@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Transitions, Button } from '../../../../components/';
+import './index.less'
 
 const {Expand} = Transitions;
 
@@ -18,11 +19,7 @@ export default class App extends React.Component {
     const {active} = this.state;
     const style: React.CSSProperties = {
       height,
-      textAlign: 'center',
       lineHeight: `${height}px`,
-      background: 'red',
-      marginTop: 10,
-      width: 200,
     };
     return (
       <div>
@@ -32,6 +29,7 @@ export default class App extends React.Component {
           active={active}
         >
           <div
+            className='transitions-expand-demo-box'
             style={style}>
             高度是{height}px
           </div>
