@@ -1,0 +1,66 @@
+@import './var.less';
+
+@modal-prefix-cls: ~"@{css-prefix}-modal";
+.@{modal-prefix-cls} {
+  padding: @modal-padding;
+  box-shadow: @modal-shadow;
+  background: white;
+
+  &-body {
+    margin-bottom: @body-footer-spacing;
+  }
+
+  &-word-container {
+    display: inline-block;
+    width: calc(100% - @icon-width);
+    vertical-align: middle;
+
+  }
+
+  &-footer {
+    text-align: right;
+  }
+
+  &-cancel,
+  &-ok {
+    display: inline-block;
+  }
+
+  &-cancel {
+    margin-right: @cancel-ok-spacing;
+  }
+
+  &-title {
+    font-size: @title-font-size;
+    color: @title-font-color;
+  }
+
+  &-content {
+    font-size: @content-font-size;
+    color: @content-font-color;
+  }
+
+  &-icon {
+    display: inline-block;
+    width: @icon-width;
+    text-align: center;
+    vertical-align: middle;
+    font-size: @icon-font-size;
+
+    &-info {
+      color: @color-info
+    }
+
+    &-success {
+      color: @color-success;
+    }
+
+    &-error {
+      color: @color-error;
+    }
+
+    &-warning {
+      color: @color-warning;
+    }
+  }
+}

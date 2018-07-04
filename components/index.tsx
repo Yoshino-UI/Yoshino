@@ -15,6 +15,7 @@ import Input from './Input';
 import InputNumber from './InputNumber';
 import Loading from './Loading';
 import Menu from './Menu';
+import Modal from './Modal';
 import Notification from './Notification';
 import Pagination from './Pagination';
 import Pop from './Pop';
@@ -48,6 +49,7 @@ export {
   InputNumber,
   Loading,
   Menu,
+  Modal,
   Notification,
   Pagination,
   Pop,

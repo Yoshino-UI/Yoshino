@@ -2,7 +2,6 @@ import Alert, {IAlertProps} from '../Alert';
 import * as React from 'react';
 import {ReactNode} from 'react';
 import {render} from 'react-dom';
-// import { CSSProperties } from 'react';
 
 export interface INotification  {
   key?: string | number;

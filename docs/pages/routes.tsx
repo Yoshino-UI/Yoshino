@@ -31,7 +31,7 @@ import Ripple from './Ripple';
 import Alert from './Alert';
 import Notification from './Notification';
 import Transitions from './Transitions';
-
+import Modal from './Modal';
 
 export default [
   {
@@ -166,5 +166,9 @@ export default [
   {
     component: Transitions,
     path: '/components/transitions',
+  },
+  {
+    component: Modal,
+    path: '/components/modal',
   },
 ];

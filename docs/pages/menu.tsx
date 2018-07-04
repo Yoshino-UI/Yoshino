@@ -120,6 +120,10 @@ export default [
         keyId: 'loading',
       },
       {
+        name: 'Modal(对话框)',
+        keyId: 'modal',
+      },
+      {
         name: 'Notification(通知提醒框)',
         keyId: 'notification',
       },
