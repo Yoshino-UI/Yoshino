@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -51,6 +52,7 @@ module.exports = {
       template: path.resolve('./docs/index.html'),
       favicon: path.resolve('./docs/favicon.ico'),
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   devServer: {
     historyApiFallback: true,

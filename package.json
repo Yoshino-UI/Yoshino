@@ -63,7 +63,7 @@
     ]
   },
   "engines": {
-    "node": ">= 7.0.0"
+    "node": ">= 6.0.0"
   },
   "dependencies": {
     "@types/classnames": "*",
@@ -95,6 +95,7 @@
     "css-loader": "^0.28.11",
     "cz-conventional-changelog": "^2.1.0",
     "file-loader": "^1.1.11",
+    "fork-ts-checker-webpack-plugin": "^0.4.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.3",
     "gulp-less": "^4.0.0",
