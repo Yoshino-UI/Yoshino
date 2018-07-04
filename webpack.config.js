@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HappyPack = require('happypack');
 
 module.exports = {
   mode: 'development',
@@ -17,13 +19,13 @@ module.exports = {
     rules: [
       {
         test: /\.(tsx|ts)$/,
-        use: ['ts-loader'],
+        use: ['happypack/loader?id=ts'],
         include: [path.resolve('components'), path.resolve('docs')],
         exclude: [/__tests__/],
       },
       {
         test: /\.(css|less)$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+        use: ['happypack/loader?id=css'],
         include: [
           path.resolve('components'),
           path.resolve('scripts'),
@@ -50,6 +52,23 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('./docs/index.html'),
       favicon: path.resolve('./docs/favicon.ico'),
+    }),
+    new ForkTsCheckerWebpackPlugin(),
+    new HappyPack({
+      id: 'ts',
+      loaders: [
+        {
+          loader: 'ts-loader',
+          options: {
+            happyPackMode: true,
+            transpileOnly: true,
+          },
+        },
+      ]
+    }),
+    new HappyPack({
+      id: 'css',
+      loaders: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
     }),
   ],
   devServer: {
