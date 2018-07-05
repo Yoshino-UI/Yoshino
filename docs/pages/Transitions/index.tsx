@@ -10,9 +10,9 @@ import TransitionsDemo from './demo/transitionsDemo';
 import * as transitionsDemoMd from './demo/transitionsDemo.md';
 const transitionsDemoCode = require('!raw-loader!./demo/transitionsDemo');
 
-// import TransitionsCustom from './demo/transitionsCustom';
-// import * as transitionsCustomMd from './demo/transitionsCustom.md';
-// const transitionsCustomCode = require('!raw-loader!./demo/transitionsCustom');
+import TransitionsCustom from './demo/transitionsCustom';
+import * as transitionsCustomMd from './demo/transitionsCustom.md';
+const transitionsCustomCode = require('!raw-loader!./demo/transitionsCustom');
 
 export default class TransitionsPage extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class TransitionsPage extends Component {
         <Markdown text={md}/>
         <CodeBox text={transitionsDemoMd} demo={<TransitionsDemo/>} code={transitionsDemoCode}/>
 
-        {/* <CodeBox text={transitionsCustomMd} demo={<TransitionsCustom/>} code={transitionsCustomCode}/> */}
+        <CodeBox text={transitionsCustomMd} demo={<TransitionsCustom/>} code={transitionsCustomCode}/>
         <ApiBox api={Api}/>
       </div>
     )

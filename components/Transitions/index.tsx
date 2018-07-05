@@ -1,10 +1,9 @@
 import Expand from './Expand';
-import { IExpandProps } from './Expand';
-
-export {IExpandProps};
+import Slide from './Slide';
 
 const Transitions = {
   Expand,
+  Slide,
 };
 
 export default Transitions;
