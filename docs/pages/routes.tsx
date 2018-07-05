@@ -32,6 +32,8 @@ import Alert from './Alert';
 import Notification from './Notification';
 import Transitions from './Transitions';
 import Modal from './Modal';
+import Helpers from './Helpers';
+
 
 export default [
   {
@@ -170,5 +172,9 @@ export default [
   {
     component: Modal,
     path: '/components/modal',
+  },
+  {
+    component: Helpers,
+    path: '/components/helpers',
   },
 ];

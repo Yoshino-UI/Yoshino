@@ -148,7 +148,7 @@ export default [
     ],
   },
   {
-    name: '特效组件',
+    name: '特效(功能)组件',
     keyId: 'effects',
     children: [
       {
@@ -158,6 +158,10 @@ export default [
       {
         name: 'Transitions(过渡动画)',
         keyId: 'transitions',
+      },
+      {
+        name: 'Helpers(功能)',
+        keyId: 'helpers',
       },
     ],
   },
