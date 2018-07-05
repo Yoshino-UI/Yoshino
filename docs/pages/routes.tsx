@@ -33,7 +33,7 @@ import Notification from './Notification';
 import Transitions from './Transitions';
 import Modal from './Modal';
 import Helpers from './Helpers';
-
+import Drawer from './Drawer';
 
 export default [
   {
@@ -176,5 +176,9 @@ export default [
   {
     component: Helpers,
     path: '/components/helpers',
+  },
+  {
+    component: Drawer,
+    path: '/components/drawer',
   },
 ];
