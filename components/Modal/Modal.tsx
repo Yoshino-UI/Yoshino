@@ -164,7 +164,12 @@ const renderModal = (props: IModalComponentProps) => {
 };
 
 const closeModal = (modal: HTMLElement) => {
-  document.body.removeChild(modal);
+  try {
+    document.body.removeChild(modal);
+  } catch (error) {
+    return false;
+  }
+  return true;
 };
 
 export default {
