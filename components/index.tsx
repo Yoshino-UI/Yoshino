@@ -9,6 +9,7 @@ import Card from './Card';
 import Checkbox from './Checkbox';
 import Collapse from './Collapse';
 import Divider from './Divider';
+import Drawer from './Drawer';
 import Helpers from './Helpers';
 import Hover from './Hover';
 import Icon from './Icon';
@@ -44,6 +45,7 @@ export {
   Checkbox,
   Collapse,
   Divider,
+  Drawer,
   Helpers,
   Hover,
   Icon,

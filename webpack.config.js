@@ -48,6 +48,12 @@ module.exports = {
     ]
   },
   devtool: 'source-map',
+  optimization: {
+    splitChunks:  {
+      chunks: 'all'
+    },
+    minimize: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('./docs/index.html'),

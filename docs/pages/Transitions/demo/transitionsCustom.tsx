@@ -32,9 +32,9 @@ export default class App extends React.Component {
             <Slide
               timeout={300}
               active={active}
-              direction='bottom'
+              direction='right'
             >
-              <div className={'transitions-slide-demo-bottom'}>bottom</div>
+              <div className={'transitions-slide-demo-right'}>right</div>
             </Slide>
           </div>
           <div>
@@ -48,14 +48,12 @@ export default class App extends React.Component {
             <Slide
               timeout={300}
               active={active}
-              direction='right'
+              direction='bottom'
             >
-              <div className={'transitions-slide-demo-right'}>right</div>
+              <div className={'transitions-slide-demo-bottom'}>bottom</div>
             </Slide>
           </div>
-          
         </div>
-        
       </div>
     )
   }

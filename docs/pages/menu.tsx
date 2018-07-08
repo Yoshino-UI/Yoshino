@@ -94,6 +94,10 @@ export default [
         keyId: 'breadcrumb',
       },
       {
+        name: 'Drawer(抽屉导航)',
+        keyId: 'drawer',
+      },
+      {
         name: 'Menu(菜单)',
         keyId: 'menu',
       },

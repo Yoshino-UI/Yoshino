@@ -1,0 +1,19 @@
+@import './var.less';
+
+@drawer-prefix-cls: ~"@{css-prefix}-drawer";
+.@{drawer-prefix-cls} {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: white;
+  transition: @transition-base;
+  box-shadow: @drawer-shadow;
+
+  &-left {
+    left: 0;
+  }
+
+  &-right {
+    right: 0;
+  }
+}
