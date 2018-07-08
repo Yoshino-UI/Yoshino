@@ -71,6 +71,12 @@ export default [
         type: "ReactNode",
         defaultValue: "-",
       },
+      {
+        props: "showCancel",
+        intro: "是否显示取消按钮",
+        type: "boolean",
+        defaultValue: "false",
+      },
     ]
   }
 ]

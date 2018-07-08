@@ -13,10 +13,10 @@ export default function () {
 
   const autoClose = () => {
     const ref =Modal.confirm({
-      icon: <Icon type='checkmark-round'/>,
       title: '这是一个标题！！！',
       content: '这是一个内容主题！这是一个内容主题！这是一个内容主题！这是一个内容主题！！',
       width: 400,
+      showCancel: false,
     });
     setTimeout(() => {
       Modal.close(ref);

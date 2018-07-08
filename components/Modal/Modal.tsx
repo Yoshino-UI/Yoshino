@@ -15,6 +15,7 @@ export interface IModalProps extends IBaseComponent {
   onClose?: () => void;
   okText?: React.ReactNode;
   cancelText?: React.ReactNode;
+  showCancel?: boolean;
   title?: React.ReactNode;
   content?: React.ReactNode;
   bodyCotent?: React.ReactNode;
@@ -36,6 +37,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
   static defaultProps = {
     zIndex: 1000,
     width: 256,
+    showCancel: true,
   };
 
   state = {
@@ -75,7 +77,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
   render() {
     const {
       className, style, title, bodyCotent,
-      content, icon, width, zIndex,
+      content, icon, width, zIndex, showCancel,
       okText, cancelText, type,
     } = this.props;
     const preCls = 'yoshino-modal';
@@ -88,6 +90,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
       warning: 'android-alert',
       error: 'close-circled',
     };
+    const hasIcon = type !== 'confirm' || icon;
     return this.state.show ? (
       <div
         className={clsName}
@@ -104,7 +107,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
                   </div>
                 ) : null
               }
-              <div className={`${preCls}-word-container`}>
+              <div className={`${preCls}-word-container ${!hasIcon ? `${preCls}-word-container-no-icon` : ''}`}>
                 <div className={`${preCls}-title`}>{title}</div>
                 <div className={`${preCls}-content`}>{content}</div>
               </div>
@@ -114,7 +117,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
         </div>
         <div className={`${preCls}-footer`}>
           {
-            type === 'confirm' ? (
+            type === 'confirm' && showCancel ? (
               <div className={`${preCls}-cancel`} onClick={this.onCancel}>
                 {
                   typeof cancelText === 'string' || !cancelText ? (
