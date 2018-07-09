@@ -4,7 +4,7 @@ import * as React from 'react';
 import {IBaseComponent} from '../template/component';
 import {Transition} from 'react-transition-group';
 
-export interface ISlideProps extends IBaseComponent {
+export interface IScaleProps extends IBaseComponent {
   /**
    * 动画时间 ms
    */
@@ -13,20 +13,16 @@ export interface ISlideProps extends IBaseComponent {
    * 激活状态
    */
   active: boolean;
-  /**
-   * 方向
-   */
-  direction: 'left' | 'top' | 'right' | 'bottom';
 }
 
-export interface ISlideState {
+export interface IScaleState {
 
 }
 
 /**
  * **组件中文名称**-组件描述。
  */
-export class Slide extends Component<ISlideProps, ISlideState> {
+export class Scale extends Component<IScaleProps, IScaleState> {
   refChild: HTMLElement;
 
   static defaultProps = {
@@ -34,25 +30,12 @@ export class Slide extends Component<ISlideProps, ISlideState> {
 
   render() {
     const {
-      active, timeout, children, direction,
+      active, timeout, children,
     } = this.props;
+
     const transition = {
-      left: {
-        enter: 'translateX(0)',
-        exit: 'translateX(-100%)',
-      },
-      right: {
-        enter: 'translateX(0)',
-        exit: 'translateX(100%)',
-      },
-      top: {
-        enter: 'translateY(0)',
-        exit: 'translateY(-100%)',
-      },
-      bottom: {
-        enter: 'translateY(0)',
-        exit: 'translateY(100%)',
-      },
+      exit: 'scale(0)',
+      enter: 'scale(1)',
     };
 
     return (
@@ -63,13 +46,13 @@ export class Slide extends Component<ISlideProps, ISlideState> {
         unmountOnExit
         appear
         onEnter={() => {
-          this.refChild.style.transform = transition[direction].exit;
+          this.refChild.style.transform = transition.exit;
           this.refChild.style.opacity = '0';
           this.refChild.style.display = null;
         }}
         onEntering={() => {
           setTimeout(() => {
-            this.refChild.style.transform = transition[direction].enter;
+            this.refChild.style.transform = transition.enter;
             this.refChild.style.opacity = '1';
           }, 0);
         }}
@@ -78,12 +61,12 @@ export class Slide extends Component<ISlideProps, ISlideState> {
           this.refChild.style.opacity = null;
         }}
         onExit={() => {
-          this.refChild.style.transform = transition[direction].enter;
+          this.refChild.style.transform = transition.enter;
           this.refChild.style.opacity = '1';
         }}
         onExiting={() => {
           setTimeout(() => {
-            this.refChild.style.transform = transition[direction].exit;
+            this.refChild.style.transform = transition.exit;
             this.refChild.style.opacity = '0';
           }, 0);
         }}
@@ -117,4 +100,4 @@ export class Slide extends Component<ISlideProps, ISlideState> {
   }
 }
 
-export default Slide;
+export default Scale;

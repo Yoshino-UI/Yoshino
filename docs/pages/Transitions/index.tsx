@@ -14,6 +14,10 @@ import TransitionsCustom from './demo/transitionsCustom';
 import * as transitionsCustomMd from './demo/transitionsCustom.md';
 const transitionsCustomCode = require('!raw-loader!./demo/transitionsCustom');
 
+import TransitionsScale from './demo/transitionsScale';
+import * as transitionsScaleMd from './demo/transitionsScale.md';
+const transitionsScaleCode = require('!raw-loader!./demo/transitionsScale');
+
 export default class TransitionsPage extends Component {
   render() {
     return (
@@ -22,6 +26,8 @@ export default class TransitionsPage extends Component {
         <CodeBox text={transitionsDemoMd} demo={<TransitionsDemo/>} code={transitionsDemoCode}/>
 
         <CodeBox text={transitionsCustomMd} demo={<TransitionsCustom/>} code={transitionsCustomCode}/>
+
+        <CodeBox text={transitionsScaleMd} demo={<TransitionsScale/>} code={transitionsScaleCode}/>
         <ApiBox api={Api}/>
       </div>
     )

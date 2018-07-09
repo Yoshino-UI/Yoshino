@@ -1,20 +1,21 @@
 import * as React from 'react';
-import { Transitions, Button } from '../../../../components/';
+import { Transitions, Switch } from '../../../../components/';
 import './index.less';
 
-const {Expand} = Transitions;
+const {Scale} = Transitions;
 
 export default class App extends React.Component {
   state = {
-    active: false,
-  };
-
-  onExpand = () => {
-    const {active} = this.state;
-    this.setState({active: !active});
+    active: true,
   }
 
-  render() {
+  onScale = (checked: boolean) => {
+    this.setState({
+      active: checked,
+    });
+  }
+
+  render () {
     const height = 200;
     const {active} = this.state;
     const style: React.CSSProperties = {
@@ -23,8 +24,8 @@ export default class App extends React.Component {
     };
     return (
       <div style={{height: 300}}>
-        <Button onClick={this.onExpand}>展开折叠</Button>
-        <Expand
+        <Switch checked={active} onChange={this.onScale}>开/关</Switch>
+        <Scale
           timeout={300}
           active={active}
         >
@@ -32,10 +33,10 @@ export default class App extends React.Component {
             className='transitions-expand-demo-box'
             style={style}
           >
-            高度是{height}px
+            放缩
           </div>
-        </Expand>
+        </Scale>
       </div>
-    );
+    )
   }
 }

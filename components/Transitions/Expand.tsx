@@ -40,6 +40,7 @@ export class Expand extends Component<IExpandProps, IExpandState> {
         timeout={timeout}
         in={active}
         mountOnEnter
+        unmountOnExit
         appear
         onEnter={() => {
           this.refContainer.style.height = '0px';
