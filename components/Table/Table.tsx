@@ -5,7 +5,9 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 
 export interface ITableProps extends IBaseComponent {
-  data: object[];
+  data: Array<{
+    [index: string]: number;
+  }>;
   columns: IColumns[];
   fixedTitle?: boolean;
   scroll: {
@@ -114,76 +116,51 @@ export class Table extends Component<ITableProps, ITableState> {
                 this.tableScroll = dom;
               }}
             >
-              {/* <div className={`${preCls}-header`}>
-                <table>
-                  <thead>
-                    <tr>
-                      {columns.map((item, index) => {
-                        const style: React.CSSProperties = {
-                          width: item.width,
-                          ...item.style,
-                        };
-                        return (
-                          <th key={index}>
-                            <div
-                              style={style}
-                            >
-                              {item.title}
-                            </div>
-                          </th>
-                        );
-                      })}
-                    </tr>
-                  </thead>
-                </table>
-              </div> */}
-              {/* <div className={`${preCls}-body`}> */}
-                <table style={{width: scroll.x}}>
-                  <thead>
-                    <tr>
-                      {columns.map((item, index) => {
-                        const style: React.CSSProperties = {
-                          width: item.width,
-                          ...item.style,
-                        };
-                        return (
-                          <th key={index}>
-                            <div
-                              style={style}
-                            >
-                              {item.title}
-                            </div>
-                          </th>
-                        );
-                      })}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((item, index) => {
+              <table style={{width: scroll.x}}>
+                <thead>
+                  <tr>
+                    {columns.map((item, index) => {
+                      const style: React.CSSProperties = {
+                        width: item.width,
+                        ...item.style,
+                      };
                       return (
-                        <tr key={index}>
-                          {columns.map((column, i) => {
-                            const style: React.CSSProperties = {
-                              width: column.width,
-                            };
-                            return (
-                              <td key={i} style={style}>
-                                <div style={style}>
-                                  <div
-                                    style={column.style}
-                                  >
-                                    {item[column.dataIndex]}
-                                  </div>
-                                </div>
-                              </td>
-                            );
-                          })}
-                        </tr>
+                        <th key={index}>
+                          <div
+                            style={style}
+                          >
+                            {item.title}
+                          </div>
+                        </th>
                       );
                     })}
-                  </tbody>
-                </table>
-              {/* </div> */}
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        {columns.map((column, i) => {
+                          const style: React.CSSProperties = {
+                            width: column.width,
+                          };
+                          return (
+                            <td key={i} style={style}>
+                              <div style={style}>
+                                <div
+                                  style={column.style}
+                                >
+                                  {item[column.dataIndex]}
+                                </div>
+                              </div>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
             {
               fixedLeft ? (
