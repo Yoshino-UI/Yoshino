@@ -29,13 +29,35 @@ import 'yoshino/lib/index.css';
 ## 按需加载
 如果你想实现按需加载，可以通过以下的写法来实现。
 
-### 按需引入
+### 手动按需引入
 ```jsx
 import Button from 'yoshino/lib/Button';
 import 'yoshino/lib/Button/index.css';
 ```
 
-### 自动按需加载
+### 通用的按需加载方案（推荐）
+在普通`js`项目中和`ts`项目中均可使用，官方推荐的使用方案
+
+需要配合[ui-component-loader](https://github.com/gwuhaolin/ui-component-loader.git)使用实现自动按需加载。
+
+首先安装`ui-component-loader`
+```jsx
+npm install ui-component-loader --save-dev
+```
+
+在`webpack`中添加`loader`配置如下
+```jsx
+{
+  loader: 'ui-component-loader',
+  options: {
+    'lib': 'yoshino',
+    'libDir': 'lib',
+    'style': 'index.css',
+  },
+},
+```
+
+### 在babel中使用按需加载
 需要配合[babel-plugin-import](https://github.com/ant-design/babel-plugin-import)使用实现自动按需加载。
 
 首先安装`babel-plugin-import`
@@ -53,3 +75,5 @@ options: {
   }]],
 },
 ```
+
+
