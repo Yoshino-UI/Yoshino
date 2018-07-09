@@ -21,6 +21,7 @@
     "jsx-no-multiline-js": false,
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
-    "trailing-comma": false
+    "trailing-comma": false,
+    "no-shadowed-variable": false
   }
 }

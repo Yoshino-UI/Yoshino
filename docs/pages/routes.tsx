@@ -34,6 +34,8 @@ import Transitions from './Transitions';
 import Modal from './Modal';
 import Helpers from './Helpers';
 import Drawer from './Drawer';
+import Table from './Table';
+
 
 export default [
   {
@@ -180,5 +182,9 @@ export default [
   {
     component: Drawer,
     path: '/components/drawer',
+  },
+  {
+    component: Table,
+    path: '/components/table',
   },
 ];

@@ -72,6 +72,10 @@ export default [
         keyId: 'collapse',
       },
       {
+        name: 'Table(表格)',
+        keyId: 'table',
+      },
+      {
         name: 'Tag(标签)',
         keyId: 'tag',
       },

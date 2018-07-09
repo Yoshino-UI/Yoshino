@@ -28,6 +28,7 @@ import Ripple from './Ripple';
 import Slider from './Slider';
 import Steps from './Steps';
 import Switch from './Switch';
+import Table from './Table';
 import Tag from './Tag';
 import Timeline from './Timeline';
 import Tooltip from './Tooltip';
@@ -64,6 +65,7 @@ export {
   Slider,
   Steps,
   Switch,
+  Table,
   Tag,
   Timeline,
   Tooltip,
