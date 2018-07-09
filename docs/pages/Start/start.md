@@ -27,7 +27,7 @@ export default function () {
 import 'yoshino/lib/index.css'; 
 ```
 ## 按需加载
-如果你想实现按需加载，可以通过以下的写法来实现。
+如果你想实现按需加载，可以通过以下三种方案解决。
 
 ### 手动按需引入
 ```jsx

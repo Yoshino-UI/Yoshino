@@ -3,6 +3,14 @@
 [![build](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/yoshino)
 [![download](https://img.shields.io/npm/dt/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino)
 
+## 特性
+- 使用`TypeScript`开发，提供`d.ts`文件帮助开发者提高开发速度
+- 提倡`OFA（one for all）`与`AFO（all for one）`概念，不同项目开发前通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目ui规范进行定制化开发产出。
+- 除了简单通用的`ui`组件，`yoshino`抽离出了一些易用性比较高的特效(功能)组件，例如
+  - Helpers
+  - Ripple
+  - Transitions
+
 ## 介绍
 `yoshino`组件库提供简单样式组件，可以通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
 
