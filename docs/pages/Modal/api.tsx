@@ -31,7 +31,7 @@ export default [
       },
       {
         props: "onClose",
-        intro: "对话框关闭时回调",
+        intro: "对话框关闭时回调，点击取消、确定、以及右上角关闭时都会触发",
         type: "() => void",
         defaultValue: "-",
       },
@@ -76,6 +76,12 @@ export default [
         intro: "是否显示取消按钮",
         type: "boolean",
         defaultValue: "false",
+      },
+      {
+        props: "showClose",
+        intro: "是否显示关闭按钮",
+        type: "boolean",
+        defaultValue: "true",
       },
     ]
   }

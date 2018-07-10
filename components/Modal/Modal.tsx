@@ -16,6 +16,8 @@ export interface IModalProps extends IBaseComponent {
   okText?: React.ReactNode;
   cancelText?: React.ReactNode;
   showCancel?: boolean;
+  closeText?: React.ReactNode;
+  showClose?: boolean;
   title?: React.ReactNode;
   content?: React.ReactNode;
   bodyCotent?: React.ReactNode;
@@ -38,6 +40,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
     zIndex: 1000,
     width: 256,
     showCancel: true,
+    showClose: true,
   };
 
   state = {
@@ -78,7 +81,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
     const {
       className, style, title, bodyCotent,
       content, icon, width, zIndex, showCancel,
-      okText, cancelText, type,
+      okText, cancelText, type, closeText, showClose,
     } = this.props;
     const preCls = 'yoshino-modal';
     const clsName = classNames(
@@ -96,6 +99,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
         className={clsName}
         style={{width, zIndex, ...style}}
       >
+        {showClose ? <div className={`${preCls}-close`} onClick={this.onClose}>{closeText || 'X'}</div> : null}
         <div className={`${preCls}-body`}>
           {
             bodyCotent ? bodyCotent : (

@@ -5,6 +5,7 @@
   padding: @modal-padding;
   box-shadow: @modal-shadow;
   background: white;
+  position: relative;
 
   &-body {
     margin-bottom: @body-footer-spacing;
@@ -31,6 +32,14 @@
 
   &-cancel {
     margin-right: @cancel-ok-spacing;
+  }
+
+  &-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    cursor: pointer;
   }
 
   &-title {
