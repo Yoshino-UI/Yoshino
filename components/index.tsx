@@ -11,7 +11,6 @@ import Collapse from './Collapse';
 import Divider from './Divider';
 import Drawer from './Drawer';
 import Helpers from './Helpers';
-import Hover from './Hover';
 import Icon from './Icon';
 import Input from './Input';
 import InputNumber from './InputNumber';
@@ -48,7 +47,6 @@ export {
   Divider,
   Drawer,
   Helpers,
-  Hover,
   Icon,
   Input,
   InputNumber,

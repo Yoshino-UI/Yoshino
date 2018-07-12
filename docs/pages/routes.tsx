@@ -36,7 +36,6 @@ import Helpers from './Helpers';
 import Drawer from './Drawer';
 import Table from './Table';
 
-
 export default [
   {
     component: Yoshino,

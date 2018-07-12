@@ -6,7 +6,7 @@ const HappyPack = require('happypack');
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js']
   },
   entry: path.resolve('./docs/entry.tsx'),
   output: {
