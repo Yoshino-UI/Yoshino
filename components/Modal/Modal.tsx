@@ -6,6 +6,7 @@ import {IBaseComponent} from '../template/component';
 import Button from '../Button';
 import Icon from '../Icon';
 import {render} from 'react-dom';
+import Mask from '../template/mask';
 
 export interface IModalProps extends IBaseComponent {
   zIndex?: number;
@@ -22,6 +23,10 @@ export interface IModalProps extends IBaseComponent {
   content?: React.ReactNode;
   bodyCotent?: React.ReactNode;
   icon?: React.ReactNode;
+  showMask?: boolean;
+  maskClosable?: boolean;
+  maskClick?: () => void;
+  maskStyle?: React.CSSProperties;
 }
 
 export interface IModalComponentProps extends IModalProps {
@@ -35,12 +40,14 @@ export interface IModalComponentState {
 /**
  * **组件中文名称**-组件描述。
  */
-export class Modal extends Component<IModalComponentProps, IModalComponentState> {
+class Modal extends Component<IModalComponentProps, IModalComponentState> {
   static defaultProps = {
     zIndex: 1000,
     width: 256,
     showCancel: true,
     showClose: true,
+    showMask: true,
+    maskClosable: true,
   };
 
   state = {
@@ -82,6 +89,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
       className, style, title, bodyCotent,
       content, icon, width, zIndex, showCancel,
       okText, cancelText, type, closeText, showClose,
+      ...otherProps
     } = this.props;
     const preCls = 'yoshino-modal';
     const clsName = classNames(
@@ -98,6 +106,7 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
       <div
         className={clsName}
         style={{width, zIndex, ...style}}
+        {...otherProps}
       >
         {showClose ? <div className={`${preCls}-close`} onClick={this.onClose}>{closeText || 'X'}</div> : null}
         <div className={`${preCls}-body`}>
@@ -145,26 +154,47 @@ export class Modal extends Component<IModalComponentProps, IModalComponentState>
 }
 
 const renderModal = (props: IModalComponentProps) => {
-  const {zIndex} = props;
+  const {
+    zIndex, showMask = true, maskClosable = true,
+    maskStyle, maskClick
+  } = props;
   const div = document.createElement('div');
   div.style.position = 'fixed';
-  div.style.left = '50%';
-  div.style.top = '50%';
-  div.style.transform = 'translate(-50%, -50%)';
+  div.style.left = '0';
+  div.style.top = '0';
+  div.style.bottom = '0';
+  div.style.right = '0';
   div.style.zIndex = zIndex + '';
 
   document.body.appendChild(div);
   const modal = (
-    <Modal
-      {...props}
-      onClose={() => {
-        const {onClose} = props;
-        if (onClose) {
-          onClose();
-        }
-        closeModal(div);
-      }}
-    />
+    <React.Fragment>
+      {
+        showMask ? (
+        <Mask
+          maskStyle={maskStyle}
+          onClick={() => {
+            if (maskClosable) {
+              closeModal(div);
+            }
+            if (maskClick) {
+              maskClick();
+            }
+          }}
+        />
+        ) : null
+      }
+      <Modal
+        {...props}
+        onClose={() => {
+          const {onClose} = props;
+          if (onClose) {
+            onClose();
+          }
+          closeModal(div);
+        }}
+      />
+    </React.Fragment>
   );
   render(modal, div);
   return div;

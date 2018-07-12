@@ -83,6 +83,30 @@ export default [
         type: "boolean",
         defaultValue: "true",
       },
+      {
+        props: "showMask",
+        intro: "是否显示蒙层",
+        type: "boolean",
+        defaultValue: "true",
+      },
+      {
+        props: "maskClosable",
+        intro: "点击蒙层是否关闭",
+        type: "boolean",
+        defaultValue: "true",
+      },
+      {
+        props: "maskClick",
+        intro: "蒙层点击事件",
+        type: "() => void",
+        defaultValue: "-",
+      },
+      {
+        props: "maskStyle",
+        intro: "蒙层样式",
+        type: "React.CSSProperties",
+        defaultValue: "-",
+      },
     ]
   }
 ]
