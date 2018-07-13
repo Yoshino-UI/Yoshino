@@ -41,6 +41,7 @@ export default class Components extends Component<IProps> {
           >
             <Menu.Item keyId='yoshino' onClick={this.pushHistory.bind(this, 'yoshino')}>Yoshino</Menu.Item>
             <Menu.Item keyId='start' onClick={this.pushHistory.bind(this, 'start')}>快速开始</Menu.Item>
+            <Menu.Item keyId='theme' onClick={this.pushHistory.bind(this, 'theme')}>定制主题</Menu.Item>
             <Menu.Item keyId='logs' onClick={this.pushHistory.bind(this, 'logs')}>更新日志</Menu.Item>
             <Menu.Item keyId='faq' onClick={this.pushHistory.bind(this, 'faq')}>FAQ</Menu.Item>
             <SubMenu title='组件' keyId='components'>

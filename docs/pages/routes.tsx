@@ -1,6 +1,7 @@
 import Yoshino from './Yoshino';
 import Logs from './Logs/index';
 import FAQ from './FAQ/index';
+import Theme from './Theme/index';
 import Start from './Start/index';
 import Button from './Button';
 import Icon from './Icon';
@@ -185,5 +186,9 @@ export default [
   {
     component: Table,
     path: '/components/table',
+  },
+  {
+    component: Theme,
+    path: '/components/theme',
   },
 ];
