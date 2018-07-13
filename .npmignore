@@ -24,8 +24,8 @@ LICENSE
 postcss.config.js
 styleguide.confgi.js
 
-!components/*/style/*
-!components/styles/*
+!components/**/style/***
+!components/styles/**
 
 
 
