@@ -13,7 +13,7 @@ module.exports = {
     filename: 'build.js',
     path: path.resolve(__dirname, './build'),
     publicPath: '/',
-    chunkFilename: '[name].[chunkhash:5].chunk.js',
+    chunkFilename: '[name].js',
   },
   module: {
     rules: [
@@ -50,7 +50,8 @@ module.exports = {
   devtool: 'source-map',
   optimization: {
     splitChunks:  {
-      chunks: 'all'
+      chunks: 'all',
+      name: 'vendor',
     },
     minimize: true,
   },
