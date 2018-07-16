@@ -89,7 +89,8 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
       className, style, title, bodyCotent,
       content, icon, width, zIndex, showCancel,
       okText, cancelText, type, closeText, showClose,
-      maskStyle, maskClosable, showMask, maskClick,
+      maskStyle, maskClosable, showMask, maskClick, onOk,
+      onCancel,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-modal';
