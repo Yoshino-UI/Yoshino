@@ -24,7 +24,6 @@ export interface IDrawerState {
 export class Drawer extends Component<IDrawerProps, IDrawerState> {
   static defaultProps = {
     width: 256,
-    docked: true,
     zIndex: 100,
   };
 
