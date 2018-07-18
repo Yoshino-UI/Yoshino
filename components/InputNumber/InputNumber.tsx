@@ -3,7 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IAbstractInput} from '../template/component';
-import Icon from '../Icon';
 
 export interface IInputNumberProps extends IAbstractInput<number> {
   /**
@@ -122,8 +121,8 @@ export class InputNumber extends Component<IInputNumberProps, IInputNumberState>
           {...otherProps}
         />
         <div className={`${preCls}-control`}>
-          <div onClick={this.onPlus}><Icon type='plus' style={{fontSize: '12px'}}/></div>
-          <div onClick={this.onMinus}><Icon type='minus' style={{fontSize: '12px'}}/></div>
+          <div onClick={this.onPlus}><span style={{fontSize: '12px'}}>+</span></div>
+          <div onClick={this.onMinus}><span style={{fontSize: '12px'}}>-</span></div>
         </div>
       </div>
     );
