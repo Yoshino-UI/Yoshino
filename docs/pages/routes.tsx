@@ -41,230 +41,230 @@ import getComponentAsync from 'get-component-async';
 export default [
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "yoshino" */ './Yoshino')
+      () => import(/* webpackChunkName: "yoshino-yoshino" */ './Yoshino')
     ),
     path: '/components/yoshino',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "start" */ './Start')
+      () => import(/* webpackChunkName: "yoshino-start" */ './Start')
     ),
     path: '/components/start',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "faq" */ './FAQ')
+      () => import(/* webpackChunkName: "yoshino-faq" */ './FAQ')
     ),
     path: '/components/faq',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "logs" */ './Logs')
+      () => import(/* webpackChunkName: "yoshino-logs" */ './Logs')
     ),
     path: '/components/logs',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "button" */ './Button')
+      () => import(/* webpackChunkName: "yoshino-button" */ './Button')
     ),
     path: '/components/button'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "icon" */ './Icon')
+      () => import(/* webpackChunkName: "yoshino-icon" */ './Icon')
     ),
     path: '/components/icon'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "autocomplete" */ './AutoComplete')
+      () => import(/* webpackChunkName: "yoshino-autocomplete" */ './AutoComplete')
     ),
     path: '/components/autocomplete'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "checkbox" */ './CheckBox')
+      () => import(/* webpackChunkName: "yoshino-checkbox" */ './CheckBox')
     ),
     path: '/components/checkbox'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "input" */ './Input')
+      () => import(/* webpackChunkName: "yoshino-input" */ './Input')
     ),
     path: '/components/input'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "inputnumber" */ './InputNumber')
+      () => import(/* webpackChunkName: "yoshino-inputnumber" */ './InputNumber')
     ),
     path: '/components/inputnumber'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "rate" */ './Rate')
+      () => import(/* webpackChunkName: "yoshino-rate" */ './Rate')
     ),
     path: '/components/rate'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "radio" */ './Radio')
+      () => import(/* webpackChunkName: "yoshino-radio" */ './Radio')
     ),
     path: '/components/radio'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "slider" */ './Slider')
+      () => import(/* webpackChunkName: "yoshino-slider" */ './Slider')
     ),
     path: '/components/slider'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "switch" */ './Switch')
+      () => import(/* webpackChunkName: "yoshino-switch" */ './Switch')
     ),
     path: '/components/switch'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "avatar" */ './Avatar')
+      () => import(/* webpackChunkName: "yoshino-avatar" */ './Avatar')
     ),
     path: '/components/avatar'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "badge" */ './Badge')
+      () => import(/* webpackChunkName: "yoshino-badge" */ './Badge')
     ),
     path: '/components/badge'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "card" */ './Card')
+      () => import(/* webpackChunkName: "yoshino-card" */ './Card')
     ),
     path: '/components/card'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "collapse" */ './Collapse')
+      () => import(/* webpackChunkName: "yoshino-collapse" */ './Collapse')
     ),
     path: '/components/collapse'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "tag" */ './Tag')
+      () => import(/* webpackChunkName: "yoshino-tag" */ './Tag')
     ),
     path: '/components/tag'
   },
 
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "tooltip" */ './Tooltip')
+      () => import(/* webpackChunkName: "yoshino-tooltip" */ './Tooltip')
     ),
     path: '/components/tooltip'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "timeline" */ './Timeline')
+      () => import(/* webpackChunkName: "yoshino-timeline" */ './Timeline')
     ),
     path: '/components/timeline'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "breadcrumb" */ './Breadcrumb')
+      () => import(/* webpackChunkName: "yoshino-breadcrumb" */ './Breadcrumb')
     ),
     path: '/components/breadcrumb'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "menu" */ './Menu')
+      () => import(/* webpackChunkName: "yoshino-menu" */ './Menu')
     ),
     path: '/components/menu'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "pagination" */ './Pagination')
+      () => import(/* webpackChunkName: "yoshino-pagination" */ './Pagination')
     ),
     path: '/components/pagination'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "steps" */ './Steps')
+      () => import(/* webpackChunkName: "yoshino-steps" */ './Steps')
     ),
     path: '/components/steps'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "loading" */ './Loading')
+      () => import(/* webpackChunkName: "yoshino-loading" */ './Loading')
     ),
     path: '/components/loading'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "progress" */ './progress')
+      () => import(/* webpackChunkName: "yoshino-progress" */ './progress')
     ),
     path: '/components/progress'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "backtop" */ './BackTop')
+      () => import(/* webpackChunkName: "yoshino-backtop" */ './BackTop')
     ),
     path: '/components/backtop'
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "divider" */ './Divider')
+      () => import(/* webpackChunkName: "yoshino-divider" */ './Divider')
     ),
     path: '/components/divider',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "ripple" */ './Ripple')
+      () => import(/* webpackChunkName: "yoshino-ripple" */ './Ripple')
     ),
     path: '/components/ripple',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "alert" */ './Alert')
+      () => import(/* webpackChunkName: "yoshino-alert" */ './Alert')
     ),
     path: '/components/alert',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "notification" */ './Notification')
+      () => import(/* webpackChunkName: "yoshino-notification" */ './Notification')
     ),
     path: '/components/notification',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "transitions" */ './Transitions')
+      () => import(/* webpackChunkName: "yoshino-transitions" */ './Transitions')
     ),
     path: '/components/transitions',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "modal" */ './Modal')
+      () => import(/* webpackChunkName: "yoshino-modal" */ './Modal')
     ),
     path: '/components/modal',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "helpers" */ './Helpers')
+      () => import(/* webpackChunkName: "yoshino-helpers" */ './Helpers')
     ),
     path: '/components/helpers',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "drawer" */ './Drawer')
+      () => import(/* webpackChunkName: "yoshino-drawer" */ './Drawer')
     ),
     path: '/components/drawer',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "table" */ './Table')
+      () => import(/* webpackChunkName: "yoshino-table" */ './Table')
     ),
     path: '/components/table',
   },
   {
     component: getComponentAsync(
-      () => import(/* webpackChunkName: "theme" */ './Theme')
+      () => import(/* webpackChunkName: "yoshino-theme" */ './Theme')
     ),
     path: '/components/theme',
   },

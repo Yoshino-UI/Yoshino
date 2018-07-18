@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '../../../../components/';
+import { Avatar, Icon } from '../../../../components/';
 
 export default function () {
   return (
@@ -10,9 +10,9 @@ export default function () {
         <Avatar size="small"/>
       </div>
       <div style={{display: 'flex', alignItems: 'center'}}>
-        <Avatar size="large" icon="social-reddit" shape="square" style={{backgroundColor: '#f06292', color: '#ffebee'}}/>
-        <Avatar shape="square" icon="social-reddit"/>
-        <Avatar size="small" shape="square" icon="social-reddit"/>
+        <Avatar size="large" icon={<Icon type='social-reddit'/>} shape="square" style={{backgroundColor: '#f06292', color: '#ffebee'}}/>
+        <Avatar shape="square" icon={<Icon type='social-reddit'/>}/>
+        <Avatar size="small" shape="square" icon={<Icon type='social-reddit'/>}/>
       </div>
     </div>
   )

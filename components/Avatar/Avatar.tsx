@@ -3,7 +3,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import Icon from '../Icon';
 
 export interface IAvatarProps extends IBaseComponent {
   /**
@@ -17,7 +16,7 @@ export interface IAvatarProps extends IBaseComponent {
   /**
    * 图标 - 与Icon相同
    */
-  icon?: string;
+  icon?: React.ReactNode;
   /**
    * 图片资源
    */
@@ -52,9 +51,7 @@ export class Avatar extends Component<IAvatarProps, IAvatarState> {
         {...otherProps}
       >
         {
-          !src ? (
-            <Icon type={icon as string}/>
-          ) : (
+          !src ? icon : (
             <img src={src}/>
           )
         }

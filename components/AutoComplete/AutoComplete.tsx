@@ -3,7 +3,7 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import Input from '../Input';
-import {IInputProps} from '../Input';
+import {IInputProps} from '../Input/Input';
 import { CSSTransition } from 'react-transition-group';
 
 export interface IAutoCompleteProps extends IInputProps {

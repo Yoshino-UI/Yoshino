@@ -44,9 +44,7 @@ function addImportLess(component) {
 
 function fileIndexTsx(component) {
   const content = `import ${component} from './${component}';
-import { I${component}Props } from './${component}';
 
-export {I${component}Props};
 export default ${component};
 `;
   writeFile('index.tsx', content, component);

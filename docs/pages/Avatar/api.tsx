@@ -16,8 +16,8 @@ export default [
       },
       {
         props: "icon",
-        intro: "图标 - 与Icon相同",
-        type: "string",
+        intro: "头像内容，也可以是文字",
+        type: "ReactNode",
         defaultValue: "person",
       },
       {

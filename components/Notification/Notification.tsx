@@ -1,4 +1,5 @@
-import Alert, {IAlertProps} from '../Alert';
+import Alert from '../Alert';
+import { IAlertProps } from '../Alert/Alert';
 import * as React from 'react';
 import {ReactNode} from 'react';
 import {render} from 'react-dom';
