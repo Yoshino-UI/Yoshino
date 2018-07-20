@@ -10,10 +10,10 @@ module.exports = {
   },
   entry: path.resolve('./docs/entry.tsx'),
   output: {
-    filename: 'build.js',
+    filename: 'js/build.js',
     path: path.resolve(__dirname, './build'),
     publicPath: '/',
-    chunkFilename: '[name].js',
+    chunkFilename: 'js/[name].js',
   },
   module: {
     rules: [
