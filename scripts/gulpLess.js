@@ -19,10 +19,10 @@ gulp.task('less', function () {
 
 gulp.task('font', function () {
   return gulp.src(path.resolve('../components/styles/common/iconfont/fonts/*'))
-    .pipe(gulp.dest(path.resolve('../lib/Icon/fonts')))
+    // .pipe(gulp.dest(path.resolve('../lib/Icon/fonts')))
     .pipe(gulp.dest(path.resolve('../lib/fonts')))
     .pipe(gulp.dest(path.resolve('../es6/Icon/fonts')))
-    .pipe(gulp.dest(path.resolve('../es6/fonts')));    
+    // .pipe(gulp.dest(path.resolve('../es6/fonts')));    
 });
 
 // 单个组件打包less
