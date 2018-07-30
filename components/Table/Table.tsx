@@ -6,7 +6,7 @@ import {IBaseComponent} from '../template/component';
 
 export interface ITableProps extends IBaseComponent {
   data: Array<{
-    [index: string]: number | string;
+    [index: string]: React.ReactNode;
   }>;
   columns: IColumns[];
   fixedTitle?: boolean;
