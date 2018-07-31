@@ -7,6 +7,7 @@ export interface IProps {
   boxClass?: string;
   callBack?: () => void; // 渲染回调 - 每次render都会调用
   mount?: boolean; // 用于开启懒加载 当为true时进行渲染
+  zIndex?: number;
 }
 
 export interface IStatus {
@@ -19,14 +20,16 @@ export class RenderInRootDom extends Component<IProps, IStatus> {
   renderFlag: boolean = false; // 判断是否已经渲染过
   static defaultProps = {
     mount: true,
+    zIndex: 1000,
   }
 
   renderChild = () => {
-    const {boxClass} = this.props;
+    const {boxClass, zIndex} = this.props;
     this.box = document.createElement("div");
     if (boxClass) {
       this.box.setAttribute('class', boxClass);
     }
+    this.box.style.zIndex = zIndex + '';
     document.body.appendChild(this.box);
     this._renderLayer();
   }
