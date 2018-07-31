@@ -14,14 +14,14 @@ export default class App extends React.Component {
       visible: true,
     });
   }
-  
+
   render() {
     return (
       <div>
         <Button onClick={this.onClick}>点一次count++</Button>
         <Modal
           visible={this.state.visible}
-          bodyCotent={this.state.count}
+          bodyContent={this.state.count}
           onClose={() => this.setState({visible: false})}
         />
       </div>

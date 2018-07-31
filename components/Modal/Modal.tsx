@@ -21,7 +21,7 @@ export interface IModalProps extends IBaseComponent {
   showClose?: boolean;
   title?: React.ReactNode;
   content?: React.ReactNode;
-  bodyCotent?: React.ReactNode;
+  bodyContent?: React.ReactNode;
   icon?: React.ReactNode;
   showMask?: boolean;
   maskClosable?: boolean;
@@ -101,11 +101,11 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
 
   render() {
     const {
-      className, style, title, bodyCotent,
+      className, style, title, bodyContent,
       content, icon, width, zIndex, showCancel,
       okText, cancelText, type = 'confirm', closeText, showClose,
       maskStyle, maskClosable, showMask, maskClick, onOk,
-      onCancel,
+      onCancel, children,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-modal';
@@ -120,6 +120,8 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
     };
     const hasIcon = type !== 'confirm' || icon;
     const visible = this.getVisible();
+    const conetnt = children || bodyContent;
+
     return visible ? (
       <Dialog
         visible={visible}
@@ -142,7 +144,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
           {showClose ? <div className={`${preCls}-close`} onClick={this.onClose}>{closeText || 'X'}</div> : null}
           <div className={`${preCls}-body`}>
             {
-              bodyCotent ? bodyCotent : (
+              conetnt ? conetnt : (
                 <React.Fragment>
                 {
                   type !== 'confirm' || icon ? (
