@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {Menu, BackTop} from '../../components/';
 import { backTop } from '../../components/BackTop/assist';
 import './index.less';
-import menuObj from './menu';
+import menuObj from './pageMenu';
 import { MenuItem } from '../../components/Menu/MenuItem';
 import { RouteComponentProps } from 'react-router';
 import Routes from './routes';
