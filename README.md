@@ -1,8 +1,9 @@
 # Yoshino
 [![build](https://img.shields.io/npm/v/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino) 
 [![build](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/yoshino)
-[![download](https://img.shields.io/npm/dt/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino)
+[![download](https://img.shields.io/npm/dm/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino)
 
+![Star chart](https://hellogithub.com/starchart/Yoshino-UI/Yoshino.svg)
 ## 官网
 [首页](https://yoshino-ui.github.io)
 [文档](https://yoshino-ui.github.io/#/components/yoshino)
