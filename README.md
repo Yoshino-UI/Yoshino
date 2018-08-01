@@ -8,6 +8,36 @@
 [首页](https://yoshino-ui.github.io)
 [文档](https://yoshino-ui.github.io/#/components/yoshino)
 
+## 设计初衷
+Yoshino本质上类似于Hexo，不同的样式风格组件类似于Hexo的各种theme，hexo官方仅提供了一套工具以及一个基础主题，Yoshino与其同理。
+
+开发者只需要像配置Hexo主题一样使用即可拥有不同风格的组件，你甚至可以在同一个项目中使用cli输出多种不同风格的组件。
+
+而不同主题的Yoshino需要开源社区完成，官方会提供类似的yoshino-theme-site来展示不同的主题，类似于[hexojs/site](https://github.com/hexojs/site)
+
+![](https://pic1.zhimg.com/80/v2-3c24dc918db63fbd19f6531374014146_hd.jpg)
+
+目前cli工具仅支持组件创建产出，例如创建自定义Alert组件
+```
+yoshino new Alert
+```
+以后cli可以通过类似以下的指令配置输出对应规范组件，例如输出material-ui规范的Alert组件
+```
+yoshino new Alert --theme material-ui
+```
+以及直接输出整个主题的组件库
+```
+yoshino new all --theme material-ui
+```
+
+## 特性
+- 使用`TypeScript`开发，提供`d.ts`文件帮助开发者提高开发速度
+- 提倡`OFA（one for all）`与`AFO（all for one）`概念，不同项目开发前通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目ui规范进行定制化开发产出。
+- 除了简单通用的`ui`组件，`yoshino`抽离出了一些易用性比较高的特效(功能)组件，例如
+  - Helpers
+  - Ripple
+  - Transitions
+
 ## 介绍
 `yoshino`组件库提供简单样式组件，可以通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
 
