@@ -78,16 +78,17 @@ const appendBody = () => {
   document.body.appendChild(container);
 };
 
-const insertContainer = () => {
+const updateContainer = () => {
   render((
     <React.Fragment>
       {
-        notificationStack.map((item) => React.cloneElement(item.element, {
+        notificationStack.map((item, index) => React.cloneElement(item.element, {
           ref: (v: Alert) => {
             if (v) {
               item.ref = v;
             }
           },
+          key: index,
         }))
       }
     </React.Fragment>
@@ -127,8 +128,7 @@ const renderNotifications = (
     timeoutId,
     element: alert,
   });
-
-  insertContainer();
+  updateContainer();
   return alertKey;
 };
 
@@ -139,7 +139,8 @@ const closeNotification = (key: string | number) => {
       const ref = notificationStack[index].ref as Alert;
       ref.closeAlert();
       notificationStack.splice(index, 1);
-      break;
+      updateContainer();
+      return;
     }
   }
 };
@@ -154,7 +155,7 @@ const setNotificationConfig = (props: INotificationConfig) => {
 
 const clearNotificationStack = () => {
   notificationStack.length = 0;
-  insertContainer();
+  updateContainer();
 };
 
 export default {
