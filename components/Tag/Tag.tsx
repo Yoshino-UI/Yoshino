@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Icon from '../Icon';
-import Transition from '../utils/customTransition';
+import Transitions from '../Transitions';
 import { getRGB } from '../utils/colorFormat';
 
 export interface ITagProps extends IBaseComponent {
@@ -39,6 +39,7 @@ export interface IGeekStyle {
   background?: string;
 }
 
+const {Scale} = Transitions;
 /**
  * **标签**-一般用于描述或者分类
  */
@@ -53,6 +54,12 @@ export class Tag extends Component<ITagProps, ITagState> {
   };
 
   closeTag = () => {
+    const {onClose} = this.props;
+
+    if (onClose) {
+      onClose();
+    }
+
     this.setState({
       show: false,
     });
@@ -95,9 +102,9 @@ export class Tag extends Component<ITagProps, ITagState> {
     };
     const tagStyle = color ? modeStyle[mode] : {};
     return (
-      <Transition
-        show={show}
-        onClose={onClose}
+      <Scale
+        active={show}
+        timeout={300}
       >
         <span
           className={clsName}
@@ -118,7 +125,7 @@ export class Tag extends Component<ITagProps, ITagState> {
             ) : null
           }
         </span>
-      </Transition>
+      </Scale>
     );
   }
 }

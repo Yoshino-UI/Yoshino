@@ -53,6 +53,14 @@ export interface IPopProps extends IBaseComponent {
    * 进入时才渲染
    */
   mountOnEnter?: boolean;
+  /**
+   * 宽度继承
+   */
+  inheritWidth?: boolean;
+  /**
+   * 变化回调 - 延迟前
+   */
+  onChangeBefore?: (visible: boolean) => void;
 }
 
 export interface IPopState {
@@ -79,6 +87,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     overlayStyle: {},
     defaultVisible: false,
     mountOnEnter: false,
+    inheritWidth: false,
   };
 
   state = {
@@ -90,7 +99,7 @@ export class Pop extends Component<IPopProps, IPopState> {
       className, children, style, defaultVisible,
       placement, overlayStyle, overlayClassName,
       mouseEnterDelay, mouseLeaveDelay, mountOnEnter,
-      onChange, content, visible,
+      onChange, content, visible, inheritWidth, onChangeBefore,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-pop';
@@ -100,7 +109,6 @@ export class Pop extends Component<IPopProps, IPopState> {
       className,
     );
     const child = React.Children.only(content);
-
     return (
       this.getVisible() ? (
         <RenderInRootDom callBack={this.resetPopPostion}>
@@ -120,7 +128,7 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   resetPopPostion = () => {
     const children = ReactDOM.findDOMNode(this.refChildren) as Element;
-    const {placement = 'top'} = this.props;
+    const {placement = 'top', inheritWidth} = this.props;
     const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
     const domRectReal = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
     const rect = children.getBoundingClientRect() as DOMRect; // Pop - target - dom
@@ -128,8 +136,12 @@ export class Pop extends Component<IPopProps, IPopState> {
     const pageX = window.pageXOffset;   // 当前滚动条x轴偏移量
     const childrenX = pageX + rect.left;  // 子元素x
     const childrenY = pageY + rect.top; // 子元素y
+
     // 解决部分浏览器rect不可修改的问题
-    const domRect = {width: domRectReal.width, height: domRectReal.height};
+    const domRect = {
+      width: inheritWidth ? rect.width : domRectReal.width,
+      height: domRectReal.height,
+    };
 
     // placement所对应的left top
     const config = {
@@ -149,6 +161,9 @@ export class Pop extends Component<IPopProps, IPopState> {
     dom.style.top = config[placement].top + 'px';
     dom.style.left = config[placement].left + 'px';
 
+    if (inheritWidth) {
+      dom.style.width = rect.width + 'px';
+    }
   }
 
   getVisible = () => {
@@ -157,7 +172,7 @@ export class Pop extends Component<IPopProps, IPopState> {
   }
 
   onChangeTrigger = (visible: boolean) => {
-    const {onChange, mouseEnterDelay, mouseLeaveDelay} = this.props;
+    const {onChange, mouseEnterDelay, mouseLeaveDelay, onChangeBefore} = this.props;
     if (this.timeoutHandle !== undefined) {
       clearTimeout(this.timeoutHandle);
     }
@@ -168,6 +183,10 @@ export class Pop extends Component<IPopProps, IPopState> {
       }
       this.setState({visible});
     }, visible ? mouseEnterDelay : mouseLeaveDelay);
+
+    if (onChangeBefore) {
+      onChangeBefore(visible);
+    }
   }
 
   // pop包裹对象trigger表现

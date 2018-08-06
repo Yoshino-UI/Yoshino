@@ -8,7 +8,7 @@ export interface IScaleProps extends IBaseComponent {
   /**
    * 动画时间 ms
    */
-  timeout: number;
+  timeout?: number;
   /**
    * 激活状态
    */
@@ -26,6 +26,7 @@ export class Scale extends Component<IScaleProps, IScaleState> {
   refChild: HTMLElement;
 
   static defaultProps = {
+    timeout: 300,
   };
 
   render() {
@@ -40,7 +41,7 @@ export class Scale extends Component<IScaleProps, IScaleState> {
 
     return (
       <Transition
-        timeout={timeout}
+        timeout={timeout!}
         in={active}
         mountOnEnter
         unmountOnExit
@@ -82,7 +83,7 @@ export class Scale extends Component<IScaleProps, IScaleState> {
             return React.cloneElement(child, {
               style: {
                 ...child.props.style,
-                transition: `all ${timeout / 1000}s cubic-bezier(.645,.045,.355,1)`,
+                transition: `all ${timeout! / 1000}s cubic-bezier(.645,.045,.355,1)`,
               },
               ref: (v: HTMLElement) => {
                 if (v) {

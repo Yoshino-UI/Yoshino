@@ -42,6 +42,10 @@ export default [
         keyId: 'radio',
       },
       {
+        name: 'Select(选择器)',
+        keyId: 'select',
+      },
+      {
         name: 'Slider(滑动条)',
         keyId: 'slider',
       },

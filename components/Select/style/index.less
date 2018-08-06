@@ -1,0 +1,173 @@
+@import './var.less';
+
+@select-prefix-cls: ~"@{css-prefix}-select";
+.@{select-prefix-cls} {
+  position: relative;
+  border: @select-border;
+  border-radius: @select-border-radius;
+  outline: none;
+  padding: 0 11px;
+  transition: @transition-base;
+  cursor: pointer;
+
+  &-enabled {
+    .@{select-prefix-cls} {
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: @primary-color;
+      }
+
+      &:focus {
+        box-shadow: @select-box-shadow;
+      }
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    background: @disabled-background-color;
+    border-color: @disabled-border-color;
+    color: @disabled-color;
+  }
+
+  
+
+  &-small {
+    font-size: @select-font-size-small;
+  }
+
+  &-default {
+    font-size: @select-font-size-small;
+  }
+
+  &-large {
+    font-size: @select-font-size-large;
+  }
+
+  // 单选
+  &-single {
+    .@{select-prefix-cls} {
+      &-small {
+        height: @select-size-small;
+        line-height: @select-size-small;
+      }
+    
+      &-default {
+        height: @select-size-default;
+        line-height: @select-size-default;
+      }
+    
+      &-large {
+        height: @select-size-large;
+        line-height: @select-size-large;
+      }
+    }
+  }
+
+  // 多选
+  &-multiple {
+    .@{select-prefix-cls} {
+      &-small {
+        min-height: @select-size-small;
+
+        span {
+          height: calc(@select-size-small - 8px);
+          line-height: calc(@select-size-small - 8px - 2px);
+          font-size: @select-size-small;
+          margin-top: 4px;
+        }
+      }
+    
+      &-default {
+        min-height: @select-size-default;
+
+        span {
+          height: calc(@select-size-default - 8px);
+          line-height: calc(@select-size-default - 8px - 2px);
+          font-size: @select-font-size-default;
+          margin-top: 4px;
+        }
+      }
+    
+      &-large {
+        min-height: @select-size-large;
+
+        span {
+          height: calc(@select-size-large - 8px);
+          line-height: calc(@select-size-large - 8px - 2px);
+          font-size: @select-font-size-large;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+
+
+  &-list {
+    background: white;
+    border-radius: @border-radius-large;
+    box-shadow: @shadow-base;
+    margin-top: 1px;
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  &-hidden {
+    .@{select-prefix-cls}-icon {
+      transform: @transform-roate-half;
+    }
+  }
+
+  
+  &-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    color: @select-border-color;
+    transform: translateY(-50%);
+  }
+
+  &-placeholder {
+    color: @color-unactive;
+  }
+
+  &-selection {
+    padding-right: 20px;
+    padding-bottom: 4px;
+  }
+}
+
+.@{select-prefix-cls}-option-group {
+  font-size: @select-option-group-font-size;
+
+  &-title {
+    padding: @select-option-group-padding;
+  }
+
+  // 当optgroup包裹opt时候重写padding-left
+  .@{select-prefix-cls}-option {
+    padding-left: 20px;
+  }
+}
+
+
+.@{select-prefix-cls}-option {
+  cursor: pointer;
+  font-size: @select-option-font-size;
+  padding: @select-option-padding;
+  user-select: none;
+  
+  &:hover {
+    background: @primary-color-choosed;
+  }
+
+  &-disabled {
+    color: @disabled-color;
+
+    &:hover {
+      background: none;
+      cursor: not-allowed;
+    }
+  }
+}

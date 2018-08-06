@@ -29,8 +29,10 @@ export class RenderInRootDom extends Component<IProps, IStatus> {
     if (boxClass) {
       this.box.setAttribute('class', boxClass);
     }
-    this.box.style.position = 'relative';
+    this.box.style.position = 'absolute';
     this.box.style.zIndex = zIndex + '';
+    this.box.style.left = '0';
+    this.box.style.top = '0';
     document.body.appendChild(this.box);
     this._renderLayer();
   }

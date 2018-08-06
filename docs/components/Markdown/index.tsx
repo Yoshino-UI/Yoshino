@@ -23,7 +23,7 @@ export default class Markdown extends Component<IProps> {
         if (lang === 'jsx') {
           return Prism.highlight(code, Prism.languages.jsx);
         } else {
-          return require('highlight.js').highlight(lang, code).value;
+          return require('highlight.js').highlight(lang || 'js', code).value;
         }
       }
     });

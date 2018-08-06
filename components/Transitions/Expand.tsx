@@ -8,7 +8,7 @@ export interface IExpandProps extends IBaseComponent {
   /**
    * 动画时间 ms
    */
-  timeout: number;
+  timeout?: number;
   /**
    * 激活状态
    */
@@ -28,6 +28,7 @@ export class Expand extends Component<IExpandProps, IExpandState> {
   refInner: HTMLElement;
 
   static defaultProps = {
+    timeout: 300,
   };
 
   render() {
@@ -37,7 +38,7 @@ export class Expand extends Component<IExpandProps, IExpandState> {
     const preCls = 'yoshino-expand';
     return (
       <Transition
-        timeout={timeout}
+        timeout={timeout!}
         in={active}
         mountOnEnter
         unmountOnExit
@@ -74,7 +75,7 @@ export class Expand extends Component<IExpandProps, IExpandState> {
             return (
               <div
                 className={preCls}
-                style={{transition: `height ${timeout / 1000}s cubic-bezier(.645,.045,.355,1)`}}
+                style={{transition: `height ${timeout! / 1000}s cubic-bezier(.645,.045,.355,1)`}}
                 ref={(v: HTMLElement | null) => {
                   if (v) {
                     this.refContainer = v;

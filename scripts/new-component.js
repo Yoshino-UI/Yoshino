@@ -157,6 +157,12 @@ fileE2ETests(component);
 
 console.info(`组件成功添加到 ./components/${component} 目录下。`);
 
+// 更新index.tsx
+const updateEntry = path.resolve(__dirname, './updateEntry.js');
+console.log('开始更新组件库入口文件');
+execSync(`node ${updateEntry}`);
+console.log('完成更新组件库入口文件');
+
 const newDocs = path.resolve(__dirname, './new-docs.js');
 execSync(`node ${newDocs} ${component}`);
 

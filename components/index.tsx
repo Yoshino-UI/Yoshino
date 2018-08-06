@@ -24,6 +24,7 @@ import Progress from './Progress';
 import Radio from './Radio';
 import Rate from './Rate';
 import Ripple from './Ripple';
+import Select from './Select';
 import Slider from './Slider';
 import Steps from './Steps';
 import Switch from './Switch';
@@ -60,6 +61,7 @@ export {
   Radio,
   Rate,
   Ripple,
+  Select,
   Slider,
   Steps,
   Switch,

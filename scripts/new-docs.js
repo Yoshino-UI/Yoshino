@@ -46,7 +46,7 @@ export default class ${component}Page extends Component {
         <CodeBox text={${low}CustomMd} demo={<${component}Custom/>} code={${low}CustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
 };
   
@@ -101,13 +101,13 @@ function demoTsx(component) {
   const content = `import * as React from 'react';
 import { ${component} } from '../../../../components/';
 
-export default function () {
+export default function() {
   return (
     <div>
       <${component}/>
       <${component}/>
     </div>
-  )
+  );
 }
 `;
   writeFile(`demo/${low}Demo.tsx`, content, component);

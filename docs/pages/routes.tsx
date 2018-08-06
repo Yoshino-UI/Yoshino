@@ -268,4 +268,10 @@ export default [
     ),
     path: '/components/theme',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-select" */ './Select')
+    ),
+    path: '/components/select',
+  },
 ];
