@@ -15,7 +15,7 @@ export interface IMenuProps extends IBaseComponent {
   /**
    * 非受控 - 激活key
    */
-  defaultActiveKey: string;
+  defaultActiveKey?: string;
   /**
    * 受控 - 展开key
    */
