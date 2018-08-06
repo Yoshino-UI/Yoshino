@@ -110,14 +110,14 @@ export class Menu extends Component<IMenuProps, IMenuState> {
       className, style, children,
       onSelect, defaultActiveKey,
       onOpenChange, defaultOpenKeys,
-      offset,
+      offset, activeKey,
       ...otherProps} = this.props;
     const preCls = 'yoshino-menu';
     const clsName = classNames(
       preCls, className,
     );
     const childrens = React.Children.toArray(children);
-    const activeKey = this.getActiveKey();
+    const activeKeyR = this.getActiveKey();
     const openKeys = this.getOpenKeys();
     return (
       <ul
@@ -130,7 +130,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
           React.Children.map(childrens, (child: ReactElement<any>) => {
             return React.cloneElement(child, {
               deep: 1,
-              activeKey,
+              activeKeyR,
               openKeys,
               onSelect: this.onSelect,
               onOpenChange: this.onOpenChange,
