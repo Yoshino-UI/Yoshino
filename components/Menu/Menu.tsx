@@ -130,7 +130,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
           React.Children.map(childrens, (child: ReactElement<any>) => {
             return React.cloneElement(child, {
               deep: 1,
-              activeKeyR,
+              activeKey: activeKeyR,
               openKeys,
               onSelect: this.onSelect,
               onOpenChange: this.onOpenChange,
