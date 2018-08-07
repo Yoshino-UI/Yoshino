@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Transition from 'react-transition-group/Transition';
+import Transitions from '../Transitions';
 import Icon from '../Icon';
 
 export interface IAlertProps extends IBaseComponent {
@@ -40,10 +41,15 @@ export interface IAlertState {
   show: boolean;
 }
 
+const {Expand} = Transitions;
+
 /**
  * **警告提示**-警告提示，展现需要关注的信息。
  */
 export class Alert extends Component<IAlertProps, IAlertState> {
+  static duration = 200;
+  duration = 200;
+
   state = {
     show: true,
   };
@@ -57,6 +63,13 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     this.setState({
       show: false,
     });
+
+    setTimeout(() => {
+      const {onClose} = this.props;
+      if (onClose) {
+        onClose();
+      }
+    }, this.duration);
   }
 
   render() {
@@ -67,13 +80,6 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     } = this.props;
     const {show} = this.state;
     const preCls = 'yoshino-alert';
-    const transitionStyles: {
-      [index: string]: object;
-    } = {
-      exiting: { transform: 'scaleY(0.3)'},
-      exited: { display: 'none' },
-    };
-    const duration = 200;
     const defaultIcon = {
       success: 'checkmark-circled',
       info: 'information-circled',
@@ -90,23 +96,14 @@ export class Alert extends Component<IAlertProps, IAlertState> {
       preCls, alertCls, className,
     );
     return (
-      <Transition
-        timeout={duration}
-        in={show}
-        unmountOnExit
-        onExited={() => {
-          if (this.props.onClose) {
-            this.props.onClose();
-          }
-        }}
+      <Expand
+        timeout={this.duration}
+        active={show}
       >
-        {
-          (state: string) => (
             <div
               className={clsName}
               style={{
                 ...style,
-                ...transitionStyles[state],
               }}
               {...otherProps}
             >
@@ -133,9 +130,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
               ) : null
             }
             </div>
-          )
-        }
-      </Transition>
+      </Expand>
     );
   }
 }

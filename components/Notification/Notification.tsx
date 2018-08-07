@@ -138,8 +138,10 @@ const closeNotification = (key: string | number) => {
     if (item.key === key) {
       const ref = notificationStack[index].ref as Alert;
       ref.closeAlert();
-      notificationStack.splice(index, 1);
-      updateContainer();
+      setTimeout(() => {
+        notificationStack.splice(index, 1);
+        updateContainer();
+      }, Alert.duration);
       return;
     }
   }
