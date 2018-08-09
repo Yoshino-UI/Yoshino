@@ -1,0 +1,57 @@
+@import './var.less';
+
+@message-prefix-cls: ~"@{css-prefix}-message";
+.@{message-prefix-cls} {
+  padding: @message-box-padding;
+  pointer-events: none;
+
+  &-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  &-content {
+    display: inline-block;
+    background: white;
+    box-shadow: @message-content-shadow;
+    padding: @message-content-padding;
+    font-size: 14px;
+    border-radius: @message-content-border-radius;
+  }
+
+
+  .@{css-prefix}-icon {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: @message-icon-margin-right;
+  }
+
+  &-success {
+    .@{css-prefix}-icon {
+      color: @color-success;
+    }
+  }
+
+  &-info {
+    .@{css-prefix}-icon {
+      color: @color-info;
+    }
+  }
+
+  &-warning {
+    .@{css-prefix}-icon {
+      color: @color-warning;
+    }
+  }
+
+  &-error {
+    .@{css-prefix}-icon {
+      color: @color-error;
+    }
+  }
+}

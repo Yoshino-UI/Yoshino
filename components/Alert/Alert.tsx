@@ -3,7 +3,6 @@ import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import Transition from 'react-transition-group/Transition';
 import Transitions from '../Transitions';
 import Icon from '../Icon';
 

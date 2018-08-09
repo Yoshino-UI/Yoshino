@@ -16,6 +16,7 @@ import Input from './Input';
 import InputNumber from './InputNumber';
 import Loading from './Loading';
 import Menu from './Menu';
+import Message from './Message';
 import Modal from './Modal';
 import Notification from './Notification';
 import Pagination from './Pagination';
@@ -53,6 +54,7 @@ export {
   InputNumber,
   Loading,
   Menu,
+  Message,
   Modal,
   Notification,
   Pagination,

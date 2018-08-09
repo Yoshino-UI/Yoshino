@@ -132,6 +132,10 @@ export default [
         keyId: 'loading',
       },
       {
+        name: 'Message(全局提示)',
+        keyId: 'message',
+      },
+      {
         name: 'Modal(对话框)',
         keyId: 'modal',
       },

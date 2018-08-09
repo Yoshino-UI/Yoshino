@@ -274,4 +274,10 @@ export default [
     ),
     path: '/components/select',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-message" */ './Message')
+    ),
+    path: '/components/message',
+  },
 ];
