@@ -6,6 +6,7 @@ import {IBaseComponent} from '../template/component';
 import Transitions from '../Transitions';
 import Icon from '../Icon';
 
+export type TType = 'success' | 'info' | 'warning' | 'error';
 export interface IMessage  {
   key?: string | number;
   duration?: number;
@@ -16,7 +17,7 @@ export interface IMessage  {
 
 export interface IMessageComponent extends IMessage, IBaseComponent {
   visible?: boolean;
-  type: 'success' | 'info' | 'warning' | 'error';
+  type: TType;
 }
 
 export interface IMessageConfig {
@@ -27,8 +28,8 @@ export interface IMessageConfig {
 interface IStack {
   key: number | string;
   timeoutId: number;
-  ele: ReactElement<IMessageComponent>;
   visible: boolean;
+  ele: ReactNode;
 }
 
 let config: IMessageConfig = {
@@ -42,7 +43,7 @@ export class Message extends React.Component<IMessageComponent> {
 
   render() {
     const {
-      className, visible, content,
+      className, visible = true, content,
       type, icon,
     } = this.props;
     const preCls = 'yoshino-message';
@@ -57,7 +58,7 @@ export class Message extends React.Component<IMessageComponent> {
     };
     return (
       <Slide
-        active={visible!}
+        active={visible}
         direction='top'
       >
         <div className={clsName}>
@@ -88,18 +89,24 @@ const updateContainer = () => {
     <React.Fragment>
       {
         messageStack.map((item) => {
-          return React.cloneElement(item.ele, {
+          const child = React.Children.only(item.ele);
+          return React.cloneElement(child, {
             visible: item.visible,
+            key: item.key,
           });
         })
       }
     </React.Fragment>
   ), container);
+  // 清除visible为false的
+  const tempStack = messageStack.filter((item) => item.visible);
+  messageStack.length = 0;
+  messageStack.push(...tempStack);
 };
 
 const renderMessages = (
   props: IMessage ,
-  type: 'success' | 'info' | 'warning' | 'error',
+  type: TType,
 ) => {
   if (!flag) {
     appendBody();
@@ -109,26 +116,26 @@ const renderMessages = (
     key, duration, onClose,
     ...otherProps
   } = props;
-  const alertKey = key || (new Date().getDate() * Math.random());
+  const messageKey = key || (new Date().getDate() * Math.random());
 
   const timeoutId = window.setTimeout(() => {
-    closeMessage(alertKey);
+    closeMessage(messageKey);
     if (onClose) {
       onClose();
     }
   }, props.duration || config.duration);
 
   const message = (
-    <Message {...otherProps} type={type}/>
+    <Message {...otherProps} type={type} />
   );
   messageStack.push({
-    key: alertKey,
+    key: messageKey,
     timeoutId,
-    ele: message,
     visible: true,
+    ele: message,
   });
   updateContainer();
-  return alertKey;
+  return messageKey;
 };
 
 const closeMessage = (key: string | number) => {
