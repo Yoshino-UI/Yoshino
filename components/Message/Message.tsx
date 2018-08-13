@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactNode, ReactElement } from 'react';
+import { ReactNode } from 'react';
 import {render} from 'react-dom';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
