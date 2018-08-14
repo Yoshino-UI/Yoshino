@@ -95,6 +95,7 @@
     "@types/react-syntax-highlighter": "0.0.5",
     "@types/react-test-renderer": "^16.0.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "css-hot-loader": "^1.4.1",
     "css-loader": "^0.28.11",
     "cz-conventional-changelog": "^2.1.0",
     "file-loader": "^1.1.11",

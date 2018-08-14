@@ -22,6 +22,12 @@ export default [
     intro: "Transitions.Slide",
     json: [
       {
+        props: "appear",
+        intro: "首次进入是否加载动画",
+        type: "boolean",
+        defaultValue: "true",
+      },
+      {
         props: "opacity",
         intro: "是否开启透明度变化",
         type: "boolean",

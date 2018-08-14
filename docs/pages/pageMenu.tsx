@@ -72,6 +72,10 @@ export default [
         keyId: 'card',
       },
       {
+        name: 'Carousel(走马灯)',
+        keyId: 'carousel',
+      },
+      {
         name: 'Collapse(折叠版)',
         keyId: 'collapse',
       },

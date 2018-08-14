@@ -1,0 +1,119 @@
+@import './var.less';
+
+@carousel-prefix-cls: ~"@{css-prefix}-carousel";
+.@{carousel-prefix-cls} {
+  position: relative;
+  height: @carousel-height;
+  overflow: hidden;
+
+  &-list {
+
+  }
+
+  &-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &-btn {
+    position: absolute;
+    color: white;
+    font-size: @carousel-icon-size;
+    width: @carousel-hot-click-area;
+    height: @carousel-hot-click-area;
+    line-height: @carousel-hot-click-area;
+    cursor: pointer;
+  }
+
+  &-dot {
+    opacity: @carousel-dot-opacity;
+    background: @carousel-dot-background;
+    border-radius: @carousel-dot-border-radius;
+    transition: @transition-base;
+    cursor: pointer;
+  }
+
+  &-active-dot {
+    opacity: 1;
+  }
+
+  &-horizontal {
+    .@{carousel-prefix-cls} {
+      &-child {
+        float: left;
+      }
+    
+      &-btn {
+        top: 50%;
+        transform: translateY(-50%);
+    
+        &-pre {
+          left: @carousel-icon-left;
+        }
+    
+        &-next {
+          right: @carousel-icon-right;
+        }
+      }
+
+      &-dots-box {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: @carousel-dots-box-bottom;
+        
+      }
+
+      &-dot {
+        width: @carousel-dot-width;
+        height: @carousel-dot-height;
+        margin-right: @carousel-dot-gap;
+        float: left;
+      }
+
+      &-active-dot {
+        width: @carousel-dot-active-width
+      }
+    }
+  }
+
+  &-vertical {
+    .@{carousel-prefix-cls} {
+      &-child {
+      }
+
+      &-btn {
+        left: 50%;
+        transform: translateX(-50%);
+        
+        &-pre {
+          top: @carousel-icon-top;
+        }
+    
+        &-next {
+          bottom: @carousel-icon-bottom;
+        }
+      }
+
+      &-dots-box {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: @carousel-dots-box-right;
+        
+      }
+
+      &-dot {
+        width: @carousel-dot-height;
+        height: @carousel-dot-width;
+        margin-bottom: @carousel-dot-gap;
+      }
+
+      &-active-dot {
+        height: @carousel-dot-active-width
+      }
+    }
+  }
+}

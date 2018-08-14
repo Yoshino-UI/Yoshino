@@ -25,6 +25,10 @@ export interface ISlideProps extends IBaseComponent {
    * 是否关闭透明度变化
    */
   opacity?: boolean;
+  /**
+   * 首次进入是否加载动画
+   */
+  appear?: boolean;
 }
 
 export interface ISlideState {
@@ -41,11 +45,12 @@ export class Slide extends Component<ISlideProps, ISlideState> {
     timeout: 300,
     single: false,
     opacity: true,
+    appear: true,
   };
 
   render() {
     const {
-      active, timeout, children, direction, single, opacity,
+      active, timeout, children, direction, single, opacity, appear,
     } = this.props;
     const transition = {
       left: {
@@ -81,7 +86,7 @@ export class Slide extends Component<ISlideProps, ISlideState> {
         in={active}
         mountOnEnter
         unmountOnExit
-        appear
+        appear={appear}
         onEnter={() => {
           this.refChild.style.transform = transition[direction].exit;
           if (opacity) {

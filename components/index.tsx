@@ -6,6 +6,7 @@ import Badge from './Badge';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import Card from './Card';
+import Carousel from './Carousel';
 import Checkbox from './Checkbox';
 import Collapse from './Collapse';
 import Divider from './Divider';
@@ -44,6 +45,7 @@ export {
   Breadcrumb,
   Button,
   Card,
+  Carousel,
   Checkbox,
   Collapse,
   Divider,

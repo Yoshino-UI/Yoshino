@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -76,13 +77,15 @@ module.exports = {
     }),
     new HappyPack({
       id: 'css',
-      loaders: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+      loaders: ['css-hot-loader', 'style-loader', 'css-loader', 'postcss-loader', 'less-loader']
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     historyApiFallback: true,
     contentBase: path.join(__dirname, "build"),
     compress: false,
     port: 9000,
+    hot: true,
   },
 };

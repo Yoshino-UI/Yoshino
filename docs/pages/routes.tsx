@@ -251,4 +251,10 @@ export default [
     ),
     path: '/components/message',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-carousel" */ './Carousel')
+    ),
+    path: '/components/carousel',
+  },
 ];
