@@ -17,6 +17,14 @@ export interface ISlideProps extends IBaseComponent {
    * 方向
    */
   direction: 'left' | 'top' | 'right' | 'bottom';
+  /**
+   * single 是否单方向滑动
+   */
+  single?: boolean;
+  /**
+   * 是否关闭透明度变化
+   */
+  opacity?: boolean;
 }
 
 export interface ISlideState {
@@ -31,11 +39,13 @@ export class Slide extends Component<ISlideProps, ISlideState> {
 
   static defaultProps = {
     timeout: 300,
+    single: false,
+    opacity: true,
   };
 
   render() {
     const {
-      active, timeout, children, direction,
+      active, timeout, children, direction, single, opacity,
     } = this.props;
     const transition = {
       left: {
@@ -56,6 +66,15 @@ export class Slide extends Component<ISlideProps, ISlideState> {
       },
     };
 
+    const singleDiretion: {
+      [index: string]: 'left' | 'top' | 'right' | 'bottom';
+    } = {
+      left: 'right',
+      right: 'left',
+      top: 'bottom',
+      bottom: 'top',
+    };
+
     return (
       <Transition
         timeout={timeout!}
@@ -65,32 +84,46 @@ export class Slide extends Component<ISlideProps, ISlideState> {
         appear
         onEnter={() => {
           this.refChild.style.transform = transition[direction].exit;
-          this.refChild.style.opacity = '0';
+          if (opacity) {
+            this.refChild.style.opacity = '0';
+          }
           this.refChild.style.display = null;
         }}
         onEntering={() => {
           setTimeout(() => {
             this.refChild.style.transform = transition[direction].enter;
-            this.refChild.style.opacity = '1';
+            if (opacity) {
+              this.refChild.style.opacity = '1';
+            }
           }, 0);
         }}
         onEntered={() => {
           this.refChild.style.transform = null;
-          this.refChild.style.opacity = null;
+          if (opacity) {
+            this.refChild.style.opacity = null;
+          }
         }}
         onExit={() => {
-          this.refChild.style.transform = transition[direction].enter;
-          this.refChild.style.opacity = '1';
+          const directionR = single ? singleDiretion[direction] : direction;
+          this.refChild.style.transform = transition[directionR].enter;
+          if (opacity) {
+            this.refChild.style.opacity = '1';
+          }
         }}
         onExiting={() => {
           setTimeout(() => {
-            this.refChild.style.transform = transition[direction].exit;
-            this.refChild.style.opacity = '0';
+            const directionR = single ? singleDiretion[direction] : direction;
+            this.refChild.style.transform = transition[directionR].exit;
+            if (opacity) {
+              this.refChild.style.opacity = '0';
+            }
           }, 0);
         }}
         onExited={() => {
           this.refChild.style.transform = null;
-          this.refChild.style.opacity = null;
+          if (opacity) {
+            this.refChild.style.opacity = null;
+          }
           this.refChild.style.display = 'none';
         }}
       >

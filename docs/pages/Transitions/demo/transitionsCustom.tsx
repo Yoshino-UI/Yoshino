@@ -54,6 +54,45 @@ export default class App extends React.Component {
             </Slide>
           </div>
         </div>
+        <p>开启单方向滑动</p>
+        <div className={'transitions-slide-demo-box'}>
+          <div>
+            <Slide
+              single
+              timeout={300}
+              active={active}
+              direction='top'
+            >
+              <div className={'transitions-slide-demo-top'}>top</div>
+            </Slide>
+            <Slide
+              single
+              timeout={300}
+              active={active}
+              direction='right'
+            >
+              <div className={'transitions-slide-demo-right'}>right</div>
+            </Slide>
+          </div>
+          <div>
+            <Slide
+              single
+              timeout={300}
+              active={active}
+              direction='left'
+            >
+              <div className={'transitions-slide-demo-left'}>left</div>
+            </Slide>
+            <Slide
+              single
+              timeout={300}
+              active={active}
+              direction='bottom'
+            >
+              <div className={'transitions-slide-demo-bottom'}>bottom</div>
+            </Slide>
+          </div>
+        </div>
       </div>
     )
   }
