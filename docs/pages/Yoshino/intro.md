@@ -1,7 +1,10 @@
-# Yoshino
-[![build](https://img.shields.io/npm/v/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino) 
-[![build](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/yoshino)
-[![download](https://img.shields.io/npm/dm/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino)
+<h1 align='center'>Yoshino</h1>
+<p align='center'>
+  <img src='https://img.shields.io/npm/v/yoshino.svg?style=flat-square' alt="version">
+  <img src='https://img.shields.io/npm/l/express.svg' alt="license">
+  <img src='https://img.shields.io/npm/dt/yoshino.svg?style=flat-square' alt="downloads">
+  <a href='https://yoshino-ui.github.io'><img src='https://img.shields.io/badge/website%20-Yoshino-51b26d.svg'/></a>
+</p>
 
 ## 特性
 - 使用`TypeScript`开发，提供`d.ts`文件帮助开发者提高开发速度

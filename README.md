@@ -1,11 +1,11 @@
-# Yoshino
-[![build](https://img.shields.io/npm/v/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino) 
-[![build](https://img.shields.io/npm/l/express.svg)](https://www.npmjs.com/package/yoshino)
-[![download](https://img.shields.io/npm/dm/yoshino.svg?style=flat-square)](https://www.npmjs.com/package/yoshino)
+<h1 align='center'>Yoshino</h1>
+<p align='center'>
+  <img src='https://img.shields.io/npm/v/yoshino.svg?style=flat-square' alt="version">
+  <img src='https://img.shields.io/npm/l/express.svg' alt="license">
+  <img src='https://img.shields.io/npm/dt/yoshino.svg?style=flat-square' alt="downloads">
+  <a href='https://yoshino-ui.github.io'><img src='https://img.shields.io/badge/website%20-Yoshino-51b26d.svg'/></a>
+</p>
 
-## 官网
-[首页](https://yoshino-ui.github.io)
-[文档](https://yoshino-ui.github.io/#/components/yoshino)
 
 ## 设计初衷
 Yoshino本质上类似于Hexo，不同的样式风格组件类似于Hexo的各种theme，hexo官方仅提供了一套工具以及一个基础主题，Yoshino与其同理。
