@@ -150,7 +150,11 @@ export class Select extends Component<ISelectProps, ISelectState> {
         visible={disabled ? false : undefined}
         mouseLeaveDelay={this.timeout}
         overlayClassName={`${preCls}-list`}
-        onChangeBefore={(visible) => this.setState({visible})}
+        onChangeBefore={(visible) => {
+          if (!disabled) {
+            this.setState({visible});
+          }
+        }}
       >
         <div
           className={clsName}
