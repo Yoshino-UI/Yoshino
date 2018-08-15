@@ -31,7 +31,10 @@ export default class ApiBox extends Component<IProps> {
               const {props, intro, type, defaultValue} = item;
               const arr = [props, intro, type, defaultValue];
               const separate = '======';
-              const str = arr.join(separate).replace(/\|/g, '&#124;').split(separate).join('|');
+              const str = arr.join(separate)
+              .replace(/\|/g, '&#124;')
+              .replace(/['|"]{1}/g, '`')
+              .split(separate).join('|');
               md += `\r\n|${str}|`;
             });
             return (

@@ -11,7 +11,7 @@ export default [
       {
         props: 'textAlign',
         intro: '文本表现',
-        type: `left' | 'center' | 'right'`,
+        type: `'left' | 'center' | 'right'`,
         defaultValue: 'center',
       },
     ]
