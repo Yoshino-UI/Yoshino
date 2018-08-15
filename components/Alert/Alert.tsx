@@ -94,6 +94,11 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     const clsName = classNames(
       preCls, alertCls, className,
     );
+
+    const desClsName = classNames(
+      `${preCls}-title`,
+      {[`${preCls}-has-icon-description`]: showIcon && !!this.props.children}
+    );
     return (
       <Expand
         timeout={this.duration}
@@ -113,7 +118,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
                 </span>
               ) : null
             }
-            <div className={showIcon && this.props.children ? `${preCls}-has-icon-description` : ''}>
+            <div className={desClsName}>
               <p className={`${preCls}-message`}>{title}</p>
               {
                 this.props.children ? (
