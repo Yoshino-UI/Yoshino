@@ -5,7 +5,6 @@ import Index from './index';
 import Components from './pages/index';
 import { RouteProps } from 'react-router';
 
-
 const Routes: RouteProps[] = [
   {
     component: Index,
@@ -18,7 +17,6 @@ const Routes: RouteProps[] = [
   },
 ];
 
-
 export default class App extends Component {
   render() {
     return (
@@ -28,15 +26,17 @@ export default class App extends Component {
             Routes.map((item, key) => {
               return (
                 <Route {...item} key={key}/>
-              )
+              );
             })
           }
-          <Redirect from="/components" to='/components/yoshino'/>
-          <Route render={()=> {
-            return <Redirect to="/"/>
-          }}/>
+          <Redirect from='/components' to='/components/yoshino'/>
+          <Route
+            render={() => {
+              return <Redirect to='/'/>;
+            }}
+          />
         </Switch>
       </Router>
-    )
+    );
   }
-};
+}

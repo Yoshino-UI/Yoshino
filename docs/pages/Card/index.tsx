@@ -18,7 +18,6 @@ import CardBorder from './demo/cardBorder';
 import * as cardBorderMd from './demo/cardBorder.md';
 const cardBorderCode = require('!raw-loader!./demo/cardBorder');
 
-
 export default class CardPage extends Component {
   render() {
     return (
@@ -27,11 +26,10 @@ export default class CardPage extends Component {
         <CodeBox text={cardDemoMd} demo={<CardDemo/>} code={cardDemoCode}/>
 
         <CodeBox text={cardBorderMd} demo={<CardBorder/>} code={cardBorderCode}/>
-        
+
         <CodeBox text={cardCustomMd} demo={<CardCustom/>} code={cardCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

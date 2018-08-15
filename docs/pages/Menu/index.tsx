@@ -10,8 +10,6 @@ import MenuDemo from './demo/menuDemo';
 import * as menuDemoMd from './demo/menuDemo.md';
 const menuDemoCode = require('!raw-loader!./demo/menuDemo');
 
-
-
 export default class MenuPage extends Component {
   render() {
     return (
@@ -21,7 +19,6 @@ export default class MenuPage extends Component {
 
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

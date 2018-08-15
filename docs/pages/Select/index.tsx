@@ -26,5 +26,4 @@ export default class SelectPage extends Component {
       </div>
     );
   }
-};
-  
+}

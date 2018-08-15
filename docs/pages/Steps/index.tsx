@@ -22,7 +22,6 @@ import StepsError from './demo/stepsError';
 import * as stepsErrorMd from './demo/stepsError.md';
 const stepsErrorCode = require('!raw-loader!./demo/stepsError');
 
-
 export default class StepsPage extends Component {
   render() {
     return (
@@ -37,7 +36,6 @@ export default class StepsPage extends Component {
         <CodeBox text={stepsErrorMd} demo={<StepsError/>} code={stepsErrorCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

@@ -4,7 +4,7 @@ import { CSSProperties } from 'react';
 
 const {Option, OptGroup} = Select;
 export default function() {
-  const style:CSSProperties = {width: 200, display: 'inline-block', marginRight: 20};
+  const style: CSSProperties = {width: 200, display: 'inline-block', marginRight: 20};
   return (
     <div>
       <Select mode='single' placeholder='请选择' defaultValue={''} style={style}>

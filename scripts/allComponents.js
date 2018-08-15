@@ -13,6 +13,7 @@ dirSet.delete('template');
 dirSet.delete('utils');
 dirSet.delete('.DS_Store');
 dirSet.delete('index.tsx');
+dirSet.delete('tsconfig.json');
 
 const arr =  Array.from(dirSet);
 

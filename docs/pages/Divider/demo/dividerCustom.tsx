@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Divider } from '../../../../components/';
 
-export default function () {
+export default function() {
   return (
     <div>
       <Divider>将进酒</Divider>
@@ -51,5 +51,5 @@ export default function () {
       </div>
       <Divider/>
     </div>
-  )
+  );
 }

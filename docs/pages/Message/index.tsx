@@ -26,5 +26,4 @@ export default class MessagePage extends Component {
       </div>
     );
   }
-};
-  
+}

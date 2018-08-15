@@ -24,7 +24,6 @@ export default class AlertPage extends Component {
         <CodeBox text={alertCustomMd} demo={<AlertCustom/>} code={alertCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

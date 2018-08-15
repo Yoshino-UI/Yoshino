@@ -8,7 +8,6 @@ import * as v013md from './logs/0.1.3.md';
 import * as v014md from './logs/0.1.4.md';
 import * as v015md from './logs/0.1.5.md';
 
-
 import Markdown from '../../components/Markdown';
 import {Timeline} from '../../../components/';
 import './index.less';
@@ -16,7 +15,7 @@ import './index.less';
 export default class Logs extends Component {
   render() {
     return (
-      <div className="logs-box">
+      <div className='logs-box'>
         <Markdown text={md}/>
         <div style={{marginTop: 40}}>
           <Timeline>
@@ -41,6 +40,6 @@ export default class Logs extends Component {
           </Timeline>
         </div>
       </div>
-    )
+    );
   }
-};
+}

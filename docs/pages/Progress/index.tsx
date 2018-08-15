@@ -19,7 +19,6 @@ export default class ProgressPage extends Component {
 
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

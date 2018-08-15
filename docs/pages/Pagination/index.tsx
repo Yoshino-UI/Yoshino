@@ -24,7 +24,6 @@ export default class PaginationPage extends Component {
         <CodeBox text={paginationCustomMd} demo={<PaginationCustom/>} code={paginationCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

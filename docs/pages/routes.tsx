@@ -2,12 +2,11 @@ import * as React from 'react';
 import getComponentAsync from 'get-component-async';
 import Loading from '../../components/Loading';
 
-function getComponentAsyncLoading<T> (loading: () => Promise<{
+function getComponentAsyncLoading<T>(loading: () => Promise<{
   default: T
 }>) {
-  return getComponentAsync(loading,  <Loading text="文档加载中！！" size="large" type="c"/>);
+  return getComponentAsync(loading,  <Loading text='文档加载中！！' size='large' type='c'/>);
 }
-
 
 export default [
   {

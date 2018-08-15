@@ -29,7 +29,7 @@ export default function() {
           img.map((item, key) => {
             return (
               <img src={item} style={{width: '100%', height: '100%'}} key={key}/>
-            )
+            );
           })
         }
       </Carousel>

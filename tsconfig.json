@@ -16,10 +16,15 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": ["node"],
   },
   "include": [
-    "components"
+    "components",
+    "docs",
   ],
   "exclude": [
     "components/*/__tests__"

@@ -24,7 +24,6 @@ export default class LoadingPage extends Component {
         <CodeBox text={loadingCustomMd} demo={<LoadingCustom/>} code={loadingCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

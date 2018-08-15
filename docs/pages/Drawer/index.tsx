@@ -24,7 +24,6 @@ export default class DrawerPage extends Component {
         {/* <CodeBox text={drawerCustomMd} demo={<DrawerCustom/>} code={drawerCustomCode}/> */}
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

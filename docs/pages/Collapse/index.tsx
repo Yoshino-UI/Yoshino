@@ -24,7 +24,6 @@ export default class CollapsePage extends Component {
         <CodeBox text={collapseCustomMd} demo={<CollapseCustom/>} code={collapseCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

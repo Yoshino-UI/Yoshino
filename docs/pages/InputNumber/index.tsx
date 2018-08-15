@@ -19,7 +19,6 @@ export default class InputNumberPage extends Component {
 
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

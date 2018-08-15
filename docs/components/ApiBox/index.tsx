@@ -3,6 +3,7 @@ import { Component } from 'react';
 import Markdown from '../Markdown';
 import './index.less';
 
+// tslint:disable no-any
 export interface IProps {
   api: Array<{
       title: string;
@@ -21,7 +22,7 @@ export default class ApiBox extends Component<IProps> {
   render() {
     const {api} = this.props;
     return (
-      <div className="api-box">
+      <div className='api-box'>
         {
           api.map((item, key) => {
             const {title, json, intro}  = item;
@@ -34,13 +35,13 @@ export default class ApiBox extends Component<IProps> {
               md += `\r\n|${str}|`;
             });
             return (
-              <div className="api-box-item" key={key}>
+              <div className='api-box-item' key={key}>
                 <Markdown text={md}/>
               </div>
-            )
+            );
           })
         }
       </div>
     );
   }
-};
+}

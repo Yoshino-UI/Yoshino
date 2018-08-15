@@ -1,48 +1,48 @@
 export default [
   {
-    title: "API",
+    title: 'API',
     json: [
       {
-        props: "autoplay",
-        intro: "自动滚动",
-        type: "boolean",
-        defaultValue: "true",
+        props: 'autoplay',
+        intro: '自动滚动',
+        type: 'boolean',
+        defaultValue: 'true',
       },
       {
-        props: "interval",
-        intro: "切换时间间隔，单位ms",
-        type: "number",
-        defaultValue: "3000",
+        props: 'interval',
+        intro: '切换时间间隔，单位ms',
+        type: 'number',
+        defaultValue: '3000',
       },
       {
-        props: "shwoDots",
-        intro: "是否显示指示点",
-        type: "boolean",
-        defaultValue: "true",
+        props: 'shwoDots',
+        intro: '是否显示指示点',
+        type: 'boolean',
+        defaultValue: 'true',
       },
       {
-        props: "vertical",
-        intro: "垂直展示",
-        type: "boolean",
-        defaultValue: "false",
+        props: 'vertical',
+        intro: '垂直展示',
+        type: 'boolean',
+        defaultValue: 'false',
       },
       {
-        props: "showControl",
-        intro: "是否轮播控制器",
-        type: "boolean",
-        defaultValue: "true",
+        props: 'showControl',
+        intro: '是否轮播控制器',
+        type: 'boolean',
+        defaultValue: 'true',
       },
       {
-        props: "preIcon",
-        intro: "自定义往前翻的icon",
-        type: "ReactNode",
-        defaultValue: "-",
+        props: 'preIcon',
+        intro: '自定义往前翻的icon',
+        type: 'ReactNode',
+        defaultValue: '-',
       },
       {
-        props: "nextIcon",
-        intro: "自定义往后翻的icon",
-        type: "ReactNode",
-        defaultValue: "-",
+        props: 'nextIcon',
+        intro: '自定义往后翻的icon',
+        type: 'ReactNode',
+        defaultValue: '-',
       },
     ]
   },
@@ -69,4 +69,4 @@ export default [
       }
     ]
   }
-]
+];

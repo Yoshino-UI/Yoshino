@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Modal, Button } from '../../../../components/';
 
-
 export default class App extends React.Component {
   state = {
     count: 1,
     visible: false,
-  }
+  };
 
   onClick = () => {
     this.setState({
@@ -25,6 +24,6 @@ export default class App extends React.Component {
           onClose={() => this.setState({visible: false})}
         />
       </div>
-    )
+    );
   }
 }

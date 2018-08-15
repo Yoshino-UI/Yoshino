@@ -24,7 +24,6 @@ export default class RatePage extends Component {
         <CodeBox text={rateCustomMd} demo={<RateCustom/>} code={rateCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

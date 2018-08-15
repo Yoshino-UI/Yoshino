@@ -24,7 +24,6 @@ export default class InputPage extends Component {
         <CodeBox text={inputCustomMd} demo={<InputCustom/>} code={inputCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

@@ -24,7 +24,6 @@ export default class BackTopPage extends Component {
         <CodeBox text={backTopCustomMd} demo={<BackTopCustom/>} code={backTopCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

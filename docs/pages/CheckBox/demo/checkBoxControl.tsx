@@ -6,8 +6,8 @@ const CheckboxGroup = Checkbox.Group;
 export default class CheckboxDemo extends React.Component {
   state = {
     value: [1, 2],
-  }
-  
+  };
+
   render() {
     return (
       <CheckboxGroup value={this.state.value} onChange={(value) => this.setState({value})}>

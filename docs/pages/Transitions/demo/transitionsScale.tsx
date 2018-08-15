@@ -7,7 +7,7 @@ const {Scale} = Transitions;
 export default class App extends React.Component {
   state = {
     active: true,
-  }
+  };
 
   onScale = (checked: boolean) => {
     this.setState({
@@ -15,7 +15,7 @@ export default class App extends React.Component {
     });
   }
 
-  render () {
+  render() {
     const height = 200;
     const {active} = this.state;
     const style: React.CSSProperties = {
@@ -37,6 +37,6 @@ export default class App extends React.Component {
           </div>
         </Scale>
       </div>
-    )
+    );
   }
 }

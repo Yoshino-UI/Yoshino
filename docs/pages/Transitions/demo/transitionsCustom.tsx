@@ -7,7 +7,7 @@ const {Slide} = Transitions;
 export default class App extends React.Component {
   state = {
     active: true,
-  }
+  };
 
   onSlide = (checked: boolean) => {
     this.setState({
@@ -15,7 +15,7 @@ export default class App extends React.Component {
     });
   }
 
-  render () {
+  render() {
     const {active} = this.state;
     return (
       <div>
@@ -23,9 +23,9 @@ export default class App extends React.Component {
         <div className={'transitions-slide-demo-box'}>
           <div>
             <Slide
-            timeout={300}
-            active={active}
-            direction='top'
+              timeout={300}
+              active={active}
+              direction='top'
             >
               <div className={'transitions-slide-demo-top'}>top</div>
             </Slide>
@@ -94,6 +94,6 @@ export default class App extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

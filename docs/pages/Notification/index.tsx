@@ -24,7 +24,6 @@ export default class NotificationPage extends Component {
         <CodeBox text={notificationCustomMd} demo={<NotificationCustom/>} code={notificationCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

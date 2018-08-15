@@ -26,11 +26,10 @@ export default class SliderPage extends Component {
         <CodeBox text={sliderDemoMd} demo={<SliderDemo/>} code={sliderDemoCode}/>
 
         <CodeBox text={sliderDisabledMd} demo={<SliderDisabled/>} code={sliderDisabledCode}/>
-        
+
         <CodeBox text={sliderCustomMd} demo={<SliderCustom/>} code={sliderCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

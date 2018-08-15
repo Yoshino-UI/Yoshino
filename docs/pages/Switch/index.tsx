@@ -24,7 +24,6 @@ export default class SwitchPage extends Component {
         <CodeBox text={switchCustomMd} demo={<SwitchCustom/>} code={switchCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

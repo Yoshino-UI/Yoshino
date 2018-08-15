@@ -29,7 +29,7 @@ const buttonDisabledCode = require('!raw-loader!./demo/buttonDisabled');
 export default class ButtonPage extends Component {
   render() {
     return (
-      <div className="">
+      <div>
         <Markdown text={md}/>
         <CodeBox text={buttonTypeMd} demo={<ButtonTypeDemo/>} code={buttonTypeCode}/>
 
@@ -43,6 +43,6 @@ export default class ButtonPage extends Component {
 
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
+}

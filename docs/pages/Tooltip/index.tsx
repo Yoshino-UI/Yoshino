@@ -36,7 +36,6 @@ export default class TooltipPage extends Component {
         <CodeBox text={tooltipTriggerMd} demo={<TooltipTrigger/>} code={tooltipTriggerCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

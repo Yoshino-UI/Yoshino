@@ -4,13 +4,13 @@ import { Button } from '../../../../components/';
 export default class ButtonLoading extends React.Component {
   state = {
     loading: false,
-  }
+  };
 
-  render () {
+  render() {
     return (
       <Button
-        type="primary"
-        icon="play"
+        type='primary'
+        icon='play'
         loading={this.state.loading}
         onClick={() => {
           this.setState({loading: true});

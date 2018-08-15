@@ -6,9 +6,9 @@ import Markdown from '../../components/Markdown/';
 export default class FAQ extends Component {
   render() {
     return (
-      <div className="">
+      <div>
         <Markdown text={md}/>
       </div>
-    )
+    );
   }
-};
+}

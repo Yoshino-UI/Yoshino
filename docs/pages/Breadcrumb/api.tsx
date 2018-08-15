@@ -1,13 +1,13 @@
 export default [
   {
-    title: "Breadcrumb",
+    title: 'Breadcrumb',
     json: [
       {
-        props: "separator",
-        intro: "分隔符",
-        type: "string | ReactNode",
-        defaultValue: "`/`",
+        props: 'separator',
+        intro: '分隔符',
+        type: 'string | ReactNode',
+        defaultValue: '`/`',
       },
     ]
   }
-]
+];

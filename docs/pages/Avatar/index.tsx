@@ -24,7 +24,6 @@ export default class AvatarPage extends Component {
         <CodeBox text={avatarCustomMd} demo={<AvatarCustom/>} code={avatarCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

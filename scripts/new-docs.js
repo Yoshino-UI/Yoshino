@@ -48,8 +48,8 @@ export default class ${component}Page extends Component {
       </div>
     );
   }
-};
-  
+}
+
 `;
   writeFile(`index.tsx`, content, component);
 }
@@ -66,23 +66,48 @@ function fileReadmeMd(component) {
 function fileApiTsx(component) {
   const content = `export default [
   {
-    title: "API",
+    title: 'API',
     json: [
       {
-        props: "",
-        intro: "",
-        type: "",
-        defaultValue: "",
+        props: '',
+        intro: '',
+        type: '',
+        defaultValue: '',
       },
       {
-        props: "",
-        intro: "",
-        type: "",
-        defaultValue: "",
+        props: '',
+        intro: '',
+        type: '',
+        defaultValue: '',
+      },
+      {
+        props: '',
+        intro: '',
+        type: '',
+        defaultValue: '',
+      },
+      {
+        props: '',
+        intro: '',
+        type: '',
+        defaultValue: '',
+      },
+      {
+        props: '',
+        intro: '',
+        type: '',
+        defaultValue: '',
+      },
+      {
+        props: '',
+        intro: '',
+        type: '',
+        defaultValue: '',
       },
     ]
   }
-]
+];
+
 `;
   writeFile('api.tsx', content, component);
 }

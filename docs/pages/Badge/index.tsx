@@ -24,7 +24,6 @@ export default class BadgePage extends Component {
         <CodeBox text={badgeCustomMd} demo={<BadgeCustom/>} code={badgeCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

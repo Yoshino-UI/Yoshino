@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Notification as notification, Button} from '../../../../components/';
 
-export default function () {
+export default function() {
   const open = () => {
     notification.open({
       title: 'open',
@@ -14,12 +14,12 @@ export default function () {
   const placement = () => {
     notification.config({
       placement: 'topLeft',
-    })
+    });
   };
 
   const close = () => {
-    notification.close(111)
-  }
+    notification.close(111);
+  };
 
   return (
     <div>
@@ -27,5 +27,5 @@ export default function () {
       <Button onClick={close}>关闭</Button>
       <Button onClick={placement}>修改placement</Button>
     </div>
-  )
+  );
 }

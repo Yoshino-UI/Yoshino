@@ -30,7 +30,6 @@ export default class TransitionsPage extends Component {
         <CodeBox text={transitionsScaleMd} demo={<TransitionsScale/>} code={transitionsScaleCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

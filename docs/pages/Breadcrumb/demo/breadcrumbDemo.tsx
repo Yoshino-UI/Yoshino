@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Breadcrumb } from '../../../../components/';
 
-export default function () {
+export default function() {
   return (
     <Breadcrumb>
       <Breadcrumb.Item>中国</Breadcrumb.Item>
@@ -9,5 +9,5 @@ export default function () {
       <Breadcrumb.Item>成都</Breadcrumb.Item>
       <Breadcrumb.Item>天府三街</Breadcrumb.Item>
     </Breadcrumb>
-  )
+  );
 }

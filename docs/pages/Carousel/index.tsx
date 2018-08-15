@@ -28,5 +28,4 @@ export default class CarouselPage extends Component {
       </div>
     );
   }
-};
-  
+}

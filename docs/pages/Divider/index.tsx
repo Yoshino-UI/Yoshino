@@ -24,7 +24,6 @@ export default class DividerPage extends Component {
         <CodeBox text={dividerCustomMd} demo={<DividerCustom/>} code={dividerCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

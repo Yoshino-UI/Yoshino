@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Input, Icon}  from '../../../../components/';
+import { Input, Icon} from '../../../../components/';
 
-export default function () {
+export default function() {
   return (
     <div style={{width: 500}}>
-      <Input size="small" header="http://" footer=".com"/><br/>
+      <Input size='small' header='http://' footer='.com'/><br/>
       <Input/><br/>
-      <Input size="large" header="http://" footer={<Icon type="close" style={{fontSize: '20px', width: '50px'}}/>}/><br/>
+      <Input size='large' header='http://' footer={<Icon type='close' style={{fontSize: '20px', width: '50px'}}/>}/><br/>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Table } from '../../../../components/';
 
-export default function () {
+export default function() {
   const colums = [
     {
       title: '名字',
@@ -24,7 +24,7 @@ export default function () {
       dataIndex: 'age',
     },
   ];
-  const data:  Array<{}>=  Array.apply(null, {length: 60});
+  const data: Array<{}> =  Array.apply(null, {length: 60});
   data.fill({
     name: 'shana',
     gender: 'gril',

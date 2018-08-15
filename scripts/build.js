@@ -27,10 +27,10 @@ console.log('完成更新组件库入口文件');
 console.log('开始tsc编译');
 // tsc编译
 const tsc = path.resolve(__dirname, '../node_modules', '.bin', 'tsc');
-execSync(`${tsc} --outDir lib/ --declaration`);
-execSync(`${tsc} --outDir es6/ --module es6 --declaration`);
-execSync(`${tsc} --outDir lib/ --allowJs`);
-execSync(`${tsc} --outDir es6/ --module es6 --allowJs`);
+execSync(`${tsc} --outDir lib/ --declaration -p components/`);
+execSync(`${tsc} --outDir es6/ --module es6 --declaration -p components/`);
+execSync(`${tsc} --outDir lib/ --allowJs -p components/`);
+execSync(`${tsc} --outDir es6/ --module es6 --allowJs -p components/`);
 
 console.log('结束tsc编译');
 

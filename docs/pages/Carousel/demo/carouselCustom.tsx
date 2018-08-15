@@ -9,7 +9,7 @@ export default function() {
     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534233250537&di=2707a57edacd9b981dbdb17a38b7f203&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F038fbce55dea4370000015995570a1d.jpg',
     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534233250536&di=443a0d8733ae1b731026f27fbb59fb43&imgtype=0&src=http%3A%2F%2Ftravel.cnr.cn%2Flist%2F20150320%2FW020150320422759523038.jpg',
   ];
- 
+
   return (
     <div>
       <Carousel
@@ -21,7 +21,7 @@ export default function() {
           img.map((item, key) => {
             return (
               <img src={item} style={{width: '100%', height: '100%'}} key={key}/>
-            )
+            );
           })
         }
       </Carousel>

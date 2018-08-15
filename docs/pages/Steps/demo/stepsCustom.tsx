@@ -3,12 +3,12 @@ import { Steps, Icon } from '../../../../components/';
 
 const StepsItem = Steps.Item;
 
-export default function () {
+export default function() {
   return (
-    <Steps size="small" current={2}>
-      <StepsItem title="第一步" icon={<Icon type="help-buoy"/>}/>
-      <StepsItem title="第二步" icon={<Icon type="android-favorite"/>}/>
-      <StepsItem title="第三步" icon={<Icon type="android-contacts"/>}/>
+    <Steps size='small' current={2}>
+      <StepsItem title='第一步' icon={<Icon type='help-buoy'/>}/>
+      <StepsItem title='第二步' icon={<Icon type='android-favorite'/>}/>
+      <StepsItem title='第三步' icon={<Icon type='android-contacts'/>}/>
     </Steps>
-  )
+  );
 }

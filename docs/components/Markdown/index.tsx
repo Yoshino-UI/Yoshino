@@ -5,6 +5,8 @@ import './index.less';
 import * as Prism from 'prismjs';
 require('prismjs/components/prism-jsx.min');
 require('../../../node_modules/prismjs/themes/prism.css');
+
+// tslint:disable no-any
 export interface IProps {
   text: any;
 }
@@ -19,7 +21,7 @@ export default class Markdown extends Component<IProps> {
       sanitize: false,
       smartLists: true,
       smartypants: false,
-      highlight (code, lang) {
+      highlight(code, lang) {
         if (lang === 'jsx') {
           return Prism.highlight(code, Prism.languages.jsx);
         } else {
@@ -28,7 +30,7 @@ export default class Markdown extends Component<IProps> {
       }
     });
     return (
-      <div className="markdown-body" dangerouslySetInnerHTML={{__html: marked(this.props.text)}}/>
+      <div className='markdown-body' dangerouslySetInnerHTML={{__html: marked(this.props.text)}}/>
     );
   }
-};
+}

@@ -24,7 +24,6 @@ export default class RipplePage extends Component {
         <CodeBox text={rippleCustomMd} demo={<RippleCustom/>} code={rippleCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

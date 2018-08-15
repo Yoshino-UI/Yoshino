@@ -24,7 +24,6 @@ export default class BreadcrumbPage extends Component {
         <CodeBox text={breadcrumbCustomMd} demo={<BreadcrumbCustom/>} code={breadcrumbCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tag } from '../../../../components/';
 
-export default function () {
+export default function() {
   return (
     <div>
       <div>
@@ -9,8 +9,8 @@ export default function () {
         <Tag closeable onClose={() => console.log('关闭了')}>雪碧</Tag>
       </div>
       <div>
-        <Tag color="#108ee9" closeable>冰红茶</Tag>
+        <Tag color='#108ee9' closeable>冰红茶</Tag>
       </div>
     </div>
-  )
+  );
 }

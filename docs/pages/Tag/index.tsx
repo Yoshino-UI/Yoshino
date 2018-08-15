@@ -24,7 +24,6 @@ export default class TagPage extends Component {
         <CodeBox text={tagCustomMd} demo={<TagCustom/>} code={tagCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

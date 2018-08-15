@@ -22,10 +22,9 @@ export default class AutoCompletePage extends Component {
         <CodeBox text={autoCompleteDemoMd} demo={<AutoCompleteDemo/>} code={autoCompleteDemoCode}/>
 
         <CodeBox text={autoCompleteFilterMd} demo={<AutoCompleteFilter/>} code={autoCompleteFilterCode}/>
-        
+
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

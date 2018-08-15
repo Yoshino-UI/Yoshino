@@ -24,7 +24,6 @@ export default class TimelinePage extends Component {
         <CodeBox text={timelineCustomMd} demo={<TimelineCustom/>} code={timelineCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

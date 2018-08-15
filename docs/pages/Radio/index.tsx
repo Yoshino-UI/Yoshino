@@ -24,7 +24,6 @@ export default class RadioPage extends Component {
         <CodeBox text={radioCustomMd} demo={<RadioCustom/>} code={radioCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

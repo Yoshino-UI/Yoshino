@@ -22,6 +22,9 @@
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
     "trailing-comma": false,
-    "no-shadowed-variable": false
+    "no-shadowed-variable": false,
+    "no-var-requires": false,
+    "max-line-length": false,
+    "no-console": false
   }
 }

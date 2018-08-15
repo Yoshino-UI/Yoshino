@@ -4,7 +4,7 @@ import { Pagination } from '../../../../components/';
 export default class App extends React.Component {
   state = {
     current: 1,
-  }
+  };
 
   render() {
     return (
@@ -14,9 +14,9 @@ export default class App extends React.Component {
         onChange={(current) => {
           this.setState({current});
         }}
-        next="下一页"
-        previous="上一页"
+        next='下一页'
+        previous='上一页'
       />
-    )
+    );
   }
 }

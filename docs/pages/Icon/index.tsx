@@ -24,7 +24,6 @@ export default class IconPage extends Component {
 
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-
+}

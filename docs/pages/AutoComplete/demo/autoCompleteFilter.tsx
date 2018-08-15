@@ -3,10 +3,10 @@ import { AutoComplete } from '../../../../components/';
 
 export default class AutoCompleteFilter extends React.Component {
   state = {
-    val:'',
+    val: '',
   };
 
-  onFilter = (value: any) => {
+  onFilter = (value: string) => {
     if (value !== '') {
       return [value, `${value}${value}`, `${value}${value}${value}`];
     }
@@ -20,9 +20,9 @@ export default class AutoCompleteFilter extends React.Component {
           value={this.state.val}
           dataSource={[]}
           onFilter={this.onFilter}
-          onChange={(val) => this.setState({val})}  
+          onChange={(val) => this.setState({val})}
         />
       </div>
-    )
+    );
   }
 }

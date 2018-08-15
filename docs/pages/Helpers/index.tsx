@@ -24,7 +24,6 @@ export default class HelpersPage extends Component {
         {/* <CodeBox text={helpersCustomMd} demo={<HelpersCustom/>} code={helpersCustomCode}/> */}
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

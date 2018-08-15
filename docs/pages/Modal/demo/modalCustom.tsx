@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Modal, Button } from '../../../../components/';
 
-export default function () {
+export default function() {
   const info = () => {
     Modal.info({
       title: 'info',
@@ -40,5 +40,5 @@ export default function () {
       <Button onClick={error}>error</Button>
       <Button onClick={warning}>warning</Button>
     </div>
-  )
+  );
 }

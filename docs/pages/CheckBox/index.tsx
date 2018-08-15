@@ -18,21 +18,19 @@ import CheckBoxControl from './demo/checkBoxControl';
 import * as checkBoxControlMd from './demo/checkBoxControl.md';
 const checkBoxControlCode = require('!raw-loader!./demo/checkBoxControl');
 
-
 export default class CheckBoxPage extends Component {
   render() {
     return (
       <div>
         <Markdown text={md}/>
         <CodeBox text={checkBoxDemoMd} demo={<CheckBoxDemo/>} code={checkBoxDemoCode}/>
-        
+
         <CodeBox text={checkBoxGroupMd} demo={<CheckBoxGroup/>} code={checkBoxGroupCode}/>
 
         <CodeBox text={checkBoxControlMd} demo={<CheckBoxControl/>} code={checkBoxControlCode}/>
 
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

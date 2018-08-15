@@ -4,10 +4,12 @@ import { Checkbox } from '../../../../components/';
 export default class CheckboxDemo extends React.Component {
   state = {
     checked: false,
-  }
+  };
+
   onChange = () => {
-    this.setState({checked: !this.state.checked})
+    this.setState({checked: !this.state.checked});
   }
+
   render() {
     return (
       <div>

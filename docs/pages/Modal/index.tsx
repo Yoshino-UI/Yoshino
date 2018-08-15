@@ -18,7 +18,6 @@ import ModalInner from './demo/modalInner';
 import * as modalInnerMd from './demo/modalInner.md';
 const modalInnerCode = require('!raw-loader!./demo/modalInner');
 
-
 export default class ModalPage extends Component {
   render() {
     return (
@@ -31,7 +30,6 @@ export default class ModalPage extends Component {
         <CodeBox text={modalInnerMd} demo={<ModalInner/>} code={modalInnerCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}

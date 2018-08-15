@@ -1,19 +1,19 @@
 export default [
   {
-    title: "API",
+    title: 'API',
     json: [
       {
-        props: "",
-        intro: "",
-        type: "",
-        defaultValue: "",
+        props: 'dashed',
+        intro: '是否虚线',
+        type: 'boolean',
+        defaultValue: 'false',
       },
       {
-        props: "",
-        intro: "",
-        type: "",
-        defaultValue: "",
+        props: 'textAlign',
+        intro: '文本表现',
+        type: `left' | 'center' | 'right'`,
+        defaultValue: 'center',
       },
     ]
   }
-]
+];

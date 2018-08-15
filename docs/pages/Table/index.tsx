@@ -24,7 +24,6 @@ export default class TablePage extends Component {
         <CodeBox text={tableCustomMd} demo={<TableCustom/>} code={tableCustomCode}/>
         <ApiBox api={Api}/>
       </div>
-    )
+    );
   }
-};
-  
+}
