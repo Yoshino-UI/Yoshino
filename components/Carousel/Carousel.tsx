@@ -58,6 +58,16 @@ export class Carousel extends Component<ICarouselProps, ICarouselState> {
   componentDidMount() {
     this.setAutoplayInterval();
 
+    this.setContainerBound();
+
+    document.body.addEventListener('resize', this.setContainerBound);
+  }
+
+  componentWillMount() {
+    document.body.removeEventListener('resize', this.setContainerBound);
+  }
+
+  setContainerBound = () => {
     this.setState({
       containerWidth: this.refContainer.clientWidth,
       containerHeight: this.refContainer.clientHeight,
