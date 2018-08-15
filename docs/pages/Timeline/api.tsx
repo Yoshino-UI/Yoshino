@@ -35,7 +35,7 @@ export default [
       {
         props: 'lineType',
         intro: '线条类型',
-        type: ''solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'',
+        type: `'solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'`,
         defaultValue: 'solid',
       },
       {
@@ -58,7 +58,7 @@ export default [
       {
         props: 'iconType',
         intro: '图标类型',
-        type: ''solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'',
+        type: `'solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'`,
         defaultValue: '-',
       },
       {
@@ -76,7 +76,7 @@ export default [
       {
         props: 'lineType',
         intro: '线条类型',
-        type: ''solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'',
+        type: `'solid' | 'dotted' | 'dashed' | 'double' | 'groove' | 'ridge' | 'inset' | 'outset'`,
         defaultValue: '-',
       },
       {

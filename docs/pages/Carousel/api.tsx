@@ -53,20 +53,20 @@ export default [
         props: 'goto',
         intro: '跳转到指定页',
         type: '(index: number) => void',
-        defautValue: '-'
+        defaultValue: '-',
       },
       {
         props: 'pre',
         intro: '跳转前一页',
         type: '() => void',
-        defautValue: '-'
+        defaultValue: '-',
       },
       {
         props: 'next',
         intro: '跳转到下一页',
         type: '() => void',
-        defautValue: '-'
+        defaultValue: '-',
       }
     ]
-  }
+  },
 ];
