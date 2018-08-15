@@ -5,7 +5,7 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Button from '../Button';
 import Icon from '../Icon';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { render } from 'react-dom';
 import Dialog from '../utils/dialog';
 
 export interface IModalProps extends IBaseComponent {
@@ -217,7 +217,6 @@ const renderModal = (props: IModalComponentProps) => {
 
 const closeModal = (obj: {div: HTMLDivElement, modal: JSX.Element}) => {
   try {
-    unmountComponentAtNode(obj.div);
     document.body.removeChild(obj.div);
   } catch (error) {
     return false;
