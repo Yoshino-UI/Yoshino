@@ -7,7 +7,7 @@ const {Option} = Select;
 export default class App extends React.Component {
   postion = ['top', 'left', 'bottom', 'right'];
   size = ['default', 'small', 'large'];
-  type = ['line', 'card', 'editable-card'];
+  type = ['line', 'card'];
 
   state: {
     position: 'top' | 'left' | 'bottom' | 'right',
