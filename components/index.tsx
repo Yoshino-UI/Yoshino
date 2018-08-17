@@ -31,6 +31,7 @@ import Slider from './Slider';
 import Steps from './Steps';
 import Switch from './Switch';
 import Table from './Table';
+import Tabs from './Tabs';
 import Tag from './Tag';
 import Timeline from './Timeline';
 import Tooltip from './Tooltip';
@@ -70,6 +71,7 @@ export {
   Steps,
   Switch,
   Table,
+  Tabs,
   Tag,
   Timeline,
   Tooltip,

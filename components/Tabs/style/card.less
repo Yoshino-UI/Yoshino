@@ -1,0 +1,27 @@
+.@{tabs-prefix-cls} {
+  &&-card {
+    .@{tabs-prefix-cls} {
+      &-tab {
+        border: 1px solid @color-unactive;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        &-active {
+          background: white;
+        }
+      }
+    }
+  }
+
+  &-card&-small &-nav-scroll {
+    line-height:  @tab-card-height-small;
+  }
+
+  &-card&-default &-nav-scroll {
+    line-height:  @tab-card-height-default;
+  }
+
+  &-card&-large &-nav-scroll {
+    line-height:  @tab-card-height-large;
+  }
+}

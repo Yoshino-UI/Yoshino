@@ -1,0 +1,80 @@
+.@{tabs-prefix-cls} {
+  &-vertical &-ink-bar {
+    width: 2px;
+  }
+
+  &-vertical &-tab {
+    margin-bottom: @tab-pane-gap;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-vertical &-pane {
+    transition: none;
+  }
+
+  &-vertical &-content {
+    height: 100%;
+    flex-direction: column;
+    margin-top: 0 !important;
+  }
+
+  &-vertical&-left {
+    .@{tabs-prefix-cls}-nav-wrap {
+      float: left;
+      border-right: 1px solid @color-unactive;
+      margin-right: @tab-nav-wrap-gap;
+    }
+
+    .@{tabs-prefix-cls}-ink-bar {
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &-vertical&-right {
+    .@{tabs-prefix-cls}-nav-wrap {
+      float: right;
+      border-left: 1px solid @color-unactive;
+      margin-left: @tab-nav-wrap-gap;
+    }
+
+    .@{tabs-prefix-cls}-ink-bar {
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+// card 样式
+.@{tabs-prefix-cls} {
+  &-vertical&-card&-left {
+    .@{tabs-prefix-cls} {
+      &-tab {
+        border-top-left-radius: @tab-border-radius;
+        border-bottom-left-radius: @tab-border-radius;
+        border-right: 0;
+
+        &-active {
+          margin-right: -1px;
+        }
+      }
+    }
+  }
+
+  &-vertical&-card&-right {
+    .@{tabs-prefix-cls} {
+      &-tab {
+        border-top-right-radius: @tab-border-radius;
+        border-bottom-right-radius: @tab-border-radius;
+        border-left: 0;
+
+        &-active {
+          margin-left: -1px;
+        }
+      }
+    }
+  }
+}

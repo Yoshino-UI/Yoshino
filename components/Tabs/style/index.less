@@ -1,0 +1,77 @@
+@import './var.less';
+@import './panel.less';
+@import './vertical.less';
+@import './horizontal.less';
+@import './card.less';
+
+@tabs-prefix-cls: ~"@{css-prefix}-tabs";
+.@{tabs-prefix-cls} {
+  overflow: hidden;
+
+  &-nav-wrap {
+    position: relative;
+  }
+
+  &-nav-scroll {
+    position: relative;
+    white-space: nowrap;
+  }
+
+  &-ink-bar {
+    transition: @tab-transition;
+    position: absolute;
+    background: @primary-color;
+  }
+
+  &-tab {
+    transition: @tab-transition;
+
+    &:hover {
+      color: @primary-color;
+      cursor: pointer;
+    }
+
+    &-active {
+      color: @primary-color;
+      font-weight: @font-weight-base;
+    }
+
+    &-disabled,
+    &-disabled:hover {
+      cursor: not-allowed;
+      color: @color-disabled;
+    }
+  }
+  
+  &-content {
+    display: flex;
+    transition: @tab-transition;
+  }
+
+  &-no-animated {
+    .@{tabs-prefix-cls} {
+      &-content,
+      &-ink-bar,
+      &-tab,
+      &-pane {
+        transition: none;
+      }
+    }
+  }
+
+
+  &-small &-tab {
+    padding: @tab-pane-size-small-padding;
+    font-size: @tab-pane-size-small-font-size;
+  }
+
+  &-default &-tab {
+    padding: @tab-pane-size-default-padding;
+    font-size: @tab-pane-size-default-font-size;
+  }
+
+  &-large &-tab {
+    padding: @tab-pane-size-large-padding;
+    font-size: @tab-pane-size-large-font-size;
+  }
+}

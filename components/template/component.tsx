@@ -51,3 +51,7 @@ export interface IAbstractInput<T> extends IBaseComponent {
   onFocus?: React.FormEventHandler<HTMLInputElement>;
   onBlur?: React.FormEventHandler<HTMLInputElement>;
 }
+
+// 通用Type
+export type TKey = string | number;
+export type TSize = 'large' | 'small' | 'default';

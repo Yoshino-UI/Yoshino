@@ -84,6 +84,10 @@ export default [
         keyId: 'table',
       },
       {
+        name: 'Tabs(标签页)',
+        keyId: 'tabs',
+      },
+      {
         name: 'Tag(标签)',
         keyId: 'tag',
       },

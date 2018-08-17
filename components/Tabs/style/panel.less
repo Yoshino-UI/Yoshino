@@ -1,0 +1,14 @@
+.@{tabs-prefix-cls}-pane {
+  width: 100%;
+  flex-shrink: 0;
+  transition: @tab-transition;
+
+  &-active {
+    opacity: 1;
+  }
+
+  &-inactive {
+    opacity: 0;
+    height: 0;
+  }
+}

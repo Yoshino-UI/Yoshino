@@ -256,4 +256,10 @@ export default [
     ),
     path: '/components/carousel',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-tabs" */ './Tabs')
+    ),
+    path: '/components/tabs',
+  },
 ];

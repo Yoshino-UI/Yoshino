@@ -1,0 +1,87 @@
+.@{tabs-prefix-cls} {
+  &-horizontal &-ink-bar {
+    height: 2px;
+  }
+
+  &-horizontal &-tab {
+    display: inline-block;
+    margin-right: @tab-pane-gap;
+  }
+
+  &-horizontal &-nav-wrap {
+    width: 100%;
+  }
+
+  &-horizontal &-content {
+    width: 100%;
+  }
+
+  &-horizontal&-top {
+    .@{tabs-prefix-cls}-nav-wrap {
+      border-bottom: 1px solid @color-unactive;
+      margin-bottom: @tab-nav-wrap-gap;
+    }
+
+    .@{tabs-prefix-cls}-ink-bar {
+      left: 0;
+      bottom: 0;
+    }
+  }
+
+  &-horizontal&-bottom {
+    .@{tabs-prefix-cls}-nav-wrap {
+      border-top: 1px solid @color-unactive;
+      margin-top: @tab-nav-wrap-gap;
+    }
+
+    .@{tabs-prefix-cls}-ink-bar {
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+// card 样式
+.@{tabs-prefix-cls} {
+  &-horizontal&-card&-small &-nav-scroll {
+    height: @tab-card-height-small;
+  }
+
+  &-horizontal&-card&-default &-nav-scroll {
+    height: @tab-card-height-default;
+  }
+
+  &-horizontal&-card&-large &-nav-scroll {
+    height: @tab-card-height-large;
+  }
+
+  &-horizontal&-card &-tab {
+    margin-right: 2px;
+  }
+
+  &-horizontal&-card&-top {
+    .@{tabs-prefix-cls} {
+      &-tab {
+        border-top-left-radius: @tab-border-radius;
+        border-top-right-radius: @tab-border-radius;
+        border-bottom: 0;
+
+        &-ative {
+          padding-bottom: 1px;
+        }
+      }
+    }
+  }
+
+  &-horizontal&-card&-bottom {
+    .@{tabs-prefix-cls} {
+      &-tab {
+        border-bottom-left-radius: @tab-border-radius;
+        border-bottom-right-radius: @tab-border-radius;
+        border-top: 0;
+        position: relative;
+        top: -2px;
+      }
+    }
+  }
+}

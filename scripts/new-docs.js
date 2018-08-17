@@ -49,7 +49,6 @@ export default class ${component}Page extends Component {
     );
   }
 }
-
 `;
   writeFile(`index.tsx`, content, component);
 }
@@ -107,7 +106,6 @@ function fileApiTsx(component) {
     ]
   }
 ];
-
 `;
   writeFile('api.tsx', content, component);
 }
