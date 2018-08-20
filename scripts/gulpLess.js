@@ -17,6 +17,16 @@ gulp.task('less', function () {
     .pipe(gulp.dest(path.resolve('../es6')));
 });
 
+gulp.task('common', function () {
+  return gulp.src(path.resolve('../components/styles/common/reset.less'))
+    .pipe(less({
+      plugins: [autoprefix],
+    }))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest(path.resolve('../lib/common')))
+    .pipe(gulp.dest(path.resolve('../es6/common')));
+});
+
 gulp.task('font', function () {
   return gulp.src(path.resolve('../components/styles/common/iconfont/fonts/*'))
     .pipe(gulp.dest(path.resolve('../lib/Icon/fonts')))
@@ -38,4 +48,4 @@ allComponents.forEach((component) => {
   });
 })
 
-gulp.task('default', ['less', 'font', ...allComponents]);
+gulp.task('default', ['less', 'common', 'font', ...allComponents]);

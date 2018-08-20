@@ -22,6 +22,18 @@ export default function () {
 }
 ```
 
+### 引入公共样式
+组件库还依赖部分样式重置，不然在不同浏览器上样式可能会不一样，因此需要在入口的地方导入组件库内置的样式重置 CSS：
+```
+import 'yoshino/es/common/reset.css';
+```
+
+or 
+
+```
+import 'yoshino/lib/common/reset.css';
+```
+
 ### 引入全局样式
 ```js
 import 'yoshino/lib/index.css'; 
