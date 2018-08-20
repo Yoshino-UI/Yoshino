@@ -25,14 +25,15 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "node scripts/build.js",
-    "site": "webpack --mode=production --devtool=null",
+    "site": "webpack --mode=production --devtool=null &&cd build && node up.js",
     "new": "node scripts/new-component.js",
     "new:docs": "node scripts/new-docs.js",
     "precommit": "npm run lint",
     "lint:ts": "tslint -p .",
     "lint:less": "stylelint 'components/**/**.less --syntax less'",
     "lint": "npm run lint:less && npm run lint:ts",
-    "test": "jest"
+    "test": "jest",
+    "site:pull": "git clone https://github.com/Yoshino-UI/yoshino-ui.github.io.git build"
   },
   "jest": {
     "setupFiles": [
