@@ -1,16 +1,18 @@
 @import './var.less';
 
 @card-prefix-cls:  ~"@{css-prefix}-card";
+
 .@{card-prefix-cls} {
   font-size: @font-size-default;
   background: white;
-  
-  &-head{
+
+  &-head {
     padding: 16px;
     overflow: hidden;
     border-bottom: @border-color-outline 1px solid;
     position: relative;
   }
+
   &-title {
   }
 
@@ -31,5 +33,4 @@
   &-shadow {
     box-shadow: @shadow-base;
   }
-
 }

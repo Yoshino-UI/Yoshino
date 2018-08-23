@@ -1,12 +1,12 @@
 @import './var.less';
 
 @checkbox-prefix-cls:  ~"@{css-prefix}-checkbox";
+
 .@{checkbox-prefix-cls} {
   display: inline-block;
   height: @checkbox-size;
   width: @checkbox-size;
   font-size: @checkbox-size;
-  
   border: 1px solid @checkbox-border-color;
   vertical-align: middle;
   position: relative;
@@ -41,11 +41,10 @@
     margin: 0 10px;
     font-size: @font-size-default;
   }
-
 }
 
 .@{checkbox-prefix-cls}-wrapper {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .@{checkbox-prefix-cls}-disabled {

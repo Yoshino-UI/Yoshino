@@ -1,17 +1,17 @@
 @import './var.less';
 
 @steps-prefix-cls:  ~"@{css-prefix}-steps";
+
 .@{steps-prefix-cls} {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  
+
   > * {
     transition: @transition-base;
   }
 
   &-horizontal {
-
   }
 
   &-vertical {
@@ -33,10 +33,9 @@
     }
   }
 
-
   .@{itemPreCls}:last-child {
     flex: none;
-    
+
     .@{itemPreCls}-title::after {
       display: none;
     }
@@ -49,8 +48,8 @@
   }
 }
 
-
 @itemPreCls: ~'@{steps-prefix-cls}-item';
+
 .@{itemPreCls} {
   overflow: hidden;
   flex: 1;
@@ -71,6 +70,7 @@
 
   &-wait {
     color: @color-unactive;
+
     .@{itemPreCls}-icon {
       color: @color-unactive;
       border-color: @color-unactive;
@@ -84,15 +84,16 @@
 
   &-error {
     color: @color-error;
+
     .@{itemPreCls}-icon {
-      color: @color-error;;
-      border-color: @color-error;;
+      color: @color-error;
+      border-color: @color-error;
       background-color: white;
     }
 
     .@{itemPreCls}-title::after,
     .@{itemPreCls}-line-vertical {
-      background-color: @color-error;;
+      background-color: @color-error;
     }
   }
 
@@ -104,7 +105,7 @@
     line-height: 100%;
     vertical-align: top;
     margin-right: 10px;
-    color:  @primary-color;
+    color: @primary-color;
     position: relative;
     float: left;
   }
@@ -144,6 +145,7 @@
 
 .@{itemPreCls}-small {
   font-size: @font-size-default;
+
   .@{itemPreCls}-icon {
     width: @steps-size-small;
     height: @steps-size-small;
@@ -152,7 +154,7 @@
 
   .@{itemPreCls}-title {
     line-height: @steps-size-small;
-    
+
     &::after {
     }
   }
@@ -173,6 +175,7 @@
 
   .@{itemPreCls}-title {
     line-height: @steps-size-default;
+
     &::after {
     }
   }

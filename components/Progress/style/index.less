@@ -1,6 +1,7 @@
 @import './var.less';
 
 @progress-prefix-cls:  ~"@{css-prefix}-progress";
+
 .@{progress-prefix-cls} {
   position: relative;
   width: 100%;
@@ -26,7 +27,7 @@
       left: 0;
       background: white;
       border-radius: 100px;
-      animation: progress-animation 1.5s cubic-bezier(.645,.045,.355,1) infinite;;
+      animation: progress-animation 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
     }
   }
 }

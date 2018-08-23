@@ -1,11 +1,12 @@
 @import './var.less';
 
 @slider-prefix-cls:  ~"@{css-prefix}-slider";
+
 .@{slider-prefix-cls} {
   position: relative;
   cursor: pointer;
   height: @slider-bar-size;
-  
+
   &-process {
     width: 100%;
     height: @slider-process-height;
@@ -20,7 +21,7 @@
     height: @slider-process-height;
     background: @primary-color;
     border-radius: @border-radius-large;
-    
+
     &::after {
       display: inline-block;
       content: ' ';
@@ -42,7 +43,7 @@
 
     .@{slider-prefix-cls}-bar {
       background: @color-disabled;
-      
+
       &::after {
         cursor: not-allowed;
         border-color: @color-disabled;

@@ -1,6 +1,7 @@
 @import './var.less';
 
 @button-prefix-cls:  ~"@{css-prefix}-button";
+
 .@{button-prefix-cls} {
   display: inline-block;
   border: @button-border;
@@ -20,13 +21,16 @@
     background-color: @button-disabled-bgColor;
     cursor: not-allowed;
     color: @button-border-color;
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       border-color: @button-border-color;
       color: @button-border-color;
     }
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: @button-primary-bgColor;
     color: @button-primary-bgColor;
   }
@@ -40,7 +44,8 @@
     background-color: @button-primary-bgColor;
     border-color: @button-primary-bgColor;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: @button-primary-hover-bgColor;
       color: white;
     }
@@ -52,15 +57,15 @@
 
   &-dashed {
     color: @button-primary-bgColor;
-    border-style:  dashed; 
-
+    border-style: dashed;
   }
 
   &-danger {
     background-color: @button-disabled-bgColor;
     color: @button-danger-color;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: @button-danger-color;
       border-color: @button-danger-color;
       color: white;
@@ -81,7 +86,6 @@
 
   &-size-large {
     padding: 0 15px;
-    height: 32px;
     font-size: @font-size-default;
     height: @button-height-size-large;
   }
@@ -89,7 +93,9 @@
   &-ghost {
     background-color: transparent;
     color: white;
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       background-color: transparent;
     }
 
@@ -97,7 +103,7 @@
       &-primary {
         color: @button-primary-bgColor;
       }
-      
+
       &-danger {
         color: @button-danger-color;
         border-color: @button-danger-color;

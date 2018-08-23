@@ -1,6 +1,7 @@
 @import './var.less';
 
 @modal-prefix-cls: ~"@{css-prefix}-modal";
+
 .@{modal-prefix-cls} {
   padding: @modal-padding;
   box-shadow: @modal-shadow;
@@ -18,7 +19,7 @@
     display: inline-block;
     width: calc(100% - @icon-width);
     vertical-align: middle;
-    
+
     &-no-icon {
       width: 100%;
     }
@@ -63,7 +64,7 @@
     font-size: @icon-font-size;
 
     &-info {
-      color: @color-info
+      color: @color-info;
     }
 
     &-success {

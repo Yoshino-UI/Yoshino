@@ -1,6 +1,7 @@
 @import './var.less';
 
 @input-prefix-cls:  ~"@{css-prefix}-input";
+
 .@{input-prefix-cls} {
   border: @input-border;
   border-radius: @input-border-radius;
@@ -28,7 +29,6 @@
     position: relative;
     overflow: hidden;
     vertical-align: middle;
-
   }
 
   &-header {
@@ -50,7 +50,6 @@
     padding: 4px 11px;
     font-size: @font-size-small;
   }
-  
 
   .@{input-prefix-cls}-footer,
   .@{input-prefix-cls}-header {
@@ -66,7 +65,6 @@
     padding: 1px 7px;
     font-size: @font-size-default;
   }
-  
 
   .@{input-prefix-cls}-footer,
   .@{input-prefix-cls}-header {
@@ -83,7 +81,6 @@
     font-size: @font-size-large;
   }
 
-
   .@{input-prefix-cls}-footer,
   .@{input-prefix-cls}-header {
     > * {
@@ -96,7 +93,7 @@
   display: table;
   line-height: 1;
   width: 100%;
-  
+
   .@{input-prefix-cls}:not(:first-child):not(:last-child) {
     border-radius: 0;
   }

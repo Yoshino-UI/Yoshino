@@ -1,12 +1,12 @@
 @import './var.less';
 
 @radio-prefix-cls:  ~"@{css-prefix}-radio";
+
 .@{radio-prefix-cls} {
   display: inline-block;
   height: @radio-size;
   width: @radio-size;
   font-size: @radio-size;
-  
   border-radius: 50%;
   border: 1px solid @radio-border-color;
   vertical-align: middle;
@@ -43,11 +43,10 @@
     margin: 0 10px;
     font-size: @font-size-default;
   }
-
 }
 
 .@{radio-prefix-cls}-wrapper {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .@{radio-prefix-cls}-disabled {

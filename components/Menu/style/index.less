@@ -1,11 +1,13 @@
 @import './var.less';
 
 @menu-prefix-cls:  ~"@{css-prefix}-menu";
+
 .@{menu-prefix-cls} {
   border-right: 1px solid @color-unactive;
 }
 
 @sub-menu-prefix-cls:  ~"@{css-prefix}-sub-menu";
+
 .@{sub-menu-prefix-cls} {
   * {
     transition: @transition-base;
@@ -22,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     padding-right: 40px;
-    
+
     &:hover {
       color: @primary-color;
     }
@@ -39,13 +41,11 @@
     }
   }
 
-
   &-container {
     overflow: hidden;
   }
 
   &-list {
-    
   }
 
   &-hidden {
@@ -54,7 +54,6 @@
     }
   }
 
-  
   &-icon {
     position: absolute;
     right: 15px;
@@ -65,6 +64,7 @@
 }
 
 @menu-item-group-prefix-cls:  ~"@{css-prefix}-menu-item-group";
+
 .@{menu-item-group-prefix-cls} {
   &-title {
     font-size: @font-size-default;
@@ -73,12 +73,12 @@
     color: @color-disabled;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;    
+    white-space: nowrap;
   }
 }
 
-
 @menu-item-prefix-cls:  ~"@{css-prefix}-menu-item";
+
 .@{menu-item-prefix-cls} {
   font-size: @font-size-default;
   height: 40px;
@@ -90,7 +90,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  
+
   &:hover:not(&-disabled) {
     color: @primary-color;
   }

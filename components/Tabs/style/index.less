@@ -5,6 +5,7 @@
 @import './card.less';
 
 @tabs-prefix-cls: ~"@{css-prefix}-tabs";
+
 .@{tabs-prefix-cls} {
   overflow: hidden;
 
@@ -42,7 +43,7 @@
       color: @color-disabled;
     }
   }
-  
+
   &-content {
     display: flex;
     transition: @tab-transition;
@@ -58,7 +59,6 @@
       }
     }
   }
-
 
   &-small &-tab {
     padding: @tab-pane-size-small-padding;

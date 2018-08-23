@@ -1,6 +1,7 @@
 @import './var.less';
 
 @auto-complete-prefix-cls: ~"@{css-prefix}-auto-complete";
+
 .@{auto-complete-prefix-cls} {
   position: relative;
 
@@ -18,7 +19,7 @@
     font-size: @font-size-default;
     transform-origin: 50% 0;
     z-index: @z-index-pop;
-  
+
     .@{auto-complete-prefix-cls}-item {
       &:first-child {
         border-radius: @border-radius-large @border-radius-large 0 0;
@@ -53,12 +54,12 @@
 
   &-done-enter {
     display: block;
-    transform: scaleY(1);    
+    transform: scaleY(1);
   }
 
   &-exit {
     display: block;
-    transform: scaleY(1);    
+    transform: scaleY(1);
   }
 
   &-active-exit {

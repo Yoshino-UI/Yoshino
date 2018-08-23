@@ -1,4 +1,11 @@
 {
+  "extends": [
+    "stylelint-config-standard"
+  ],
   "rules": {
-  }
+    "block-no-empty": null,
+    "no-duplicate-selectors": null,
+    "unit-blacklist": ["rem"],
+    "unit-whitelist": ["px", "em", "deg", "%", "s"],
+  },
 }

@@ -1,6 +1,7 @@
 @import './var.less';
 
 @timeline-prefix-cls:  ~"@{css-prefix}-timeline";
+
 .@{timeline-prefix-cls} {
   .@{timeline-prefix-cls}-item:last-child {
     .@{timeline-prefix-cls}-item-line {
@@ -12,39 +13,39 @@
 .@{timeline-prefix-cls}-item {
   position: relative;
 
-  &-line{
+  &-line {
     position: absolute;
     height: 100%;
     border-color: @color-unactive;
   }
-  
-  &-icon{
+
+  &-icon {
     position: absolute;
     box-sizing: border-box;
     background-color: white;
 
-    > div{
+    > div {
       border-color: @primary-color;
     }
   }
-  
-  &-content{
+
+  &-content {
     position: relative;
     padding-bottom: 20px;
   }
 
-  &-customed{
+  &-customed {
     position: absolute;
   }
 
-  &-time{
+  &-time {
     font-weight: bold;
     font-size: 15px;
     position: relative;
     top: -10px;
   }
 
-  &-des{
+  &-des {
     font-size: 16px;
   }
 }

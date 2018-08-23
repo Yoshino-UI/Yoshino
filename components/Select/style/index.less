@@ -1,6 +1,7 @@
 @import './var.less';
 
 @select-prefix-cls: ~"@{css-prefix}-select";
+
 .@{select-prefix-cls} {
   position: relative;
   border: @select-border;
@@ -32,8 +33,6 @@
     color: @disabled-color;
   }
 
-  
-
   &-small {
     font-size: @select-font-size-small;
   }
@@ -53,12 +52,12 @@
         height: @select-size-small;
         line-height: @select-size-small;
       }
-    
+
       &-default {
         height: @select-size-default;
         line-height: @select-size-default;
       }
-    
+
       &-large {
         height: @select-size-large;
         line-height: @select-size-large;
@@ -79,7 +78,7 @@
           margin-top: 4px;
         }
       }
-    
+
       &-default {
         min-height: @select-size-default;
 
@@ -90,7 +89,7 @@
           margin-top: 4px;
         }
       }
-    
+
       &-large {
         min-height: @select-size-large;
 
@@ -103,7 +102,6 @@
       }
     }
   }
-
 
   &-list {
     background: white;
@@ -120,7 +118,6 @@
     }
   }
 
-  
   &-icon {
     position: absolute;
     right: 15px;
@@ -153,13 +150,12 @@
   }
 }
 
-
 .@{select-prefix-cls}-option {
   cursor: pointer;
   font-size: @select-option-font-size;
   padding: @select-option-padding;
   user-select: none;
-  
+
   &:hover {
     background: @primary-color-choosed;
   }

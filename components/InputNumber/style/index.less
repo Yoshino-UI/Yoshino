@@ -1,12 +1,13 @@
 @import './var.less';
 
 @inputnumber-prefix-cls:  ~"@{css-prefix}-input-number";
+
 .@{inputnumber-prefix-cls} {
   border: @input-border;
   border-radius: @input-border-radius;
   width: 100%;
   padding-right: 25px !important;
-  
+
   &:hover,
   &:active,
   &:focus {
@@ -55,13 +56,13 @@
       height: 50%;
       color: @input-border-color;
       font-weight: bold;
-      
+
       &:first-child {
         border-bottom: @input-border;
       }
 
       &:hover {
-        color:@primary-color;
+        color: @primary-color;
         cursor: pointer;
       }
 
@@ -71,7 +72,7 @@
         text-align: center;
         display: flex;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
         transform: scale(0.8);
         font-weight: 700;
       }

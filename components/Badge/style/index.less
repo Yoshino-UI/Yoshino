@@ -1,6 +1,7 @@
 @import './var.less';
 
 @badge-prefix-cls:  ~"@{css-prefix}-badge";
+
 .@{badge-prefix-cls} {
   display: inline-block;
   position: relative;
@@ -12,14 +13,13 @@
     border: 1px solid white;
     font-size: @font-size-small;
     color: white;
-  
   }
 
   &-position {
     position: absolute;
     right: 0;
     top: 0;
-    transform: translateX(50%) translateY(-40%);    
+    transform: translateX(50%) translateY(-40%);
   }
 
   &-dot {
@@ -27,7 +27,7 @@
     height: @badge-dot-size;
   }
 
-  &-count{
+  &-count {
     padding: 0 6px;
     height: 20px;
     line-height: 20px;

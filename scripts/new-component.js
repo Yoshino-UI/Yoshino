@@ -22,6 +22,7 @@ function fileIndexScss(component) {
   const content = `@import './var.less';
 
 @${name}-prefix-cls: ~"@{css-prefix}-${name}";
+
 .@{${name}-prefix-cls} {
 
 }

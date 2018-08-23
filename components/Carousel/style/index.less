@@ -1,13 +1,13 @@
 @import './var.less';
 
 @carousel-prefix-cls: ~"@{css-prefix}-carousel";
+
 .@{carousel-prefix-cls} {
   position: relative;
   height: @carousel-height;
   overflow: hidden;
 
   &-list {
-
   }
 
   &-child {
@@ -44,15 +44,15 @@
       &-child {
         float: left;
       }
-    
+
       &-btn {
         top: 50%;
         transform: translateY(-50%);
-    
+
         &-pre {
           left: @carousel-icon-left;
         }
-    
+
         &-next {
           right: @carousel-icon-right;
         }
@@ -63,7 +63,6 @@
         left: 50%;
         transform: translateX(-50%);
         bottom: @carousel-dots-box-bottom;
-        
       }
 
       &-dot {
@@ -74,7 +73,7 @@
       }
 
       &-active-dot {
-        width: @carousel-dot-active-width
+        width: @carousel-dot-active-width;
       }
     }
   }
@@ -87,11 +86,11 @@
       &-btn {
         left: 50%;
         transform: translateX(-50%);
-        
+
         &-pre {
           top: @carousel-icon-top;
         }
-    
+
         &-next {
           bottom: @carousel-icon-bottom;
         }
@@ -102,7 +101,6 @@
         top: 50%;
         transform: translateY(-50%);
         right: @carousel-dots-box-right;
-        
       }
 
       &-dot {
@@ -112,7 +110,7 @@
       }
 
       &-active-dot {
-        height: @carousel-dot-active-width
+        height: @carousel-dot-active-width;
       }
     }
   }

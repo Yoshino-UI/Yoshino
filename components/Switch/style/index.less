@@ -1,6 +1,7 @@
 @import './var.less';
 
 @switch-prefix-cls:  ~"@{css-prefix}-switch";
+
 .@{switch-prefix-cls} {
   display: inline-block;
   border-radius: 100px;
@@ -42,6 +43,7 @@
 
   &-checked {
     background-color: @primary-color;
+
     &::after {
       left: 100%;
     }
