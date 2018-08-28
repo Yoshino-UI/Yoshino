@@ -92,14 +92,13 @@ const rippleJs = ({
 		$element.style.backgroundSize = "3px 3px";
 		$element.style.opacity = opacity;
 		if(true) {
-			x = touch.offsetX;
-			y = touch.offsetY;
-			
 			var dimensions = dom.getBoundingClientRect();
-			if(!x || !y){
-				x = (touch.clientX || touch.x) - dimensions.left;
-				y = (touch.clientY || touch.y) - dimensions.top;
-			}
+			x = event.pageX - (window.pageXOffset + dimensions.left);
+			y = event.pageY - (window.pageYOffset + dimensions.top);
+
+			console.log(x, y);
+
+
 			$element.style.backgroundPosition = x + "px " + y + "px";
 			$element.style.width = dimensions.width + "px";
 			$element.style.height = dimensions.height + "px";
@@ -115,9 +114,10 @@ const rippleJs = ({
 					$element.style[computed_style[key]] = computed_style[computed_style[key]];
 				}
 			}
+			const max = Math.max(dimensions.width, dimensions.height);
 			$element.style.backgroundPosition = x + "px " + y + "px";
-			$element.ripple_backgroundPosition = (x - dimensions.width)  + "px " + (y - dimensions.width) + "px";
-			$element.ripple_backgroundSize = (dimensions.width * 2) + "px " + (dimensions.width * 2) + "px";
+			$element.ripple_backgroundPosition = (x - max)  + "px " + (y - max) + "px";
+			$element.ripple_backgroundSize = (max * 2) + "px " + (max * 2) + "px";
 		}
 		$element.ripple_x = x;
 		$element.ripple_y = y;
