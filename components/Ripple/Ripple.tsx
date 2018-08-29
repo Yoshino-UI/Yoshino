@@ -14,10 +14,6 @@ export interface IRippleProps extends IBaseComponent {
    * 波纹透明度
    */
   opacity?: number;
-  /**
-   * 波纹直径
-   */
-  diameter?: number;
 }
 
 export interface IRippleState {
@@ -34,9 +30,9 @@ export class Ripple extends Component<IRippleProps, IRippleState> {
   };
 
   componentDidMount() {
-    const {color, opacity, diameter} = this. props;
+    const {color, opacity} = this. props;
     if (this.targetRipple !== null) {
-      this.rippleHandle = rippleJs({dom: this.targetRipple, color, opacity, diameter});
+      this.rippleHandle = rippleJs({dom: this.targetRipple, color, opacity});
     }
   }
 

@@ -14,12 +14,6 @@ export default [
         type: 'number',
         defaultValue: '0.3',
       },
-      {
-        props: 'diameter',
-        intro: '波纹半径',
-        type: 'number',
-        defaultValue: '10',
-      },
     ]
   }
 ];

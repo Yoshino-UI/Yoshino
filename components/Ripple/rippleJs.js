@@ -2,7 +2,6 @@ const rippleJs = ({
 	dom = document,
 	color = "#4285f4",
 	opacity = 0.3,
-	diameter = 20,
 }) => {
   // var color;
 	// var opacity;
