@@ -73,6 +73,7 @@ export interface IPopState {
 export class Pop extends Component<IPopProps, IPopState> {
   refChildren: HTMLElement;
   timeoutHandle: number;
+  timueoutFoucs?: number;
 
   animateTimeHandle: number[] = []; // 动画timeout句柄
 
@@ -115,6 +116,7 @@ export class Pop extends Component<IPopProps, IPopState> {
           <div
             className={clsName}
             style={{...overlayStyle}}
+            tabIndex={0}
             {...otherProps}
             {...this.getConentTriggerAction()}
           >
@@ -189,10 +191,19 @@ export class Pop extends Component<IPopProps, IPopState> {
     }
   }
 
+  toggleVisible = (visible: boolean) => {
+    if (this.timueoutFoucs) {
+      clearTimeout(this.timueoutFoucs);
+    }
+    this.timueoutFoucs = window.setTimeout(() => {
+      this.onChangeTrigger(visible);
+    }, 10);
+  }
+
   // pop包裹对象trigger表现
   getTargetTriggerAction = () => {
-    const show =  this.onChangeTrigger.bind(this, true);
-    const hide = this.onChangeTrigger.bind(this, false);
+    const show =  this.toggleVisible.bind(this, true);
+    const hide = this.toggleVisible.bind(this, false);
     const {trigger = 'hover'} = this.props;
     const action = {
       hover: {
@@ -212,8 +223,8 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   // pop - content triggert表现
   getConentTriggerAction = () => {
-    const show =  this.onChangeTrigger.bind(this, true);
-    const hide = this.onChangeTrigger.bind(this, false);
+    const show =  this.toggleVisible.bind(this, true);
+    const hide = this.toggleVisible.bind(this, false);
     const {trigger = 'hover'} = this.props;
     const action = {
       hover: {
@@ -221,6 +232,8 @@ export class Pop extends Component<IPopProps, IPopState> {
         onMouseOut: hide,
       },
       focus: {
+        onFocus: show,
+        onBlur: hide,
       },
       click: {
       },
@@ -234,7 +247,14 @@ export class Pop extends Component<IPopProps, IPopState> {
     const child: React.ReactElement<any> = React.Children.only(children);
     return React.cloneElement(child, {
       // tslint:disable:no-any
-      ref: (v: HTMLElement) => {this.refChildren = v},
+      ref: (v: HTMLElement) => {
+        if (v) {
+          this.refChildren = v;
+          if ((child as any).ref) {
+            (child as any).ref(v);
+          }
+        }
+      },
       ...this.getTargetTriggerAction(),
     }, child.props.children, this.renderPop());
   }

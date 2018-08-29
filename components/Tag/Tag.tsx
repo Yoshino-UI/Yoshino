@@ -53,7 +53,8 @@ export class Tag extends Component<ITagProps, ITagState> {
     show: true,
   };
 
-  closeTag = () => {
+  closeTag = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     const {onClose} = this.props;
 
     if (onClose) {

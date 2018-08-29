@@ -54,6 +54,9 @@ const {Expand} = Transitions;
  * **组件中文名称**-组件描述。
  */
 export class Select extends Component<ISelectProps, ISelectState> {
+  refChildTarget?: HTMLDivElement;
+  clickCount = 0;
+
   static defaultProps = {
     mode: 'single',
     size: 'default',
@@ -90,6 +93,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
     // 单选模式
     if (mode === 'single') {
       newValue = value;
+      this.toggleVisible();
     } else {
       if (!Array.isArray(values)) {
         return;
@@ -111,6 +115,11 @@ export class Select extends Component<ISelectProps, ISelectState> {
     });
   }
 
+  toggleVisible = () => {
+    const { visible } = this.state;
+    this.setState({visible: !visible});
+  }
+
   render() {
     const {
       className, style, onChange,
@@ -118,18 +127,19 @@ export class Select extends Component<ISelectProps, ISelectState> {
       children, mode, size, placeholder,
       ...otherProps} = this.props;
     const preCls = 'yoshino-select';
+    const {visible} = this.state;
     const clsName = classNames(
       preCls, className,
       `${preCls}-${mode}`,
       {
-        [`${preCls}-hidden`]: !this.state.visible,
+        [`${preCls}-hidden`]: !visible,
         [`${preCls}-disabled`]: disabled,
         [`${preCls}-enabled`]: !disabled,
       }
     );
     const values = this.getValue();
     const list = (
-      <Expand timeout={this.timeout} active={this.state.visible}>
+      <Expand timeout={this.timeout} active={visible}>
         <ul>
           {
             React.Children.map(children, (ele: React.ReactElement<IOptionProps | IOptionGroupProps>) => {
@@ -147,12 +157,15 @@ export class Select extends Component<ISelectProps, ISelectState> {
         placement='bottom'
         inheritWidth
         trigger='focus'
-        visible={disabled ? false : undefined}
+        visible={!disabled}
         mouseLeaveDelay={this.timeout}
         overlayClassName={`${preCls}-list`}
-        onChangeBefore={(visible) => {
+        onChangeBefore={(v) => {
           if (!disabled) {
-            this.setState({visible});
+            this.setState({visible: v});
+            if (!v) {
+              this.clickCount = 0;
+            }
           }
         }}
       >
@@ -161,6 +174,19 @@ export class Select extends Component<ISelectProps, ISelectState> {
           style={style}
           tabIndex={0}
           {...otherProps}
+          ref={(v) => {
+            if (v) {
+              this.refChildTarget = v;
+            }
+          }}
+          onClick={() => {
+            if (++this.clickCount === 2) {
+              this.clickCount = 0;
+              if (this.refChildTarget) {
+                this.refChildTarget.blur();
+              }
+            }
+          }}
         >
           <div className={`${preCls}-selection ${preCls}-${size}`}>
             {values.toString() === '' ? <div className={`${preCls}-placeholder`}>{placeholder}</div> : null}

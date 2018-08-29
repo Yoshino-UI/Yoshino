@@ -42,8 +42,8 @@ export class Option extends Component<IOptionProps, IOptionState> {
   static displayName = 'Option';
 
   onChange = (value: number | string) => {
-    const {onChange} = this.props;
-    if (onChange) {
+    const {onChange, disabled} = this.props;
+    if (onChange && !disabled) {
       onChange(value);
     }
   }
