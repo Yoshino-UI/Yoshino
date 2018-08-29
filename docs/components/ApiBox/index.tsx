@@ -34,6 +34,7 @@ export default class ApiBox extends Component<IProps> {
               const str = arr.join(separate)
               .replace(/\|/g, '&#124;')
               .replace(/['|"]{1}/g, '`')
+              .replace(/[\r\n]{1}/g, '')
               .split(separate).join('|');
               md += `\r\n|${str}|`;
             });
