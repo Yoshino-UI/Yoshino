@@ -9,6 +9,7 @@ export default function() {
       content: '这是一个内容主题！这是一个内容主题！这是一个内容主题！这是一个内容主题！！',
       width: 400,
       onOk: () => true,
+      showClose: true,
     });
   };
 

@@ -2,7 +2,7 @@
 import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IBaseComponent, TKey} from '../template/component';
 
 export interface IMenuItemGroupProps extends IBaseComponent {
   /**
@@ -16,19 +16,19 @@ export interface IMenuItemGroupProps extends IBaseComponent {
   /**
    * 标志
    */
-  keyId: string;
+  keyId: TKey;
   /**
    * 激活key
    */
-  activeKey?: string;
+  activeKey?: TKey;
   /**
    * 选项 - 变化回调
    */
-  onSelect?: (activeKey: string) => void;
+  onSelect?: (activeKey: TKey) => void;
   /**
    * 展开回调
    */
-  onOpenChange?: (openKeys: string[]) => void;
+  onOpenChange?: (openKeys: TKey[]) => void;
   /**
    * 偏移量
    */

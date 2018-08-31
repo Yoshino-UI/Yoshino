@@ -2,7 +2,7 @@
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IBaseComponent, TKey} from '../template/component';
 import Panel from './Panel';
 import {IPanelProps} from './Panel';
 
@@ -10,7 +10,7 @@ export interface ICollapseProps extends IBaseComponent {
   /**
    * 受控 - 激活key
    */
-  activeKeys?: string[];
+  activeKeys?: TKey[];
   /**
    * 非受控 - 激活key
    */
@@ -22,7 +22,7 @@ export interface ICollapseProps extends IBaseComponent {
   /**
    * 变化回调
    */
-  onChange?: (activeKeys: string[]) => void;
+  onChange?: (activeKeys: TKey[]) => void;
 }
 
 export interface ICollapseState {
@@ -49,7 +49,7 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
     return activeKeys === undefined ? this.state.activeKeys : activeKeys;
   }
 
-  onChange = (key: string) => {
+  onChange = (key: TKey) => {
     const activeKeys = this.getActiveKey();
     const {accordion} = this.props;
     if (activeKeys.indexOf(key) !== -1) {
@@ -64,7 +64,7 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
     this.onChangeTrigger(activeKeys);
   }
 
-  onChangeTrigger = (activeKeys: string[]) => {
+  onChangeTrigger = (activeKeys: TKey[]) => {
     const {onChange} = this.props;
     if (onChange) {
       onChange(activeKeys);

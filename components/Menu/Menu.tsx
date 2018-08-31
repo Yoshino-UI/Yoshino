@@ -2,7 +2,7 @@
 import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IBaseComponent, TKey} from '../template/component';
 import MenuItem from './MenuItem';
 import SubMenu from './SubMenu';
 import MenuItemGroup from './MenuItemGroup';
@@ -11,27 +11,27 @@ export interface IMenuProps extends IBaseComponent {
   /**
    * 受控 - 激活key
    */
-  activeKey?: string;
+  activeKey?: TKey;
   /**
    * 非受控 - 激活key
    */
-  defaultActiveKey?: string;
+  defaultActiveKey?: TKey;
   /**
    * 受控 - 展开key
    */
-  openKeys?: string[];
+  openKeys?: TKey[];
   /**
    * 非受控 - 展开key
    */
-  defaultOpenKeys?: string[];
+  defaultOpenKeys?: TKey[];
   /**
    * item - 选中回调
    */
-  onSelect?: (activeKey: string) => void;
+  onSelect?: (activeKey: TKey) => void;
   /**
    * 展开回调
    */
-  onOpenChange?: (openKeys: string[]) => void;
+  onOpenChange?: (openKeys: TKey[]) => void;
   /**
    * 偏移量
    */
@@ -85,7 +85,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
     return openKeys === undefined ? this.state.openKeys : openKeys;
   }
 
-  onOpenChange = (openKey: string) => {
+  onOpenChange = (openKey: TKey) => {
     const openKeys = this.getOpenKeys();
     if (openKeys.indexOf(openKey) !== -1) {
       openKeys.splice(openKeys.indexOf(openKey), 1);
@@ -95,7 +95,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
     this.onOpenChangeTrigger(openKeys);
   }
 
-  onOpenChangeTrigger = (openKeys: string[]) => {
+  onOpenChangeTrigger = (openKeys: TKey[]) => {
     const {onOpenChange} = this.props;
     if (onOpenChange) {
       onOpenChange(openKeys);

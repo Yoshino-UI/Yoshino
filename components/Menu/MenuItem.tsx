@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IBaseComponent, TKey} from '../template/component';
 
 export interface IMenuItemProps extends IBaseComponent {
   /**
@@ -11,15 +11,15 @@ export interface IMenuItemProps extends IBaseComponent {
   /**
    * 激活key
    */
-  activeKey?: string;
+  activeKey?: TKey;
   /**
    * 唯一id
    */
-  keyId: string;
+  keyId: TKey;
   /**
    * 选项 - 变化回调
    */
-  onSelect?: (activeKey: string) => void;
+  onSelect?: (activeKey: TKey) => void;
   /**
    * 禁用
    */

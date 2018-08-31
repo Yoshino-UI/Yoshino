@@ -2,7 +2,7 @@
 import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IBaseComponent, TKey} from '../template/component';
 import Icon from '../Icon';
 import Transitions from '../Transitions';
 
@@ -12,7 +12,7 @@ export interface IPanelProps extends IBaseComponent {
   /**
    * 标记，对应activekey
    */
-  keyId: string;
+  keyId: TKey;
   /**
    * 折叠板标题
    */
@@ -28,7 +28,7 @@ export interface IPanelProps extends IBaseComponent {
   /**
    * 变化回调
    */
-  onChange?: (keyId: string) => void;
+  onChange?: (keyId: TKey) => void;
 }
 
 export interface IPanelState {

@@ -54,7 +54,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
     zIndex: 1000,
     width: 256,
     showCancel: true,
-    showClose: true,
+    showClose: false,
     showMask: true,
     maskClosable: true,
     type: 'confirm',
@@ -141,7 +141,12 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
           style={{width, zIndex, ...style}}
           {...otherProps}
         >
-          {showClose ? <div className={`${preCls}-close`} onClick={this.onClose}>{closeText || 'X'}</div> : null}
+          {showClose ? <div
+            className={`${preCls}-close`}
+            onClick={this.onClose}
+          >
+            {closeText || <Icon type='close-round'/>}
+          </div> : null}
           <div className={`${preCls}-body`}>
             {
               conetnt ? conetnt : (

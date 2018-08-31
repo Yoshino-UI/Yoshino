@@ -2,7 +2,7 @@
 import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent} from '../template/component';
+import {IBaseComponent, TKey} from '../template/component';
 import Transitions from '../Transitions';
 import Icon from '../Icon';
 
@@ -20,23 +20,23 @@ export interface ISubMenuProps extends IBaseComponent {
   /**
    * 标志
    */
-  keyId: string;
+  keyId: TKey;
   /**
    * 激活key
    */
-  activeKey?: string;
+  activeKey?: TKey;
   /**
    * 展开的key
    */
-  openKeys?: string[];
+  openKeys?: TKey[];
   /**
    * 选项 - 变化回调
    */
-  onSelect?: (activeKey: string) => void;
+  onSelect?: (activeKey: TKey) => void;
   /**
    * 展开回调
    */
-  onOpenChange?: (openKey: string) => void;
+  onOpenChange?: (openKey: TKey) => void;
   /**
    * 禁用
    */

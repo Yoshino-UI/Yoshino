@@ -1,17 +1,18 @@
 export default [
   {
     title: 'Collapse',
+    intro: 'TKey: number | string',
     json: [
       {
         props: 'activeKeys',
         intro: '受控 - 激活key',
-        type: 'string[]',
+        type: 'TKey[]',
         defaultValue: '-',
       },
       {
         props: 'defaultActiveKeys',
         intro: '非受控 - 激活key',
-        type: 'string[]',
+        type: 'TKey[]',
         defaultValue: '[]',
       },
       {
@@ -23,7 +24,7 @@ export default [
       {
         props: 'onChange',
         intro: '变化回调',
-        type: '(activeKeys: string[]) => void',
+        type: '(activeKeys: TKey[]) => void',
         defaultValue: '-',
       },
     ]
@@ -34,7 +35,7 @@ export default [
       {
         props: 'keyId',
         intro: '标记，对应activekey',
-        type: 'string',
+        type: 'TKey',
         defaultValue: '',
       },
       {

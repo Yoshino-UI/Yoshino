@@ -81,7 +81,7 @@ export default [
         props: 'showClose',
         intro: '是否显示关闭按钮',
         type: 'boolean',
-        defaultValue: 'true',
+        defaultValue: 'false',
       },
       {
         props: 'showMask',

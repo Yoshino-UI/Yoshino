@@ -1,41 +1,42 @@
 export default [
   {
     title: 'Menu',
+    intro: 'TKey: number | string',
     json: [
       {
         props: 'activeKey',
         intro: '受控 - 激活key',
-        type: 'string',
+        type: 'TKey',
         defaultValue: '-',
       },
       {
         props: 'defaultActiveKey',
         intro: '非受控 - 激活key',
-        type: 'string',
+        type: 'TKey',
         defaultValue: '-',
       },
       {
         props: 'openKeys',
         intro: '受控 - 展开key',
-        type: 'string[]',
+        type: 'TKey[]',
         defaultValue: '-',
       },
       {
         props: 'defaultOpenKeys',
         intro: '非受控 - 展开key',
-        type: 'string[]',
+        type: 'TKey[]',
         defaultValue: '`[]`',
       },
       {
         props: 'onSelect',
         intro: 'item - 选中回调',
-        type: '(activeKey: string) => void',
+        type: '(activeKey: TKey) => void',
         defaultValue: '-',
       },
       {
         props: 'onOpenChange',
         intro: '展开回调',
-        type: '(openKeys: string[]) => void',
+        type: '(openKeys: TKey[]) => void',
         defaultValue: '-',
       },
       {
@@ -58,7 +59,7 @@ export default [
       {
         props: 'keyId',
         intro: '唯一标志',
-        type: 'string',
+        type: 'TKey',
         defaultValue: '-',
       },
       {
@@ -81,7 +82,7 @@ export default [
       {
         props: 'keyId',
         intro: '唯一标志',
-        type: 'string',
+        type: 'TKey',
         defaultValue: '-',
       },
     ]
@@ -92,7 +93,7 @@ export default [
       {
         props: 'keyId',
         intro: '唯一标志',
-        type: 'string',
+        type: 'TKey',
         defaultValue: '-',
       },
     ]

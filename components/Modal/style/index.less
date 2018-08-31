@@ -42,8 +42,18 @@
     position: absolute;
     right: 0;
     top: 0;
-    padding: 10px;
+    padding: @close-icon-padding;
     cursor: pointer;
+    color: @color-unactive;
+    transition: @transition-quick;
+
+    :hover {
+      color: #444;
+    }
+
+    i {
+      transition: @transition-quick;
+    }
   }
 
   &-title {
