@@ -8,7 +8,6 @@ export default function() {
       title: '这是一个标题！！！',
       content: '这是一个内容主题！这是一个内容主题！这是一个内容主题！这是一个内容主题！！',
       width: 400,
-      onOk: () => true,
       showClose: true,
     });
   };
