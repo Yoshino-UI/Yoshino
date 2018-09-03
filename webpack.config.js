@@ -7,7 +7,11 @@ const webpack = require('webpack');
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      '@yoshino': path.resolve(__dirname, './'),
+      '@docs': path.resolve(__dirname, './docs')
+    }
   },
   entry: path.resolve('./docs/entry.tsx'),
   output: {

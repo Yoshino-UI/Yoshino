@@ -21,6 +21,11 @@
       "node_modules/@types"
     ],
     "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@yoshino/*": ["./*"],
+      "@docs/*": ["./docs/*"],
+    },
   },
   "include": [
     "components",

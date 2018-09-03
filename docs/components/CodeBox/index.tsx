@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import './index.less';
 import Markdown from '../Markdown';
-import { Collapse } from '../../../components/';
+import { Collapse } from '@yoshino/components/';
 import * as Prism from 'prismjs';
 require('prismjs/components/prism-jsx.min');
 require('../../../node_modules/prismjs/themes/prism.css');
@@ -20,7 +20,7 @@ export default class CodeBox extends Component<IProps> {
 
   render() {
     const {code, text, demo} = this.props;
-    const loader = code ? (code as string).replace(new RegExp('../../../../components/', 'g'), 'yoshino') : '';
+    const loader = code ? (code as string).replace(new RegExp('@yoshino/components/', 'g'), 'yoshino') : '';
     const demoHTML = {__html: Prism.highlight(loader, Prism.languages.jsx)};
 
     return (

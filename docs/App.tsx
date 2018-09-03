@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Switch, Route, HashRouter as Router, Redirect } from 'react-router-dom';
 import Index from './index';
-import Components from './pages/index';
+import Components from './pages/components/index';
 import { RouteProps } from 'react-router';
 
 const Routes: RouteProps[] = [

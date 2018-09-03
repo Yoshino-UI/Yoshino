@@ -11,7 +11,7 @@ function capitalizeFirstLetter(str) {
 
 // 写文件
 function writeFile(fileName, content, component) {
-  fs.writeFileSync(path.resolve(`docs/pages/${component}`, fileName), content, {
+  fs.writeFileSync(path.resolve(`docs/pages/components/${component}`, fileName), content, {
     encoding: 'utf8',
   })
 }
@@ -23,9 +23,9 @@ function fileDocsTsx(component) {
   const content = `import * as React from 'react';
 import { Component } from 'react';
 import * as md from './index.md';
-import Markdown from '../../components/Markdown/';
-import CodeBox from '../../components/CodeBox/';
-import ApiBox from '../../components/ApiBox/';
+import Markdown from '@docs/components/Markdown/';
+import CodeBox from '@docs/components/CodeBox/';
+import ApiBox from '@docs/components/ApiBox/';
 import Api from './api';
 
 import ${component}Demo from './demo/${low}Demo';
@@ -122,7 +122,7 @@ function demoReadmeMd(component) {
 function demoTsx(component) {
   const low = capitalizeFirstLetter(component); // 小写
   const content = `import * as React from 'react';
-import { ${component} } from '../../../../components/';
+import { ${component} } from '@yoshino/components/';
 
 export default function() {
   return (
@@ -148,18 +148,18 @@ assert(component, `
 组件名称不能为空，请带上组件名称：
 npm run new ComponentName
 `);
-assert(!fs.existsSync(path.resolve('./docs/pages/', component)), `
+assert(!fs.existsSync(path.resolve('./docs/pages/components/', component)), `
 ${component} 组件说明已经存在！
 `);
 
 // 生成文件
-fs.mkdirSync(path.resolve('./docs/pages/', component));
-fs.mkdirSync(path.resolve('./docs/pages/', component, 'demo'));
+fs.mkdirSync(path.resolve('./docs/pages/components/', component));
+fs.mkdirSync(path.resolve('./docs/pages/components/', component, 'demo'));
 fileDocsTsx(component);
 fileReadmeMd(component);
 fileApiTsx(component);
 demoReadmeMd(component);
 demoTsx(component);
 
-console.info(`组件说明成功添加到 ./docs/pages/${component} 目录下。`);
+console.info(`组件说明成功添加到 ./docs/pages/components/${component} 目录下。`);
 
