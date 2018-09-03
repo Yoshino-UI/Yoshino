@@ -3,6 +3,7 @@ import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
+import { Menu } from './Menu';
 
 export interface IMenuItemGroupProps extends IBaseComponent {
   /**
@@ -17,22 +18,6 @@ export interface IMenuItemGroupProps extends IBaseComponent {
    * 标志
    */
   keyId: TKey;
-  /**
-   * 激活key
-   */
-  activeKey?: TKey;
-  /**
-   * 选项 - 变化回调
-   */
-  onSelect?: (activeKey: TKey) => void;
-  /**
-   * 展开回调
-   */
-  onOpenChange?: (openKeys: TKey[]) => void;
-  /**
-   * 偏移量
-   */
-  offset?: number;
 }
 
 export interface IMenuItemGroupState {
@@ -46,11 +31,13 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
   static defaultProps = {
   };
 
+  static contextTypes = Menu.childContextTypes;
+
   render() {
     const {
       className, style, children, deep, title,
-      activeKey, onSelect, offset,
     } = this.props;
+    const { offset } = this.context;
     const preCls = 'yoshino-menu-item-group';
     const clsName = classNames(
       preCls, className,
@@ -74,9 +61,6 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
             React.Children.map(childrens, (child: ReactElement<any>) => {
               return React.cloneElement(child, {
                 deep: deep as number + 1,
-                activeKey,
-                onSelect,
-                offset,
               });
             })
           }

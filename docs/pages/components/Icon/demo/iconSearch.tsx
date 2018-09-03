@@ -25,9 +25,9 @@ export default class IconSearch extends React.Component {
         />
         <div
           style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'flext-start',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flext-start',
           }}
         >
         {
@@ -36,9 +36,9 @@ export default class IconSearch extends React.Component {
               <div
                 key={key}
                 style={{
-                width: 80,
-                textAlign: 'center',
-                padding: 5,
+                  width: 80,
+                  textAlign: 'center',
+                  padding: 5,
                 }}
               >
                 <Icon type={item.name} style={{fontSize: 25}}/>

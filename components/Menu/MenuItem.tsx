@@ -2,6 +2,7 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
+import { Menu } from './Menu';
 
 export interface IMenuItemProps extends IBaseComponent {
   /**
@@ -9,25 +10,13 @@ export interface IMenuItemProps extends IBaseComponent {
    */
   deep?: number;
   /**
-   * 激活key
-   */
-  activeKey?: TKey;
-  /**
    * 唯一id
    */
   keyId: TKey;
   /**
-   * 选项 - 变化回调
-   */
-  onSelect?: (activeKey: TKey) => void;
-  /**
    * 禁用
    */
   disabled?: boolean;
-  /**
-   * 偏移量
-   */
-  offset?: number;
 }
 
 export interface IMenuItemState {
@@ -43,7 +32,8 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
   };
 
   onSelect = () => {
-    const {onSelect, keyId, disabled, onClick} = this.props;
+    const { keyId, disabled, onClick } = this.props;
+    const { onSelect } = this.context;
     if (disabled) {
       return;
     }
@@ -55,11 +45,14 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
     }
   }
 
+  static contextTypes = Menu.childContextTypes;
+
   render() {
     const {
       className, style, children, deep,
-      activeKey, keyId, disabled, offset,
+      keyId, disabled,
     } = this.props;
+    const { activeKey,  offset } = this.context;
     const preCls = 'yoshino-menu-item';
     const clsName = classNames(
       preCls, className,

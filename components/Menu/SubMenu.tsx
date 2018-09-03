@@ -5,6 +5,7 @@ import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
 import Transitions from '../Transitions';
 import Icon from '../Icon';
+import { Menu } from './Menu';
 
 const Expand = Transitions.Expand;
 
@@ -22,29 +23,9 @@ export interface ISubMenuProps extends IBaseComponent {
    */
   keyId: TKey;
   /**
-   * 激活key
-   */
-  activeKey?: TKey;
-  /**
-   * 展开的key
-   */
-  openKeys?: TKey[];
-  /**
-   * 选项 - 变化回调
-   */
-  onSelect?: (activeKey: TKey) => void;
-  /**
-   * 展开回调
-   */
-  onOpenChange?: (openKey: TKey) => void;
-  /**
    * 禁用
    */
   disabled?: boolean;
-  /**
-   * 偏移量
-   */
-  offset?: number;
 }
 
 export interface ISubMenuState {
@@ -59,8 +40,11 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
     disabled: false,
   };
 
+  static contextTypes = Menu.childContextTypes;
+
   onOpenChange = () => {
-    const {onOpenChange, keyId, disabled} = this.props;
+    const { keyId, disabled } = this.props;
+    const { onOpenChange } = this.context;
     if (disabled) {
       return;
     }
@@ -73,10 +57,12 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
   render() {
     const {
       className, style, children, title, deep,
-      activeKey, onSelect, onOpenChange, openKeys = [],
-      keyId, disabled, offset,
+      keyId, disabled,
       ...otherProps
     } = this.props;
+    const {
+      openKeys = [], offset,
+    } = this.context;
     const preCls = 'yoshino-sub-menu';
     const show = openKeys.indexOf(keyId) !== -1;
     const clsName = classNames(
@@ -114,11 +100,6 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
                   React.Children.map(childrens, (children: ReactElement<any>) => {
                     return React.cloneElement(children, {
                       deep: deep as number + 1,
-                      activeKey,
-                      openKeys,
-                      onSelect,
-                      onOpenChange,
-                      offset,
                     });
                   })
                 }

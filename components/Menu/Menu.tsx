@@ -2,12 +2,17 @@
 import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {IBaseComponent, TKey} from '../template/component';
+import { IBaseComponent, TKey } from '../template/component';
 import MenuItem from './MenuItem';
 import SubMenu from './SubMenu';
 import MenuItemGroup from './MenuItemGroup';
+import * as PropTypes from 'prop-types';
 
 export interface IMenuProps extends IBaseComponent {
+  /**
+   * 模式
+   */
+  mode?: 'vertical' | 'horizontal';
   /**
    * 受控 - 激活key
    */
@@ -54,7 +59,28 @@ export class Menu extends Component<IMenuProps, IMenuState> {
     defaultActiveKey: '',
     defaultOpenKeys: [],
     offset: 24,
+    mode: 'vertical',
   };
+
+  static childContextTypes = {
+    mode: PropTypes.string,
+    activeKey: PropTypes.string,
+    openKeys: PropTypes.array,
+    onSelect: PropTypes.func,
+    onOpenChange: PropTypes.func,
+    offset: PropTypes.number,
+  };
+
+  getChildContext = () => {
+    return {
+      mode: this.props.mode,
+      activeKey: this.getActiveKey(),
+      openKeys: this.getOpenKeys(),
+      onSelect: this.onSelect,
+      onOpenChange: this.onOpenChange,
+      offset: this.props.offset,
+    };
+  }
 
   state = {
     activeKey: this.props.defaultActiveKey,
@@ -117,8 +143,6 @@ export class Menu extends Component<IMenuProps, IMenuState> {
       preCls, className,
     );
     const childrens = React.Children.toArray(children);
-    const activeKeyR = this.getActiveKey();
-    const openKeys = this.getOpenKeys();
     return (
       <ul
         className={clsName}
@@ -130,11 +154,6 @@ export class Menu extends Component<IMenuProps, IMenuState> {
           React.Children.map(childrens, (child: ReactElement<any>) => {
             return React.cloneElement(child, {
               deep: 1,
-              activeKey: activeKeyR,
-              openKeys,
-              onSelect: this.onSelect,
-              onOpenChange: this.onOpenChange,
-              offset,
             });
           })
         }

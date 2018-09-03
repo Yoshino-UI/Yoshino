@@ -96,6 +96,12 @@ export default [
         type: 'TKey',
         defaultValue: '-',
       },
+      {
+        props: 'disabled',
+        intro: '禁用',
+        type: 'boolean',
+        defaultValue: '`false`',
+      },
     ]
   },
 ];
