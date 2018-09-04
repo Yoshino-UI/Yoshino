@@ -30,9 +30,9 @@ export interface IPopProps extends IBaseComponent {
    */
   overlayStyle?: React.CSSProperties;
   /**
-   * 触发行为
+   * 触发行为 - hoverClick是指点击蒙层后关闭
    */
-  trigger?: 'hover' | 'focus' | 'click';
+  trigger?: 'hover' | 'focus' | 'click' | 'hoverClick';
   /**
    * 受控-是否可见
    */
@@ -57,6 +57,10 @@ export interface IPopProps extends IBaseComponent {
    * 宽度继承
    */
   inheritWidth?: boolean;
+  /**
+   * 继承宽度为最小宽度
+   */
+  isMinWidth?: boolean;
   /**
    * 变化回调 - 延迟前
    */
@@ -89,6 +93,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     defaultVisible: false,
     mountOnEnter: false,
     inheritWidth: false,
+    isMinWidth: false,
   };
 
   state = {
@@ -101,6 +106,7 @@ export class Pop extends Component<IPopProps, IPopState> {
       placement, overlayStyle, overlayClassName,
       mouseEnterDelay, mouseLeaveDelay, mountOnEnter,
       onChange, content, visible, inheritWidth, onChangeBefore,
+      isMinWidth,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-pop';
@@ -130,7 +136,7 @@ export class Pop extends Component<IPopProps, IPopState> {
 
   resetPopPostion = () => {
     const children = ReactDOM.findDOMNode(this.refChildren) as Element;
-    const {placement = 'top', inheritWidth} = this.props;
+    const {placement = 'top', inheritWidth, isMinWidth} = this.props;
     const dom =  document.getElementsByClassName(this.popId)[0] as HTMLElement;
     const domRectReal = dom.getBoundingClientRect() as DOMRect; // Pop - content -  dom
     const rect = children.getBoundingClientRect() as DOMRect; // Pop - target - dom
@@ -164,7 +170,11 @@ export class Pop extends Component<IPopProps, IPopState> {
     dom.style.left = config[placement].left + 'px';
 
     if (inheritWidth) {
-      dom.style.width = rect.width + 'px';
+      if (isMinWidth) {
+        dom.style.minWidth = rect.width + 'px';
+      } else {
+        dom.style.width = rect.width + 'px';
+      }
     }
   }
 
@@ -177,6 +187,10 @@ export class Pop extends Component<IPopProps, IPopState> {
     const {onChange, mouseEnterDelay, mouseLeaveDelay, onChangeBefore} = this.props;
     if (this.timeoutHandle !== undefined) {
       clearTimeout(this.timeoutHandle);
+    }
+
+    if (visible === this.state.visible) {
+      return;
     }
 
     this.timeoutHandle = window.setTimeout(() => {
@@ -197,7 +211,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     }
     this.timueoutFoucs = window.setTimeout(() => {
       this.onChangeTrigger(visible);
-    }, 10);
+    }, 100);
   }
 
   // pop包裹对象trigger表现
@@ -207,8 +221,12 @@ export class Pop extends Component<IPopProps, IPopState> {
     const {trigger = 'hover'} = this.props;
     const action = {
       hover: {
-        onMouseOver: show,
-        onMouseOut: hide,
+        onMouseEnter: show,
+        onMouseLeave: hide,
+      },
+      hoverClick: {
+        onMouseEnter: show,
+        onMouseLeave: hide,
       },
       focus: {
         onFocus: show,
@@ -228,8 +246,8 @@ export class Pop extends Component<IPopProps, IPopState> {
     const {trigger = 'hover'} = this.props;
     const action = {
       hover: {
-        onMouseOver: show,
-        onMouseOut: hide,
+        onMouseEnter: show,
+        onMouseLeave: hide,
       },
       focus: {
         onFocus: show,
@@ -237,6 +255,11 @@ export class Pop extends Component<IPopProps, IPopState> {
       },
       click: {
       },
+      hoverClick: {
+        onMouseEnter: show,
+        onMouseLeave: hide,
+        onClick: hide,
+      }
     };
     return action[trigger];
   }

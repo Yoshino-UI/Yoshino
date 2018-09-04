@@ -5,7 +5,7 @@ import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
 import Transitions from '../Transitions';
 import Icon from '../Icon';
-import { Menu } from './Menu';
+import Pop from '../Pop';
 
 const Expand = Transitions.Expand;
 
@@ -26,10 +26,12 @@ export interface ISubMenuProps extends IBaseComponent {
    * 禁用
    */
   disabled?: boolean;
+  // tslint:disable no-any
+  ctx?: any;
 }
 
 export interface ISubMenuState {
-
+  childMenuVisible: boolean;
 }
 
 /**
@@ -40,11 +42,13 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
     disabled: false,
   };
 
-  static contextTypes = Menu.childContextTypes;
+  state = {
+    childMenuVisible: false,
+  };
 
   onOpenChange = () => {
-    const { keyId, disabled } = this.props;
-    const { onOpenChange } = this.context;
+    const { keyId, disabled, ctx } = this.props;
+    const { onOpenChange } = ctx;
     if (disabled) {
       return;
     }
@@ -57,14 +61,15 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
   render() {
     const {
       className, style, children, title, deep,
-      keyId, disabled,
+      keyId, disabled, ctx,
       ...otherProps
     } = this.props;
     const {
-      openKeys = [], offset,
-    } = this.context;
+      openKeys = [], offset, mode,
+    } = ctx;
     const preCls = 'yoshino-sub-menu';
-    const show = openKeys.indexOf(keyId) !== -1;
+    const isVertical = mode === 'vertical';
+    const show = !isVertical && deep! > 1 ? this.state.childMenuVisible : openKeys.indexOf(keyId) !== -1;
     const clsName = classNames(
       preCls, className,
       {
@@ -73,39 +78,86 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
       },
     );
     const childrens = React.Children.toArray(children);
-    const paddingLeft = `${deep as number * (offset as number)}px`;
+    const paddingLeft =  isVertical ? `${deep! * (offset as number)}px` : '';
+    const action = isVertical ? {
+      onClick: this.onOpenChange,
+    } : {};
+    const liAction = !isVertical && deep! > 1 ? {
+      onMouseEnter: () => this.setState({childMenuVisible: true}),
+      onMouseLeave: () => this.setState({childMenuVisible: false}),
+    } : {};
+    const containerJSX = (
+      <Expand
+        timeout={300}
+        active={show}
+      >
+        <div className={`${preCls}-container`}>
+          <ul className={`${preCls}-list`}>
+            {
+              // tslint:disable
+              React.Children.map(childrens, (children: ReactElement<any>) => {
+                return React.cloneElement(children, {
+                  deep: deep as number + 1,
+                  ctx,
+                });
+              })
+            }
+          </ul>
+        </div>
+      </Expand>
+    );
+    const titleJSX = (
+      <div
+        className={`${preCls}-title`}
+        style={{paddingLeft}}
+        {...action}
+      >
+        {title}
+        {isVertical ? <Icon type='chevron-up' className={`${preCls}-icon`}/> : null}
+      </div>
+    );
     return (
       <React.Fragment>
         <li
           className={clsName}
           style={style}
           {...otherProps}
+          {...liAction}
         >
-          <div
-            className={`${preCls}-title`}
-            style={{paddingLeft}}
-            onClick={this.onOpenChange}
-          >
-            {title}
-            <Icon type='chevron-up' className={`${preCls}-icon`}/>
-          </div>
-          <Expand
-            timeout={300}
-            active={show}
-          >
-            <div className={`${preCls}-container`}>
-              <ul className={`${preCls}-list`}>
-                {
-                  // tslint:disable
-                  React.Children.map(childrens, (children: ReactElement<any>) => {
-                    return React.cloneElement(children, {
-                      deep: deep as number + 1,
-                    });
-                  })
-                }
-              </ul>
-            </div>
-          </Expand>
+          {
+            isVertical ? (
+              <React.Fragment>
+                {titleJSX}
+                {containerJSX}
+              </React.Fragment>
+            ) : deep === 1 ? (
+              <Pop
+                content={containerJSX}
+                overlayClassName={`${preCls}-pop-list`}
+                placement='bottomLeft'
+                trigger='hoverClick'
+                inheritWidth
+                isMinWidth
+                onChangeBefore={() => {
+                  this.onOpenChange();
+                }}
+              >
+                {titleJSX}
+              </Pop>
+            ) : (
+              <React.Fragment>
+                {titleJSX}
+                {deep! > 1 ? (
+                  // 这里加一层为了避免鼠标移入子菜单的时候出发onMouseLeave事件
+                  <div className={`${preCls}-child-menu-container`}>
+                    <div className={`${preCls}-child-menu`}>
+                      {containerJSX}
+                    </div>
+                  </div>
+                ) : null}
+              </React.Fragment>
+            )
+          }
         </li>
       </React.Fragment>
     );

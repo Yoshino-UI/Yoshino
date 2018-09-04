@@ -1,0 +1,81 @@
+.@{menu-prefix-cls}.@{menu-prefix-cls}-horizontal {
+  border-right: none;
+
+  > .@{menu-item-prefix-cls},
+  .@{sub-menu-prefix-cls} {
+    display: inline-block;
+  }
+
+  .@{sub-menu-prefix-cls}-title,
+  .@{menu-item-prefix-cls} {
+    padding: 0 20px;
+  }
+
+  .@{menu-item-prefix-cls}::after {
+    transition: @transition-base;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    content: '';
+    display: inline-block;
+    height: 0;
+    width: 0;
+  }
+
+  .@{menu-item-prefix-cls}-active::after {
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: @primary-color;
+  }
+}
+
+.@{sub-menu-prefix-cls}-pop-list {
+  background: white;
+  border-radius: @border-radius-large;
+  box-shadow: @shadow-base;
+  margin-top: 1px;
+
+  .@{menu-item-prefix-cls},
+  .@{menu-item-group-prefix-cls}-title,
+  .@{sub-menu-prefix-cls}-title, {
+    padding: 0 16px;
+  }
+
+  .@{menu-item-group-prefix-cls} {
+    > .@{menu-item-prefix-cls},
+    .@{sub-menu-prefix-cls}-title, {
+      padding-left: 0 16px 0 28px;
+    }
+  }
+
+  .@{sub-menu-prefix-cls} {
+    position: relative;
+
+    &-title {
+      position: relative;
+      overflow: visible;
+    }
+
+    &-container {
+      overflow: visible;
+    }
+
+    &-child-menu-container {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      padding-left: 10px;
+    }
+
+    &-child-menu {
+      background: white;
+      border-radius: @border-radius-large;
+      box-shadow: @shadow-base;
+    }
+  }
+
+  .@{menu-item-prefix-cls}-active {
+    background: @primary-color-choosed;
+  }
+}

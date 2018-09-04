@@ -1,12 +1,10 @@
 @import './var.less';
-
-@menu-prefix-cls:  ~"@{css-prefix}-menu";
+@import './vertical.less';
+@import './horizontal.less';
 
 .@{menu-prefix-cls} {
   border-right: 1px solid @color-unactive;
 }
-
-@sub-menu-prefix-cls:  ~"@{css-prefix}-sub-menu";
 
 .@{sub-menu-prefix-cls} {
   * {
@@ -63,8 +61,6 @@
   }
 }
 
-@menu-item-group-prefix-cls:  ~"@{css-prefix}-menu-item-group";
-
 .@{menu-item-group-prefix-cls} {
   &-title {
     font-size: @font-size-default;
@@ -76,8 +72,6 @@
     white-space: nowrap;
   }
 }
-
-@menu-item-prefix-cls:  ~"@{css-prefix}-menu-item";
 
 .@{menu-item-prefix-cls} {
   font-size: @font-size-default;
@@ -95,30 +89,12 @@
     color: @primary-color;
   }
 
-  &::after {
-    transition: @transition-base;
-    position: absolute;
-    right: -1px;
-    top: 0;
-    content: '';
-    display: inline-block;
-    height: 0;
-    width: 0;
-  }
-
   &-disabled {
     color: @color-disabled;
     cursor: not-allowed;
   }
 
   &-active {
-    background: @primary-color-choosed;
     color: @primary-color;
-
-    &::after {
-      height: 100%;
-      width: 3px;
-      background: @primary-color;
-    }
   }
 }

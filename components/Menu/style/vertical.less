@@ -1,0 +1,23 @@
+.@{menu-prefix-cls}.@{menu-prefix-cls}-vertical {
+  .@{menu-item-prefix-cls}::after {
+    transition: @transition-base;
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    content: '';
+    display: inline-block;
+    height: 0;
+    width: 0;
+  }
+
+  .@{menu-item-prefix-cls}-active {
+    background: @primary-color-choosed;
+
+    &::after {
+      top: 0;
+      height: 100%;
+      width: 3px;
+      background: @primary-color;
+    }
+  }
+}

@@ -44,6 +44,7 @@ export class Expand extends Component<IExpandProps, IExpandState> {
         unmountOnExit
         appear
         onEnter={() => {
+          this.refContainer.style.overflow = 'hidden';
           this.refContainer.style.height = '0px';
           this.refContainer.style.display = 'none';
         }}
@@ -53,9 +54,11 @@ export class Expand extends Component<IExpandProps, IExpandState> {
           this.refContainer.style.height = `${height + 1}px`;
         }}
         onEntered={() => {
+          this.refContainer.style.overflow = null;
           this.refContainer.style.height = null;
         }}
         onExit={() => {
+          this.refContainer.style.overflow = 'hidden';
           const height = this.refInner.clientHeight;
           this.refContainer.style.height = `${height + 1}px`;
         }}
@@ -68,6 +71,7 @@ export class Expand extends Component<IExpandProps, IExpandState> {
         onExited={() => {
           this.refContainer.style.height = null;
           this.refContainer.style.display = 'none';
+          this.refContainer.style.overflow = null;
         }}
       >
         {

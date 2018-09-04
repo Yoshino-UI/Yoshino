@@ -62,16 +62,8 @@ export class Menu extends Component<IMenuProps, IMenuState> {
     mode: 'vertical',
   };
 
-  static childContextTypes = {
-    mode: PropTypes.string,
-    activeKey: PropTypes.string,
-    openKeys: PropTypes.array,
-    onSelect: PropTypes.func,
-    onOpenChange: PropTypes.func,
-    offset: PropTypes.number,
-  };
-
-  getChildContext = () => {
+  // 不使用原生context的原因是因为水平模式下，pop层渲染在根节点下，context会丢失
+  getCtx = () => {
     return {
       mode: this.props.mode,
       activeKey: this.getActiveKey(),
@@ -136,11 +128,11 @@ export class Menu extends Component<IMenuProps, IMenuState> {
       className, style, children,
       onSelect, defaultActiveKey,
       onOpenChange, defaultOpenKeys,
-      offset, activeKey,
+      offset, activeKey, mode,
       ...otherProps} = this.props;
     const preCls = 'yoshino-menu';
     const clsName = classNames(
-      preCls, className,
+      preCls, `${preCls}-${mode}`, className,
     );
     const childrens = React.Children.toArray(children);
     return (
@@ -154,6 +146,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
           React.Children.map(childrens, (child: ReactElement<any>) => {
             return React.cloneElement(child, {
               deep: 1,
+              ctx: this.getCtx(),
             });
           })
         }

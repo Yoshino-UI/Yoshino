@@ -18,6 +18,8 @@ export interface IMenuItemGroupProps extends IBaseComponent {
    * 标志
    */
   keyId: TKey;
+  // tslint:disable no-any
+  ctx?: any;
 }
 
 export interface IMenuItemGroupState {
@@ -31,19 +33,19 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
   static defaultProps = {
   };
 
-  static contextTypes = Menu.childContextTypes;
-
   render() {
     const {
       className, style, children, deep, title,
+      ctx,
     } = this.props;
-    const { offset } = this.context;
+    const { offset, mode } = ctx;
     const preCls = 'yoshino-menu-item-group';
     const clsName = classNames(
       preCls, className,
     );
     const childrens = React.Children.toArray(children);
-    const paddingLeft = `${deep as number * (offset as number)}px`;
+    const isVertical = mode === 'vertical';
+    const paddingLeft =  isVertical ? `${deep! * (offset as number)}px` : '';
     return (
       <div
         className={clsName}
@@ -61,6 +63,7 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
             React.Children.map(childrens, (child: ReactElement<any>) => {
               return React.cloneElement(child, {
                 deep: deep as number + 1,
+                ctx,
               });
             })
           }

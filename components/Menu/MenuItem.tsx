@@ -2,8 +2,6 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
-import { Menu } from './Menu';
-
 export interface IMenuItemProps extends IBaseComponent {
   /**
    * 组件深度 - 用于控制paddingLeft
@@ -17,6 +15,8 @@ export interface IMenuItemProps extends IBaseComponent {
    * 禁用
    */
   disabled?: boolean;
+  // tslint:disable no-any
+  ctx?: any;
 }
 
 export interface IMenuItemState {
@@ -32,8 +32,8 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
   };
 
   onSelect = () => {
-    const { keyId, disabled, onClick } = this.props;
-    const { onSelect } = this.context;
+    const { keyId, disabled, onClick, ctx } = this.props;
+    const { onSelect } = ctx;
     if (disabled) {
       return;
     }
@@ -45,14 +45,12 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
     }
   }
 
-  static contextTypes = Menu.childContextTypes;
-
   render() {
     const {
       className, style, children, deep,
-      keyId, disabled,
+      keyId, disabled, ctx,
     } = this.props;
-    const { activeKey,  offset } = this.context;
+    const { activeKey,  offset, mode } = ctx;
     const preCls = 'yoshino-menu-item';
     const clsName = classNames(
       preCls, className,
@@ -61,7 +59,8 @@ export class MenuItem extends Component<IMenuItemProps, IMenuItemState> {
         [`${preCls}-disabled`]: disabled,
       },
     );
-    const paddingLeft = `${deep as number * (offset as number)}px`;
+    const isVertical = mode === 'vertical';
+    const paddingLeft =  isVertical ? `${deep! * (offset as number)}px` : '';
     return (
       <li
         className={clsName}
