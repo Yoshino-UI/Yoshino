@@ -6,7 +6,6 @@ import { IBaseComponent, TKey } from '../template/component';
 import MenuItem from './MenuItem';
 import SubMenu from './SubMenu';
 import MenuItemGroup from './MenuItemGroup';
-import * as PropTypes from 'prop-types';
 
 export interface IMenuProps extends IBaseComponent {
   /**

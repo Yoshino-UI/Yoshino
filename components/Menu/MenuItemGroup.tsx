@@ -3,7 +3,6 @@ import {Component, ReactElement} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
-import { Menu } from './Menu';
 
 export interface IMenuItemGroupProps extends IBaseComponent {
   /**
