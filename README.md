@@ -8,7 +8,7 @@
 <p align='center'>Flexible Lightweight PC UI Components built on React!</p>
 <p align='center'>Anyone can generate easily all kinds of themes by it!</p>
 
-English | [简体中文](./README.md)
+English | [简体中文](./README-cn.md)
 ## Docs
 [Docs](https://yoshino-ui.github.io/#/)
 

@@ -6,7 +6,7 @@
   <a href='https://yoshino-ui.github.io'><img src='https://img.shields.io/badge/website%20-Yoshino-51b26d.svg'/></a>
 </p>
 
-
+[English](./README.md) | 简体中文
 ## 设计思路
 Yoshino本质上类似于Hexo，不同的样式风格组件类似于Hexo的各种theme，hexo官方仅提供了一套工具以及一个基础主题，Yoshino与其同理。
 
