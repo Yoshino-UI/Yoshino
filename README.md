@@ -4,8 +4,9 @@
   <img src='https://img.shields.io/npm/l/express.svg' alt="license">
   <img src='https://img.shields.io/npm/dt/yoshino.svg?style=flat-square' alt="downloads">
   <a href='https://yoshino-ui.github.io'><img src='https://img.shields.io/badge/website%20-Yoshino-51b26d.svg'/></a>
-  Flexible Lightweight PC UI Components built on React! Anyone can generate easily all kinds of themes by it!
 </p>
+<p align='center'>Flexible Lightweight PC UI Components built on React!</p>
+<p align='center'>Anyone can generate easily all kinds of themes by it!</p>
 
 English | [简体中文](./README.md)
 ## Docs
