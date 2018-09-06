@@ -13,253 +13,253 @@ export default [
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-yoshino" */ './Yoshino')
     ),
-    path: '/components/yoshino',
+    path: '/docs/components/yoshino',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-start" */ './Start')
     ),
-    path: '/components/start',
+    path: '/docs/components/start',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-faq" */ './FAQ')
     ),
-    path: '/components/faq',
+    path: '/docs/components/faq',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-logs" */ './Logs')
     ),
-    path: '/components/logs',
+    path: '/docs/components/logs',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-button" */ './Button')
     ),
-    path: '/components/button'
+    path: '/docs/components/button'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-icon" */ './Icon')
     ),
-    path: '/components/icon'
+    path: '/docs/components/icon'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-autocomplete" */ './AutoComplete')
     ),
-    path: '/components/autocomplete'
+    path: '/docs/components/autocomplete'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-checkbox" */ './CheckBox')
     ),
-    path: '/components/checkbox'
+    path: '/docs/components/checkbox'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-input" */ './Input')
     ),
-    path: '/components/input'
+    path: '/docs/components/input'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-inputnumber" */ './InputNumber')
     ),
-    path: '/components/inputnumber'
+    path: '/docs/components/inputnumber'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-rate" */ './Rate')
     ),
-    path: '/components/rate'
+    path: '/docs/components/rate'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-radio" */ './Radio')
     ),
-    path: '/components/radio'
+    path: '/docs/components/radio'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-slider" */ './Slider')
     ),
-    path: '/components/slider'
+    path: '/docs/components/slider'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-switch" */ './Switch')
     ),
-    path: '/components/switch'
+    path: '/docs/components/switch'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-avatar" */ './Avatar')
     ),
-    path: '/components/avatar'
+    path: '/docs/components/avatar'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-badge" */ './Badge')
     ),
-    path: '/components/badge'
+    path: '/docs/components/badge'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-card" */ './Card')
     ),
-    path: '/components/card'
+    path: '/docs/components/card'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-collapse" */ './Collapse')
     ),
-    path: '/components/collapse'
+    path: '/docs/components/collapse'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-tag" */ './Tag')
     ),
-    path: '/components/tag'
+    path: '/docs/components/tag'
   },
 
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-tooltip" */ './Tooltip')
     ),
-    path: '/components/tooltip'
+    path: '/docs/components/tooltip'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-timeline" */ './Timeline')
     ),
-    path: '/components/timeline'
+    path: '/docs/components/timeline'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-breadcrumb" */ './Breadcrumb')
     ),
-    path: '/components/breadcrumb'
+    path: '/docs/components/breadcrumb'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-menu" */ './Menu')
     ),
-    path: '/components/menu'
+    path: '/docs/components/menu'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-pagination" */ './Pagination')
     ),
-    path: '/components/pagination'
+    path: '/docs/components/pagination'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-steps" */ './Steps')
     ),
-    path: '/components/steps'
+    path: '/docs/components/steps'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-loading" */ './Loading')
     ),
-    path: '/components/loading'
+    path: '/docs/components/loading'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-progress" */ './progress')
     ),
-    path: '/components/progress'
+    path: '/docs/components/progress'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-backtop" */ './BackTop')
     ),
-    path: '/components/backtop'
+    path: '/docs/components/backtop'
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-divider" */ './Divider')
     ),
-    path: '/components/divider',
+    path: '/docs/components/divider',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-ripple" */ './Ripple')
     ),
-    path: '/components/ripple',
+    path: '/docs/components/ripple',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-alert" */ './Alert')
     ),
-    path: '/components/alert',
+    path: '/docs/components/alert',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-notification" */ './Notification')
     ),
-    path: '/components/notification',
+    path: '/docs/components/notification',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-transitions" */ './Transitions')
     ),
-    path: '/components/transitions',
+    path: '/docs/components/transitions',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-modal" */ './Modal')
     ),
-    path: '/components/modal',
+    path: '/docs/components/modal',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-helpers" */ './Helpers')
     ),
-    path: '/components/helpers',
+    path: '/docs/components/helpers',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-drawer" */ './Drawer')
     ),
-    path: '/components/drawer',
+    path: '/docs/components/drawer',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-table" */ './Table')
     ),
-    path: '/components/table',
+    path: '/docs/components/table',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-theme" */ './Theme')
     ),
-    path: '/components/theme',
+    path: '/docs/components/theme',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-select" */ './Select')
     ),
-    path: '/components/select',
+    path: '/docs/components/select',
   },
   {
     component: getComponentAsyncLoading(
       () => import(/* webpackChunkName: "yoshino-message" */ './Message')
     ),
-    path: '/components/message',
+    path: '/docs/components/message',
   },
   {
     component: getComponentAsync(
       () => import(/* webpackChunkName: "yoshino-carousel" */ './Carousel')
     ),
-    path: '/components/carousel',
+    path: '/docs/components/carousel',
   },
   {
     component: getComponentAsync(
       () => import(/* webpackChunkName: "yoshino-tabs" */ './Tabs')
     ),
-    path: '/components/tabs',
+    path: '/docs/components/tabs',
   },
 ];

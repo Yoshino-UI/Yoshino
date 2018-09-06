@@ -17,7 +17,7 @@ export default class Index extends Component {
             <h1>Yoshino</h1>
             <h2> 基于react的可定制化组件库，可根据不同业务场景输出对应的组件。</h2>
             <div className='action'>
-              <div className='action-item'><Link to='/components/yoshino'>快速开始</Link></div>
+              <div className='action-item'><Link to='/docs/components/yoshino'>快速开始</Link></div>
               <div className='action-item'>
                 <a target='_blank' href='https://github.com/Yoshino-UI/yoshino-cli'>yoshino-cli</a>
               </div>
