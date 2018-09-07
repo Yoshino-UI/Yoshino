@@ -70,3 +70,18 @@ options: {
 
 ### 更灵活的自定义方式 - `yoshino-cli`
 通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
+
+[yoshino-theme-project-demo](https://github.com/Yoshino-UI/yoshino-theme-project-demo)
+
+#### 预览官方demo
+- git clone https://github.com/Yoshino-UI/yoshino-theme-project-demo.git
+- cd yoshino-theme-project-demo
+- npm install
+- npm run start
+
+#### 定制组件简单步骤
+- npm install yoshino-cli -g
+- yoshino init
+- yoshino new Button  -o src/yoshino-components
+- you can find your Button in path `src/yoshino-components/Button`
+
