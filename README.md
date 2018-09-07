@@ -38,7 +38,16 @@ Using npm:
 npm install yoshino --save
 ```
 
-## 
+## Themes
+Yoshino offer [theme-site](https://yoshino-ui.github.io/#/docs/theme), developers can share yoshino-theme with others!
+How to share you themes?Follow the steps below:
+- use [yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli) to genearate theme template and do what you want
+- upload yours themes to github
+- fork this rep and edit `docs/pages/themes/index.tsx`to add your theme msg
+- then pull request
+- merge and you can search your theme on [theme-site](https://yoshino-ui.github.io/#/docs/theme)
+
+Developes want to use these themes?click [yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)
 
 ## How to Design?
 Yoshino is similar to Hexo.The different style components of yoshino are equal to Hexo various theme，Hexo official only provides a set of tools and a basic theme. Yoshino is also such.
