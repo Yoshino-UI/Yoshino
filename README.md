@@ -8,11 +8,11 @@
 <p align='center'>Flexible Lightweight PC UI Components built on React!</p>
 <p align='center'>Anyone can generate easily all kinds of themes by it!</p>
 
-English | [简体中文](./README-cn.md)
-## Docs
+English | [🇨🇳简体中文](./README-cn.md)
+## 📄Docs
 [Docs](https://yoshino-ui.github.io/#/)
 
-## Usage
+## 📔Usage
 ```
 import * as React from 'react';
 import { Button } from 'yoshino';
@@ -32,13 +32,13 @@ Using css via import:
 ```
 import 'yoshino/lib/index.css'
 ```
-## Install
+## 🤓Install
 Using npm:
 ```
 npm install yoshino --save
 ```
 
-## Themes
+## 👗Themes
 Yoshino offer [theme-site](https://yoshino-ui.github.io/#/docs/theme), developers can share yoshino-theme with others!
 How to share you themes?Follow the steps below:
 - use [yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli) to genearate theme template and do what you want
@@ -49,7 +49,7 @@ How to share you themes?Follow the steps below:
 
 Developes want to use these themes?click [yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)
 
-## How to Design?
+## 🤔How to Design?
 Yoshino is similar to Hexo.The different style components of yoshino are equal to Hexo various theme，Hexo official only provides a set of tools and a basic theme. Yoshino is also such.
 
 Developers can output the components of the style they need, just like configuring the Hexo theme. You can even use cli to output multiple different styles of components in the same project.
@@ -71,7 +71,7 @@ Even a component library that directly outputs the entire theme.
 yoshino new all --theme material-ui
 ```
 
-## Features
+## ✨Features
 - Develop with `TypeScript`, provide `d.ts` files to help developers increase development speed
 - Advocate the concept of `OFA(one for all)` and `AFO(all for one)`, before project development by [yoshino-cli] (https://github.com/Yoshino-UI/yoshino-cli). According to project ui, standardize the output of components.
 - In addition to the simple and generic `ui` component, `yoshino` draws out some of the more usable effects (features) components, such as
@@ -79,19 +79,19 @@ yoshino new all --theme material-ui
   - Ripple
   - Transitions
 
-## Contributos
+## 👍Contributos
 ![](https://opencollective.com/yoshino/contributors.svg)
 
-## Development process
+## 💪Development process
 ```js
 npm run dev // 启动开发环境
 npm run new ComponentName // 新建组件
 ```
 
-## Ecosystem Links
+## 🛠Ecosystem Links
 - [yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)
 
-## Links
+## 💎Links
 - [ant-design](https://github.com/ant-design/ant-design)
 - [muse-ui](https://github.com/museui/muse-ui)
 
