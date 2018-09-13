@@ -1,5 +1,5 @@
 ### 定制主题
-`yoshino`默认提供了一套`UI`主题，由于利用`less`编写的`css`，并且将一些通用变量抽离出来，可以实现样式自定义化，包括但不限于主色、圆角、提示色、组件尺寸等配置。如果需要定制主题则需要在引入样式的文件的时候使用`.less`，组件`less`文件位于`yoshino/components/${componentName}/styles/`，通用位于`yoshino/components/styles`。
+`yoshino`默认提供了一套`UI`主题，由于利用`less`编写的`css`，并且将一些通用变量抽离出来，可以实现样式自定义化，包括但不限于主色、圆角、提示色、组件尺寸等配置。如果需要定制主题则需要在引入样式的文件的时候使用`.less`，组件`less`文件位于`yoshino/lib/${componentName}/styles/`，通用位于`yoshino/components/styles`。
 
 ### 样式变量
 如果你的项目使用了`webpack`，那么可以通过变量覆盖的方式来实现主题定制化。
@@ -24,7 +24,7 @@
 ##### 手动按需引入
 ```jsx
 import Button from 'yoshino/lib/Button';
-import 'yoshino/components/Button/style/index.less';
+import 'yoshino/lib/Button/style/less.js';
 ```
 
 ###### 通用的按需加载方案（推荐）
@@ -43,8 +43,8 @@ npm install ui-component-loader --save-dev
   loader: 'ui-component-loader',
   options: {
     'lib': 'yoshino',
-    'libDir': 'components',
-    'style': 'style/index.less',
+    'libDir': 'lib',
+    'style': 'style/less.js',
   },
 },
 ```
@@ -63,7 +63,7 @@ options: {
   plugins: [["import", {
     "libraryName": "yoshino",
     "camel2DashComponentName": false,
-    "style": (name) => `components/${name}/style/index.less`,
+    "style": (name) => `${name}/style/less.js`,
   }]],
 },
 ```

@@ -44,7 +44,7 @@ import 'yoshino/lib/index.css';
 ### 手动按需引入
 ```jsx
 import Button from 'yoshino/lib/Button';
-import 'yoshino/lib/Button/index.css';
+import 'yoshino/lib/Button/style/index.js';
 ```
 
 ### 通用的按需加载方案（推荐）
@@ -64,7 +64,7 @@ npm install ui-component-loader --save-dev
   options: {
     'lib': 'yoshino',
     'libDir': 'lib',
-    'style': 'index.css',
+    'style': 'style/index.js',
   },
 },
 ```
@@ -83,7 +83,7 @@ options: {
   plugins: [["import", {
     "libraryName": "yoshino",
     "camel2DashComponentName": false,
-    "style": (name) => `${name}/index.css`,
+    "style": (name) => `${name}/style/index.js`,
   }]],
 },
 ```
