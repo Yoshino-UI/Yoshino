@@ -1,1 +1,2 @@
-import '../../Input/style/index.css';
+import '../../Input/style/';
+import './index.css';

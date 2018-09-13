@@ -1,2 +1,2 @@
-import '../../Icon/style/index.css';
-import '../../styles/animation/rotate.css';
+import '../../Icon/style/';
+import './index.css';

@@ -1,1 +1,2 @@
-import '../../Icon/style/index.css';
+import '../../Icon/style/';
+import './index.css';

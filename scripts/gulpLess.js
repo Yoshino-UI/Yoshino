@@ -43,9 +43,22 @@ allComponents.forEach((component) => {
         plugins: [autoprefix],
       }))
       .pipe(cleanCSS())
+      .pipe(gulp.dest(path.resolve(`../lib/${component}/`)))
+      .pipe(gulp.dest(path.resolve(`../es6/${component}/`)))
       .pipe(gulp.dest(path.resolve(`../lib/${component}/style`)))
       .pipe(gulp.dest(path.resolve(`../es6/${component}/style`)));
   });
 })
 
-gulp.task('default', ['less', 'common', 'font', ...allComponents]);
+// 单个组件打包less.js
+allComponents.forEach((component) => {
+  gulp.task(component + 'Less', function () {
+    return gulp.src(path.resolve(`../components/${component}/style/*`))
+      .pipe(gulp.dest(path.resolve(`../lib/${component}/style`)))
+      .pipe(gulp.dest(path.resolve(`../es6/${component}/style`)));
+  });
+})
+
+const allComponentsLess = allComponents.map((item) => `${item}Less`)
+
+gulp.task('default', ['less', 'common', 'font', ...allComponents, ...allComponentsLess]);

@@ -1,1 +1,2 @@
-import '../../Transitions/style/index.css';
+import '../../Transitions/style/';
+import './index.css';

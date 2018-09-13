@@ -1,1 +1,2 @@
-import '../../Alert/style/index.css';
+import '../../Alert/style/';
+import './index.css';
