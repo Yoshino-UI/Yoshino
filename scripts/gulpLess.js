@@ -43,8 +43,8 @@ allComponents.forEach((component) => {
         plugins: [autoprefix],
       }))
       .pipe(cleanCSS())
-      .pipe(gulp.dest(path.resolve(`../lib/${component}`)))
-      .pipe(gulp.dest(path.resolve(`../es6/${component}`)));
+      .pipe(gulp.dest(path.resolve(`../lib/${component}/style`)))
+      .pipe(gulp.dest(path.resolve(`../es6/${component}/style`)));
   });
 })
 
