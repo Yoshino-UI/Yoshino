@@ -5,6 +5,8 @@
 .@{loading-prefix-cls} {
   color: @primary-color;
   text-align: center;
+  display: inline-block;
+  position: relative;
 
   &-icon {
     display: inline-block;
@@ -25,5 +27,26 @@
 
   &-text {
     font-size: 12px;
+  }
+
+  &-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: @loading-mask-opacity;
+    background: @loading-mask-background;
+  }
+
+  &-children-box {
+    display: block;
   }
 }

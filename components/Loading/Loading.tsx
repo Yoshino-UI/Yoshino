@@ -18,6 +18,14 @@ export interface ILoadingProps extends IBaseComponent {
    * 加载文本
    */
   text?: string | boolean;
+  /**
+   * 自定义icon
+   */
+  icon?: React.ReactNode;
+  /**
+   * 加载
+   */
+  loading?: boolean;
 }
 
 export interface ILoadingState {
@@ -32,15 +40,23 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
     type: 'a',
     size: 'default',
     text: false,
+    loading: true,
   };
 
   render() {
-    const {className, style, children, type, size, text, ...otherProps} = this.props;
+    const {
+      className, style, children, type,
+      size, text, icon, loading, ...otherProps
+    } = this.props;
     const preCls = 'yoshino-loading';
     const iconType = `load-${type}`;
     const loadSize = `${preCls}-${size}`;
+    const hasChildren = !!children;
     const clsName = classNames(
       preCls, loadSize, className,
+      {
+        [`${preCls}-children-box`]: hasChildren,
+      }
     );
     return (
       <div
@@ -48,14 +64,24 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
         style={style}
         {...otherProps}
       >
-      <span className={`${preCls}-icon`}>
-        {children ? children : <Icon type={iconType}/>}
-      </span>
-      {
-        text ? (
-          <p className={`${preCls}-text`}>{typeof text === 'string' ? text : '加载中'}</p>
-        ) : null
-      }
+        {hasChildren ? <div className={`${preCls}-children`}>{children}</div> : null}
+        {
+          loading ? (
+            <>
+              <div className={classNames({[`${preCls}-container`]: hasChildren})}>
+              <span className={`${preCls}-icon`}>
+                {icon ? icon : <Icon type={iconType}/>}
+              </span>
+                {
+                  text ? (
+                    <p className={`${preCls}-text`}>{typeof text === 'string' ? text : '加载中'}</p>
+                  ) : null
+                }
+              </div>
+              {hasChildren ? <div className={`${preCls}-mask`}/> : null}
+            </>
+          ) : null
+        }
       </div>
     );
   }

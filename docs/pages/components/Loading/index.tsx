@@ -14,6 +14,10 @@ import LoadingCustom from './demo/loadingCustom';
 import * as loadingCustomMd from './demo/loadingCustom.md';
 const loadingCustomCode = require('!raw-loader!./demo/loadingCustom');
 
+import LoadingContainer from './demo/loadingContainer';
+import * as loadingContainerMd from './demo/loadingContainer.md';
+const loadingContainerCode = require('!raw-loader!./demo/loadingContainer');
+
 export default class LoadingPage extends Component {
   render() {
     return (
@@ -22,6 +26,8 @@ export default class LoadingPage extends Component {
         <CodeBox text={loadingDemoMd} demo={<LoadingDemo/>} code={loadingDemoCode}/>
 
         <CodeBox text={loadingCustomMd} demo={<LoadingCustom/>} code={loadingCustomCode}/>
+
+        <CodeBox text={loadingContainerMd} demo={<LoadingContainer/>} code={loadingContainerCode}/>
         <ApiBox api={Api}/>
       </div>
     );

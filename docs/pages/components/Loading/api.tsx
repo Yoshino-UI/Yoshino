@@ -20,6 +20,18 @@ export default [
         type: 'string | boolean',
         defaultValue: '-',
       },
+      {
+        props: 'icon',
+        intro: '自定义icon',
+        type: 'ReactNode',
+        defaultValue: '-',
+      },
+      {
+        props: 'loading',
+        intro: '加载状态',
+        type: 'boolean',
+        defaultValue: 'true',
+      },
     ]
   }
 ];
