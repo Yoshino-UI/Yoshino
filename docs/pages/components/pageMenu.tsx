@@ -4,6 +4,10 @@ export default [
     keyId: 'general',
     children: [
       {
+        name: 'Color(色彩)',
+        keyId: 'color',
+      },
+      {
         name: 'Button(按钮)',
         keyId: 'button',
       },

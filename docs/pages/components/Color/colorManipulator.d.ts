@@ -1,0 +1,1 @@
+export const getContrastRatio: (f: string, b :string) => number;

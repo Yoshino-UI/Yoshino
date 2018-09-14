@@ -272,4 +272,10 @@ export default [
     ),
     path: '/docs/components/tabs',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-color" */ './Color')
+    ),
+    path: '/docs/components/color',
+  },
 ];
