@@ -5,7 +5,17 @@ import Loading from '@yoshino/components/Loading';
 function getComponentAsyncLoading<T>(loading: () => Promise<{
   default: T
 }>) {
-  return getComponentAsync(loading,  <Loading text='文档加载中！！' size='large' type='c'/>);
+  return getComponentAsync(loading,  (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Loading text='文档加载中！！' size='large' type='c'/>
+    </div>)
+  );
 }
 
 export default [
