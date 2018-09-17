@@ -53,5 +53,5 @@ export interface IAbstractInput<T> extends IBaseComponent {
 }
 
 // 通用Type
-export type TKey = string | number;
+export type TKey = string;
 export type TSize = 'large' | 'small' | 'default';

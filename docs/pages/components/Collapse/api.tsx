@@ -1,7 +1,7 @@
 export default [
   {
     title: 'Collapse',
-    intro: 'TKey: number | string',
+    intro: 'TKey: string',
     json: [
       {
         props: 'activeKeys',
