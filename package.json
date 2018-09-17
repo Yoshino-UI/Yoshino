@@ -33,7 +33,8 @@
     "lint:less": "stylelint 'components/!(styles)/**/**.less' --syntax less",
     "lint": "npm run lint:less && npm run lint:ts",
     "test": "jest",
-    "site:pull": "git clone https://github.com/Yoshino-UI/yoshino-ui.github.io.git build"
+    "site:pull": "git clone https://github.com/Yoshino-UI/yoshino-ui.github.io.git build",
+    "preversion": "npm run build"
   },
   "jest": {
     "setupFiles": [
