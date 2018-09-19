@@ -81,7 +81,13 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
         {
           loading ? (
             <>
-              <div className={classNames({[`${preCls}-container`]: hasChildren})}>
+              <div
+                className={classNames(
+                  `${preCls}-container`, {
+                    [`${preCls}-children-container`]: hasChildren,
+                  })
+                }
+              >
               <span className={`${preCls}-icon`}>
                 {icon ? icon : <Icon svg={iconType}/>}
               </span>
