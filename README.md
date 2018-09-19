@@ -78,6 +78,7 @@ yoshino new all --theme material-ui
   - Helpers
   - Ripple
   - Transitions
+- `Icon` component based on `Ionicons 4.4.2`, load on demand, only load `.svg` that you use
 
 ## 👍Contributos
 ![](https://opencollective.com/yoshino/contributors.svg)

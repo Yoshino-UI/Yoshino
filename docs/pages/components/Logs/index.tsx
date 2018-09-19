@@ -1,42 +1,41 @@
 import * as React from 'react';
 import { Component } from 'react';
-import * as md from './logs.md';
-import * as v010md from './logs/0.1.0.md';
-import * as v011md from './logs/0.1.1.md';
-import * as v012md from './logs/0.1.2.md';
-import * as v013md from './logs/0.1.3.md';
-import * as v014md from './logs/0.1.4.md';
-import * as v015md from './logs/0.1.5.md';
+import md from './logs.md';
+import logs from './logs/logs.md';
 
 import Markdown from '@docs/components/Markdown';
 import {Timeline} from '@yoshino/components/';
 import './index.less';
 
 export default class Logs extends Component {
+
+  dealLogsString = (str: string) => {
+    const arr = str.split('##');
+    arr.shift(); // 去除空头
+    return arr.map((item) => {
+      const version = (item.match(/- \[(.*?)\]/))![1];
+      return {
+        version,
+        content: item.replace(/- \[.*?\]/, ''),
+      };
+    }).reverse();
+  }
+
   render() {
     return (
       <div className='logs-box'>
         <Markdown text={md}/>
         <div style={{marginTop: 40}}>
           <Timeline>
-            <Timeline.Item time={<h2>v 0.1.5</h2>}>
-              <Markdown text={v015md}/>
-            </Timeline.Item>
-            <Timeline.Item time={<h2>v 0.1.4</h2>}>
-              <Markdown text={v014md}/>
-            </Timeline.Item>
-            <Timeline.Item time={<h2>v 0.1.3</h2>}>
-              <Markdown text={v013md}/>
-            </Timeline.Item>
-            <Timeline.Item time={<h2>v 0.1.2</h2>}>
-              <Markdown text={v012md}/>
-            </Timeline.Item>
-            <Timeline.Item time={<h2>v 0.1.1</h2>}>
-              <Markdown text={v011md}/>
-            </Timeline.Item>
-            <Timeline.Item time={<h2>v 0.1.0</h2>}>
-              <Markdown text={v010md}/>
-            </Timeline.Item>
+            {
+              this.dealLogsString(logs).map((log, key) => {
+                return (
+                  <Timeline.Item time={<h2 dangerouslySetInnerHTML={{__html: log.version}}/>} key={key}>
+                      <Markdown text={log.content}/>
+                  </Timeline.Item>
+                );
+              })
+            }
           </Timeline>
         </div>
       </div>

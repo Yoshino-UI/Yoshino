@@ -36,6 +36,7 @@ yoshino new all --theme material-ui
   - Helpers
   - Ripple
   - Transitions
+- `Icon`组件的图标库采用了`Ionicons 4.4.2`，对图标的导入采用按需加载，你无须担心仅使用了一个字体就引入了所有图标文件。
 
 ## 介绍
 `yoshino`组件库提供简单样式组件，可以通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
