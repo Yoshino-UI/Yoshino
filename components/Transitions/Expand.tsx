@@ -76,10 +76,14 @@ export class Expand extends Component<IExpandProps, IExpandState> {
       >
         {
           () => {
+            const transition = `height ${timeout! / 1000}s cubic-bezier(0.645, 0.045, 0.355, 1)`;
             return (
               <div
                 className={preCls}
-                style={{transition: `height ${timeout! / 1000}s cubic-bezier(.645,.045,.355,1)`}}
+                style={{
+                  transition,
+                  WebkitTransition: transition,
+                }}
                 ref={(v: HTMLElement | null) => {
                   if (v) {
                     this.refContainer = v;

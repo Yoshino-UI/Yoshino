@@ -135,10 +135,12 @@ export class Slide extends Component<ISlideProps, ISlideState> {
         {
           () => {
             const child = React.Children.only(children);
+            const transition = `all ${timeout! / 1000}s cubic-bezier(.645,.045,.355,1)`;
             return React.cloneElement(child, {
               style: {
                 ...child.props.style,
-                transition: `all ${timeout! / 1000}s cubic-bezier(.645,.045,.355,1)`,
+                transition,
+                WebkitTransition: transition,
               },
               ref: (v: HTMLElement) => {
                 if (v) {
