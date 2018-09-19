@@ -3,4 +3,14 @@
 @icon-prefix-cls:  ~"@{css-prefix}-icon";
 
 .@{icon-prefix-cls} {
+  display: inline-block;
+  line-height: 1;
+
+  > * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: block;
+    vertical-align: middle;
+  }
 }

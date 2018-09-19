@@ -210,8 +210,8 @@ export class Carousel extends Component<ICarouselProps, ICarouselState> {
   renderControl = () => {
     const {vertical, preIcon, nextIcon} = this.props;
     const preCls = this.preCls;
-    const preIconType = vertical ? 'arrow-up-c' : 'arrow-left-c';
-    const nextIconType = vertical ? 'arrow-down-c' : 'arrow-right-c';
+    const preIconType = vertical ? 'ios-arrow-up' : 'ios-arrow-back';
+    const nextIconType = vertical ? 'ios-arrow-down' : 'ios-arrow-forward';
     return (
       <React.Fragment>
         <div

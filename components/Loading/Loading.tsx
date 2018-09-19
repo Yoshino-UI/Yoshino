@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Icon from '../Icon';
+import * as loadingSVG from './loadSvg';
 
 export interface ILoadingProps extends IBaseComponent {
   /**
@@ -26,6 +27,10 @@ export interface ILoadingProps extends IBaseComponent {
    * 加载
    */
   loading?: boolean;
+  /**
+   * 图标颜色
+   */
+  color?: string;
 }
 
 export interface ILoadingState {
@@ -41,15 +46,23 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
     size: 'default',
     text: false,
     loading: true,
+    color: 'rgb(81, 178, 109)',
   };
 
   render() {
     const {
-      className, style, children, type,
+      className, style, children, type, color,
       size, text, icon, loading, ...otherProps
     } = this.props;
     const preCls = 'yoshino-loading';
-    const iconType = `load-${type}`;
+    const sizeObj = {
+      small: 14,
+      default: 20,
+      large: 32,
+    };
+    const fontSize = !!style && style.fontSize !== undefined && Number(style.fontSize);
+    const radius = fontSize || sizeObj[size!];
+    const iconType = loadingSVG[type!](radius, radius, color!);
     const loadSize = `${preCls}-${size}`;
     const hasChildren = !!children;
     const clsName = classNames(
@@ -70,7 +83,7 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
             <>
               <div className={classNames({[`${preCls}-container`]: hasChildren})}>
               <span className={`${preCls}-icon`}>
-                {icon ? icon : <Icon type={iconType}/>}
+                {icon ? icon : <Icon svg={iconType}/>}
               </span>
                 {
                   text ? (

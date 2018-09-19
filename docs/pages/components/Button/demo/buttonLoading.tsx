@@ -16,7 +16,7 @@ export default class ButtonLoading extends React.Component {
           this.setState({loading: true});
           setTimeout(() => {
             this.setState({loading: false});
-          }, 2000);
+          }, 20000);
         }}
       >
         点我进入加载

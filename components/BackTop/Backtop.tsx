@@ -98,7 +98,7 @@ class BackTop extends Component<IBackTopProps, IBackTopState> {
           {
             this.state.show ? children ?  children : (
             <div className={`${preCls}-default`}>
-              <Icon type='chevron-up'/>
+              <Icon type='ios-arrow-up'/>
             </div>
             ) : null
           }

@@ -15,7 +15,7 @@ export default function() {
       </Alert>
       <Alert
         type='info'
-        icon={<Icon type='paper-airplane'/>}
+        icon={<Icon type='bus'/>}
         showIcon
         closable
         title='自定义文案'

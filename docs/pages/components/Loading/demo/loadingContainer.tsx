@@ -9,7 +9,7 @@ export default class App extends React.Component {
   render() {
      return (
       <div>
-        <Loading text='自定义加载文本' size='large' type='b' loading={this.state.value}>
+        <Loading text='自定义加载文本' size='small' loading={this.state.value}>
           <Alert type='info' showIcon title='消息提示文案'/>
         </Loading>
         <div>

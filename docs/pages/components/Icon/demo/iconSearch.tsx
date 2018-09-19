@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Icon, Input } from '@yoshino/components/';
 
-const {iconName}: {iconName: Array<{
-  tag: string;
-  name: string;
-}>} = require('@yoshino/components/Icon/iconName.js');
+const {iconName}: {iconName: {
+  icons: Array<{
+    tags: string[];
+    icons: string[];
+  }
+>}} = require('@yoshino/components/Icon/iconName.js');
 
 export default class IconSearch extends React.Component {
   state = {
@@ -31,19 +33,27 @@ export default class IconSearch extends React.Component {
           }}
         >
         {
-          iconName.filter((item) => item.tag.indexOf(this.state.tag) !== -1).map((item, key) => {
+          iconName.icons.filter((item) => item.tags.join(' ').indexOf(this.state.tag) !== -1).map((item, key) => {
             return (
-              <div
-                key={key}
-                style={{
-                  width: 80,
-                  textAlign: 'center',
-                  padding: 5,
-                }}
-              >
-                <Icon type={item.name} style={{fontSize: 25}}/>
-                <div style={{fontSize: 12}}>{item.name}</div>
-              </div>
+              <React.Fragment key={key}>
+              {
+                item.icons.map((icon, index) => {
+                  return (
+                    <div
+                      key={index}
+                      style={{
+                        width: 80,
+                        textAlign: 'center',
+                        padding: 5,
+                      }}
+                    >
+                      <Icon type={icon} style={{fontSize: 25}}/>
+                      <div style={{fontSize: 12}}>{icon}</div>
+                    </div>
+                  );
+                })
+              }
+              </React.Fragment>
             );
           })
         }

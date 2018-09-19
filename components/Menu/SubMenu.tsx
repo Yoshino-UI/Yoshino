@@ -113,7 +113,7 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
         {...action}
       >
         {title}
-        {isVertical ? <Icon type='chevron-up' className={`${preCls}-icon`}/> : null}
+        {isVertical ? <Icon type='ios-arrow-up' className={`${preCls}-icon`}/> : null}
       </div>
     );
     return (

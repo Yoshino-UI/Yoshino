@@ -80,10 +80,10 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     const {show} = this.state;
     const preCls = 'yoshino-alert';
     const defaultIcon = {
-      success: 'checkmark-circled',
-      info: 'information-circled',
-      warning: 'android-alert',
-      error: 'close-circled',
+      success: 'checkmark-circle',
+      info: 'information-circle',
+      warning: 'alert',
+      error: 'close-circle',
       normal: '',
     };
     const alertCls = {

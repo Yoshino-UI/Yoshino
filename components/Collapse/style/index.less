@@ -23,12 +23,14 @@
     font-size: @font-size-default;
     background-color: @panel-bgColor;
     padding: 12px 0 12px 40px;
+    position: relative;
   }
 
-  &-icon {
+  &-icon, {
     position: absolute;
     left: 16px;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     display: inline-block;
     vertical-align: top;
     line-height: 44px;

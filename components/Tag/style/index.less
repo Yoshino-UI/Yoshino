@@ -6,7 +6,6 @@
   display: inline-block;
   padding: 0 5px;
   height: 22px;
-  line-height: 20px;
   font-size: @font-size-small;
   border-radius: @border-radius-base;
   background-color: @tag-bgColor;
@@ -14,8 +13,15 @@
   color: @tag-font-color;
   cursor: pointer;
 
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
   &-close {
-    font-size: 12px;
+    font-size: 18px;
     margin-left: 5px;
     transform: scale(0.7);
   }

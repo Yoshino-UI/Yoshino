@@ -89,7 +89,7 @@ module.exports = {
     historyApiFallback: true,
     contentBase: path.join(__dirname, "build"),
     compress: false,
-    port: 9000,
+    port: 9001,
     hot: true,
   },
 };

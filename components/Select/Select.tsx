@@ -217,7 +217,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
                   </div>
                 )
               }
-            <Icon type='chevron-up' className={`${preCls}-icon`}/>
+            <Icon type='ios-arrow-up' className={`${preCls}-icon`}/>
           </div>
         </div>
       </Pop>

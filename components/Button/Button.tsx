@@ -74,7 +74,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
         className={`${preCls}-icon`}
         style={shape !== 'circle' ? tail ? {marginLeft: '5px'} : {marginRight: '5px'} : {}}
       >
-        {loading ? <Icon className={`${preCls}-load`} type='load-c'/> :
+        {loading ? <Icon className={`${preCls}-load`} type='ios-sync'/> :
         isValidElement(icon) ? icon : <Icon type={icon as string}/>}
       </span>
     ) : null;
@@ -88,9 +88,11 @@ export class Button extends Component<IButtonProps, IButtonState> {
         disabled={ban}
         {...otherProps}
       >
-        {tail ? null : iconDiv}
-        {children ? <span>{loading ? 'Loading..' : children}</span> : null}
-        {tail ? iconDiv : null}
+        <div className={`${preCls}-container`}>
+          {tail ? null : iconDiv}
+          <div>{children ? loading ? 'Loading..' : children : null}</div>
+          {tail ? iconDiv : null}
+        </div>
       </button>
     );
   }

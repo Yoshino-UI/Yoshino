@@ -4,13 +4,13 @@
 
 .@{loading-prefix-cls} {
   color: @primary-color;
-  text-align: center;
   display: inline-block;
   position: relative;
 
   &-icon {
     display: inline-block;
     animation: rotate 1s infinite linear;
+    font-size: 0;
   }
 
   &-small {
@@ -27,6 +27,7 @@
 
   &-text {
     font-size: 12px;
+    text-align: center;
   }
 
   &-container {
@@ -34,6 +35,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
   }
 
   &-mask {

@@ -115,16 +115,18 @@ export class Tag extends Component<ITagProps, ITagState> {
           }}
           {...otherProps}
         >
-          {children}
-          {
-            closeable ? (
-              <Icon
-                type='close-round'
-                className={`${preCls}-close`}
-                onClick={this.closeTag}
-              />
-            ) : null
-          }
+          <div className={`${preCls}-container`}>
+            <span>{children}</span>
+            {
+              closeable ? (
+                <Icon
+                  type='ios-close'
+                  className={`${preCls}-close`}
+                  onClick={this.closeTag}
+                />
+              ) : null
+            }
+          </div>
         </span>
       </Scale>
     );

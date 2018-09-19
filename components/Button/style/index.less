@@ -11,7 +11,6 @@
   outline: none;
   padding: @button-padding;
   font-size: @font-size-small;
-  line-height: @line-height-base;
   height: @button-height-size-base;
   transition: @transition-base;
   background-color: white;
@@ -116,6 +115,16 @@
     }
   }
 
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      display: block;
+    }
+  }
+
   &-shape {
     &-circle {
       border-radius: 28px;
@@ -128,5 +137,11 @@
 
   &-load {
     animation: rotate 1s infinite linear;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
   }
 }

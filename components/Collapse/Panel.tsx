@@ -76,7 +76,7 @@ export class Panel extends Component<IPanelProps, IPanelState> {
         {...otherProps}
       >
         <div className={`${preCls}-title`} onClick={this.onChange}>
-          <Icon type='ios-arrow-right' className={`${preCls}-icon`}/>
+          <Icon type='ios-arrow-forward' className={`${preCls}-icon`}/>
           {title}
         </div>
         <Expand

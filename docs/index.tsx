@@ -23,7 +23,7 @@ export default class Index extends Component {
               </div>
               <div className='action-item'>
                 <a target='_blank' href='https://github.com/Yoshino-UI/Yoshino'>
-                  <Icon type='social-github'/> Github
+                  <Icon type='logo-github'/> Github
                 </a>
               </div>
             </div>
