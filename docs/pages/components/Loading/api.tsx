@@ -32,6 +32,12 @@ export default [
         type: 'boolean',
         defaultValue: 'true',
       },
+      {
+        props: 'color',
+        intro: '图标颜色, 仅适用loading自带图标时候有效，自定义时请自行设置',
+        type: 'string',
+        defaultValue: '-',
+      },
     ]
   }
 ];

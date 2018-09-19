@@ -14,6 +14,12 @@ export default [
         type: 'string',
         defaultValue: '-',
       },
+      {
+        props: 'svg',
+        intro: '插入矢量图',
+        type: 'string',
+        defaultValue: '-',
+      },
     ]
   }
 ];
