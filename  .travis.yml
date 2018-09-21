@@ -1,0 +1,9 @@
+language: node_js
+os: osx
+node_js:
+  - "8.11.3"
+
+script:
+  - npm install
+  - npm run lint
+  - npm run build
