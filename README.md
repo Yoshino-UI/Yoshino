@@ -1,6 +1,6 @@
 <h1 align='center'>Yoshino</h1>
 <p align='center'>
-  <a href="https://travis-ci.org/yoshino-ui/yoshino">
+  <a href="https://travis-ci.com/Yoshino-UI/Yoshino/">
     <img src="https://img.shields.io/travis/yoshino-ui/yoshino.svg" alt="travis ci badge">
   </a>
   <img src='https://img.shields.io/npm/v/yoshino.svg?style=flat-square' alt="version">

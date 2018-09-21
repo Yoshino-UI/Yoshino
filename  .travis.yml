@@ -3,6 +3,10 @@ os: osx
 node_js:
   - "8.11.3"
 
+cache:
+  directories:
+    - "node_modules"
+
 script:
   - npm install
   - npm run lint
