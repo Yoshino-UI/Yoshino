@@ -6,6 +6,7 @@
   position: relative;
   cursor: pointer;
   height: @slider-bar-size;
+  padding: (@slider-bar-size - @slider-process-height) / 2 0;
 
   &-process {
     width: 100%;
@@ -16,7 +17,7 @@
 
   &-bar {
     position: absolute;
-    top: 0;
+    top: (@slider-bar-size - @slider-process-height) / 2;
     left: 0;
     height: @slider-process-height;
     background: @primary-color;

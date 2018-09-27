@@ -11,6 +11,7 @@ import Checkbox from './Checkbox';
 import Collapse from './Collapse';
 import Divider from './Divider';
 import Drawer from './Drawer';
+import Grid from './Grid';
 import Helpers from './Helpers';
 import Icon from './Icon';
 import Input from './Input';
@@ -51,6 +52,7 @@ export {
   Collapse,
   Divider,
   Drawer,
+  Grid,
   Helpers,
   Icon,
   Input,

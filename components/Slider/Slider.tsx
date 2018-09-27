@@ -29,6 +29,10 @@ export interface ISliderProps extends IBaseComponent {
    * 禁用
    */
   disabled?: boolean;
+  /**
+   * 步长
+   */
+  step?: number;
 }
 
 export interface ISliderDefaultProps extends IBaseComponent {
@@ -36,6 +40,7 @@ export interface ISliderDefaultProps extends IBaseComponent {
   max: number;
   min: number;
   disabled: boolean;
+  step: number;
 }
 
 export interface ISliderState {
@@ -54,6 +59,7 @@ export class Slider extends Component<ISliderProps, ISliderState> {
     max: 100,
     min: 0,
     disabled: false,
+    step: 1,
   };
 
   state = {
@@ -63,6 +69,13 @@ export class Slider extends Component<ISliderProps, ISliderState> {
   getValue = () => {
     const {value} = this.props;
     return value !== undefined ? value : this.state.value;
+  }
+
+  getStepPercent = () => {
+    const {max, min, step} = this.props as ISliderDefaultProps;
+    const range = max - min;
+    const percent = step / range;
+    return +percent.toFixed(4);
   }
 
   getPercent = () => {
@@ -79,8 +92,16 @@ export class Slider extends Component<ISliderProps, ISliderState> {
     const sliderRect = slider.getBoundingClientRect() as DOMRect;
     const sliderWidth = sliderRect.width;  // 滑动条宽度
     const left = e.clientX - (sliderRect.x || sliderRect.left); // 点击位置相对滑动条偏移量
-    const percent = +(left / sliderWidth).toFixed(4);
-    this.onChangeTrigger(min + Math.round((max - min) * percent));
+    const currentPercent = +(left / sliderWidth).toFixed(4);
+    const oldPercent = this.getPercent();
+    const stepPercent = this.getStepPercent();
+    const change = currentPercent - oldPercent;
+    const times = Math.abs(Math.round(change / stepPercent));
+    if (times !== 0) {
+      const changePercent = times * stepPercent;
+      const percent = change > 0 ? oldPercent + changePercent : oldPercent - changePercent;
+      this.onChangeTrigger(min + Math.round((max - min) * percent));
+    }
     this.moving = false;
   }
 
@@ -97,8 +118,17 @@ export class Slider extends Component<ISliderProps, ISliderState> {
       if (left < 0 || left > sliderWidth) {
         return;
       }
-      const percent = +(left / sliderWidth).toFixed(4);
-      this.onChangeTrigger(min + Math.round((max - min) * percent));
+      const currentPercent = +(left / sliderWidth).toFixed(4);
+      const oldPercent = this.getPercent();
+      const stepPercent = this.getStepPercent();
+      const change = currentPercent - oldPercent;
+      const times = Math.abs(Math.round(change / stepPercent));
+      if (times !== 0) {
+        const changePercent = times * stepPercent;
+        const percent = change > 0 ? oldPercent + changePercent : oldPercent - changePercent;
+        this.onChangeTrigger(min + Math.round((max - min) * percent));
+      }
+      // this.onChangeTrigger(min + Math.round((max - min) * percent));
     };
 
     const bodyMouseUp = () => {
@@ -130,7 +160,9 @@ export class Slider extends Component<ISliderProps, ISliderState> {
   }
 
   render() {
-    const {className, style, children, defaultValue, disabled, onChange, ...otherProps} = this.props;
+    const {
+      className, style, children, defaultValue,
+      disabled, onChange, step, ...otherProps} = this.props;
     const preCls = 'yoshino-slider';
     const clsName = classNames(
       preCls,

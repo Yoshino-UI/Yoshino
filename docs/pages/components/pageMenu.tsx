@@ -18,6 +18,16 @@ export default [
     ]
   },
   {
+    name: '布局',
+    keyId: 'layout',
+    children: [
+      {
+        name: 'Grid(栅栏)',
+        keyId: 'grid',
+      },
+    ]
+  },
+  {
     name: '交互',
     keyId: 'interaction',
     children: [

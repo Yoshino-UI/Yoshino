@@ -12,6 +12,7 @@ export default class App extends React.Component {
           value={this.state.value}
           min={-100}
           max={100}
+          step={5}
           onChange={(value) => {
           console.log('当前值:', value);
           this.setState({value});

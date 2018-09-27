@@ -1,0 +1,54 @@
+@import '../../../../components/styles/var.less';
+
+.yoshino-row > div {
+  text-align: center;
+  border-radius: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #fff;
+  padding: 15px;
+}
+
+.yoshino-row > div:nth-child(odd) {
+  background: @primary-color;
+  opacity: 0.8;
+}
+
+.yoshino-row > div:nth-child(even) {
+  background: @primary-color;
+}
+
+.grid-config {
+  .yoshino-row > div:nth-child(odd) {
+    background: none;
+    opacity: 1;
+  }
+
+  .yoshino-row > div:nth-child(even) {
+    background: none;
+  }
+
+  .yoshino-row > div > .columns {
+    padding: 10px 5px;
+    font-size: 12px;
+
+    &:nth-child(odd) {
+      background: @primary-color;
+      opacity: 0.8;
+    }
+
+    &:nth-child(even) {
+      background: @primary-color;
+    }
+  }
+
+  .yoshino-row > div > div:nth-child(odd) {
+    background: @primary-color;
+    opacity: 0.8;
+  }
+
+  .yoshino-row > div > div:nth-child(even) {
+    background: @primary-color;
+  }
+}
+

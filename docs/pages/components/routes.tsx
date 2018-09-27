@@ -278,4 +278,10 @@ export default [
     ),
     path: '/docs/components/color',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-grid" */ './Grid')
+    ),
+    path: '/docs/components/grid',
+  },
 ];

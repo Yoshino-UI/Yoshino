@@ -38,6 +38,12 @@ export default [
         type: 'boolean',
         defaultValue: 'false',
       },
+      {
+        props: 'step',
+        intro: '步长',
+        type: 'number',
+        defaultValue: '1',
+      },
     ]
   }
 ];
