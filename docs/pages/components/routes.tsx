@@ -178,7 +178,7 @@ export default [
   },
   {
     component: getComponentAsyncLoading(
-      () => import(/* webpackChunkName: "yoshino-progress" */ './progress')
+      () => import(/* webpackChunkName: "yoshino-progress" */ './Progress')
     ),
     path: '/docs/components/progress'
   },
