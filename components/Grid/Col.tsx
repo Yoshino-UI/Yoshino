@@ -40,14 +40,9 @@ export class Col extends Component<IColProps, IColState> {
     push: 0,
   };
 
-  render() {
-    const {
-      className, style, span,
-      offset, order, pull, push, children,
-      ...otherProps} = this.props;
-    const preCls = this.preCls;
+  getSizeCls = () => {
     let sizeCls = {};
-
+    const preCls = this.preCls;
     sizes.forEach((size: 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs') => {
       let sizeProps: ICol = {};
       // tslint:disable-next-line
@@ -58,8 +53,6 @@ export class Col extends Component<IColProps, IColState> {
         sizeProps = props[size] || {};
       }
 
-      delete otherProps[size];
-
       sizeCls = {
         ...sizeCls,
         [`${preCls}-${size}-${sizeProps.span}`]: sizeProps.span !== undefined,
@@ -69,6 +62,16 @@ export class Col extends Component<IColProps, IColState> {
         [`${preCls}-${size}-pull-${sizeProps.pull}`]: sizeProps.pull || sizeProps.pull === 0,
       };
     });
+    return sizeCls;
+  }
+
+  render() {
+    const {
+      className, style, span,
+      offset, order, pull, push, children,
+      ...otherProps} = this.props;
+    const preCls = this.preCls;
+    const sizeCls = this.getSizeCls();
 
     const clsName = classNames(
       preCls, className, sizeCls, {

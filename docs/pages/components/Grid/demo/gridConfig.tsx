@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Markdown from '@docs/components/Markdown/';
 import { Grid, Slider } from '@yoshino/components/';
 
 const { Row, Col } = Grid;
@@ -11,15 +12,19 @@ export default class extends React.Component {
 
   render() {
     const col = [];
+    let md = `\`\`\`jsx\r\n<Row gutter={${this.state.gutter}}>\r\n`;
+
     for (let i = 0; i < this.state.column; i++) {
       col.push(
         <Col span={24 / this.state.column} key={i}><div className='columns'>Coloums-{i + 1}</div></Col>
       );
+      md += `  <Col span={${24 / this.state.column}}>Coloums-${i + 1}</Col>\r\n`;
     }
+    md += '</Row>```';
     return (
         <div className='grid-config'>
           <div style={{width: 350}}>
-            <p>gutter value</p>
+            <p>gutter value: {this.state.gutter}</p>
             <Slider
               value={this.state.gutter}
               min={8}
@@ -27,7 +32,7 @@ export default class extends React.Component {
               step={8}
               onChange={(v) => this.setState({gutter: v})}
             />
-            <p>column count</p>
+            <p>column count: {this.state.column}</p>
             <Slider
               value={this.state.column}
               min={2}
@@ -42,6 +47,7 @@ export default class extends React.Component {
               }}
             />
           </div>
+          <Markdown text={md}/>
           <Row gutter={this.state.gutter}>
             {col}
           </Row>

@@ -92,10 +92,10 @@ export class Slider extends Component<ISliderProps, ISliderState> {
     const sliderRect = slider.getBoundingClientRect() as DOMRect;
     const sliderWidth = sliderRect.width;  // 滑动条宽度
     const left = e.clientX - (sliderRect.x || sliderRect.left); // 点击位置相对滑动条偏移量
-    const currentPercent = +(left / sliderWidth).toFixed(4);
+    const newPercent = +(left / sliderWidth).toFixed(4);
     const oldPercent = this.getPercent();
     const stepPercent = this.getStepPercent();
-    const change = currentPercent - oldPercent;
+    const change = newPercent - oldPercent;
     const times = Math.abs(Math.round(change / stepPercent));
     if (times !== 0) {
       const changePercent = times * stepPercent;
@@ -118,10 +118,10 @@ export class Slider extends Component<ISliderProps, ISliderState> {
       if (left < 0 || left > sliderWidth) {
         return;
       }
-      const currentPercent = +(left / sliderWidth).toFixed(4);
+      const newPercent = +(left / sliderWidth).toFixed(4);
       const oldPercent = this.getPercent();
       const stepPercent = this.getStepPercent();
-      const change = currentPercent - oldPercent;
+      const change = newPercent - oldPercent;
       const times = Math.abs(Math.round(change / stepPercent));
       if (times !== 0) {
         const changePercent = times * stepPercent;
