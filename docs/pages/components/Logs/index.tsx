@@ -16,7 +16,7 @@ export default class Logs extends Component {
       const version = (item.match(/- \[(.*?)\]/))![1];
       return {
         version,
-        content: item.replace(/- \[.*?\]/, ''),
+        content: item.replace(/- \[.*?\]/, '\r\n'),
       };
     }).reverse();
   }
