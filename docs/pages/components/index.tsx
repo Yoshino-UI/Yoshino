@@ -30,12 +30,12 @@ export default class Components extends Component<IProps> {
           defaultActiveKey={current}
           defaultOpenKeys={['components']}
         >
-          <Menu.Item keyId='yoshino' onClick={this.pushHistory.bind(this, 'yoshino')}>Yoshino</Menu.Item>
-          <Menu.Item keyId='start' onClick={this.pushHistory.bind(this, 'start')}>快速开始</Menu.Item>
-          <Menu.Item keyId='theme' onClick={this.pushHistory.bind(this, 'theme')}>定制主题</Menu.Item>
-          <Menu.Item keyId='logs' onClick={this.pushHistory.bind(this, 'logs')}>更新日志</Menu.Item>
-          <Menu.Item keyId='faq' onClick={this.pushHistory.bind(this, 'faq')}>FAQ</Menu.Item>
-          <SubMenu title='组件' keyId='components'>
+          <Menu.Item key='1-1yoshino' onClick={this.pushHistory.bind(this, 'yoshino')}>Yoshino</Menu.Item>
+          <Menu.Item key='start' onClick={this.pushHistory.bind(this, 'start')}>快速开始</Menu.Item>
+          <Menu.Item key='theme' onClick={this.pushHistory.bind(this, 'theme')}>定制主题</Menu.Item>
+          <Menu.Item key='logs' onClick={this.pushHistory.bind(this, 'logs')}>更新日志</Menu.Item>
+          <Menu.Item key='faq' onClick={this.pushHistory.bind(this, 'faq')}>FAQ</Menu.Item>
+          <SubMenu title='组件' key='components'>
             {
               menuObj.map((menu) => {
                 return (
@@ -45,7 +45,6 @@ export default class Components extends Component<IProps> {
                         return (
                           <MenuItem
                             key={item.keyId}
-                            keyId={item.keyId}
                             onClick={this.pushHistory.bind(this, item.keyId)}
                           >
                             {item.name}
@@ -71,7 +70,7 @@ export default class Components extends Component<IProps> {
             }
             <Route
               render={() => {
-              return <Redirect to='/docs/components/yoshino'/>;
+                return <Redirect to='/docs/components/yoshino'/>;
               }}
             />
           </Switch>

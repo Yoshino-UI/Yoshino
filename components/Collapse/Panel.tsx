@@ -12,7 +12,7 @@ export interface IPanelProps extends IBaseComponent {
   /**
    * 标记，对应activekey
    */
-  keyId: TKey;
+  keyId?: TKey;
   /**
    * 折叠板标题
    */
@@ -50,7 +50,7 @@ export class Panel extends Component<IPanelProps, IPanelState> {
       return;
     }
     if (onChange) {
-      onChange(keyId);
+      onChange(keyId!);
     }
   }
 

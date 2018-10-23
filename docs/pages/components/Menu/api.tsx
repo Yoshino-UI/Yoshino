@@ -57,7 +57,7 @@ export default [
         defaultValue: '-',
       },
       {
-        props: 'keyId',
+        props: 'key',
         intro: '唯一标志',
         type: 'TKey',
         defaultValue: '-',
@@ -80,7 +80,7 @@ export default [
         defaultValue: '-',
       },
       {
-        props: 'keyId',
+        props: 'key',
         intro: '唯一标志',
         type: 'TKey',
         defaultValue: '-',
@@ -91,7 +91,7 @@ export default [
     title: 'Menu.Item',
     json: [
       {
-        props: 'keyId',
+        props: 'key',
         intro: '唯一标志',
         type: 'TKey',
         defaultValue: '-',

@@ -21,7 +21,7 @@ export interface ISubMenuProps extends IBaseComponent {
   /**
    * 标志
    */
-  keyId: TKey;
+  keyId?: TKey;
   /**
    * 禁用
    */
@@ -77,7 +77,6 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
         [`${preCls}-disabled`]: disabled,
       },
     );
-    const childrens = React.Children.toArray(children);
     const paddingLeft =  isVertical ? `${deep! * (offset as number)}px` : '';
     const action = isVertical ? {
       onClick: this.onOpenChange,
@@ -95,10 +94,11 @@ export class SubMenu extends Component<ISubMenuProps, ISubMenuState> {
           <ul className={`${preCls}-list`}>
             {
               // tslint:disable
-              React.Children.map(childrens, (children: ReactElement<any>) => {
-                return React.cloneElement(children, {
+              React.Children.map(children, (child: ReactElement<any>) => {
+                return React.cloneElement(child, {
                   deep: deep as number + 1,
                   ctx,
+                  keyId: child.key,
                 });
               })
             }

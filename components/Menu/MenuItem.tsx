@@ -10,7 +10,7 @@ export interface IMenuItemProps extends IBaseComponent {
   /**
    * 唯一id
    */
-  keyId: TKey;
+  keyId?: TKey;
   /**
    * 禁用
    */

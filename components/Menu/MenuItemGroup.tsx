@@ -16,7 +16,7 @@ export interface IMenuItemGroupProps extends IBaseComponent {
   /**
    * 标志
    */
-  keyId: TKey;
+  keyId?: TKey;
   // tslint:disable no-any
   ctx?: any;
 }
@@ -42,7 +42,6 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
     const clsName = classNames(
       preCls, className,
     );
-    const childrens = React.Children.toArray(children);
     const isVertical = mode === 'vertical';
     const paddingLeft =  isVertical ? `${deep! * (offset as number)}px` : '';
     return (
@@ -59,10 +58,11 @@ export class MenuItemGroup extends Component<IMenuItemGroupProps, IMenuItemGroup
         <ul className={`${preCls}-list`}>
           {
             // tslint:disable
-            React.Children.map(childrens, (child: ReactElement<any>) => {
+            React.Children.map(children, (child: ReactElement<any>) => {
               return React.cloneElement(child, {
                 deep: deep as number + 1,
                 ctx,
+                keyId: child.key
               });
             })
           }

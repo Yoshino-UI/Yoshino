@@ -29,8 +29,8 @@ export default class Components extends Component<IProps> {
             <Link to='/'>Yoshino</Link>
           </div>
           <Menu mode='horizontal' className={`${preCls}-nav-menu`}>
-            <Menu.Item keyId='components' onClick={this.pushHistory.bind(this, 'components')}>组件</Menu.Item>
-            <Menu.Item keyId='theme' onClick={this.pushHistory.bind(this, 'theme')}>主题</Menu.Item>
+            <Menu.Item key='components' onClick={this.pushHistory.bind(this, 'components')}>组件</Menu.Item>
+            <Menu.Item key='theme' onClick={this.pushHistory.bind(this, 'theme')}>主题</Menu.Item>
           </Menu>
         </div>
         <div className={`${preCls}-wrapper`}>

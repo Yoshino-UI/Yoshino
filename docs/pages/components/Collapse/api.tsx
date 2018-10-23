@@ -33,7 +33,7 @@ export default [
     title: 'Collapse.Panel',
     json: [
       {
-        props: 'keyId',
+        props: 'key',
         intro: '标记，对应activekey',
         type: 'TKey',
         defaultValue: '',

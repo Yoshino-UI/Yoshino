@@ -133,7 +133,6 @@ export class Menu extends Component<IMenuProps, IMenuState> {
     const clsName = classNames(
       preCls, `${preCls}-${mode}`, className,
     );
-    const childrens = React.Children.toArray(children);
     return (
       <ul
         className={clsName}
@@ -142,10 +141,11 @@ export class Menu extends Component<IMenuProps, IMenuState> {
       >
         {
           // tslint:disable
-          React.Children.map(childrens, (child: ReactElement<any>) => {
+          React.Children.map(children, (child: ReactElement<any>) => {
             return React.cloneElement(child, {
               deep: 1,
               ctx: this.getCtx(),
+              keyId: child.key,
             });
           })
         }

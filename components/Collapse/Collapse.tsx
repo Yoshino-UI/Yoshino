@@ -4,7 +4,6 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent, TKey} from '../template/component';
 import Panel from './Panel';
-import {IPanelProps} from './Panel';
 
 export interface ICollapseProps extends IBaseComponent {
   /**
@@ -84,7 +83,6 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
     const clsName = classNames(
       preCls, className,
     );
-    const childrens = React.Children.toArray(children);
     const activeKeys = this.getActiveKey();
     return (
       <div
@@ -93,11 +91,13 @@ export class Collapse extends Component<ICollapseProps, ICollapseState> {
         {...otherProps}
       >
         {
-          React.Children.map(childrens, (item: React.ReactElement<IPanelProps>, index) => {
+          // tslint:disable
+          React.Children.map(children, (item: React.ReactElement<any>) => {
+            const key = item.props.keyId || item.key;
             return React.cloneElement(item, {
-              active: activeKeys.indexOf(item.props.keyId) !== -1,
+              active: activeKeys.indexOf(key) !== -1,
               onChange: this.onChange,
-              key: index,
+              keyId: key,
             });
           })
         }
