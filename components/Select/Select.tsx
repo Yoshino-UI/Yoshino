@@ -60,6 +60,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
   static defaultProps = {
     mode: 'single',
     size: 'default',
+    defaultValue: '',
   };
 
   constructor(props: ISelectProps) {
