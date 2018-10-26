@@ -25,6 +25,10 @@ export interface IBaseComponent extends IEvent {
    */
   className?: string;
   /**
+   * 附加id
+   */
+  id?: string;
+  /**
    * 附加额外的样式
    */
   style?: React.CSSProperties; // tslint:disable-line:no-any
