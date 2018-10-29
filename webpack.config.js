@@ -3,6 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
 const webpack = require('webpack');
+const isProd = process.env.NODE_ENV !== 'development';
+const devtool = isProd ? {} : {devtool: 'source-map'};
+const chunk = isProd ? {
+  optimization: {
+    splitChunks:  {
+      chunks: 'all',
+      minChunks: 3,
+      name: 'common',
+    },
+    minimize: true,
+  },
+} : {};
 
 module.exports = {
   mode: 'development',
@@ -52,15 +64,8 @@ module.exports = {
       },
     ]
   },
-  devtool: 'source-map',
-  optimization: {
-    splitChunks:  {
-      chunks: 'all',
-      minChunks: 3,
-      name: 'common',
-    },
-    minimize: true,
-  },
+  ...devtool,
+  ...chunk,
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('./docs/index.html'),
