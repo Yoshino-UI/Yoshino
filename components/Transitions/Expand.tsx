@@ -1,10 +1,10 @@
 
 import {Component} from 'react';
 import * as React from 'react';
-import {IBaseComponent} from '../template/component';
+import {ITransitions} from '../template/component';
 import Transition from 'react-transition-group/Transition';
 
-export interface IExpandProps extends IBaseComponent {
+export interface IExpandProps extends ITransitions {
   /**
    * 动画时间 ms
    */
@@ -29,19 +29,22 @@ export class Expand extends Component<IExpandProps, IExpandState> {
 
   static defaultProps = {
     timeout: 300,
+    mountOnEnter: true,
+    unmountOnExit: true,
   };
 
   render() {
     const {
       active, timeout, children,
+      unmountOnExit, mountOnEnter, onEntered,
     } = this.props;
     const preCls = 'yoshino-expand';
     return (
       <Transition
         timeout={timeout!}
         in={active}
-        mountOnEnter
-        unmountOnExit
+        mountOnEnter={mountOnEnter}
+        unmountOnExit={unmountOnExit}
         appear
         onEnter={() => {
           this.refContainer.style.overflow = 'hidden';
@@ -56,6 +59,9 @@ export class Expand extends Component<IExpandProps, IExpandState> {
         onEntered={() => {
           this.refContainer.style.overflow = null;
           this.refContainer.style.height = null;
+          if (onEntered) {
+            onEntered();
+          }
         }}
         onExit={() => {
           this.refContainer.style.overflow = 'hidden';

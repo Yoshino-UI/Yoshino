@@ -1,10 +1,10 @@
 
 import {Component} from 'react';
 import * as React from 'react';
-import {IBaseComponent} from '../template/component';
+import {ITransitions} from '../template/component';
 import {Transition} from 'react-transition-group';
 
-export interface IScaleProps extends IBaseComponent {
+export interface IScaleProps extends ITransitions {
   /**
    * 动画时间 ms
    */
@@ -27,11 +27,15 @@ export class Scale extends Component<IScaleProps, IScaleState> {
 
   static defaultProps = {
     timeout: 300,
+    mountOnEnter: true,
+    unmountOnExit: true,
   };
 
   render() {
     const {
       active, timeout, children,
+      mountOnEnter, unmountOnExit,
+      onEntered,
     } = this.props;
 
     const transition = {
@@ -43,8 +47,8 @@ export class Scale extends Component<IScaleProps, IScaleState> {
       <Transition
         timeout={timeout!}
         in={active}
-        mountOnEnter
-        unmountOnExit
+        mountOnEnter={mountOnEnter}
+        unmountOnExit={unmountOnExit}
         appear
         onEnter={() => {
           this.refChild.style.transform = transition.exit;
@@ -60,6 +64,9 @@ export class Scale extends Component<IScaleProps, IScaleState> {
         onEntered={() => {
           this.refChild.style.transform = null;
           this.refChild.style.opacity = null;
+          if (onEntered) {
+            onEntered();
+          }
         }}
         onExit={() => {
           this.refChild.style.transform = transition.enter;

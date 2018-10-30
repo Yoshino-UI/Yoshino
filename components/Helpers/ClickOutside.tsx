@@ -2,6 +2,8 @@
 import {Component} from 'react';
 import * as React from 'react';
 import {IBaseComponent} from '../template/component';
+import contain from '../utils/contain';
+import { findDOMNode } from 'react-dom';
 
 export interface IClickOutsideProps extends IBaseComponent {
   clickOutside: () => void;
@@ -17,7 +19,7 @@ export class ClickOutside extends Component<IClickOutsideProps, IClickOutsideSta
 
   clickHandle = (e: MouseEvent) => {
     const {clickOutside, clickInside} = this.props;
-    if (e.target !== this.refChildren) {
+    if (!contain(findDOMNode(this.refChildren), e.target as Element)) {
       clickOutside();
     } else {
       if (clickInside) {

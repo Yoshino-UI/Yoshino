@@ -13,6 +13,8 @@ export default function(props: IProps) {
     right: 0,
     top: 0,
     bottom: 0,
+    height: '100vh',
+    width: '100vw',
   };
   return (
     <div

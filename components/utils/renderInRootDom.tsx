@@ -1,13 +1,14 @@
-import {Component, ReactElement} from 'react';
+import {Component} from 'react';
 import {unmountComponentAtNode, render} from 'react-dom';
 
 export interface IProps {
   // tslint:disable
-  children: ReactElement<any>;
+  children: any;
   boxClass?: string;
   callBack?: () => void; // 渲染回调 - 每次render都会调用
   mount?: boolean; // 用于开启懒加载 当为true时进行渲染
   zIndex?: number;
+  style?: React.CSSProperties;
 }
 
 export interface IStatus {

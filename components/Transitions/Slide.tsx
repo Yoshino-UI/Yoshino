@@ -1,10 +1,10 @@
 
 import {Component} from 'react';
 import * as React from 'react';
-import {IBaseComponent} from '../template/component';
+import {ITransitions} from '../template/component';
 import {Transition} from 'react-transition-group';
 
-export interface ISlideProps extends IBaseComponent {
+export interface ISlideProps extends ITransitions {
   /**
    * 动画时间 ms
    */
@@ -46,11 +46,14 @@ export class Slide extends Component<ISlideProps, ISlideState> {
     single: false,
     opacity: true,
     appear: true,
+    mountOnEnter: true,
+    unmountOnExit: true,
   };
 
   render() {
     const {
       active, timeout, children, direction, single, opacity, appear,
+      unmountOnExit, mountOnEnter, onEntered,
     } = this.props;
     const transition = {
       left: {
@@ -84,8 +87,8 @@ export class Slide extends Component<ISlideProps, ISlideState> {
       <Transition
         timeout={timeout!}
         in={active}
-        mountOnEnter
-        unmountOnExit
+        mountOnEnter={mountOnEnter}
+        unmountOnExit={unmountOnExit}
         appear={appear}
         onEnter={() => {
           this.refChild.style.transform = transition[direction].exit;
@@ -106,6 +109,9 @@ export class Slide extends Component<ISlideProps, ISlideState> {
           this.refChild.style.transform = null;
           if (opacity) {
             this.refChild.style.opacity = null;
+          }
+          if (onEntered) {
+            onEntered();
           }
         }}
         onExit={() => {

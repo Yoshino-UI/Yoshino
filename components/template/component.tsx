@@ -56,6 +56,11 @@ export interface IAbstractInput<T> extends IBaseComponent {
   onBlur?: React.FormEventHandler<HTMLInputElement>;
 }
 
+export interface ITransitions extends IBaseComponent {
+  mountOnEnter?: boolean;
+  unmountOnExit?: boolean;
+  onEntered?: () => void;
+}
 // 通用Type
 export type TKey = string;
 export type TSize = 'large' | 'small' | 'default';
