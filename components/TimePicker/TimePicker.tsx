@@ -125,10 +125,12 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
       return;
     }
     const rect = this.refTimePickerConatainer.getBoundingClientRect();
+    const pageY = window.pageYOffset;   // 当前滚动条y轴偏移量
+    const pageX = window.pageXOffset;   // 当前滚动条x轴偏移量
     this.setState({
       panelPos: {
-        left: rect.left,
-        top: rect.top,
+        left: rect.left + pageX,
+        top: rect.top + pageY,
       }
     });
   }
