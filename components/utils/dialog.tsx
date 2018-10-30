@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RenderInRootDom } from './renderInRootDom';
-import Mask from '../utils/mask';
+import Mask from './mask';
 import { CSSProperties } from 'react';
 
 export interface IProps {

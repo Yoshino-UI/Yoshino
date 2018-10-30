@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Icon from '../Icon';
-import { RenderInRootDom } from '../utils/renderInRootDom';
+import { RenderInRootDom } from '../utils/';
 import { backTop } from './assist';
 
 export interface IBackTopProps extends IBaseComponent {

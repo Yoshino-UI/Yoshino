@@ -2,7 +2,7 @@
 import {Component} from 'react';
 import * as React from 'react';
 import {IBaseComponent} from '../template/component';
-import contain from '../utils/contain';
+import { contain } from '../utils/';
 import { findDOMNode } from 'react-dom';
 
 export interface IClickOutsideProps extends IBaseComponent {

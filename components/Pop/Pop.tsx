@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IBaseComponent} from '../template/component';
-import { RenderInRootDom } from '../utils/renderInRootDom';
+import { RenderInRootDom } from '../utils/';
 
 export interface IPopProps extends IBaseComponent {
   /**

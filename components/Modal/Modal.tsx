@@ -6,7 +6,7 @@ import {IBaseComponent} from '../template/component';
 import Button from '../Button';
 import Icon from '../Icon';
 import { render } from 'react-dom';
-import Dialog from '../utils/dialog';
+import { Dialog } from '../utils/';
 
 export interface IModalProps extends IBaseComponent {
   zIndex?: number;
