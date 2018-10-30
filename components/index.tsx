@@ -34,6 +34,7 @@ import Switch from './Switch';
 import Table from './Table';
 import Tabs from './Tabs';
 import Tag from './Tag';
+import TimePicker from './TimePicker';
 import Timeline from './Timeline';
 import Tooltip from './Tooltip';
 import Transitions from './Transitions';
@@ -75,6 +76,7 @@ export {
   Table,
   Tabs,
   Tag,
+  TimePicker,
   Timeline,
   Tooltip,
   Transitions,

@@ -8,13 +8,16 @@ export default (
   intervalFunc: (v: number) => void
 ) => {
     const {
-      start, end, duration = 300,
+      start, end, duration = 200,
       frames = 60,
     } = config;
-    const step = end - start / frames;
+    if (start === end) {
+      return;
+    }
+    const step = (end - start) / frames;
     for (let i = 1; i <= frames; i++) {
       setTimeout(() => {
-        intervalFunc(end + step * i);
+        intervalFunc(start + step * i);
       }, duration / frames * i);
     }
 };

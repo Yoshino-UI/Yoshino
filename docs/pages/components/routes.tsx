@@ -284,4 +284,10 @@ export default [
     ),
     path: '/docs/components/grid',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-timepicker" */ './TimePicker')
+    ),
+    path: '/docs/components/timepicker',
+  },
 ];

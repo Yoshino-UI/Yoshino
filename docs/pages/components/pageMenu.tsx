@@ -40,6 +40,10 @@ export default [
         keyId: 'checkbox',
       },
       {
+        name: 'TimePicker(时间选择器)',
+        keyId: 'timepicker',
+      },
+      {
         name: 'Input(输入框)',
         keyId: 'input',
       },
