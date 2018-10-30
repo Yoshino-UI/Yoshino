@@ -5,13 +5,9 @@ import * as classNames from 'classnames';
 import {IBaseComponent, TSize} from '../template/component';
 import Input from '../Input';
 import Icon from '../Icon';
-import Transitions from '../Transitions';
-import { RenderInRootDom, valueTransition } from '../utils/';
-import Helpers from '../Helpers';
+import { valueTransition } from '../utils/';
+import Popover from '../PopOver';
 import * as moment from 'moment';
-
-const { Scale } = Transitions;
-const { ClickOutside } = Helpers;
 
 export interface ITimePickerProps extends IBaseComponent {
   /**
@@ -63,10 +59,6 @@ export interface ITimePickerProps extends IBaseComponent {
 }
 
 export interface ITimePickerState {
-  panelPos: {
-    left: number;
-    top: number;
-  };
   open: boolean;
   value: string;
 }
@@ -106,10 +98,6 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
     value: this.props.defaultValue!,
   };
 
-  componentDidMount() {
-    this.setPanelPosition();
-  }
-
   getOpen = () => {
     const { open } = this.props;
     return open !== undefined ? open : this.state.open;
@@ -118,21 +106,6 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
   getValue = () => {
     const { value } = this.props;
     return value !== undefined ? value : this.state.value;
-  }
-
-  setPanelPosition = () => {
-    if (!this.refTimePickerConatainer) {
-      return;
-    }
-    const rect = this.refTimePickerConatainer.getBoundingClientRect();
-    const pageY = window.pageYOffset;   // 当前滚动条y轴偏移量
-    const pageX = window.pageXOffset;   // 当前滚动条x轴偏移量
-    this.setState({
-      panelPos: {
-        left: rect.left + pageX,
-        top: rect.top + pageY,
-      }
-    });
   }
 
   renderSelectItem = (type: 'h' | 'm' | 's') => {
@@ -263,9 +236,6 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
         open,
       });
     }, 10);
-
-    // 调整面板位置
-    this.setPanelPosition();
   }
 
   onChange = (value: string) => {
@@ -292,69 +262,52 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
     );
     const valueR = this.getValue();
     const openR = this.getOpen();
-    return (
-      <div
-        className={clsName}
-        style={style}
-        ref={(v) => {
-          if (v) {
-            this.refTimePickerConatainer = v;
-          }
-        }}
-        {...otherProps}
-      >
-        <Input
-          size={size}
-          placeholder={placeholder}
-          onClick={this.onOpenChange.bind(this, true)}
-          value={valueR}
-          readOnly
-        />
-        <Icon className={`${preCls}-icon`} type='md-time'/>
-        <RenderInRootDom>
-          <ClickOutside
-            clickOutside={() => {
-              this.onOpenChange(false);
+    const pop = (
+      <div className={`${preCls}-panel`}>
+        <div className={`${preCls}-input-wrap`}>
+          <input
+            placeholder={placeholder}
+            readOnly
+            value={valueR}
+            ref={(v) => {
+              if (v) {
+                this.refPanelInput = v;
+              }
             }}
-          >
-            <div className={`${preCls}-box`} style={this.state.panelPos}>
-              <Scale
-                timeout={300}
-                active={openR}
-                onEntered={() => {
-                  if (this.refPanelInput) {
-                    this.refPanelInput.focus();
-                  }
-                }}
-              >
-                <div className={`${preCls}-panel`}>
-                  <div className={`${preCls}-input-wrap`}>
-                    <input
-                      placeholder={placeholder}
-                      readOnly
-                      value={valueR}
-                      ref={(v) => {
-                        if (v) {
-                          this.refPanelInput = v;
-                        }
-                      }}
-                    />
-                    <Icon
-                      type='ios-close-circle'
-                      onClick={this.onChange.bind(this, '')}
-                    />
-                  </div>
-                  <div className={`${preCls}-select-container`}>
-                    {disabledHours ? null : this.renderSelectItem('h')}
-                    {disabledMinutes ? null : this.renderSelectItem('m')}
-                    {disabledSeconds ? null : this.renderSelectItem('s')}
-                  </div>
-                </div>
-              </Scale>
-            </div>
-          </ClickOutside>
-        </RenderInRootDom>
+          />
+          <Icon
+            type='ios-close-circle'
+            onClick={this.onChange.bind(this, '')}
+          />
+        </div>
+        <div className={`${preCls}-select-container`}>
+          {disabledHours ? null : this.renderSelectItem('h')}
+          {disabledMinutes ? null : this.renderSelectItem('m')}
+          {disabledSeconds ? null : this.renderSelectItem('s')}
+        </div>
       </div>
+    );
+    return (
+      <Popover
+        pop={pop}
+        open={openR}
+        onOpenChange={this.onOpenChange}
+      >
+        <div
+          className={clsName}
+          style={style}
+          {...otherProps}
+        >
+          <Input
+            size={size}
+            placeholder={placeholder}
+            onClick={this.onOpenChange.bind(this, true)}
+            value={valueR}
+            readOnly
+          />
+          <Icon className={`${preCls}-icon`} type='md-time'/>
+        </div>
+      </Popover>
     );
   }
 }

@@ -23,6 +23,7 @@ import Modal from './Modal';
 import Notification from './Notification';
 import Pagination from './Pagination';
 import Pop from './Pop';
+import PopOver from './PopOver';
 import Progress from './Progress';
 import Radio from './Radio';
 import Rate from './Rate';
@@ -65,6 +66,7 @@ export {
   Notification,
   Pagination,
   Pop,
+  PopOver,
   Progress,
   Radio,
   Rate,

@@ -1,5 +1,4 @@
 import '../../Icon/style/';
 import '../../Input/style/';
-import '../../Transitions/style/';
-import '../../Helpers/style/';
+import '../../PopOver/style/';
 import './index.css';
