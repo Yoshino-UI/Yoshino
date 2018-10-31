@@ -42,8 +42,21 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     options: this.props.dataSource,
     show: false,
     active: this.props.activeFirstOption ? 0 : -1,
-    value: this.props.defaultValue,
+    value: this.props.defaultValue!,
   };
+
+  componentWillReceiveProps(netxProps: IAutoCompleteProps) {
+    const { dataSource } = this.props;
+    const { dataSource: nextDataSource } = netxProps;
+    if (JSON.stringify(dataSource) !== JSON.stringify(nextDataSource)) {
+      this.setState({
+        options: nextDataSource.filter((item) => {
+          return String(item).match(new RegExp(this.getValue()));
+        }),
+      });
+    }
+  }
+
 
   onFocus: React.FormEventHandler<HTMLInputElement> = (e) => {
     const {onFocus} = this.props;
