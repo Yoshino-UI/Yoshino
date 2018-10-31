@@ -16,11 +16,11 @@ export interface IDatePickerProps extends IBaseComponent {
   /**
    * 默认值
    */
-  defaultValue?: string;
+  defaultValue?: number;
   /**
    * 值
    */
-  value?: string;
+  value?: number;
   /**
    * 禁用
    */
@@ -28,7 +28,7 @@ export interface IDatePickerProps extends IBaseComponent {
   /**
    * 值变化回调
    */
-  onChange?: (v: string) => void;
+  onChange?: (v: number) => void;
   /**
    * 面板是否展开 - 受控
    */
@@ -53,7 +53,7 @@ export interface IDatePickerProps extends IBaseComponent {
 
 export interface IDatePickerState {
   open: boolean;
-  value: string;
+  value: number;
 }
 
 /**
@@ -95,7 +95,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
     });
   }
 
-  onChange = (value: string) => {
+  onChange = (value: number) => {
     const { onChange } = this.props;
     if (onChange) {
       onChange(value);
@@ -109,7 +109,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
     const valueR = this.getValue();
     const preCls = this.preCls;
     const { format, placeholder } = this.props;
-    const m = valueR ? moment(valueR, format) :  moment();
+    const m = valueR ? moment(valueR) :  moment();
     const weekArr = '日一二三四五六'.split('');
     const dayArr: Array<{
       tag: '-1' | '0' | '1'; // -1上月 0 本月 1下个月
@@ -181,7 +181,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
                 },
               };
               tagAction[day.tag]();
-              this.onChange(newM.date(day.v).format(format));
+              this.onChange(+newM.date(day.v).format('x'));
               this.onOpenChange(false);
             }}
           >
@@ -204,7 +204,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
           <input
             placeholder={placeholder}
             readOnly
-            value={valueR}
+            value={valueR ? moment(valueR).format(format) : ''}
           />
           <Icon
             type='ios-close-circle'
@@ -216,14 +216,14 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
             type='ios-rewind'
             className={`${preCls}-year-pre`}
             onClick={() => {
-              this.onChange(m.subtract(1, 'year').format(format));
+              this.onChange(+m.subtract(1, 'year').format('x'));
             }}
           />
           <Icon
             type='md-arrow-dropleft'
             className={`${preCls}-month-pre`}
             onClick={() => {
-              this.onChange(m.subtract(1, 'month').format(format));
+              this.onChange(+m.subtract(1, 'month').format('x'));
             }}
           />
           <span className={`${preCls}-time`}>
@@ -233,14 +233,14 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
             type='md-arrow-dropright'
             className={`${preCls}-month-next`}
             onClick={() => {
-              this.onChange(m.add(1, 'month').format(format));
+              this.onChange(+m.add(1, 'month').format('x'));
             }}
           />
           <Icon
             type='ios-fastforward'
             className={`${preCls}-year-next`}
             onClick={() => {
-              this.onChange(m.add(1, 'year').format(format));
+              this.onChange(+m.add(1, 'year').format('x'));
             }}
           />
         </div>
@@ -287,7 +287,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
           <Input
             size={size}
             placeholder={placeholder}
-            value={valueR}
+            value={valueR ? moment(valueR).format(format) : ''}
             readOnly
           />
           <Icon className={`${preCls}-icon`} type='ios-calendar'/>

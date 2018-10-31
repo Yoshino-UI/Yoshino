@@ -10,14 +10,14 @@ export default [
       },
       {
         props: 'defaultValue',
-        intro: '默认值-非受控',
-        type: 'string',
+        intro: '默认值-非受控，毫秒时间戳',
+        type: 'number',
         defaultValue: '-',
       },
       {
         props: 'value',
-        intro: '值-受控',
-        type: 'string',
+        intro: '值-受控，毫秒时间戳',
+        type: 'number',
         defaultValue: '-',
       },
       {
@@ -29,7 +29,7 @@ export default [
       {
         props: 'onChange',
         intro: '值的变化回调',
-        type: '(v: string) => void',
+        type: '(v: number) => void',
         defaultValue: '-',
       },
       {
