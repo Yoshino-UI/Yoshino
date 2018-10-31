@@ -54,7 +54,7 @@ export default [
         props: 'format',
         intro: '时间格式',
         type: 'string',
-        defaultValue: 'HH:mm:ss',
+        defaultValue: 'YYYY-MM-DD',
       },
     ]
   }
