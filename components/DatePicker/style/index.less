@@ -1,0 +1,144 @@
+@import './var.less';
+
+@datePicker-prefix-cls: ~"@{css-prefix}-datepicker";
+
+.@{datePicker-prefix-cls} {
+  display: inline-block;
+  position: relative;
+  width: @datepicker-width;
+
+  &-panel {
+    background: white;
+    width: @datepicker-panel-width;
+    border-radius: @datepicker-panel-border-radius;
+    box-shadow: @shadow-base;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    font-size: 16px;
+    transform: translateY(-50%);
+    color: @disabled-color;
+  }
+
+  &-input-wrap {
+    padding: 7px 2px 7px 12px;
+    border-bottom: @datepicker-border;
+    font-size: @font-size-default;
+    position: relative;
+
+    input {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      width: 100%;
+      outline: 0;
+    }
+
+    i {
+      position: absolute;
+      top: 50%;
+      right: 11px;
+      font-size: 16px;
+      transform: translateY(-50%);
+      color: @disabled-color;
+
+      &:hover {
+        transition: @transition-base;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  &-header {
+    position: relative;
+    text-align: center;
+    height: 40px;
+    border-bottom: @datepicker-border;
+    user-select: none;
+
+    .@{datePicker-prefix-cls} {
+      &-time {
+        line-height: 40px;
+        font-size: 14px;
+      }
+
+      &-year-pre,
+      &-month-pre,
+      &-month-next,
+      &-year-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0 5px;
+
+        &:hover {
+          color: @primary-color;
+          cursor: pointer;
+        }
+      }
+
+      &-year-pre {
+        left: 7px;
+      }
+
+      &-month-pre {
+        left: 29px;
+      }
+
+      &-month-next {
+        right: 29px;
+      }
+
+      &-year-next {
+        right: 7px;
+      }
+    }
+  }
+
+  &-body {
+    padding: 8px 12px;
+    user-select: none;
+
+    .@{datePicker-prefix-cls} {
+      &-not-current-month {
+        color: @font-color-unactive;
+      }
+    }
+
+    table {
+      width: 100%;
+      font-size: @font-size-default;
+      color: @font-color-base;
+
+      th,
+      td {
+        height: 30px;
+        vertical-align: middle;
+        font-weight: normal;
+        text-align: center;
+      }
+
+      td > div {
+        margin: 0 6.5px;
+        width: 22px;
+        height: 22px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: @border-radius-base;
+        cursor: pointer;
+
+        &:hover {
+          background: @primary-color-choosed;
+        }
+
+        &.@{datePicker-prefix-cls}-selected-day {
+          background: @primary-color;
+          color: white;
+        }
+      }
+    }
+  }
+}

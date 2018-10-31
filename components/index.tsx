@@ -9,6 +9,7 @@ import Card from './Card';
 import Carousel from './Carousel';
 import Checkbox from './Checkbox';
 import Collapse from './Collapse';
+import DatePicker from './DatePicker';
 import Divider from './Divider';
 import Drawer from './Drawer';
 import Grid from './Grid';
@@ -52,6 +53,7 @@ export {
   Carousel,
   Checkbox,
   Collapse,
+  DatePicker,
   Divider,
   Drawer,
   Grid,

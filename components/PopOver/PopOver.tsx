@@ -52,6 +52,10 @@ export class PopOver extends Component<IPopOverProps, IPopOverState> {
     },
   };
 
+  componentDidMount() {
+    this.setPopOverPosition();
+  }
+
   setPopOverPosition = () => {
     if (!this.refPopOverContainer) {
       return;

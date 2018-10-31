@@ -290,4 +290,10 @@ export default [
     ),
     path: '/docs/components/timepicker',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-datepicker" */ './DatePicker')
+    ),
+    path: '/docs/components/datepicker',
+  },
 ];

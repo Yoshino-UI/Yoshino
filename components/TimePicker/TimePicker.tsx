@@ -240,7 +240,6 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
 
   onChange = (value: string) => {
     const { onChange } = this.props;
-    // const { h, m, s} = this.state;
     if (onChange) {
       onChange(value);
     }
