@@ -1,13 +1,21 @@
 import * as React from 'react';
 import { Table } from '@yoshino/components/';
 
+export interface IColumns {
+  title: string;
+  width?: number | string;
+  dataIndex: string;
+  fixed?: 'left' | 'right';
+  style?: React.CSSProperties;
+}
+
 export default function() {
-  const colums = [
+  const colums: IColumns[] = [
     {
       title: '名字',
       dataIndex: 'name',
       width: 300,
-      fixed: true,
+      fixed: 'left',
     },
     {
       title: '性别',
@@ -21,13 +29,13 @@ export default function() {
     },
     {
       title: '体重',
-      width: 150,
       dataIndex: 'weight',
     },
     {
       title: '年龄',
       width: 150,
       dataIndex: 'age',
+      fixed: 'right',
     },
   ];
   const data: Array<{}> =  Array.apply(null, {length: 60});
@@ -40,9 +48,10 @@ export default function() {
   }, 0, 60);
   return (
     <Table
-      scroll={{x: '100%', y: 200}}
+      scroll={{x: 1100, y: 200}}
       columns={colums}
       data={data}
+      fixedTitle
     />
   );
 }

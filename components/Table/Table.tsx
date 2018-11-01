@@ -5,80 +5,343 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 
 export interface ITableProps extends IBaseComponent {
-  data: Array<{
-    [index: string]: React.ReactNode;
-  }>;
+  data: IData[];
   columns: IColumns[];
   fixedTitle?: boolean;
   scroll: {
-    x: number | string;
+    x?: number | boolean;
     y: number;
   };
 }
 
+export interface IData {
+  [index: string]: React.ReactNode;
+}
+
 export interface IColumns {
   title: string;
-  width?: number;
+  width?: number | string;
   dataIndex: string;
-  fixed?: boolean;
+  fixed?: 'left' | 'right';
   style?: React.CSSProperties;
 }
 
 export interface ITableState {
-  showShadow: boolean;
+  leftShadow: boolean;
+  rightShadow: boolean;
 }
 
 /**
  * **组件中文名称**-组件描述。
  */
 export class Table extends Component<ITableProps, ITableState> {
-  tableScroll: HTMLElement;
-  tableArr: HTMLElement[] = [];
+  preCls = 'yoshino-table';
 
-  static defaultProps = {
-    fixedTitle: true,
-  };
+  refScrollHeader: HTMLDivElement;
+  refScrollBody: HTMLDivElement;
+  // header与body滚动时的锁，如果其中一个滚动，另一个上锁，约定500ms后解锁
+  lockHeaderAndBody: boolean | 'header' | 'body' = false;
+  unlockTime = 500;
+  timeoutlockHeaderAndBody = 0;
+
+  refFixedLeft: HTMLElement;
+  refFixedRight: HTMLElement;
+  lockFixedAndBody: boolean | 'left' | 'right' | 'body' = false;
+  timeoutlockFixedAndBody = 0;
 
   state = {
-    showShadow: false,
+    leftShadow: false,
+    rightShadow: false,
   };
 
+  defaultProps = {
+    fixedTitle: false,
+    scroll: {
+      y: 280,
+      x: true,
+    },
+  };
+
+  lockHeaderAndBodyFunc = (lock: 'header' | 'body') => {
+    this.lockHeaderAndBody = lock;
+    if (this.timeoutlockHeaderAndBody) {
+      clearTimeout(this.timeoutlockHeaderAndBody);
+    }
+    this.timeoutlockHeaderAndBody = window.setTimeout(() => {
+      this.lockHeaderAndBody = false; // 解锁
+    }, this.unlockTime);
+  }
+
+  lockFixedAndBodyFunc = (lock: 'left' | 'right' | 'body') => {
+    this.lockFixedAndBody = lock;
+    if (this.timeoutlockFixedAndBody) {
+      clearTimeout(this.timeoutlockFixedAndBody);
+    }
+    this.timeoutlockFixedAndBody = window.setTimeout(() => {
+      this.lockFixedAndBody = false; // 解锁
+    }, this.unlockTime);
+  }
+
+  // 滚动列表头部监听
+  scrollHeaderAndBodyEventListener = () => {
+    if (this.lockHeaderAndBody === 'body') {
+      return;
+    }
+    this.lockHeaderAndBodyFunc('header');
+    this.refScrollBody.scrollLeft = this.refScrollHeader.scrollLeft;
+  }
+
+  // 滚动table主体监听
+  scrollBodyAndHeaderEventListener = () => {
+    // 主体与header同步
+    if (this.lockHeaderAndBody === 'header') {
+      return;
+    }
+    this.lockHeaderAndBodyFunc('body');
+    this.refScrollHeader.scrollLeft = this.refScrollBody.scrollLeft;
+  }
+
+  // 左侧锁列监听
+  scrollFixedLeftEventListener = () => {
+    const lock = this.lockFixedAndBody;
+    if (lock !== false && lock !== 'left') {
+      return;
+    }
+    this.lockFixedAndBodyFunc('left');
+    const top = this.refFixedLeft.scrollTop;
+    this.refScrollBody.scrollTop = top;
+    if (this.hasFixedRight) {
+      this.refFixedRight.scrollTop = top;
+    }
+  }
+
+  // 右侧锁列监听
+  scrollFixedRightEventListener = () => {
+    const lock = this.lockFixedAndBody;
+    if (lock !== false && lock !== 'right') {
+      return;
+    }
+    this.lockFixedAndBodyFunc('right');
+    const top = this.refFixedRight.scrollTop;
+    this.refScrollBody.scrollTop = top;
+    if (this.hasFixedLeft) {
+      this.refFixedLeft.scrollTop = top;
+    }
+  }
+
+  // 主体与锁列同步
+  scrollBodyAndFixedEventListener = () => {
+    this.setFixedShadow();
+    const dom = this.refScrollBody;
+    const lock = this.lockFixedAndBody;
+    if (lock !== false && lock !== 'body') {
+      return;
+    }
+    this.lockFixedAndBodyFunc('body');
+    const top = dom.scrollTop;
+    if (this.hasFixedRight) {
+      this.refFixedRight.scrollTop = top;
+    }
+    if (this.hasFixedLeft) {
+      this.refFixedLeft.scrollTop = top;
+    }
+  }
+
+  // 设置shadow显示
+  setFixedShadow = () => {
+    const dom = this.refScrollBody;
+    if (dom.scrollLeft > 0 && this.hasFixedLeft()) {
+      if (!this.state.leftShadow) {
+        this.setState({leftShadow: true});
+      }
+    } else {
+      if (this.state.leftShadow) {
+        this.setState({leftShadow: false});
+      }
+    }
+
+    if (dom.scrollLeft === dom.scrollWidth - dom.clientWidth) {
+      if (this.state.rightShadow) {
+        this.setState({rightShadow: false});
+      }
+    } else {
+      if (!this.state.rightShadow) {
+        this.setState({rightShadow: true});
+      }
+    }
+  }
+  // 是否左侧锁列
+  hasFixedLeft = () => {
+    return !!this.props.columns.filter((item) => item.fixed === 'left').length;
+  }
+
+  // 是否右侧锁列
+  hasFixedRight = () => {
+    return !!this.props.columns.filter((item) => item.fixed === 'right').length;
+  }
+
   componentDidMount() {
-    this.tableArr.forEach((item) => {
-      item.addEventListener('scroll', this.syncDomScrollTop);
-    });
+    const { fixedTitle } = this.props;
+    const isFixedLeft = this.hasFixedLeft();
+    const isFixedRight = this.hasFixedRight();
+    if (fixedTitle) {
+      this.refScrollBody.addEventListener('scroll', this.scrollBodyAndHeaderEventListener);
+      this.refScrollHeader.addEventListener('scroll', this.scrollHeaderAndBodyEventListener);
+    }
+
+    if (isFixedLeft || isFixedRight) {
+      this.refScrollBody.addEventListener('scroll', this.scrollBodyAndFixedEventListener);
+    }
+
+    if (isFixedLeft) {
+      this.refFixedLeft.addEventListener('scroll', this.scrollFixedLeftEventListener);
+    }
+
+    if (isFixedRight) {
+      this.refFixedRight.addEventListener('scroll', this.scrollFixedRightEventListener);
+    }
+
+    this.setFixedShadow();
   }
 
   componentWillUnmount() {
-    this.tableArr.forEach((item) => {
-      item.removeEventListener('scroll', this.syncDomScrollTop);
-    });
+    const { fixedTitle } = this.props;
+    const isFixedLeft = this.hasFixedLeft();
+    const isFixedRight = this.hasFixedRight();
+    if (fixedTitle) {
+      this.refScrollBody.removeEventListener('scroll', this.scrollBodyAndHeaderEventListener);
+      this.refScrollHeader.removeEventListener('scroll', this.scrollHeaderAndBodyEventListener);
+    }
+
+    if (isFixedLeft || isFixedRight) {
+      this.refScrollBody.removeEventListener('scroll', this.scrollBodyAndFixedEventListener);
+    }
+
+    if (isFixedLeft) {
+      this.refFixedLeft.removeEventListener('scroll', this.scrollFixedLeftEventListener);
+    }
+
+    if (isFixedRight) {
+      this.refFixedRight.removeEventListener('scroll', this.scrollFixedRightEventListener);
+    }
   }
 
-  // 同步个表格组件scrolltop
-  // tslint:disable:no-any
-  syncDomScrollTop = (e: any) => {
-    let scrollTop = 0;
-    let scrollLeft = 0;
-    this.tableArr.forEach((item) => {
-      if (e.target.className === item.className) {
-        scrollTop = item.scrollTop;
-        scrollLeft = item.scrollLeft;
-        if (e.target.className === 'yoshino-table-fixed-left') {
-          scrollLeft = this.tableScroll.scrollLeft;
+  renderColgroup = (columns: IColumns[]) => {
+    return (
+      <colgroup>
+        {
+          columns.map((item, key) => (
+            <col key={key} style={{width: item.width}}/>
+          ))
         }
-        if (e.target.className === 'yoshino-table-fixed-top') {
-          scrollTop = this.tableScroll.scrollTop;
-        }
-      }
+      </colgroup>
+    );
+  }
+
+  renderThead = (columns: IColumns[]) => {
+    return (
+      <thead>
+        <tr>
+          {
+            columns.map((item, key) => (
+              <th key={key}>{item.title}</th>
+            ))
+          }
+        </tr>
+      </thead>
+    );
+  }
+
+  renderTbody = (columns: IColumns[]) => {
+    const { data } = this.props;
+    const content = data.map((item, key) => {
+      return (
+        <tr key={key}>
+          {
+            columns.map((column, index) => (
+              <td key={index}>{item[column.dataIndex]}</td>
+            ))
+          }
+        </tr>
+      );
     });
-    // 阴影控制
-    if (!this.state.showShadow && scrollLeft > 0) {
-      this.setState({ showShadow: true });
-    } else if (scrollLeft === 0 && this.state.showShadow) {
-      this.setState({ showShadow: false });
-    }
-    scrollTo(this.tableArr, scrollLeft, scrollTop);
+    return (
+      <tbody>
+        {content}
+      </tbody>
+    );
+  }
+
+  renderScrollHeader = () => {
+    const { columns, fixedTitle, scroll } = this.props;
+    const width = typeof scroll.x === 'boolean' && scroll.x ? undefined : scroll.x ? scroll.x : undefined;
+    const style = fixedTitle ? {
+      width,
+    } : {};
+    return (
+      <table style={style}>
+        {this.renderColgroup(columns)}
+        {this.renderThead(columns)}
+      </table>
+    );
+  }
+
+  renderScrollBody = () => {
+    const {
+      columns, fixedTitle,
+      scroll,
+     } = this.props;
+    const width = typeof scroll.x === 'boolean' && scroll.x ? undefined : scroll.x ? scroll.x : undefined;
+    const style = fixedTitle ? {
+      width,
+    } : {};
+    return (
+      <table style={style}>
+        {this.renderColgroup(columns)}
+        {fixedTitle ? null : this.renderThead(columns)}
+        {this.renderTbody(columns)}
+      </table>
+    );
+  }
+
+  renderFixedHeader = (columns: IColumns[]) => {
+    return (
+      <div className={`${this.preCls}-header-inner`}>
+        <table>
+          {this.renderColgroup(columns)}
+          {this.renderThead(columns)}
+        </table>
+      </div>
+    );
+  }
+
+  renderFixedBody = (columns: IColumns[], pos: 'left' | 'right') => {
+    const { fixedTitle, scroll } = this.props;
+    const bodyStyle = fixedTitle ? {
+      height: scroll.y,
+    } : {};
+    return (
+      <div
+        className={`${this.preCls}-body-inner`}
+        style={bodyStyle}
+        ref={(v) => {
+          if (!v) {
+            return;
+          }
+          if (pos === 'left') {
+            this.refFixedLeft = v;
+          } else if (pos === 'right') {
+            this.refFixedRight = v;
+          }
+        }}
+      >
+        <table>
+          {this.renderColgroup(columns)}
+          {fixedTitle ? null : this.renderThead(columns)}
+          {this.renderTbody(columns)}
+        </table>
+      </div>
+    );
   }
 
   render() {
@@ -86,226 +349,86 @@ export class Table extends Component<ITableProps, ITableState> {
       className, style, columns,
       data, fixedTitle, scroll,
       ...otherProps} = this.props;
-    const preCls = 'yoshino-table';
+    const preCls = this.preCls;
     const clsName = classNames(
       preCls, className,
+      {[`${preCls}-fixed-header`]: fixedTitle},
     );
-    this.tableArr = []; // 清空
-    // 判断是否需要固定左侧列表
-    const fixedLeft = columns.some((item) => !!item.fixed);
-    let fixedWidth = 0;
-    for (const column of columns) {
-      if (column.fixed) {
-        fixedWidth += column.width || 0;
-      }
-    }
+    const bodyStyle = fixedTitle ? {
+      height: scroll.y,
+    } : {};
+
+    const fixedLeftCol = columns.filter((item) => item.fixed === 'left');
+    const fixedRightCol = columns.filter((item) => item.fixed === 'right');
+    const fixedLeftCls = classNames(
+      `${preCls}-fixed-left`,
+      {[`${preCls}-fixed-left-shadow`]: this.state.leftShadow}
+    );
+    const fixedRightCls = classNames(
+      `${preCls}-fixed-right`,
+      {[`${preCls}-fixed-right-shadow`]: this.state.rightShadow}
+    );
     return (
       <div
         className={clsName}
         style={style}
         {...otherProps}
       >
-          <div className={`${preCls}-box`} style={{height: scroll.y}}>
-            <div
-              className={`${preCls}-scroll`}
-              ref={(dom) => {
-                if (!dom) {
-                  return;
-                }
-                this.tableArr.push(dom);
-                this.tableScroll = dom;
-              }}
-            >
-              <table style={{width: scroll.x}}>
-                <thead>
-                  <tr>
-                    {columns.map((item, index) => {
-                      const style: React.CSSProperties = {
-                        width: item.width,
-                        ...item.style,
-                      };
-                      return (
-                        <th key={index}>
-                          <div
-                            style={style}
-                          >
-                            {item.title}
-                          </div>
-                        </th>
-                      );
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        {columns.map((column, i) => {
-                          const style: React.CSSProperties = {
-                            width: column.width,
-                          };
-                          return (
-                            <td key={i} style={style}>
-                              <div style={style}>
-                                <div
-                                  style={column.style}
-                                >
-                                  {item[column.dataIndex]}
-                                </div>
-                              </div>
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-            {
-              fixedLeft ? (
-                <React.Fragment>
-                  <div
-                    className={`${preCls}-fixed-left`}
-                    style={{
-                      width: fixedWidth || `${fixedWidth}px`,
-                    }}
-                    ref={(dom) => {
-                      if (!dom) {
-                        return;
-                      }
-                      this.tableArr.push(dom);
-                    }}
-                  >
-                    <div className={`${preCls}-header`}>
-                      <table>
-                        <thead>
-                          <tr>
-                            {columns.map((item, index) => {
-                              const style: React.CSSProperties = {
-                                width: item.width,
-                              };
-                              return item.fixed ? (
-                                <th key={index} style={style}>
-                                  <div
-                                    style={item.style}
-                                  >
-                                    {item.title}
-                                  </div>
-                                </th>
-                              ) : null;
-                            })}
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                    <div className={`${preCls}-body`}>
-                      <table>
-                        <tbody>
-                          {data.map((item, index) => {
-                            return (
-                              <tr key={index}>
-                                {columns.map((column, i) => {
-                                  const style: React.CSSProperties = {
-                                    width: column.width,
-                                  };
-                                  return column.fixed ? (
-                                    <td key={i} style={style}>
-                                      <div style={style}>
-                                        <div
-                                          style={column.style}
-                                        >
-                                          {item[column.dataIndex]}
-                                        </div>
-                                      </div>
-                                    </td>
-                                  ) : null;
-                                })}
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <div
-                    className={`${preCls}-fixed-left-top`}
-                  >
-                    <div className={`${preCls}-header`}>
-                      <table>
-                        <thead>
-                          <tr>
-                            {columns.map((item, index) => {
-                              const style: React.CSSProperties = {
-                                width: item.width,
-                              };
-                              return item.fixed ? (
-                                <th key={index} style={style}>
-                                  <div
-                                    style={item.style}
-                                  >
-                                    {item.title}
-                                  </div>
-                                </th>
-                              ) : null;
-                            })}
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                  </div>
-                </React.Fragment>
-              ) : null
-            }
+        <div className={`${preCls}-content`}>
+          <div className={`${preCls}-scroll`}>
             {
               fixedTitle ? (
                 <div
-                  className={`${preCls}-fixed-top`}
-                  ref={(dom) => {
-                    if (!dom) {
-                      return;
+                  className={`${preCls}-header`}
+                  ref={(v) => {
+                    if (v) {
+                      this.refScrollHeader = v;
                     }
-                    this.tableArr.push(dom);
                   }}
                 >
-                  <div className={`${preCls}-header`}>
-                    <table style={{width: scroll.x}}>
-                      <thead>
-                        <tr>
-                          {columns.map((item, index) => {
-                            const style: React.CSSProperties = {
-                              width: item.width,
-                            };
-                            return (
-                              <th key={index} style={style}>
-                                <div
-                                  style={{...style, ...item.style}}
-                                >
-                                  {item.title}
-                                </div>
-                              </th>
-                            );
-                          })}
-                        </tr>
-                      </thead>
-                    </table>
-                  </div>
+                  {this.renderScrollHeader()}
                 </div>
               ) : null
             }
-            {this.state.showShadow ? (
-              <div className='shadow' style={{ left: `${fixedWidth}px` }} />
-            ) : null}
+            <div
+              className={`${preCls}-body`}
+              style={bodyStyle}
+              ref={(v) => {
+                if (v) {
+                  this.refScrollBody = v;
+                }
+              }}
+            >
+              {this.renderScrollBody()}
+            </div>
           </div>
+          {
+            fixedLeftCol.length ? (
+              <div className={fixedLeftCls}>
+                <div className={`${preCls}-header-outter`}>
+                  {this.renderFixedHeader(fixedLeftCol)}
+                </div>
+                <div className={`${preCls}-body-outter`}>
+                  {this.renderFixedBody(fixedLeftCol, 'left')}
+                </div>
+              </div>
+            ) : null
+          }
+          {
+            fixedRightCol.length ? (
+              <div className={fixedRightCls}>
+                <div className={`${preCls}-header-ouuter`}>
+                  {this.renderFixedHeader(fixedRightCol)}
+                </div>
+                <div className={`${preCls}-body-outter`}>
+                  {this.renderFixedBody(fixedRightCol, 'right')}
+                </div>
+              </div>
+            ) : null
+          }
+        </div>
       </div>
     );
-  }
-}
-
-function scrollTo(doms: HTMLElement[], x: number, y: number) {
-  for (const dom of doms) {
-    dom.scrollTop = dom.scrollHeight <= y ? dom.scrollHeight : y;
-    dom.scrollLeft = dom.scrollWidth <= x ? dom.scrollWidth : x;
   }
 }
 

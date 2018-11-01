@@ -24,20 +24,19 @@ export default function() {
       dataIndex: 'age',
     },
   ];
-  const data: Array<{}> =  Array.apply(null, {length: 60});
+  const data: Array<{}> =  Array.apply(null, {length: 5});
   data.fill({
     name: 'shana',
     gender: 'gril',
     height: 146,
     weight: '38kg',
     age: 14,
-  }, 0, 60);
+  }, 0, 5);
   return (
     <Table
-      scroll={{x: '100%', y: 200}}
+      scroll={{y: 200}}
       columns={colums}
       data={data}
-      fixedTitle={false}
     />
   );
 }

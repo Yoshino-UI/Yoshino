@@ -51,8 +51,8 @@ export default [
       },
       {
         props: 'fixed',
-        intro: '是否开启锁列，请把锁列的对象置于`columns`的数组头部',
-        type: 'boolean',
+        intro: '开启锁列，左或者右',
+        type: '`left` | `right`',
         defaultValue: 'false',
       },
     ]
