@@ -34,7 +34,6 @@ export default function() {
   }, 0, 5);
   return (
     <Table
-      scroll={{y: 200}}
       columns={colums}
       data={data}
     />

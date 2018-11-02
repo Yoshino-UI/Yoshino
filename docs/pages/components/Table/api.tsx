@@ -22,7 +22,7 @@ export default [
       },
       {
         props: 'scroll',
-        intro: '控制表格可视区域宽高',
+        intro: '控制表格可视区域宽高，当锁头的时候生效',
         type: '{`x`: `number` | `string`; `y`: `number`;}',
         defaultValue: '-',
       },

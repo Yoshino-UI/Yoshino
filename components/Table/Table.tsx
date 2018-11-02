@@ -9,7 +9,7 @@ export interface ITableProps extends IBaseComponent {
   data: any[];
   columns: IColumns[];
   fixedTitle?: boolean;
-  scroll: {
+  scroll?: {
     x?: number | boolean;
     y: number;
   };
@@ -271,7 +271,8 @@ export class Table extends Component<ITableProps, ITableState> {
 
   renderScrollHeader = () => {
     const { columns, fixedTitle, scroll } = this.props;
-    const width = typeof scroll.x === 'boolean' && scroll.x ? undefined : scroll.x ? scroll.x : undefined;
+    const scrollX = scroll!.x;
+    const width = typeof scrollX === 'boolean' && scrollX ? undefined : scrollX ? scrollX : undefined;
     const style = fixedTitle ? {
       width,
     } : {};
@@ -288,7 +289,8 @@ export class Table extends Component<ITableProps, ITableState> {
       columns, fixedTitle,
       scroll,
      } = this.props;
-    const width = typeof scroll.x === 'boolean' && scroll.x ? undefined : scroll.x ? scroll.x : undefined;
+    const scrollX = scroll!.x;
+    const width = typeof scrollX === 'boolean' && scrollX ? undefined : scrollX ? scrollX : undefined;
     const style = fixedTitle ? {
       width,
     } : {};
@@ -315,7 +317,7 @@ export class Table extends Component<ITableProps, ITableState> {
   renderFixedBody = (columns: IColumns[], pos: 'left' | 'right') => {
     const { fixedTitle, scroll } = this.props;
     const bodyStyle = fixedTitle ? {
-      height: scroll.y,
+      height: scroll!.y,
     } : {};
     return (
       <div
@@ -352,7 +354,7 @@ export class Table extends Component<ITableProps, ITableState> {
       {[`${preCls}-fixed-header`]: fixedTitle},
     );
     const bodyStyle = fixedTitle ? {
-      height: scroll.y,
+      height: scroll!.y,
     } : {};
 
     const fixedLeftCol = columns.filter((item) => item.fixed === 'left');
