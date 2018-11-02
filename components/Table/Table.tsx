@@ -51,7 +51,7 @@ export class Table extends Component<ITableProps, ITableState> {
     rightShadow: false,
   };
 
-  defaultProps = {
+  static defaultProps = {
     fixedTitle: false,
     scroll: {
       y: 280,
