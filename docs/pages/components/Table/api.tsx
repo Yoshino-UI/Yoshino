@@ -5,7 +5,7 @@ export default [
       {
         props: 'data',
         intro: '数据源',
-        type: 'Array<{[index: string]: React.ReactNode;}>',
+        type: 'any[]',
         defaultValue: '-',
       },
       {

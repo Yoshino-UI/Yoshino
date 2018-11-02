@@ -5,17 +5,14 @@ import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 
 export interface ITableProps extends IBaseComponent {
-  data: IData[];
+  // tslint:disable-next-line no-any
+  data: any[];
   columns: IColumns[];
   fixedTitle?: boolean;
   scroll: {
     x?: number | boolean;
     y: number;
   };
-}
-
-export interface IData {
-  [index: string]: React.ReactNode;
 }
 
 export interface IColumns {
