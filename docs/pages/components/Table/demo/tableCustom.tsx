@@ -32,6 +32,11 @@ export default function() {
       dataIndex: 'weight',
     },
     {
+      title: '地址',
+      dataIndex: 'address',
+      width: 500,
+    },
+    {
       title: '年龄',
       width: 150,
       dataIndex: 'age',
@@ -40,15 +45,16 @@ export default function() {
   ];
   const data: Array<{}> =  Array.apply(null, {length: 60});
   data.fill({
-    name: 'shana',
+    name: 'shana我',
     gender: 'gril',
     height: 146,
     weight: '38kg',
     age: 14,
+    address: '新世界红莲街灭世镇重生小街1号',
   }, 0, 60);
   return (
     <Table
-      scroll={{x: 1100, y: 200}}
+      scroll={{x: 1700, y: 200}}
       columns={colums}
       data={data}
       fixedTitle
