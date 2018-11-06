@@ -1,10 +1,13 @@
-// tslint:disable
+// tslint:disable no-any
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import Input from '../Input';
 import {IInputProps} from '../Input/Input';
-import { CSSTransition } from 'react-transition-group';
+import Transitions from '../Transitions';
+import Pop from '../Pop';
+
+const { Expand } = Transitions;
 
 export interface IAutoCompleteProps extends IInputProps {
   /**
@@ -32,6 +35,10 @@ export interface IAutoCompleteState {
  * **自动完成**-用于辅助补全输入项
  */
 export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteState> {
+  refInput: HTMLInputElement;
+  intervalHanlde = 0;
+  listShowTimeout = 0;
+
   static defaultProps = {
     activeFirstOption: false,
     defaultValue: '',
@@ -57,13 +64,12 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     }
   }
 
-
   onFocus: React.FormEventHandler<HTMLInputElement> = (e) => {
     const {onFocus} = this.props;
     if (onFocus) {
       onFocus(e);
     }
-    this.showList();
+    this.toggleList(true);
   }
 
   onBlur: React.FormEventHandler<HTMLInputElement> = (e) => {
@@ -93,7 +99,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
       this.onChangeTrigger(this.state.options[active]);
       this.hideList();
     } else {
-      this.showList();
+      this.toggleList(true);
     }
   }
 
@@ -133,15 +139,18 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
       this.setState({active: 0});
     }
 
-    // 延时下拉框消失，否侧列表的子项click将不生效
-    setTimeout(() => {
-      this.setState({show: false});
-    }, 100);
+    this.toggleList(false);
   }
 
-  // 显示list
-  showList = () => {
-    this.setState({show: true});
+  toggleList = (show: boolean) => {
+    if (this.listShowTimeout) {
+      clearTimeout(this.listShowTimeout);
+    }
+
+    // 延时下拉框消失，否侧列表的子项click将不生效
+    this.listShowTimeout = window.setTimeout(() => {
+      this.setState({show});
+    }, 100);
   }
 
   render() {
@@ -154,68 +163,74 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     const clsName = classNames(
       preCls, className,
     );
-    const transitionCls = {
-      appear: `${preCls}-appear`,
-      appearActive: `${preCls}-active-appear`,
-      enter: `${preCls}-enter`,
-      enterActive: `${preCls}-active-enter`,
-      enterDone: `${preCls}-done-enter`,
-      exit: `${preCls}-exit`,
-      exitActive: `${preCls}-active-exit`,
-      exitDone: `${preCls}-done-exit`,
-    };
     const {options} = this.state;
     const inValue = this.getValue();
-    return (
-      <div
-        className={clsName}
+    const content = (
+      <Expand
+        active={this.state.show && options.length > 0}
       >
-        <Input
-          {...otherProps}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onKeyDown={this.onKeyDown}
-          onChange={this.onFilter}
-          style={style}
-          value={inValue}
-        />
-        <CSSTransition
-          timeout={50}
-          classNames={transitionCls}
-          in={this.state.show && options.length > 0}
-          appear
-          mountOnEnter
+        <ul
+          className={`${preCls}-list`}
         >
           {
-            () => {
-              return (
-                <ul className={`${preCls}-list`}>
-                  {
-                    options.map((item, key) => {
-                      const {active} = this.state;
-                      const cls = classNames(
-                        `${preCls}-item`,
-                        {[`${preCls}-item-active`]: key === active},
-                      );
-                      return (
-                        <li
-                          className={cls}
-                          key={key}
-                          onMouseOver={() => this.setState({active: key})}
-                          onClick={() => this.onChangeTrigger(item)}
-                        >
-                          {item}
-                        </li>
-                      );
-                    })
-                  }
-                </ul>
+            options.map((item, key) => {
+              const {active} = this.state;
+              const cls = classNames(
+                `${preCls}-item`,
+                {[`${preCls}-item-active`]: key === active},
               );
-            }
+              return (
+                <li
+                  className={cls}
+                  key={key}
+                  onMouseOver={() => this.setState({active: key})}
+                  onClick={() => {
+                    this.onChangeTrigger(item);
+                    this.hideList();
+                  }}
+                  onMouseDown={() => {
+                    this.intervalHanlde = window.setInterval(() => {
+                      this.refInput.focus();
+                    }, 10);
+                  }}
+                  onMouseUp={() => {
+                    clearInterval(this.intervalHanlde);
+                  }}
+                >
+                  {item}
+                </li>
+              );
+            })
           }
-
-        </CSSTransition>
-      </div>
+        </ul>
+      </Expand>
+    );
+    return (
+      <Pop
+        content={content}
+        inheritWidth
+        placement='bottom'
+        visible
+      >
+        <div
+          className={clsName}
+        >
+          <Input
+            {...otherProps}
+            onFocus={this.onFocus}
+            onBlur={this.hideList}
+            onKeyDown={this.onKeyDown}
+            onChange={this.onFilter}
+            style={style}
+            value={inValue}
+            refInput={(v) => {
+              if (v) {
+                this.refInput = v;
+              }
+            }}
+          />
+        </div>
+      </Pop>
     );
   }
 }

@@ -147,6 +147,9 @@
   // 当optgroup包裹opt时候重写padding-left
   .@{select-prefix-cls}-option {
     padding-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -155,6 +158,9 @@
   font-size: @select-option-font-size;
   padding: @select-option-padding;
   user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     background: @primary-color-choosed;

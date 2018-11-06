@@ -9,7 +9,7 @@ export default function() {
     <div>
       <Select mode='single' placeholder='请选择' defaultValue={''} style={style}>
         <OptGroup label='钉宫四萌'>
-          <Option value='灼眼的夏娜'>灼眼的夏娜</Option>
+          <Option value='灼眼的夏娜'>灼眼的夏娜灼眼的夏娜灼眼的夏娜灼眼的夏娜灼眼的夏娜灼眼的夏娜灼眼的夏娜</Option>
           <Option value='零之使魔'>零之使魔</Option>
           <Option value='旋风管家'>旋风管家</Option>
           <Option value='龙与虎'>龙与虎</Option>

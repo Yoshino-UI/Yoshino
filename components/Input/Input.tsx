@@ -29,6 +29,10 @@ export interface IInputProps extends IAbstractInput<string> {
    * 尾部style
    */
   footerStyle?: CSSProperties; // tslint:disable-line:no-any
+  /**
+   * input实例
+   */
+  refInput?: (v: HTMLInputElement) => void;
 }
 
 export interface IInputState {
@@ -80,6 +84,7 @@ export class Input extends Component<IInputProps, IInputState> {
       className, style, size, header,
       footer, headerStyle, footerStyle,
       onEnter, onChange, value, defaultValue,
+      refInput,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-input';
@@ -102,6 +107,7 @@ export class Input extends Component<IInputProps, IInputState> {
           onKeyDown={this.onEnter}
           onChange={this.onChange}
           value={inValue}
+          ref={refInput}
         />
         {footer ? (
           <span className={`${preCls}-footer`} style={footerStyle}>{footer}</span>

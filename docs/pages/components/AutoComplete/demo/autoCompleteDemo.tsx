@@ -4,7 +4,7 @@ import { AutoComplete } from '@yoshino/components/';
 export default function() {
   return (
     <div>
-      <AutoComplete dataSource={['1', 'asdad', '777']}/>
+      <AutoComplete dataSource={['1', 'asdad', '777', '121', 'sda', '测试']}/>
     </div>
   );
 }
