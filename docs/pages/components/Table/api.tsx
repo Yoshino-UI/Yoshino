@@ -55,6 +55,12 @@ export default [
         type: '`left` | `right`',
         defaultValue: 'false',
       },
+      {
+        props: 'render',
+        intro: '自定义渲染单元格',
+        type: '(v: any) => void',
+        defaultValue: '-',
+      }
     ]
   }
 ];
