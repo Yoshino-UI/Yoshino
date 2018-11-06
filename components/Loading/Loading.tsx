@@ -66,7 +66,7 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
     const loadSize = `${preCls}-${size}`;
     const hasChildren = !!children;
     const clsName = classNames(
-      preCls, loadSize, className,
+      preCls, className,
       {
         [`${preCls}-children-box`]: hasChildren,
       }
@@ -83,7 +83,7 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
             <>
               <div
                 className={classNames(
-                  `${preCls}-container`, {
+                  `${preCls}-container`, loadSize, {
                     [`${preCls}-children-container`]: hasChildren,
                   })
                 }
