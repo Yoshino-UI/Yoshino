@@ -1,11 +1,10 @@
-
+// tslint:disable no-any
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 
 export interface ITableProps extends IBaseComponent {
-  // tslint:disable-next-line no-any
   data: any[];
   columns: IColumns[];
   fixedTitle?: boolean;
@@ -21,6 +20,7 @@ export interface IColumns {
   dataIndex: string;
   fixed?: 'left' | 'right';
   style?: React.CSSProperties;
+  render?: (v: any) => void;
 }
 
 export interface ITableState {
@@ -255,9 +255,14 @@ export class Table extends Component<ITableProps, ITableState> {
       return (
         <tr key={key}>
           {
-            columns.map((column, index) => (
-              <td key={index}>{item[column.dataIndex]}</td>
-            ))
+            columns.map((column, index) => {
+              const v = item[column.dataIndex];
+              return (
+              <td key={index}>
+                {column.render ? column.render(v) : v}
+              </td>
+              );
+            }
           }
         </tr>
       );
