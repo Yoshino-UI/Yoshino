@@ -262,7 +262,7 @@ export class Table extends Component<ITableProps, ITableState> {
                 {column.render ? column.render(v) : v}
               </td>
               );
-            }
+            })
           }
         </tr>
       );
