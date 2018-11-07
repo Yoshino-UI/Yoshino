@@ -176,6 +176,9 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
   }
 
   onChangeTrigger = (current: number) => {
+    if (this.getCurrent() === current) {
+      return;
+    }
     const {onChange, pageSize} = this.props as IPaginationDefaultProps;
     if (!this.props.current) {
       this.setState({
