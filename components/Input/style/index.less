@@ -7,14 +7,23 @@
   border-radius: @input-border-radius;
   width: 100%;
 
-  &:hover,
-  &:active,
-  &:focus {
-    border-color: @primary-color;
+  &-disabled {
+    cursor: not-allowed;
+    background: @disabled-background-color;
+    border-color: @disabled-border-color;
+    color: @disabled-color;
   }
 
-  &:focus {
-    box-shadow: @input-box-shadow;
+  &-enabled {
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: @primary-color;
+    }
+
+    &:focus {
+      box-shadow: @input-box-shadow;
+    }
   }
 
   &-header,

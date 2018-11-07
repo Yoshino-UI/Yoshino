@@ -14,6 +14,10 @@ import InputCustom from './demo/inputCustom';
 import * as inputCustomMd from './demo/inputCustom.md';
 const inputCustomCode = require('!raw-loader!./demo/inputCustom');
 
+import InputDisabled from './demo/inputDisabled';
+import * as inputDisabledMd from './demo/inputDisabled.md';
+const inputDisabledCode = require('!raw-loader!./demo/inputDisabled');
+
 export default class InputPage extends Component {
   render() {
     return (
@@ -22,6 +26,8 @@ export default class InputPage extends Component {
         <CodeBox text={inputDemoMd} demo={<InputDemo/>} code={inputDemoCode}/>
 
         <CodeBox text={inputCustomMd} demo={<InputCustom/>} code={inputCustomCode}/>
+
+        <CodeBox text={inputDisabledMd} demo={<InputDisabled/>} code={inputDisabledCode}/>
         <ApiBox api={Api}/>
       </div>
     );

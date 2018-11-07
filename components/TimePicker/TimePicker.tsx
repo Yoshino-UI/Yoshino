@@ -224,7 +224,10 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
   }
 
   onOpenChange = (open: boolean) => {
-    const { onOpenChange } = this.props;
+    const { onOpenChange, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     if (this.timeoutHandle !== undefined) {
       clearTimeout(this.timeoutHandle);
     }
@@ -299,6 +302,7 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
         >
           <Input
             size={size}
+            disabled={disabled}
             placeholder={placeholder}
             onClick={this.onOpenChange.bind(this, true)}
             value={valueR}

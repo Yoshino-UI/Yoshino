@@ -33,6 +33,10 @@ export interface IInputProps extends IAbstractInput<string> {
    * input实例
    */
   refInput?: (v: HTMLInputElement) => void;
+  /**
+   * 禁用
+   */
+  disabled?: boolean;
 }
 
 export interface IInputState {
@@ -49,6 +53,7 @@ export class Input extends Component<IInputProps, IInputState> {
   static defaultProps = {
     size: 'default',
     defaultValue: '',
+    disabled: false,
   };
 
   state = {
@@ -61,8 +66,11 @@ export class Input extends Component<IInputProps, IInputState> {
   }
 
   onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {onChange} = this.props;
+    const {onChange, disabled} = this.props;
     const value = e.target.value;
+    if (disabled) {
+      return;
+    }
     if (onChange) {
       onChange(value);
     }
@@ -84,12 +92,19 @@ export class Input extends Component<IInputProps, IInputState> {
       className, style, size, header,
       footer, headerStyle, footerStyle,
       onEnter, onChange, value, defaultValue,
-      refInput,
+      refInput, disabled,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-input';
     const clsName = classNames(
       `${preCls}-wrapper`, `${preCls}-${size}`, className,
+    );
+    const inputCls = classNames(
+      preCls,
+      {
+        [`${preCls}-disabled`]: disabled,
+        [`${preCls}-enabled`]: !disabled,
+      },
     );
     const inValue = this.getValue();
     return (
@@ -102,12 +117,13 @@ export class Input extends Component<IInputProps, IInputState> {
         ) : null}
         <input
           type='text'
-          className={preCls}
+          className={inputCls}
           {...otherProps}
           onKeyDown={this.onEnter}
           onChange={this.onChange}
           value={inValue}
           ref={refInput}
+          disabled={disabled}
         />
         {footer ? (
           <span className={`${preCls}-footer`} style={footerStyle}>{footer}</span>

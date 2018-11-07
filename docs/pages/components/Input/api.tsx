@@ -50,6 +50,18 @@ export default [
         type: 'CSSProperties',
         defaultValue: '-',
       },
+      {
+        props: 'refInput',
+        intro: '获取input - ref',
+        type: '(v: HTMLInputElement) => void',
+        defaultValue: '-',
+      },
+      {
+        props: 'disabled',
+        intro: '禁用输入框',
+        type: 'boolean',
+        defaultValue: 'false',
+      },
     ]
   }
 ];

@@ -86,7 +86,10 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
   }
 
   onOpenChange = (open: boolean) => {
-    const { onOpenChange } = this.props;
+    const { onOpenChange, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     if (onOpenChange) {
       onOpenChange(open);
     }
@@ -285,6 +288,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
           {...otherProps}
         >
           <Input
+            disabled={disabled}
             size={size}
             placeholder={placeholder}
             value={valueR ? moment(valueR).format(format) : ''}
