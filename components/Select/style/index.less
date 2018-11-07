@@ -13,16 +13,14 @@
   display: inline-block;
 
   &-enabled {
-    .@{select-prefix-cls} {
-      &:hover,
-      &:active,
-      &:focus {
-        border-color: @primary-color;
-      }
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: @primary-color;
+    }
 
-      &:focus {
-        box-shadow: @select-box-shadow;
-      }
+    &:focus {
+      box-shadow: @select-box-shadow;
     }
   }
 

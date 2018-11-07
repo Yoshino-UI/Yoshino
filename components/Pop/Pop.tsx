@@ -65,6 +65,10 @@ export interface IPopProps extends IBaseComponent {
    * 变化回调 - 延迟前
    */
   onChangeBefore?: (visible: boolean) => void;
+  /**
+   * trigger为focus模式时，如果开启该属性，点击浮层元素一次就触发关闭
+   */
+  focuseOnce?: boolean;
 }
 
 export interface IPopState {
@@ -94,6 +98,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     mountOnEnter: false,
     inheritWidth: false,
     isMinWidth: false,
+    focuseOnce: false,
   };
 
   state = {
@@ -211,7 +216,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     }
     this.timueoutFoucs = window.setTimeout(() => {
       this.onChangeTrigger(visible);
-    }, 100);
+    }, 10);
   }
 
   // pop包裹对象trigger表现
@@ -243,7 +248,7 @@ export class Pop extends Component<IPopProps, IPopState> {
   getConentTriggerAction = () => {
     const show =  this.toggleVisible.bind(this, true);
     const hide = this.toggleVisible.bind(this, false);
-    const {trigger = 'hover'} = this.props;
+    const {trigger = 'hover', focuseOnce} = this.props;
     const action = {
       hover: {
         onMouseEnter: show,
@@ -252,6 +257,11 @@ export class Pop extends Component<IPopProps, IPopState> {
       focus: {
         onFocus: show,
         onBlur: hide,
+        onClick: () => {
+          if (focuseOnce) {
+            hide();
+          }
+        }
       },
       click: {
       },
@@ -269,6 +279,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     // tslint:disable
     const child: React.ReactElement<any> = React.Children.only(children);
     return React.cloneElement(child, {
+      tabIndex: 0,
       // tslint:disable:no-any
       ref: (v: HTMLElement) => {
         if (v) {

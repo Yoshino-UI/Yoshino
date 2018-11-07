@@ -54,8 +54,7 @@ const {Expand} = Transitions;
  * **组件中文名称**-组件描述。
  */
 export class Select extends Component<ISelectProps, ISelectState> {
-  refChildTarget?: HTMLDivElement;
-  clickCount = 0;
+  toggleTimeOutHandle = 0;
 
   static defaultProps = {
     mode: 'single',
@@ -94,7 +93,6 @@ export class Select extends Component<ISelectProps, ISelectState> {
     // 单选模式
     if (mode === 'single') {
       newValue = value;
-      this.toggleVisible();
     } else {
       if (!Array.isArray(values)) {
         return;
@@ -116,9 +114,11 @@ export class Select extends Component<ISelectProps, ISelectState> {
     });
   }
 
-  toggleVisible = () => {
-    const { visible } = this.state;
-    this.setState({visible: !visible});
+  toggleVisible = (visible: boolean) => {
+    if (this.toggleTimeOutHandle) {
+      clearTimeout(this.toggleTimeOutHandle);
+    }
+    this.setState({visible});
   }
 
   render() {
@@ -152,6 +152,8 @@ export class Select extends Component<ISelectProps, ISelectState> {
         </ul>
       </Expand>
     );
+    const isSingle = mode === 'single' || !Array.isArray(values);
+
     return (
       <Pop
         content={list}
@@ -159,35 +161,18 @@ export class Select extends Component<ISelectProps, ISelectState> {
         inheritWidth
         trigger='focus'
         visible={!disabled}
-        mouseLeaveDelay={this.timeout}
+        mouseLeaveDelay={0}
         overlayClassName={`${preCls}-list`}
-        onChangeBefore={(v) => {
-          if (!disabled) {
-            this.setState({visible: v});
-            if (!v) {
-              this.clickCount = 0;
-            }
-          }
+        onChange={(v) => {
+          this.toggleVisible(v);
         }}
+        focuseOnce={isSingle}
       >
         <div
           className={clsName}
           style={style}
           tabIndex={0}
           {...otherProps}
-          ref={(v) => {
-            if (v) {
-              this.refChildTarget = v;
-            }
-          }}
-          onClick={() => {
-            if (++this.clickCount === 2) {
-              this.clickCount = 0;
-              if (this.refChildTarget) {
-                this.refChildTarget.blur();
-              }
-            }
-          }}
         >
           <div className={`${preCls}-selection ${preCls}-${size}`}>
             {values.toString() === '' ? <div className={`${preCls}-placeholder`}>{placeholder}</div> : null}
