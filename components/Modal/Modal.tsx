@@ -145,7 +145,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
             className={`${preCls}-close`}
             onClick={this.onClose}
           >
-            {closeText || <Icon type='close-round'/>}
+            {closeText || <Icon type='md-close'/>}
           </div> : null}
           <div className={`${preCls}-body`}>
             {
