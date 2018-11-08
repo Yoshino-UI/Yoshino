@@ -56,11 +56,24 @@ export class Button extends Component<IButtonProps, IButtonState> {
     size: 'default',
   };
 
+  onClick = () => {
+    const { loading, disabled, onClick } = this.props;
+    const ban = loading || disabled;
+    if (ban) {
+      return;
+    }
+    if (onClick) {
+      onClick();
+    }
+  }
+
   render() {
     const {
       className, style, disabled, type,
       shape, size, icon, ghost, children,
-      tail, loading, ...otherProps} = this.props;
+      tail, loading, onClick,
+      ...otherProps
+    } = this.props;
     const preCls = 'yoshino-button';
     const btnCls = {
       [`${preCls}-${type}`]: type && !disabled && !loading || type === 'dashed',
@@ -86,6 +99,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
         className={clsName}
         style={style}
         disabled={ban}
+        onClick={this.onClick}
         {...otherProps}
       >
         <div className={`${preCls}-container`}>

@@ -7,6 +7,7 @@ import Button from '../Button';
 import Icon from '../Icon';
 import { render } from 'react-dom';
 import { Dialog } from '../utils/';
+import { IButtonProps } from '../Button/Button';
 
 export interface IModalProps extends IBaseComponent {
   zIndex?: number;
@@ -15,7 +16,9 @@ export interface IModalProps extends IBaseComponent {
   onCancel?: () => void;
   onClose?: () => void;
   okText?: React.ReactNode;
+  okButtonProps?: IButtonProps;
   cancelText?: React.ReactNode;
+  cancelButtonProps?: IButtonProps;
   showCancel?: boolean;
   closeText?: React.ReactNode;
   showClose?: boolean;
@@ -105,7 +108,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
       content, icon, width, zIndex, showCancel,
       okText, cancelText, type = 'confirm', closeText, showClose,
       maskStyle, maskClosable, showMask, maskClick, onOk,
-      onCancel, children,
+      onCancel, children, okButtonProps, cancelButtonProps,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-modal';
@@ -121,6 +124,8 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
     const hasIcon = type !== 'confirm' || icon;
     const visible = this.getVisible();
     const conetnt = children || bodyContent;
+    const okTextIsString = typeof okText === 'string' || okText === undefined;
+    const cancelTextIsString = typeof cancelText === 'string' || cancelText === undefined ;
 
     return visible ? (
       <Dialog
@@ -169,19 +174,36 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
           <div className={`${preCls}-footer`}>
             {
               type === 'confirm' && showCancel ? (
-                <div className={`${preCls}-cancel`} onClick={this.onCancel}>
+                <div
+                  className={`${preCls}-cancel`}
+                  onClick={!cancelTextIsString ? this.onCancel : undefined}
+                >
                   {
-                    typeof cancelText === 'string' || !cancelText ? (
-                      <Button>{cancelText || '取消'}</Button>
+                    cancelTextIsString ? (
+                      <Button
+                        {...cancelButtonProps}
+                        onClick={this.onCancel}
+                      >
+                        {cancelText || '取消'}
+                      </Button>
                     ) : cancelText
                   }
                 </div>
               ) : null
             }
-            <div className={`${preCls}-ok`} onClick={this.onOk}>
+            <div
+              className={`${preCls}-ok`}
+              onClick={!okTextIsString ? this.onOk : undefined}
+            >
               {
-                typeof okText === 'string' || !okText ? (
-                  <Button type='primary'>{okText ? okText : type !== 'confirm' ? '知道了' : '确定'}</Button>
+                okTextIsString ? (
+                  <Button
+                    type='primary'
+                    {...okButtonProps}
+                    onClick={this.onOk}
+                  >
+                    {okText ? okText : type !== 'confirm' ? '知道了' : '确定'}
+                  </Button>
                 ) : okText
               }
             </div>

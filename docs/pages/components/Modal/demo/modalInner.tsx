@@ -22,6 +22,7 @@ export default class App extends React.Component {
           visible={this.state.visible}
           bodyContent={this.state.count}
           onClose={() => this.setState({visible: false})}
+          okButtonProps={{loading: true}}
         />
       </div>
     );

@@ -37,13 +37,25 @@ export default [
       },
       {
         props: 'okText',
-        intro: '确认按钮文本',
+        intro: '确认按钮文本，也可以是一个`Element`',
+        type: 'ReactNode',
+        defaultValue: '确定',
+      },
+      {
+        props: 'okButtonProps',
+        intro: '确认按钮的`props`，详情见`Button Props`',
         type: 'ReactNode',
         defaultValue: '确定',
       },
       {
         props: 'cancelText',
-        intro: '取消按钮文本',
+        intro: '取消按钮文本，也可以是一个`Element`',
+        type: 'ReactNode',
+        defaultValue: '取消',
+      },
+      {
+        props: 'cancelButtonProps',
+        intro: '取消按钮的`props`，，详情见`Button Props`',
         type: 'ReactNode',
         defaultValue: '取消',
       },
