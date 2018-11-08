@@ -24,6 +24,10 @@ export interface IIconState {
  */
 export class Icon extends Component<IIconProps, IIconState> {
   componentDidMount() {
+    // 不使用ionicons图标时不进行加载，提高性能
+    if (!this.props.type) {
+      return;
+    }
     const id = 'yoshino-demand-load';
     if (document.getElementById(id)) {
       return;

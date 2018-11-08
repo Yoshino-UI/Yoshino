@@ -4,7 +4,7 @@ import { Modal, Icon, Button } from '@yoshino/components/';
 export default function() {
   const confirm = () => {
     Modal.confirm({
-      icon: <Icon type='checkmark-round'/>,
+      icon: <Icon type='md-checkmark'/>,
       title: '这是一个标题！！！',
       content: '这是一个内容主题！这是一个内容主题！这是一个内容主题！这是一个内容主题！！',
       width: 400,
