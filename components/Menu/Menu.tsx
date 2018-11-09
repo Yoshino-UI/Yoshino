@@ -88,6 +88,9 @@ export class Menu extends Component<IMenuProps, IMenuState> {
   }
 
   onSelectTrigger = (activeKey: string) => {
+    if (activeKey === this.getActiveKey()) {
+      return;
+    }
     const {onSelect} = this.props;
     if (onSelect) {
       onSelect(activeKey);
