@@ -279,7 +279,6 @@ export class Pop extends Component<IPopProps, IPopState> {
     // tslint:disable
     const child: React.ReactElement<any> = React.Children.only(children);
     return React.cloneElement(child, {
-      tabIndex: 0,
       // tslint:disable:no-any
       ref: (v: HTMLElement) => {
         if (v) {
