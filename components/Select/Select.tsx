@@ -166,7 +166,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
         onChange={(v) => {
           this.toggleVisible(v);
         }}
-        focuseOnce={isSingle}
+        focusOnce={isSingle}
       >
         <div
           className={clsName}

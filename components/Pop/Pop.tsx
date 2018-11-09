@@ -68,7 +68,7 @@ export interface IPopProps extends IBaseComponent {
   /**
    * trigger为focus模式时，如果开启该属性，点击浮层元素一次就触发关闭
    */
-  focuseOnce?: boolean;
+  focusOnce?: boolean;
 }
 
 export interface IPopState {
@@ -98,7 +98,7 @@ export class Pop extends Component<IPopProps, IPopState> {
     mountOnEnter: false,
     inheritWidth: false,
     isMinWidth: false,
-    focuseOnce: false,
+    focusOnce: false,
   };
 
   state = {
@@ -111,7 +111,7 @@ export class Pop extends Component<IPopProps, IPopState> {
       placement, overlayStyle, overlayClassName,
       mouseEnterDelay, mouseLeaveDelay, mountOnEnter,
       onChange, content, visible, inheritWidth, onChangeBefore,
-      isMinWidth,
+      isMinWidth, focusOnce,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-pop';
@@ -248,7 +248,7 @@ export class Pop extends Component<IPopProps, IPopState> {
   getConentTriggerAction = () => {
     const show =  this.toggleVisible.bind(this, true);
     const hide = this.toggleVisible.bind(this, false);
-    const {trigger = 'hover', focuseOnce} = this.props;
+    const {trigger = 'hover', focusOnce} = this.props;
     const action = {
       hover: {
         onMouseEnter: show,
@@ -258,7 +258,7 @@ export class Pop extends Component<IPopProps, IPopState> {
         onFocus: show,
         onBlur: hide,
         onClick: () => {
-          if (focuseOnce) {
+          if (focusOnce) {
             hide();
           }
         }
