@@ -130,7 +130,7 @@ export class Menu extends Component<IMenuProps, IMenuState> {
       className, style, children,
       onSelect, defaultActiveKey,
       onOpenChange, defaultOpenKeys,
-      offset, activeKey, mode,
+      offset, activeKey, mode, openKeys,
       ...otherProps} = this.props;
     const preCls = 'yoshino-menu';
     const clsName = classNames(
