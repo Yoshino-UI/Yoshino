@@ -104,7 +104,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
 
   render() {
     const {
-      className, style, title, bodyContent,
+      className, style, title, bodyContent, visible,
       content, icon, width, zIndex, showCancel,
       okText, cancelText, type = 'confirm', closeText, showClose,
       maskStyle, maskClosable, showMask, maskClick, onOk,
@@ -122,14 +122,14 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
       error: 'close-circle',
     };
     const hasIcon = type !== 'confirm' || icon;
-    const visible = this.getVisible();
+    const visibleR = this.getVisible();
     const conetnt = children || bodyContent;
     const okTextIsString = typeof okText === 'string' || okText === undefined;
     const cancelTextIsString = typeof cancelText === 'string' || cancelText === undefined ;
 
-    return visible ? (
+    return visibleR ? (
       <Dialog
-        visible={visible}
+        visible={visibleR}
         showMask={showMask}
         maskStyle={maskStyle}
         maskClick={() => {
