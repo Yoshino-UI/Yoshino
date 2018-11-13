@@ -99,7 +99,15 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
 
   getVisible = () => {
     const {visible} = this.props;
-    return visible !== undefined ? visible : this.state.visible;
+    const result = visible !== undefined ? visible : this.state.visible;
+    if (result) {
+      document.documentElement!.style.overflow = 'hidden';
+      document.documentElement!.style.height = '100vh';
+    } else {
+      document.documentElement!.style.overflow = null;
+      document.documentElement!.style.height = null;
+    }
+    return result;
   }
 
   render() {
