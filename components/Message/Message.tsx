@@ -159,10 +159,22 @@ const clearMessageStack = () => {
 
 export default {
   config: setMessageConfig,
-  success: (props: IMessage ) => renderMessages(props, 'success'),
-  info: (props: IMessage ) => renderMessages(props, 'info'),
-  warn: (props: IMessage ) => renderMessages(props, 'warning'),
-  error: (props: IMessage ) => renderMessages(props, 'error'),
+  success: (props: IMessage | string) => {
+    const param = typeof props === 'string' ? {content: props} : props;
+    renderMessages(param, 'success');
+  },
+  info: (props: IMessage | string) => {
+    const param = typeof props === 'string' ? {content: props} : props;
+    renderMessages(param, 'info');
+  },
+  warn: (props: IMessage | string) => {
+    const param = typeof props === 'string' ? {content: props} : props;
+    renderMessages(param, 'warning');
+  },
+  error: (props: IMessage | string) => {
+    const param = typeof props === 'string' ? {content: props} : props;
+    renderMessages(param, 'error');
+  },
   close: closeMessage,
   destroy: clearMessageStack,
 };
