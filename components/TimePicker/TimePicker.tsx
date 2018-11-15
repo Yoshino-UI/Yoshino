@@ -180,36 +180,21 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
                   ref={(v) => {
                     if (isActive && v) {
                       const offsetTop = v.offsetTop;
-                      const typeAction = {
-                        h: () => {
-                          const start = this.refHourDiv.scrollTop;
-                          const end = offsetTop;
-                          valueTransition({
-                            start, end,
-                          }, (v) => {
-                            this.refHourDiv.scrollTop = v;
-                          });
-                        },
-                        m: () => {
-                          const start = this.refMinuteDiv.scrollTop;
-                          const end = offsetTop;
-                          valueTransition({
-                            start, end,
-                          }, (v) => {
-                            this.refMinuteDiv.scrollTop = v;
-                          });
-                        },
-                        s: () => {
-                          const start = this.refSecondDiv.scrollTop;
-                          const end = offsetTop;
-                          valueTransition({
-                            start, end,
-                          }, (v) => {
-                            this.refSecondDiv.scrollTop = v;
-                          });
-                        },
+                      const syncScrollTop = (dom: HTMLDivElement) => {
+                        const start = dom.scrollTop;
+                        const end = offsetTop;
+                        valueTransition({
+                          start, end,
+                        }, (v) => {
+                          dom.scrollTop = v;
+                        });
                       };
-                      typeAction[type]();
+                      const typeAction = {
+                        h: () => syncScrollTop(this.refHourDiv),
+                        m: () => syncScrollTop(this.refMinuteDiv),
+                        s: () => syncScrollTop(this.refSecondDiv),
+                      };
+                      setTimeout(typeAction[type], 0);
                     }
                   }}
                 >
