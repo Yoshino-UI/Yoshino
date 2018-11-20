@@ -58,7 +58,7 @@ export default [
       {
         props: 'render',
         intro: '自定义渲染单元格',
-        type: '(v: any) => void',
+        type: '(v: any) => JSX.Element',
         defaultValue: '-',
       }
     ]
