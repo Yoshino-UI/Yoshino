@@ -31,7 +31,8 @@
     "precommit": "npm run lint",
     "lint:ts": "tslint -p .",
     "lint:less": "stylelint 'components/!(styles)/**/**.less' --syntax less",
-    "lint": "npm run lint:less && npm run lint:ts",
+    "lint:tsc": "tsc --noEmit",
+    "lint": "npm run lint:less && npm run lint:ts && npm run lint:tsc",
     "test": "jest",
     "site:pull": "git clone https://github.com/Yoshino-UI/yoshino-ui.github.io.git build",
     "preversion": "npm run build"
