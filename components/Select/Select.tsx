@@ -1,4 +1,4 @@
-
+// tslint:disable no-any
 import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
@@ -55,6 +55,8 @@ const {Expand} = Transitions;
  */
 export class Select extends Component<ISelectProps, ISelectState> {
   toggleTimeOutHandle = 0;
+  // 子代value -> text 的 map
+  mapArr: Array<{value: string | number, text: any}> = [];
 
   static defaultProps = {
     mode: 'single',
@@ -121,7 +123,34 @@ export class Select extends Component<ISelectProps, ISelectState> {
     this.setState({visible});
   }
 
+  value2Text = (v?: string | number) => {
+    const { children } = this.props;
+    const mapArr: Array<{value: string | number, text: any}> = [];
+    React.Children.forEach(children, (ele: any) => {
+      if (ele.props.label !== undefined) {
+        if (Array.isArray(ele.props.children)) {
+          React.Children.forEach(ele.props.children, (opt: any) => {
+            mapArr.push({value: opt.props.value, text: opt.props.children});
+          });
+        } else {
+          const opt = ele.props;
+          mapArr.push({value: opt.value, text: opt.children});
+        }
+      } else {
+        const opt = ele.props;
+        mapArr.push({value: opt.value, text: opt.children});
+      }
+    });
+    for (const item of mapArr) {
+      if (item.value === v) {
+        return item.text;
+      }
+    }
+    return '';
+  }
+
   render() {
+    this.value2Text();
     const {
       className, style, onChange,
       value, defaultValue, disabled,
@@ -153,7 +182,6 @@ export class Select extends Component<ISelectProps, ISelectState> {
       </Expand>
     );
     const isSingle = mode === 'single' || !Array.isArray(values);
-
     return (
       <Pop
         content={list}
@@ -178,11 +206,12 @@ export class Select extends Component<ISelectProps, ISelectState> {
             {values.toString() === '' ? <div className={`${preCls}-placeholder`}>{placeholder}</div> : null}
               {
                 mode === 'single' || !Array.isArray(values) ? (
-                  <span>{values}</span>
+                  <span>{this.value2Text(values as string)}</span>
                 ) : (
                   <div className={`${preCls}-container`}>
                     {
                       values.map((item) => {
+                        const v = this.value2Text(item);
                         return (
                           <Tag
                             key={item}
@@ -195,7 +224,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
                               }, 300);
                             }}
                           >
-                            {item}
+                            {v}
                           </Tag>
                         );
                       })
