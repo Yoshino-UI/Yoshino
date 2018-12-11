@@ -45,7 +45,8 @@ export class Icon extends Component<IIconProps, IIconState> {
     const {className, style, type, svg, ...otherProps} = this.props;
     const preCls = 'yoshino-icon';
     const clsName = classNames(
-      preCls,  `${preCls}-${type}`, className,
+      preCls, className,
+      {[`${preCls}-${type}`]: !!type}
     );
     const pixelBug = 'padding:0px;margin:0px;border:0px;display:block;vertical-align: middle;'; // 修复3像素bug
     const html = `<ion-icon name='${type}' style='${pixelBug}'></ion-icon>`;
