@@ -67,6 +67,11 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
     visible: true,
   };
 
+  componentWillUnmount() {
+    document.documentElement!.style.overflow = null;
+    document.documentElement!.style.height = null;
+  }
+
   onCancel = () => {
     const {onCancel} = this.props;
     if (onCancel) {
