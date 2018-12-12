@@ -42,7 +42,7 @@ export default [
       {
         props: 'title',
         intro: '提示内容',
-        type: 'string',
+        type: 'ReactNode',
         defaultValue: '-',
       },
       {

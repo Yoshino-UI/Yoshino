@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {IBaseComponent} from '../template/component';
@@ -35,7 +35,7 @@ export interface ITooltipProps extends IBaseComponent {
   /**
    * 内容
    */
-  title?: string;
+  title?: React.ReactNode;
   /**
    * 受控-是否可见
    */
