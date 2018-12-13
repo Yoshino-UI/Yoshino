@@ -26,6 +26,10 @@ export interface IPopOverProps extends IBaseComponent {
    * 进入后
    */
   onEntered?: () => void;
+  /**
+   * 浮层消失后是否销毁
+   */
+  unmountOnExit?: boolean;
 }
 
 export interface IPopOverState {
@@ -43,6 +47,7 @@ export class PopOver extends Component<IPopOverProps, IPopOverState> {
   refPopOverContainer: Element;
 
   static defaultProps = {
+    unmountOnExit: true,
   };
 
   state = {
@@ -83,7 +88,7 @@ export class PopOver extends Component<IPopOverProps, IPopOverState> {
   render() {
     const {
       children, pop, open,
-      onEntered,
+      onEntered, unmountOnExit,
       } = this.props;
     const preCls = this.preCls;
     const child = React.Children.only(children);
@@ -117,6 +122,7 @@ export class PopOver extends Component<IPopOverProps, IPopOverState> {
               <Scale
                 timeout={300}
                 active={open}
+                unmountOnExit={unmountOnExit}
                 onEntered={() => {
                   if (onEntered) {
                     onEntered();

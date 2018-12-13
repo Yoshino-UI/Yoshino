@@ -5,10 +5,8 @@ import * as classNames from 'classnames';
 import {IBaseComponent, TSize} from '../template/component';
 import Input from '../Input';
 import Icon from '../Icon';
-import { valueTransition } from '../utils/';
 import Popover from '../PopOver';
-import * as moment from 'moment';
-
+import TimePanel from './TimePanel';
 export interface ITimePickerProps extends IBaseComponent {
   /**
    * 默认提示文本
@@ -108,106 +106,6 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
     return value !== undefined ? value : this.state.value;
   }
 
-  renderSelectItem = (type: 'h' | 'm' | 's') => {
-    const values: string[] = [];
-    let selectedItem = 0;
-    const { format } = this.props;
-    const v = this.getValue();
-    const m = moment(v, format);
-    const fillValues = (max: number) => {
-      for (let i = 0; i <= max; i++) {
-        const v = i < 10 ? `0${i}` : (i + '');
-        values.push(v);
-      }
-    };
-    const typeAction = {
-      h: () => {
-        selectedItem = m.hour();
-        fillValues(23);
-      },
-      m: () => {
-        selectedItem = m.minute();
-        fillValues(59);
-      },
-      s: () => {
-        selectedItem = m.second();
-        fillValues(59);
-      }
-    };
-    typeAction[type]();
-    return (
-      <div
-        className={`${this.preCls}-select-item`}
-        ref={(v) => {
-          if (v) {
-            const typeAction = {
-              h: () => this.refHourDiv = v,
-              m: () => this.refMinuteDiv = v,
-              s: () => this.refSecondDiv = v,
-            };
-            typeAction[type]();
-          }
-        }}
-      >
-        <ul>
-          {
-            values.map((item, key) => {
-              const v = Number(item);
-              const isActive = v === selectedItem;
-              const cls = classNames({
-                [`${this.preCls}-select-item-selected`]: isActive,
-              });
-              return (
-                <li
-                  className={cls}
-                  key={key}
-                  onClick={() => {
-                    if (this.refPanelInput) {
-                      this.refPanelInput.focus();
-                    }
-                    const { format } = this.props;
-                    const time = Number(item);
-                    const  v = this.getValue();
-                    let m = v ? moment(v, format) : moment();
-                    const typeAction = {
-                      h: () => m.hour(time),
-                      m: () => m.minute(time),
-                      s: () => m.second(time),
-                    };
-                    m = typeAction[type]();
-                    this.onChange(m.format(format));
-                  }}
-                  ref={(v) => {
-                    if (isActive && v) {
-                      const offsetTop = v.offsetTop;
-                      const syncScrollTop = (dom: HTMLDivElement) => {
-                        const start = dom.scrollTop;
-                        const end = offsetTop;
-                        valueTransition({
-                          start, end,
-                        }, (v) => {
-                          dom.scrollTop = v;
-                        });
-                      };
-                      const typeAction = {
-                        h: () => syncScrollTop(this.refHourDiv),
-                        m: () => syncScrollTop(this.refMinuteDiv),
-                        s: () => syncScrollTop(this.refSecondDiv),
-                      };
-                      setTimeout(typeAction[type], 0);
-                    }
-                  }}
-                >
-                  {item}
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
-    );
-  }
-
   onOpenChange = (open: boolean) => {
     const { onOpenChange, disabled } = this.props;
     if (disabled) {
@@ -250,33 +148,22 @@ export class TimePicker extends Component<ITimePickerProps, ITimePickerState> {
     const valueR = this.getValue();
     const openR = this.getOpen();
     const pop = (
-      <div className={`${preCls}-panel`}>
-        <div className={`${preCls}-input-wrap`}>
-          <input
-            placeholder={placeholder}
-            readOnly
-            value={valueR}
-            ref={(v) => {
-              if (v) {
-                this.refPanelInput = v;
-              }
-            }}
-          />
-          <Icon
-            type='ios-close-circle'
-            onClick={this.onChange.bind(this, '')}
-          />
-        </div>
-        <div className={`${preCls}-select-container`}>
-          {disabledHours ? null : this.renderSelectItem('h')}
-          {disabledMinutes ? null : this.renderSelectItem('m')}
-          {disabledSeconds ? null : this.renderSelectItem('s')}
-        </div>
+      <div>
+        <TimePanel
+          value={valueR}
+          placeholder={placeholder}
+          onChange={this.onChange}
+          format={format!}
+          disabledHours={disabledHours}
+          disabledMinutes={disabledMinutes}
+          disabledSeconds={disabledSeconds}
+        />
       </div>
     );
     return (
       <Popover
         pop={pop}
+        unmountOnExit={false}
         open={openR}
         onOpenChange={this.onOpenChange}
       >

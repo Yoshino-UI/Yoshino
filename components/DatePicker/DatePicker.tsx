@@ -6,8 +6,23 @@ import {IBaseComponent, TSize} from '../template/component';
 import Input from '../Input';
 import Icon from '../Icon';
 import PopOver from '../PopOver';
+import TimePanel from '../TimePicker/TimePanel';
+import Button from '../Button';
+
 import * as moment from 'moment';
 
+interface ITimePanel {
+  /**
+   * 禁用时、分、秒部分选项
+   */
+  disabledHours?: boolean;
+  disabledMinutes?: boolean;
+  disabledSeconds?: boolean;
+  /**
+   * 展示时间格式
+   */
+  format?: string;
+}
 export interface IDatePickerProps extends IBaseComponent {
   /**
    * 默认提示文本
@@ -49,11 +64,16 @@ export interface IDatePickerProps extends IBaseComponent {
    * 展示时间格式
    */
   format?: string;
+  /**
+   * 是否显示时间选择器
+   */
+  showTime?: boolean | ITimePanel;
 }
 
 export interface IDatePickerState {
   open: boolean;
   value: number;
+  showTimePicker: boolean;
 }
 
 /**
@@ -73,6 +93,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
   state = {
     open: this.props.defaultOpen!,
     value: this.props.defaultValue!,
+    showTimePicker: false,
   };
 
   getOpen = () => {
@@ -87,6 +108,9 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
 
   onOpenChange = (open: boolean) => {
     const { onOpenChange, disabled } = this.props;
+    if (!open) {
+      this.setState({showTimePicker: false});
+    }
     if (disabled) {
       return;
     }
@@ -111,7 +135,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
   renderPop = () => {
     const valueR = this.getValue();
     const preCls = this.preCls;
-    const { format, placeholder } = this.props;
+    const { format, placeholder, showTime } = this.props;
     const m = valueR ? moment(valueR) :  moment();
     const weekArr = '日一二三四五六'.split('');
     const dayArr: Array<{
@@ -185,7 +209,9 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
               };
               tagAction[day.tag]();
               this.onChange(+newM.date(day.v).format('x'));
-              this.onOpenChange(false);
+              if (!showTime) {
+                this.onOpenChange(false);
+              }
             }}
           >
             <div className={cls}>{day.v}</div>
@@ -201,6 +227,8 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
 
       return arr;
     };
+    const timePanelProps: ITimePanel = (typeof showTime !== 'boolean' && showTime !== undefined) ? showTime : {};
+    const timePanelFormat = timePanelProps.format || 'HH:mm:ss';
     return (
       <div className={`${preCls}-panel`}>
         <div className={`${preCls}-input-wrap`}>
@@ -214,50 +242,93 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
             onClick={this.onChange.bind(this, '')}
           />
         </div>
-        <div className={`${preCls}-header`}>
-          <Icon
-            type='ios-rewind'
-            className={`${preCls}-year-pre`}
-            onClick={() => {
-              this.onChange(+m.subtract(1, 'year').format('x'));
-            }}
-          />
-          <Icon
-            type='md-arrow-dropleft'
-            className={`${preCls}-month-pre`}
-            onClick={() => {
-              this.onChange(+m.subtract(1, 'month').format('x'));
-            }}
-          />
-          <span className={`${preCls}-time`}>
-            {m.format('YYYY年MM月')}
-          </span>
-          <Icon
-            type='md-arrow-dropright'
-            className={`${preCls}-month-next`}
-            onClick={() => {
-              this.onChange(+m.add(1, 'month').format('x'));
-            }}
-          />
-          <Icon
-            type='ios-fastforward'
-            className={`${preCls}-year-next`}
-            onClick={() => {
-              this.onChange(+m.add(1, 'year').format('x'));
-            }}
-          />
-        </div>
-        <div className={`${preCls}-body`}>
-            <table>
-              <thead>
-                <tr>
-                  {weekArr.map((item, key) => <th key={key}>{item}</th>)}
-                </tr>
-              </thead>
-              <tbody>
-                {renderDate()}
-              </tbody>
-            </table>
+        <div className={`${preCls}-container`}>
+          <div className={`${preCls}-header`}>
+            <Icon
+              type='ios-rewind'
+              className={`${preCls}-year-pre`}
+              onClick={() => {
+                this.onChange(+m.subtract(1, 'year').format('x'));
+              }}
+            />
+            <Icon
+              type='md-arrow-dropleft'
+              className={`${preCls}-month-pre`}
+              onClick={() => {
+                this.onChange(+m.subtract(1, 'month').format('x'));
+              }}
+            />
+            <span className={`${preCls}-time`}>
+              {m.format('YYYY年MM月')}
+            </span>
+            <Icon
+              type='md-arrow-dropright'
+              className={`${preCls}-month-next`}
+              onClick={() => {
+                this.onChange(+m.add(1, 'month').format('x'));
+              }}
+            />
+            <Icon
+              type='ios-fastforward'
+              className={`${preCls}-year-next`}
+              onClick={() => {
+                this.onChange(+m.add(1, 'year').format('x'));
+              }}
+            />
+          </div>
+          <div className={`${preCls}-body`}>
+              <table>
+                <thead>
+                  <tr>
+                    {weekArr.map((item, key) => <th key={key}>{item}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {renderDate()}
+                </tbody>
+              </table>
+          </div>
+          {
+            showTime ? (
+              <div className={`${preCls}-footer`}>
+                <span
+                  className={`${preCls}-timepicker-btn`}
+                  onClick={() => {
+                    this.setState({
+                      showTimePicker: !this.state.showTimePicker,
+                    });
+                  }}
+                >
+                  {this.state.showTimePicker ? '选择日期' : '选择时刻'}
+                </span>
+                <Button
+                  size='small'
+                  type='primary'
+                  onClick={() => this.onOpenChange(false)}
+                >
+                  确定
+                </Button>
+              </div>
+            ) : null
+          }
+          {this.state.showTimePicker ? (
+            <div className={`${preCls}-timepicker-box`}>
+              <div className={`${preCls}-time-title`}>
+                {m.format('YYYY年MM月DD日')}
+              </div>
+              <TimePanel
+                value={m.format(timePanelFormat)}
+                onChange={(v) => {
+                  const vm = moment(v, timePanelFormat);
+                  const hour = vm.hour();
+                  const minute = vm.minute();
+                  const second = vm.second();
+                  this.onChange(+m.hour(hour).minute(minute).second(second).format('x'));
+                }}
+                {...timePanelProps}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     );

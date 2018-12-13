@@ -14,6 +14,10 @@ import DatePickerCustom from './demo/datePickerCustom';
 import * as datePickerCustomMd from './demo/datePickerCustom.md';
 const datePickerCustomCode = require('!raw-loader!./demo/datePickerCustom');
 
+import DatePickerTime from './demo/datePickerTime';
+import * as datePickerTimeMd from './demo/datePickerTime.md';
+const datePickerTimeCode = require('!raw-loader!./demo/datePickerTime');
+
 export default class DatePickerPage extends Component {
   render() {
     return (
@@ -22,6 +26,8 @@ export default class DatePickerPage extends Component {
         <CodeBox text={datePickerDemoMd} demo={<DatePickerDemo/>} code={datePickerDemoCode}/>
 
         <CodeBox text={datePickerCustomMd} demo={<DatePickerCustom/>} code={datePickerCustomCode}/>
+
+        <CodeBox text={datePickerTimeMd} demo={<DatePickerTime/>} code={datePickerTimeCode}/>
         <ApiBox api={Api}/>
       </div>
     );

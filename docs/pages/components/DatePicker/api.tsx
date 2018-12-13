@@ -56,6 +56,47 @@ export default [
         type: 'string',
         defaultValue: 'YYYY-MM-DD',
       },
+      {
+        props: 'format',
+        intro: '时间格式',
+        type: 'string',
+        defaultValue: 'YYYY-MM-DD',
+      },
+      {
+        props: 'showTime',
+        intro: '显示时刻选择',
+        type: 'boolean | ITime',
+        defaultValue: 'YYYY-MM-DD',
+      },
+    ]
+  },
+  {
+    title: 'showTime - API',
+    json: [
+      {
+        props: 'disabledHours',
+        intro: '禁用时',
+        type: 'boolean',
+        defaultValue: 'false',
+      },
+      {
+        props: 'disabledMinutes',
+        intro: '禁用分',
+        type: 'boolean',
+        defaultValue: 'false',
+      },
+      {
+        props: 'disabledSeconds',
+        intro: '禁用秒',
+        type: 'boolean',
+        defaultValue: 'false',
+      },
+      {
+        props: 'format',
+        intro: '时间格式',
+        type: 'string',
+        defaultValue: 'HH:mm:ss',
+      },
     ]
   }
 ];

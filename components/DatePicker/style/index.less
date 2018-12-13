@@ -1,6 +1,7 @@
 @import './var.less';
 
 @datePicker-prefix-cls: ~"@{css-prefix}-datepicker";
+@timePicker-prefix-cls: ~"@{css-prefix}-time-picker";
 
 .@{datePicker-prefix-cls} {
   display: inline-block;
@@ -50,6 +51,10 @@
         color: @font-color-second;
       }
     }
+  }
+
+  &-container {
+    position: relative;
   }
 
   &-header {
@@ -138,6 +143,59 @@
           background: @primary-color;
           color: white;
         }
+      }
+    }
+  }
+
+  &-footer {
+    border-top: 1px solid @color-unactive;
+    width: 100%;
+    padding: 0 12px;
+    line-height: @datepicker-footer-height;
+    text-align: right;
+  }
+
+  &-timepicker-btn {
+    color: @primary-color;
+    font-size: @font-size-default;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &-time-title {
+    height: @datepicker-time-title-height;
+    line-height: @datepicker-time-title-height;
+    font-size: @font-size-default;
+    font-weight: @font-weight-base;
+    text-align: center;
+    background: white;
+    border-bottom: @datepicker-border;
+  }
+
+  &-timepicker-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% - @datepicker-footer-height);
+
+    .@{timePicker-prefix-cls} {
+      &-input-wrap {
+        display: none;
+      }
+
+      &-panel {
+        height: calc(100% - @datepicker-time-title-height);
+        box-shadow: none;
+        border-bottom: @datepicker-border;
+      }
+
+      &-select-container {
+        height: 100%;
+      }
+
+      &-select-item {
+        flex: 1;
       }
     }
   }

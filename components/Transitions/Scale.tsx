@@ -13,6 +13,10 @@ export interface IScaleProps extends ITransitions {
    * 激活状态
    */
   active: boolean;
+  /**
+   * 退出后销毁
+   */
+  unmountOnExit?: boolean;
 }
 
 export interface IScaleState {
