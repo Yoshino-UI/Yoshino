@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import Icon from '../Icon';
 import { valueTransition } from '../utils/';
 
-interface IProps {
+export interface IProps {
   /**
    * 默认提示文本
    */
