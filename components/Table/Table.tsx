@@ -322,7 +322,7 @@ export class Table extends Component<ITableProps, ITableState> {
   renderFixedBody = (columns: IColumns[], pos: 'left' | 'right') => {
     const { fixedTitle, scroll } = this.props;
     const bodyStyle = fixedTitle ? {
-      height: scroll!.y,
+      maxHeight: scroll!.y,
     } : {};
     return (
       <div
@@ -359,7 +359,7 @@ export class Table extends Component<ITableProps, ITableState> {
       {[`${preCls}-fixed-header`]: fixedTitle},
     );
     const bodyStyle = fixedTitle ? {
-      height: scroll!.y,
+      maxHeight: scroll!.y,
     } : {};
 
     const fixedLeftCol = columns.filter((item) => item.fixed === 'left');
