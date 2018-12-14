@@ -338,7 +338,7 @@ export class DatePicker extends Component<IDatePickerProps, IDatePickerState> {
     const {
       className, style, size, open, defaultOpen,
       value, defaultValue, onChange, onOpenChange,
-      placeholder, disabled, format, children,
+      placeholder, disabled, format, children, showTime,
       ...otherProps} = this.props;
     const preCls = this.preCls;
     const clsName = classNames(
