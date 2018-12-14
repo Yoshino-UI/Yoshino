@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import {IOptionProps} from './Option';
-import {Value} from './Select';
+import { BasicValue } from './Select';
 
 export interface IOptionGroupProps extends IBaseComponent {
   /**
@@ -18,11 +18,11 @@ export interface IOptionGroupProps extends IBaseComponent {
   /**
    * 激活项，由外层Select传递，开发者不需要传，否则会影响组件正常使用
    */
-  active?: Value;
+  active?: BasicValue;
   /**
    * 用于通知父组件 - 子代值发生变化
    */
-  onChange?: (value: string | number) => void;
+  onChange?: (value: BasicValue) => void;
 }
 
 export interface IOptionGroupState {
@@ -37,7 +37,7 @@ export class OptionGroup extends Component<IOptionGroupProps, IOptionGroupState>
 
   static displayName = 'OptionGroup';
 
-  onChange = (value: number | string) => {
+  onChange = (value: BasicValue) => {
     const {onChange} = this.props;
     if (onChange) {
       onChange(value);

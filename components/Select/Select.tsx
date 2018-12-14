@@ -10,7 +10,8 @@ import Pop from '../Pop';
 import Transitions from '../Transitions';
 import Icon from '../Icon';
 
-export type Value = string | number | Array<number | string>;
+export type BasicValue = string | number | boolean;
+export type Value = BasicValue | BasicValue[];
 
 export interface ISelectProps extends IBaseComponent {
   /**
@@ -84,11 +85,11 @@ export class Select extends Component<ISelectProps, ISelectState> {
     return value !== undefined ? value : this.state.value;
   }
 
-  onChange = (value: number | string) => {
+  onChange = (value: number | string | boolean) => {
    this.onChangeTrigger(value);
   }
 
-  onChangeTrigger = (value: number | string) => {
+  onChangeTrigger = (value: number | string | boolean) => {
     const {onChange, mode} = this.props;
     const values = this.getValue();
     let newValue;
@@ -123,7 +124,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
     this.setState({visible});
   }
 
-  value2Text = (v?: string | number) => {
+  value2Text = (v?: BasicValue) => {
     const { children } = this.props;
     const mapArr: Array<{value: string | number, text: any}> = [];
     React.Children.forEach(children, (ele: any) => {
@@ -214,7 +215,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
                         const v = this.value2Text(item);
                         return (
                           <Tag
-                            key={item}
+                            key={item + ''}
                             closeable
                             style={{marginRight: 4}}
                             onClose={() => {
