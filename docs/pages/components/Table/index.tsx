@@ -14,6 +14,10 @@ import TableCustom from './demo/tableCustom';
 import * as tableCustomMd from './demo/tableCustom.md';
 const tableCustomCode = require('!raw-loader!./demo/tableCustom');
 
+import TableSortDemo from './demo/tableSortDemo';
+import * as tableSortDemoMd from './demo/tableSortDemo.md';
+const tableSortDemoCode = require('!raw-loader!./demo/tableSortDemo');
+
 export default class TablePage extends Component {
   render() {
     return (
@@ -22,6 +26,8 @@ export default class TablePage extends Component {
         <CodeBox text={tableDemoMd} demo={<TableDemo/>} code={tableDemoCode}/>
 
         <CodeBox text={tableCustomMd} demo={<TableCustom/>} code={tableCustomCode}/>
+
+        <CodeBox text={tableSortDemoMd} demo={<TableSortDemo/>} code={tableSortDemoCode}/>
         <ApiBox api={Api}/>
       </div>
     );

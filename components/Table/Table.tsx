@@ -3,6 +3,9 @@ import {Component} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
+import Icon from '../Icon';
+
+export type TSortOrder = boolean | 'ascend' | 'descend' | undefined;
 
 export interface ITableProps extends IBaseComponent {
   data: any[];
@@ -21,11 +24,16 @@ export interface IColumns {
   fixed?: 'left' | 'right';
   style?: React.CSSProperties;
   render?: (v: any) => void;
+  sorter?: (a: any, b: any) => number;
+  sortOrder?: TSortOrder;
+  defaultSortOrder?: TSortOrder;
 }
 
 export interface ITableState {
   leftShadow: boolean;
   rightShadow: boolean;
+  sortOrderObj: {[index: string]: TSortOrder};
+  sortField: string;
 }
 
 /**
@@ -49,6 +57,15 @@ export class Table extends Component<ITableProps, ITableState> {
   state = {
     leftShadow: false,
     rightShadow: false,
+    sortOrderObj: (() => {
+      const obj: {[index: string]: TSortOrder} = {};
+      this.props.columns.forEach((item) => {
+        const s = item.defaultSortOrder;
+        obj[item.dataIndex] = s;
+      });
+      return obj;
+    })(),
+    sortField: '',
   };
 
   static defaultProps = {
@@ -240,9 +257,68 @@ export class Table extends Component<ITableProps, ITableState> {
       <thead>
         <tr>
           {
-            columns.map((item, key) => (
-              <th key={key}>{item.title}</th>
-            ))
+            columns.map((item, key) => {
+              const { sortField } = this.state;
+              const temp = JSON.parse(JSON.stringify(this.state.sortOrderObj));
+              const defaultSortOder = temp[item.dataIndex];
+              const showSort = item.sorter !== undefined;
+              const isCurrentField = item.dataIndex === sortField;
+              const cls = `${this.preCls}-sorter-active`;
+              const upCls = classNames({
+                [`${cls}`]: (item.sortOrder === 'ascend' ||  defaultSortOder === 'ascend') && showSort && isCurrentField,
+              });
+              const downCls = classNames({
+                [`${cls}`]: (item.sortOrder === 'descend' || defaultSortOder === 'descend') && showSort && isCurrentField,
+              });
+              if (sortField === '' && item.defaultSortOrder !== undefined) {
+                this.setState({sortField: item.dataIndex});
+              }
+              const thCls = classNames({
+                [`${this.preCls}-th-sorter`]: showSort,
+              });
+              return (
+                <th
+                  className={thCls}
+                  key={key}
+                  onClick={() => {
+                    if (!showSort) {
+                      return;
+                    }
+                    const currentSort: TSortOrder = defaultSortOder;
+                    // 点击后全部排序顺序重置
+                    for (const key in temp) {
+                      if (temp.hasOwnProperty(key)) {
+                        temp[key] = false;
+                      }
+                    }
+                    if (currentSort === 'ascend') {
+                      temp[item.dataIndex] = 'descend';
+                    } else if (currentSort === 'descend') {
+                      temp[item.dataIndex] = false;
+                    } else {
+                      temp[item.dataIndex] = 'ascend';
+                    }
+                    this.setState({sortField: item.dataIndex, sortOrderObj: temp});
+                  }}
+                >
+                  {item.title}
+                  {
+                    showSort ? (
+                     <div className={`${this.preCls}-sorter`}>
+                        <Icon
+                          className={upCls}
+                          type='md-arrow-dropup'
+                        />
+                        <Icon
+                          className={downCls}
+                          type='md-arrow-dropdown'
+                        />
+                      </div>
+                    ) : null
+                  }
+                </th>
+              );
+            })
           }
         </tr>
       </thead>
@@ -251,7 +327,26 @@ export class Table extends Component<ITableProps, ITableState> {
 
   renderTbody = (columns: IColumns[]) => {
     const { data } = this.props;
-    const content = data.map((item, key) => {
+    let temp: any[] = [];
+    for (let i = 0; i < columns.length; i++) {
+      const col = columns[i];
+      if (col.dataIndex === this.state.sortField) {
+        const sort = col.sorter!;
+        const sortOrder = col.sortOrder !== undefined ? col.sortOrder : this.state.sortOrderObj[col.dataIndex];
+        if (typeof sortOrder === 'string') {
+          temp = (JSON.parse(JSON.stringify(data)) as any[]).sort((a, b) => {
+            const pre = a[col.dataIndex];
+            const next = b[col.dataIndex];
+            let result = sort(pre, next);
+            if (sortOrder === 'descend') {
+              result = -result;
+            }
+            return result;
+          });
+        }
+      }
+    }
+    const content = (temp.length ? temp : data).map((item, key) => {
       return (
         <tr key={key}>
           {

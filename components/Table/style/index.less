@@ -17,6 +17,7 @@
       background: @table-th-background;
       font-weight: 500;
       text-align: left;
+      position: relative;
     }
 
     th,
@@ -92,5 +93,31 @@
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  &-sorter {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    margin-top: -6px;
+    width: 16px;
+    height: 12px;
+    line-height: 0;
+    overflow: hidden;
+
+    i {
+      height: 11px;
+      overflow: hidden;
+      color: @color-disabled;
+      margin-top: -5px;
+    }
+  }
+
+  i&-sorter-active {
+    color: @primary-color;
+  }
+
+  &-th-sorter {
+    cursor: pointer;
   }
 }

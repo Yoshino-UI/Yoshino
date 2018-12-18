@@ -25,6 +25,7 @@
     "no-shadowed-variable": false,
     "no-var-requires": false,
     "max-line-length": false,
-    "no-console": false
+    "no-console": false,
+    "prefer-for-of": false
   }
 }

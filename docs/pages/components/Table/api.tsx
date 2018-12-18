@@ -60,6 +60,24 @@ export default [
         intro: '自定义渲染单元格',
         type: '(v: any) => JSX.Element',
         defaultValue: '-',
+      },
+      {
+        props: 'sorter',
+        intro: '排序函数，例如(a, b) => a - b',
+        type: '(a, b) => number',
+        defaultValue: '-',
+      },
+      {
+        props: 'sortOrder',
+        intro: '排序顺序，false，原来顺序排列, ascend升序，descend降序',
+        type: `false | 'ascend' | 'descend'`,
+        defaultValue: '-',
+      },
+      {
+        props: 'defaultSortOrder',
+        intro: '排序顺序，false，原来顺序排列, ascend升序，descend降序',
+        type: `false | 'ascend' | 'descend'`,
+        defaultValue: '-',
       }
     ]
   }
