@@ -57,8 +57,8 @@ export default [
       },
       {
         props: 'render',
-        intro: '自定义渲染单元格',
-        type: '(v: any) => JSX.Element',
+        intro: '自定义渲染单元格, v是当前单元格的数据，item是这一行的object',
+        type: '(v: any, item?: any) => JSX.Element',
         defaultValue: '-',
       },
       {

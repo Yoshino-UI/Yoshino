@@ -23,7 +23,7 @@ export interface IColumns {
   dataIndex: string;
   fixed?: 'left' | 'right';
   style?: React.CSSProperties;
-  render?: (v: any) => void;
+  render?: (v: any, item?: any) => void;
   sorter?: (a: any, b: any) => number;
   sortOrder?: TSortOrder;
   defaultSortOrder?: TSortOrder;
@@ -354,7 +354,7 @@ export class Table extends Component<ITableProps, ITableState> {
               const v = item[column.dataIndex];
               return (
               <td key={index}>
-                {column.render ? column.render(v) : v}
+                {column.render ? column.render(v, item) : v}
               </td>
               );
             })
