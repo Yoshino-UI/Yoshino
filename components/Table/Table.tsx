@@ -374,7 +374,7 @@ export class Table extends Component<ITableProps, ITableState> {
     const scrollX = scroll!.x;
     const width = typeof scrollX === 'boolean' && scrollX ? undefined : scrollX ? scrollX : undefined;
     const style = fixedTitle ? {
-      width,
+      minWidth: width,
     } : {};
     return (
       <table style={style}>
@@ -392,7 +392,7 @@ export class Table extends Component<ITableProps, ITableState> {
     const scrollX = scroll!.x;
     const width = typeof scrollX === 'boolean' && scrollX ? undefined : scrollX ? scrollX : undefined;
     const style = fixedTitle ? {
-      width,
+      minWidth: width,
     } : {};
     return (
       <table style={style}>
