@@ -70,8 +70,8 @@ export class StepsItem extends Component<IStepsItemProps, IStepsItemState> {
       className,
     );
     const stepIcon = {
-      error: <Icon type='close-circle'/>,
-      finished: <Icon type='checkmark'/>,
+      error: <Icon type='md-close'/>,
+      finished: <Icon type='md-checkmark'/>,
     };
     const innerStatus = status ? status : value < current ? 'finished' : undefined;
     const text = value + 1;
