@@ -177,6 +177,10 @@ export default [
         name: 'Progress(进度条)',
         keyId: 'progress',
       },
+      {
+        name: 'Skeleton(骨架屏)',
+        keyId: 'skeleton',
+      },
     ],
   },
   {

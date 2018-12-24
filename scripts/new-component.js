@@ -32,6 +32,14 @@ function fileIndexScss(component) {
   writeFile('var.less', varLess, path);
 }
 
+function fileIndexJs(component) {
+  const path = `${component}/style`;
+  const content = `import './index.css';`;
+  writeFile('index.js', content, path);
+  const LessContent = `import './index.less;`;
+  writeFile('less.js', LessContent, path);
+}
+
 function addImportLess(component) {
   const content = fs.readFileSync(path.resolve(`components/styles/components.less`), {
     encoding: 'utf8',
@@ -153,6 +161,7 @@ fs.mkdirSync(path.resolve('components', component));
 fs.mkdirSync(path.resolve('components', component, 'style'));
 fs.mkdirSync(path.resolve('components', component, '__tests__'));
 fileIndexScss(component);
+fileIndexJs(component);
 addImportLess(component);
 fileComponentTsx(component);
 fileIndexTsx(component);

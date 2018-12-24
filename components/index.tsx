@@ -30,6 +30,7 @@ import Radio from './Radio';
 import Rate from './Rate';
 import Ripple from './Ripple';
 import Select from './Select';
+import Skeleton from './Skeleton';
 import Slider from './Slider';
 import Steps from './Steps';
 import Switch from './Switch';
@@ -74,6 +75,7 @@ export {
   Rate,
   Ripple,
   Select,
+  Skeleton,
   Slider,
   Steps,
   Switch,
