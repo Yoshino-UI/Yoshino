@@ -37,7 +37,7 @@ gulp.task('font', function () {
 
 // 拷贝styles
 gulp.task('styles', function () {
-  return gulp.src(path.resolve('../components/styles/*'))
+  return gulp.src(path.resolve('../components/styles/**/*'))
     .pipe(gulp.dest(path.resolve('../lib/styles')))
     .pipe(gulp.dest(path.resolve('../es6/styles')))
 });
