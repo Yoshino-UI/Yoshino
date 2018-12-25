@@ -35,6 +35,13 @@ gulp.task('font', function () {
     .pipe(gulp.dest(path.resolve('../es6/fonts')));    
 });
 
+// 拷贝styles
+gulp.task('styles', function () {
+  return gulp.src(path.resolve('../components/styles/*'))
+    .pipe(gulp.dest(path.resolve('../lib/styles')))
+    .pipe(gulp.dest(path.resolve('../es6/styles')))
+});
+
 // 单个组件打包less
 allComponents.forEach((component) => {
   gulp.task(component, function () {
@@ -61,4 +68,4 @@ allComponents.forEach((component) => {
 
 const allComponentsLess = allComponents.map((item) => `${item}Less`)
 
-gulp.task('default', ['less', 'common', 'font', ...allComponents, ...allComponentsLess]);
+gulp.task('default', ['less', 'common', 'font', 'styles', ...allComponents, ...allComponentsLess]);
