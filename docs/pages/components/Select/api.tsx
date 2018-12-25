@@ -44,6 +44,12 @@ export default [
         type: 'string',
         defaultValue: '-',
       },
+      {
+        props: 'compact',
+        intro: '紧凑模式',
+        type: 'header、footer使用Select时需要设计',
+        defaultValue: 'false',
+      },
     ]
   },
   {

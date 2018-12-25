@@ -37,6 +37,10 @@ export interface IInputProps extends IAbstractInput<string> {
    * 禁用
    */
   disabled?: boolean;
+  /**
+   * 紧凑模式
+   */
+  compact?: boolean;
 }
 
 export interface IInputState {
@@ -54,6 +58,7 @@ export class Input extends Component<IInputProps, IInputState> {
     size: 'default',
     defaultValue: '',
     disabled: false,
+    compact: false,
   };
 
   state = {
@@ -92,12 +97,15 @@ export class Input extends Component<IInputProps, IInputState> {
       className, style, size, header,
       footer, headerStyle, footerStyle,
       onEnter, onChange, value, defaultValue,
-      refInput, disabled,
+      refInput, disabled, compact,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-input';
     const clsName = classNames(
       `${preCls}-wrapper`, `${preCls}-${size}`, className,
+      {
+        [`${preCls}-compact`]: compact,
+      }
     );
     const inputCls = classNames(
       preCls,

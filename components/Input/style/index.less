@@ -1,6 +1,7 @@
 @import './var.less';
 
 @input-prefix-cls:  ~"@{css-prefix}-input";
+@select-prefix-cls: ~"@{css-prefix}-select";
 
 .@{input-prefix-cls} {
   border: @input-border;
@@ -26,6 +27,57 @@
     }
   }
 
+  &-compact & {
+    margin-left: -1px;
+    margin-right: -1px;
+    display: inline-block;
+
+    &:hover,
+    &:focus {
+      position: relative;
+      z-index: 11;
+    }
+  }
+
+  &-compact &-header {
+    .@{select-prefix-cls} {
+      width: auto;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+
+      &:hover {
+        position: relative;
+        z-index: 12;
+      }
+    }
+  }
+
+  &-compact &-footer {
+    .@{select-prefix-cls} {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &:hover {
+        position: relative;
+        z-index: 12;
+      }
+    }
+  }
+
+  &-header {
+    > * {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &-footer {
+    > * {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
   &-header,
   &-footer {
     border: @input-border;
@@ -36,7 +88,6 @@
     padding: 0 7px;
     background-color: @input-extra-item-bgColor;
     position: relative;
-    overflow: hidden;
     vertical-align: middle;
   }
 
@@ -117,4 +168,3 @@
     border-bottom-right-radius: 0;
   }
 }
-
