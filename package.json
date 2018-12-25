@@ -34,7 +34,7 @@
     "lint": "npm run lint:less && npm run lint:ts && npm run lint:tsc",
     "test": "jest",
     "site:pull": "git clone https://github.com/Yoshino-UI/yoshino-ui.github.io.git build",
-    "preversion": "npm run build",
+    "preversion": "npm run build && npm run log",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "jest": {
@@ -155,7 +155,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run log",
+      "pre-commit": "npm run lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
