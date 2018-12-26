@@ -7,6 +7,7 @@ export default function() {
       <Loading size='small'/>
       <Loading text/>
       <Loading text='自定义加载文本' size='large'/>
+      <Loading text='自定义加载文本' size='auto' style={{fontSize: 50}}/>
     </div>
   );
 }

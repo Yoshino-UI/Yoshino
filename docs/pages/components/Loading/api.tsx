@@ -10,8 +10,8 @@ export default [
       },
       {
         props: 'size',
-        intro: '加载图标大小',
-        type: `'small' | 'default' | 'large'`,
+        intro: '加载图标大小，当设置auto的时可以通过style的font-size设置图标大小',
+        type: `'small' | 'default' | 'large' | auto''`,
         defaultValue: 'default',
       },
       {
@@ -34,7 +34,7 @@ export default [
       },
       {
         props: 'color',
-        intro: '图标颜色, 仅适用loading自带图标时候有效，自定义时请自行设置',
+        intro: '图标颜色, 也可以通过style的color来设置',
         type: 'string',
         defaultValue: '-',
       },

@@ -14,7 +14,7 @@ export interface ILoadingProps extends IBaseComponent {
   /**
    * 大小，默认default
    */
-  size?: 'small' | 'default' | 'large';
+  size?: 'small' | 'default' | 'large' | 'auto';
   /**
    * 加载文本
    */
@@ -43,10 +43,10 @@ export interface ILoadingState {
 export class Loading extends Component<ILoadingProps, ILoadingState> {
   static defaultProps = {
     type: 'a',
-    size: 'default',
+    size: 'auto',
     text: false,
     loading: true,
-    color: 'rgb(81, 178, 109)',
+    color: 'currentColor',
   };
 
   render() {
@@ -59,9 +59,10 @@ export class Loading extends Component<ILoadingProps, ILoadingState> {
       small: 14,
       default: 20,
       large: 32,
+      auto: '1em',
     };
-    const fontSize = !!style && style.fontSize !== undefined && Number(style.fontSize);
-    const radius = fontSize || sizeObj[size!];
+    // const fontSize = !!style && style.fontSize !== undefined && Number(style.fontSize);
+    const radius = sizeObj[size!];
     const iconType = loadingSVG[type!](radius, radius, color!);
     const loadSize = `${preCls}-${size}`;
     const hasChildren = !!children;
