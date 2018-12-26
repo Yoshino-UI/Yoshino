@@ -1,3 +1,21 @@
+## [0.6.5](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.4...v0.6.5) (2018-12-26)
+
+
+### Bug Fixes
+
+* 调整demo ([dd71868](https://github.com/Yoshino-UI/Yoshino/commit/dd71868))
+
+
+### Features
+
+* loading支持color和font-size ([bf437f8](https://github.com/Yoshino-UI/Yoshino/commit/bf437f8))
+
+
+
+## [0.6.4](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.3...v0.6.4) (2018-12-25)
+
+
+
 ## [0.6.3](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.2...v0.6.3) (2018-12-25)
 
 
