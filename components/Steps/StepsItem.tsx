@@ -9,7 +9,7 @@ export interface IStepsItemProps extends IBaseComponent {
   /**
    * 步骤名
    */
-  title: string;
+  title: React.ReactNode;
   /**
    * 自定义图标
    */

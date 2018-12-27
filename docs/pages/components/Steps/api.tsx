@@ -28,7 +28,7 @@ export default [
       {
         props: 'title',
         intro: '步骤标题',
-        type: 'string',
+        type: 'React.ReactNode',
         defaultValue: '-',
       },
       {
