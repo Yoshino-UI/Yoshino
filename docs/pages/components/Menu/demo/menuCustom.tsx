@@ -8,7 +8,7 @@ export default function() {
       mode='horizontal'
       defaultActiveKey='1'
     >
-      <SubMenu key='sub1' title={<span><Icon type='upload'/><span>Navigation One</span></span>}>
+      <SubMenu key='sub1' title={<span><Icon type='md-upload'/><span>Navigation One</span></span>}>
         <MenuItemGroup key='g1' title='Item 1'>
           <Menu.Item key='1'>Option 1</Menu.Item>
           <Menu.Item key='2'>Option 2</Menu.Item>
@@ -18,7 +18,7 @@ export default function() {
           <Menu.Item key='4'>Option 4</Menu.Item>
         </MenuItemGroup>
       </SubMenu>
-      <SubMenu key='sub2' title={<span><Icon type='calendar'/><span>Navigation Two</span></span>}>
+      <SubMenu key='sub2' title={<span><Icon type='md-calendar'/><span>Navigation Two</span></span>}>
         <Menu.Item key='5'>Option 5</Menu.Item>
         <Menu.Item key='6'>Option 6</Menu.Item>
         <SubMenu key='sub3' title='Submenu'>

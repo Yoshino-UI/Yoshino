@@ -109,7 +109,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
         counter++;
         header.push(
           <div className={`${preCls}-item ${preCls}-item-more`} onClick={this.onPreviousMore} key={key++}>
-            <span><Icon type='more'/></span>
+            <span><Icon type='md-more'/></span>
           </div>,
         );
       }
@@ -117,7 +117,7 @@ export class Pagination extends Component<IPaginationProps, IPaginationState> {
       if (currentPage < page - max + 2) {
         footer.push(
           <div className={`${preCls}-item ${preCls}-item-more`} onClick={this.onNextMore} key={key++}>
-            <span><Icon type='more'/></span>
+            <span><Icon type='md-more'/></span>
           </div>,
         );
         footer.push(

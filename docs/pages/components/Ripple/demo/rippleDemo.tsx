@@ -8,7 +8,7 @@ export default function() {
         <Card
           title='标题'
           extra={(
-          <div><span>更多</span><Icon type='more'/></div>
+          <div><span>更多</span><Icon type='md-more'/></div>
           )}
           border
           shadow

@@ -80,10 +80,10 @@ export class Alert extends Component<IAlertProps, IAlertState> {
     const {show} = this.state;
     const preCls = 'yoshino-alert';
     const defaultIcon = {
-      success: 'checkmark-circle',
-      info: 'information-circle',
-      warning: 'alert',
-      error: 'close-circle',
+      success: 'md-checkmark-circle',
+      info: 'md-information-circle',
+      warning: 'md-alert',
+      error: 'md-close-circle',
       normal: '',
     };
     const alertCls = {
@@ -129,7 +129,7 @@ export class Alert extends Component<IAlertProps, IAlertState> {
             {
               closable ? (
                 <span className={`${preCls}-close`} onClick={this.closeAlert}>
-                  <Icon type='close'/>
+                  <Icon type='md-close'/>
                 </span>
               ) : null
             }

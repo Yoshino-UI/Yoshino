@@ -3,8 +3,7 @@ import { Component } from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import Archer, { ISVG } from './utils/archer';
-import svgName from './utils/name';
+import {fetch as fetchPolyfill} from 'whatwg-fetch';
 
 export interface IIconProps extends IBaseComponent {
   /**
@@ -22,20 +21,6 @@ export interface IIconState {
 }
 
 const svgTarget = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons/svg/';
-const svgs: ISVG = {};
-svgName.forEach((svg) => {
- svgs[svg] = {
-  url: `${svgTarget}${svg}.svg`,
-  version: 1
- };
-});
-
-console.log(svgs);
-Archer.setMax(10000);
-Archer.setConfig({
-  svgs
-});
-Archer.startPreFetch();
 /**
  * **图标**-展示对应的矢量化图标。
  */
@@ -49,18 +34,13 @@ export class Icon extends Component<IIconProps, IIconState> {
     if (!this.props.type) {
       return;
     }
-    // const id = 'yoshino-demand-load';
-    // if (document.getElementById(id)) {
-    //   return;
-    // }
-    // const script = document.createElement('script');
-    // script.src = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons.js';
-    // script.id = id;
-    // script.onload = () => {
-    //   document.body.removeChild(script);
-    // };
-    // document.body.appendChild(script);
-    const svg = await Archer.downloadSvg(this.props.type);
+    // tslint:disable-next-line no-any
+    const svg = await fetchPolyfill(`${svgTarget}${this.props.type}.svg`).then((r: any) => {
+      if (r.status === 200) {
+        return r.text();
+      }
+      return '';
+    });
     this.setState({
       svgHtml: svg,
     });
@@ -73,8 +53,6 @@ export class Icon extends Component<IIconProps, IIconState> {
       preCls, className,
       {[`${preCls}-${type}`]: !!type}
     );
-    // const pixelBug = 'padding:0px;margin:0px;border:0px;display:block;vertical-align: middle;'; // 修复3像素bug
-    // const html = `<ion-icon name='${type}' style='${pixelBug}'></ion-icon>`;
     return (
       <i
         className={clsName}
