@@ -58,7 +58,7 @@ export class AutoComplete extends Component<IAutoCompleteProps, IAutoCompleteSta
     if (JSON.stringify(dataSource) !== JSON.stringify(nextDataSource)) {
       this.setState({
         options: nextDataSource.filter((item) => {
-          return String(item).match(new RegExp(this.getValue()));
+          return String(item).match(new RegExp(this.getValue() + ''));
         }),
       });
     }
