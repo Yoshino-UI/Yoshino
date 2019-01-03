@@ -100,7 +100,7 @@ export class Progress extends Component<IProgressProps, IProgressState> {
 
   render() {
     const {
-      className, style,
+      className, style, format,
       strokeColor, bgColor, type,
       strokeWidth = 6, diameter,
       ...otherProps} = this.props;
