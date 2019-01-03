@@ -77,7 +77,7 @@ export class Button extends Component<IButtonProps, IButtonState> {
     const preCls = 'yoshino-button';
     const btnCls = {
       [`${preCls}-${type}`]: type && !disabled && !loading || type === 'dashed',
-      [`${preCls}-size-${size}`]: size && !disabled && !loading,
+      [`${preCls}-size-${size}`]: !!size,
       [`${preCls}-ghost`]: ghost && !disabled && !loading,
       [`${preCls}-shape-${shape}`]: shape === 'circle',
     };
