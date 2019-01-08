@@ -3,7 +3,7 @@ import { Component } from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import {fetch as fetchPolyfill} from 'whatwg-fetch';
+import Archer from 'archer-svgs';
 
 export interface IIconProps extends IBaseComponent {
   /**
@@ -35,12 +35,7 @@ export class Icon extends Component<IIconProps, IIconState> {
       return;
     }
     // tslint:disable-next-line no-any
-    const svg = await fetchPolyfill(`${svgTarget}${this.props.type}.svg`).then((r: any) => {
-      if (r.status === 200) {
-        return r.text();
-      }
-      return '';
-    });
+    const svg = await Archer.fetchSvg(`${svgTarget}${this.props.type}.svg`);
     this.setState({
       svgHtml: svg,
     });
