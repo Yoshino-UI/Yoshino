@@ -4,7 +4,7 @@ import { Icon } from '@yoshino/components/';
 export default function() {
   return (
     <div>
-      <Icon type='home' style={{color: '#51b26d', fontSize: 27}}/>
+      <Icon type='md-home' style={{color: '#51b26d', fontSize: 27}}/>
     </div>
   );
 }

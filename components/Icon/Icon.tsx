@@ -3,6 +3,7 @@ import { Component } from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
+import Archer from 'archer-svgs';
 
 export interface IIconProps extends IBaseComponent {
   /**
@@ -16,29 +17,28 @@ export interface IIconProps extends IBaseComponent {
 }
 
 export interface IIconState {
-
+  svgHtml: string;
 }
 
+const svgTarget = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons/svg/';
 /**
  * **图标**-展示对应的矢量化图标。
  */
 export class Icon extends Component<IIconProps, IIconState> {
-  componentDidMount() {
+  state = {
+    svgHtml: ''
+  };
+
+  async componentDidMount() {
     // 不使用ionicons图标时不进行加载，提高性能
     if (!this.props.type) {
       return;
     }
-    const id = 'yoshino-demand-load';
-    if (document.getElementById(id)) {
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons.js';
-    script.id = id;
-    script.onload = () => {
-      document.body.removeChild(script);
-    };
-    document.body.appendChild(script);
+    // tslint:disable-next-line no-any
+    const svg = await Archer.fetchSvg(`${svgTarget}${this.props.type}.svg`);
+    this.setState({
+      svgHtml: svg,
+    });
   }
 
   render() {
@@ -48,13 +48,11 @@ export class Icon extends Component<IIconProps, IIconState> {
       preCls, className,
       {[`${preCls}-${type}`]: !!type}
     );
-    const pixelBug = 'padding:0px;margin:0px;border:0px;display:block;vertical-align: middle;'; // 修复3像素bug
-    const html = `<ion-icon name='${type}' style='${pixelBug}'></ion-icon>`;
     return (
       <i
         className={clsName}
         style={style}
-        dangerouslySetInnerHTML={{__html: svg || html}}
+        dangerouslySetInnerHTML={{__html: svg || this.state.svgHtml}}
         {...otherProps}
       />
     );

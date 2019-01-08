@@ -6,7 +6,7 @@
   <Hover name="icon-buzz">
     <Hover name="wobble-horizontal">
       <Ripple  color="green">
-        <Button type="primary"><Icon type="play" className="hvr-icon"/>播放</Button>
+        <Button type="primary"><Icon type="md-play" className="hvr-icon"/>播放</Button>
       </Ripple>
     </Hover>
   </Hover>

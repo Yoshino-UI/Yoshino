@@ -10,7 +10,7 @@ export default class ButtonLoading extends React.Component {
     return (
       <Button
         type='primary'
-        icon='play'
+        icon='md-play'
         loading={this.state.loading}
         onClick={() => {
           this.setState({loading: true});

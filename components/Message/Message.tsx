@@ -51,10 +51,10 @@ export class Message extends React.Component<IMessageComponent> {
       preCls, className, `${preCls}-${type}`,
     );
     const defaultIcon = {
-      success: 'checkmark-circle',
-      info: 'information-circle',
-      warning: 'alert',
-      error: 'close-circle',
+      success: 'md-checkmark-circle',
+      info: 'md-information-circle',
+      warning: 'md-alert',
+      error: 'md-close-circle',
     };
     return (
       <Slide

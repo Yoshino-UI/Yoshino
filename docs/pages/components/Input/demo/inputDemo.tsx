@@ -6,7 +6,7 @@ export default function() {
     <div style={{width: 500}}>
       <Input size='small' header='http://' footer='.com'/><br/>
       <Input/><br/>
-      <Input size='large' header='http://' footer={<Icon type='close' style={{fontSize: '20px', width: '50px'}}/>}/><br/>
+      <Input size='large' header='http://' footer={<Icon type='md-close' style={{fontSize: '20px', width: '50px'}}/>}/><br/>
     </div>
   );
 }

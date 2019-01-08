@@ -13,7 +13,7 @@ export default function() {
     notification.open({
       title: '带有图标的open',
       message: '你的项目收到一个新的通知',
-      icon: <Icon type='social-github'/>,
+      icon: <Icon type='logo-github'/>,
     });
   };
 

@@ -14,6 +14,8 @@ dirSet.delete('utils');
 dirSet.delete('.DS_Store');
 dirSet.delete('index.tsx');
 dirSet.delete('tsconfig.json');
+dirSet.delete('global.d.ts');
+
 
 const arr =  Array.from(dirSet);
 

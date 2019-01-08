@@ -10,7 +10,7 @@ export default function() {
       <Timeline.Item lineType='solid'>
         <span>发布1.1版本</span>
       </Timeline.Item>
-      <Timeline.Item icon={<Icon type='social-twitter-outline'/>}>
+      <Timeline.Item icon={<Icon type='logo-twitter'/>}>
         <span>自定义图标</span>
       </Timeline.Item>
       <Timeline.Item lineColor='#3476db'>

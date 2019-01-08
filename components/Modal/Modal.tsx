@@ -129,10 +129,10 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
       preCls, className,
     );
     const iconType = {
-      success: 'checkmark-circle',
-      info: 'information-circle',
-      warning: 'alert',
-      error: 'close-circle',
+      success: 'md-checkmark-circle',
+      info: 'md-information-circle',
+      warning: 'md-alert',
+      error: 'md-close-circle',
     };
     const hasIcon = type !== 'confirm' || icon;
     const visibleR = this.getVisible();
