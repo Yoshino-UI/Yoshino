@@ -1,3 +1,16 @@
+## [0.6.7](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.6...v0.6.7) (2018-12-28)
+
+
+
+## [0.6.6](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.5...v0.6.6) (2018-12-27)
+
+
+### Features
+
+* Steps的title属性支持ReactNode ([7251e6b](https://github.com/Yoshino-UI/Yoshino/commit/7251e6b))
+
+
+
 ## [0.6.5](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.4...v0.6.5) (2018-12-26)
 
 
