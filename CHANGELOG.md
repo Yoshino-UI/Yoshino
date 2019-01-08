@@ -1,3 +1,14 @@
+## [0.6.8](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.7...v0.6.8) (2019-01-08)
+
+
+### Bug Fixes
+
+* 修复Button 加载态样式异常问题 ([920f15e](https://github.com/Yoshino-UI/Yoshino/commit/920f15e))
+* 修复Input组件不能传Number的bug ([08b3c1f](https://github.com/Yoshino-UI/Yoshino/commit/08b3c1f))
+* 修复Progress warning ([8a6da2c](https://github.com/Yoshino-UI/Yoshino/commit/8a6da2c))
+
+
+
 ## [0.6.7](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.6...v0.6.7) (2018-12-28)
 
 
