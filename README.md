@@ -78,7 +78,7 @@ yoshino new all --theme material-ui
 
 ## ✨Features
 - Develop with `TypeScript`, provide `d.ts` files to help developers increase development speed
-- Advocate the concept of `OFA(one for all)` and `AFO(all for one)`, before project development by [yoshino-cli] (https://github.com/Yoshino-UI/yoshino-cli). According to project ui, standardize the output of components.
+- Advocate the concept of `OFA(one for all)` and `AFO(all for one)`, before project development by [yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli). According to project ui, standardize the output of components.
 - In addition to the simple and generic `ui` component, `yoshino` draws out some of the more usable effects (features) components, such as
   - Helpers
   - Ripple
