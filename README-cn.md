@@ -41,7 +41,7 @@ yoshino new all --theme material-ui
   - Helpers
   - Ripple
   - Transitions
-- `Icon`组件的图标库采用了`Ionicons 4.4.2`，对图标的导入采用按需加载，你无须担心仅使用了一个字体就引入了所有图标文件。
+- `Icon`组件的图标库采用了[archer-svgs](https://github.com/ShanaMaid/archer-svgs)，对图标的导入采用按需加载，你无须担心仅使用了一个字体就引入了所有图标文件。
 
 ## 介绍
 `yoshino`组件库提供简单样式组件，可以通过[yoshino-cli](https://github.com/Yoshino-UI/yoshino-cli)根据项目进行定制化开发。
@@ -71,6 +71,8 @@ npm run new ComponentName // 新建组件
 ```
 
 ## Yoshino is Inspired or Powered By:
+- [archer-svgs](https://github.com/ShanaMaid/archer-svgs)
 - [ant-design](https://github.com/ant-design/ant-design)
 - [muse-ui](https://github.com/museui/muse-ui)
 - [iView](https://github.com/iview/iview)
+- [ionicons](https://github.com/ionic-team/ionicons)

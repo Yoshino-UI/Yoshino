@@ -1,4 +1,8 @@
-# [0.7.0-0](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.9...v0.7.0-0) (2019-01-08)
+## [0.7.1](https://github.com/Yoshino-UI/Yoshino/compare/v0.7.0...v0.7.1) (2019-01-08)
+
+
+
+# [0.7.0](https://github.com/Yoshino-UI/Yoshino/compare/v0.6.9...v0.7.0) (2019-01-08)
 
 
 

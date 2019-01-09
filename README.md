@@ -83,7 +83,7 @@ yoshino new all --theme material-ui
   - Helpers
   - Ripple
   - Transitions
-- `Icon` component based on `Ionicons 4.4.2`, load on demand, only load `.svg` that you use
+- `Icon` component based on [archer-svgs](https://github.com/ShanaMaid/archer-svgs), load on demand, only load `.svg` that you use
 
 ## 👍Contributos
 ![](https://opencollective.com/yoshino/contributors.svg)
@@ -100,7 +100,10 @@ npm run new ComponentName // 新建组件
 
 
 ## 💎Yoshino is Inspired or Powered By:
+- [archer-svgs](https://github.com/ShanaMaid/archer-svgs)
 - [ant-design](https://github.com/ant-design/ant-design)
 - [muse-ui](https://github.com/museui/muse-ui)
 - [iView](https://github.com/iview/iview)
+- [ionicons](https://github.com/ionic-team/ionicons)
+
 
