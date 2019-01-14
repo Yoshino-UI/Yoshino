@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import Icon from '../Icon';
+import { b as loadingSVG } from '../Loading/loadSvg';
 
 export interface IButtonProps extends IBaseComponent {
   /**
@@ -87,8 +88,8 @@ export class Button extends Component<IButtonProps, IButtonState> {
         className={`${preCls}-icon`}
         style={shape !== 'circle' ? tail ? {marginLeft: '5px'} : {marginRight: '5px'} : {}}
       >
-        {loading ? <Icon className={`${preCls}-load`} type='ios-sync'/> :
-        isValidElement(icon) ? icon : <Icon type={icon as string}/>}
+        {loading ? <Icon className={`${preCls}-load`} svg={loadingSVG('1em', '1em', 'currentColor')}/> :
+        (isValidElement(icon) ? icon : <Icon type={icon as string}/>)}
       </span>
     ) : null;
     const clsName = classNames(
