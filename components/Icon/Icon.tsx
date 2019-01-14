@@ -34,11 +34,26 @@ export class Icon extends Component<IIconProps, IIconState> {
     if (!this.props.type) {
       return;
     }
+
     // tslint:disable-next-line no-any
     const svg = await Archer.fetchSvg(`${svgTarget}${this.props.type}.svg`);
     this.setState({
       svgHtml: svg,
     });
+  }
+
+  async componentWillReceiveProps(props: IIconProps) {
+    if (!this.props.type) {
+      return;
+    }
+
+    if (this.props.type !== props.type) {
+      // tslint:disable-next-line no-any
+      const svg = await Archer.fetchSvg(`${svgTarget}${props.type}.svg`);
+      this.setState({
+        svgHtml: svg,
+      });
+    }
   }
 
   render() {
