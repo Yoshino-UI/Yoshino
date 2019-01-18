@@ -1,0 +1,57 @@
+@import './var.less';
+
+@form-prefix-cls: ~"@{css-prefix}-form";
+@validator-prefix-cls: ~"@{css-prefix}-validator";
+
+.@{form-prefix-cls} {
+}
+
+.@{validator-prefix-cls} {
+  margin-bottom: 24px;
+  font-size: 14px;
+
+  &-required {
+    &::before {
+      display: inline-block;
+      margin-right: 4px;
+      content: '*';
+      font-size: 14px;
+      color: @validator-required-color;
+    }
+  }
+
+  &-error {
+    color: @validator-error-color;
+    margin-top: 2px;
+    line-height: 21px;
+  }
+
+  &-has-error {
+    margin-bottom: 1px;
+  }
+
+  &-has-error &-error-container {
+    height: auto;
+  }
+
+  &-error-container {
+    height: 0;
+  }
+
+  &-has-error &-control {
+    .@{css-prefix}-input,
+    .@{css-prefix}-select {
+      border-color: @validator-error-color;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: @validator-error-color;
+      }
+
+      &:focus {
+        box-shadow: @validator-error-shadow;
+      }
+    }
+  }
+}

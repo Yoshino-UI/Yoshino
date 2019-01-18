@@ -36,7 +36,7 @@ function fileIndexJs(component) {
   const path = `${component}/style`;
   const content = `import './index.css';`;
   writeFile('index.js', content, path);
-  const LessContent = `import './index.less;`;
+  const LessContent = `import './index.less';`;
   writeFile('less.js', LessContent, path);
 }
 

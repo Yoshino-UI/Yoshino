@@ -302,4 +302,10 @@ export default [
     ),
     path: '/docs/components/skeleton',
   },
+  {
+    component: getComponentAsync(
+      () => import(/* webpackChunkName: "yoshino-form" */ './Form')
+    ),
+    path: '/docs/components/form',
+  },
 ];

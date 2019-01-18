@@ -12,6 +12,7 @@ import Collapse from './Collapse';
 import DatePicker from './DatePicker';
 import Divider from './Divider';
 import Drawer from './Drawer';
+import Form from './Form';
 import Grid from './Grid';
 import Helpers from './Helpers';
 import Icon from './Icon';
@@ -57,6 +58,7 @@ export {
   DatePicker,
   Divider,
   Drawer,
+  Form,
   Grid,
   Helpers,
   Icon,

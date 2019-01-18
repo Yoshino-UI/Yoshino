@@ -44,6 +44,10 @@ export default [
         keyId: 'datepicker',
       },
       {
+        name: 'Form(表单)',
+        keyId: 'form',
+      },
+      {
         name: 'TimePicker(时间选择器)',
         keyId: 'timepicker',
       },
