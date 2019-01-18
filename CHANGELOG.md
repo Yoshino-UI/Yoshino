@@ -1,3 +1,26 @@
+# [0.8.0](https://github.com/Yoshino-UI/Yoshino/compare/v0.7.3...v0.8.0) (2019-01-18)
+
+
+### Features
+
+* 添加Form组件 ([50b60b2](https://github.com/Yoshino-UI/Yoshino/commit/50b60b2))
+
+
+
+## [0.7.3](https://github.com/Yoshino-UI/Yoshino/compare/v0.7.2...v0.7.3) (2019-01-15)
+
+
+### Bug Fixes
+
+* 修复Icon更新type加载无效bug ([4b4ec84](https://github.com/Yoshino-UI/Yoshino/commit/4b4ec84))
+* 修补Button加载svg错误问题 ([e84f0de](https://github.com/Yoshino-UI/Yoshino/commit/e84f0de))
+
+
+
+## [0.7.2](https://github.com/Yoshino-UI/Yoshino/compare/v0.7.1...v0.7.2) (2019-01-08)
+
+
+
 ## [0.7.1](https://github.com/Yoshino-UI/Yoshino/compare/v0.7.0...v0.7.1) (2019-01-08)
 
 
