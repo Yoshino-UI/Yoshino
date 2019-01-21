@@ -32,6 +32,12 @@ export default [
         type: 'IRow',
         defaultValue: `{align: 'middle',type: 'flex'}`,
       },
+      {
+        props: 'requiredMsg',
+        intro: '`Validator`中`required`为`true`时，`message`默认值，`name`对应`Validator`中`name`',
+        type: 'string',
+        defaultValue: '${name}不能为空',
+      }
     ]
   },
   {

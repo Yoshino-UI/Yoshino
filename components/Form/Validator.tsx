@@ -82,6 +82,7 @@ export class Validator extends Component<IValidatorProps, IValidatorState> {
     wrapperCol: PropTypes.object,
     labelCol: PropTypes.object,
     rt: PropTypes.bool,
+    requiredMsg: PropTypes.string,
   };
 
   static defaultProps = {
@@ -219,7 +220,7 @@ export class Validator extends Component<IValidatorProps, IValidatorState> {
               <Col {...labelColR}/>
               <Col {...wrapperColR}>
                 <div className={`${preCls}-error`}>
-                  {error ? (this.state.message || message) : null}
+                  {error ? (this.state.message || message || this.context.requiredMsg.replace(/\$\{name\}/g, label)) : null}
                 </div>
               </Col>
             </Row>
