@@ -1,3 +1,12 @@
+## [0.8.5](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.4...v0.8.5) (2019-01-21)
+
+
+### Bug Fixes
+
+* **form:** import css dependences ([2dcdf8d](https://github.com/Yoshino-UI/Yoshino/commit/2dcdf8d))
+
+
+
 ## [0.8.4](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.3...v0.8.4) (2019-01-21)
 
 

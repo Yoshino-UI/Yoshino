@@ -35,6 +35,7 @@
     "test": "jest",
     "site:pull": "git clone https://github.com/Yoshino-UI/yoshino-ui.github.io.git build",
     "preversion": "npm run build && npm run log",
+    "postversion": "npm publish && npm run site &&  git push",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "jest": {
