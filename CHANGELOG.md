@@ -1,3 +1,12 @@
+## [0.8.4](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.3...v0.8.4) (2019-01-21)
+
+
+### Features
+
+* Form support requiredMsg ([a6092dc](https://github.com/Yoshino-UI/Yoshino/commit/a6092dc))
+
+
+
 ## [0.8.3](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.2...v0.8.3) (2019-01-21)
 
 

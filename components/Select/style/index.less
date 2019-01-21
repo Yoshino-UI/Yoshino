@@ -46,7 +46,7 @@
 
   // 单选
   &-single {
-    .@{select-prefix-cls} {
+    &.@{select-prefix-cls} {
       &-small {
         height: @select-size-small;
         line-height: @select-size-small;
@@ -61,18 +61,18 @@
         height: @select-size-large;
         line-height: @select-size-large;
       }
+    }
 
-      &-selection {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+    .@{select-prefix-cls}-selection {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
   // 多选
   &-multiple {
-    .@{select-prefix-cls} {
+    &.@{select-prefix-cls} {
       &-small {
         min-height: @select-size-small;
 
