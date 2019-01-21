@@ -123,7 +123,7 @@ export class Form extends Component<IFormProps, IFormState> {
 
   render() {
     const {
-      className, style, children, rt,
+      className, style, children, rt, requiredMsg,
       onChange, row, wrapperCol, labelCol,
       ...otherProps} = this.props;
     const preCls = this.preCls;
