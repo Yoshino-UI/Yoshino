@@ -162,6 +162,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
     const clsName = classNames(
       preCls, className,
       `${preCls}-${mode}`,
+      ` ${preCls}-${size}`,
       {
         [`${preCls}-hidden`]: !visible,
         [`${preCls}-disabled`]: disabled,
@@ -203,7 +204,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
           tabIndex={0}
           {...otherProps}
         >
-          <div className={`${preCls}-selection ${preCls}-${size}`}>
+          <div className={`${preCls}-selection`}>
             {values.toString() === '' ? <div className={`${preCls}-placeholder`}>{placeholder}</div> : null}
               {
                 mode === 'single' || !Array.isArray(values) ? (
