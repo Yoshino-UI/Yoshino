@@ -1,3 +1,13 @@
+## [0.8.8](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.7...v0.8.8) (2019-01-22)
+
+
+### Bug Fixes
+
+* **form:** fix value bug ([2cffbda](https://github.com/Yoshino-UI/Yoshino/commit/2cffbda))
+* **modal:** Modal.close not work ([de9e8a9](https://github.com/Yoshino-UI/Yoshino/commit/de9e8a9))
+
+
+
 ## [0.8.7](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.6...v0.8.7) (2019-01-22)
 
 
