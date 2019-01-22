@@ -1,3 +1,12 @@
+## [0.8.9](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.8...v0.8.9) (2019-01-22)
+
+
+### Features
+
+* **modal:** support showOk props ([698641b](https://github.com/Yoshino-UI/Yoshino/commit/698641b))
+
+
+
 ## [0.8.8](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.7...v0.8.8) (2019-01-22)
 
 
