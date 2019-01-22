@@ -1,3 +1,12 @@
+## [0.8.7](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.6...v0.8.7) (2019-01-22)
+
+
+### Bug Fixes
+
+* **form:** solve props warning ([6036306](https://github.com/Yoshino-UI/Yoshino/commit/6036306))
+
+
+
 ## [0.8.6](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.5...v0.8.6) (2019-01-21)
 
 

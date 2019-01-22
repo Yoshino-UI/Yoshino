@@ -90,6 +90,12 @@ export default [
         defaultValue: 'false',
       },
       {
+        props: 'showOk',
+        intro: '是否显示确定按钮',
+        type: 'boolean',
+        defaultValue: 'true',
+      },
+      {
         props: 'showClose',
         intro: '是否显示关闭按钮',
         type: 'boolean',

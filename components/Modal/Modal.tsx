@@ -21,6 +21,7 @@ export interface IModalProps extends IBaseComponent {
   cancelButtonProps?: IButtonProps;
   showCancel?: boolean;
   closeText?: React.ReactNode;
+  showOk?: boolean;
   showClose?: boolean;
   title?: React.ReactNode;
   content?: React.ReactNode;
@@ -59,6 +60,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
     showCancel: true,
     showClose: false,
     showMask: true,
+    showOk: true,
     maskClosable: true,
     type: 'confirm',
   };
@@ -122,6 +124,7 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
       okText, cancelText, type = 'confirm', closeText, showClose,
       maskStyle, maskClosable, showMask, maskClick, onOk,
       onCancel, children, okButtonProps, cancelButtonProps,
+      showOk,
       ...otherProps
     } = this.props;
     const preCls = 'yoshino-modal';
@@ -204,22 +207,26 @@ class Modal extends Component<IModalComponentProps, IModalComponentState> {
                 </div>
               ) : null
             }
-            <div
-              className={`${preCls}-ok`}
-              onClick={!okTextIsString ? this.onOk : undefined}
-            >
-              {
-                okTextIsString ? (
-                  <Button
-                    type='primary'
-                    {...okButtonProps}
-                    onClick={this.onOk}
-                  >
-                    {okText ? okText : type !== 'confirm' ? '知道了' : '确定'}
-                  </Button>
-                ) : okText
-              }
-            </div>
+            {
+              showOk ? (
+                <div
+                  className={`${preCls}-ok`}
+                  onClick={!okTextIsString ? this.onOk : undefined}
+                >
+                  {
+                    okTextIsString ? (
+                      <Button
+                        type='primary'
+                        {...okButtonProps}
+                        onClick={this.onOk}
+                      >
+                        {okText ? okText : type !== 'confirm' ? '知道了' : '确定'}
+                      </Button>
+                    ) : okText
+                  }
+                </div>
+              ) : null
+            }
           </div>
         </div>
       </Dialog>
