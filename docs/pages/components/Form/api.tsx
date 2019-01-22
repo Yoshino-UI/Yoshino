@@ -18,13 +18,13 @@ export default [
         props: 'labelCol',
         intro: 'label布局，参考`Grid`中的Col Props，若`Validator`没配置则Form的配置优先生效',
         type: 'ICol',
-        defaultValue: '{span: 3}',
+        defaultValue: '{span: 8}',
       },
       {
         props: 'wrapperCol',
         intro: '输入控件布局，参考`Grid`中的Col Props，若`Validator`没配置则Form的配置优先生效',
         type: 'ICol',
-        defaultValue: '{span: 10}',
+        defaultValue: '{span: 16}',
       },
       {
         props: 'row',

@@ -46,10 +46,10 @@ export class Form extends Component<IFormProps, IFormState> {
 
   static defaultProps = {
     labelCol: {
-      span: 3,
+      span: 8,
     },
     wrapperCol: {
-      span: 10,
+      span: 16,
     },
     row: {
       align: 'middle',

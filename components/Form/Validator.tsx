@@ -197,7 +197,7 @@ export class Validator extends Component<IValidatorProps, IValidatorState> {
         {...otherProps}
       >
         <Row {...rowR}>
-          <Col {...labelColR}>
+          <Col className={`${preCls}-item-label`} {...labelColR}>
             <label
               htmlFor={this.labelId}
               className={labelCls}

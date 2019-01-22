@@ -12,7 +12,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{maxWidth: 800}}>
         <Form
           onChange={(v) => {
             this.setState({v});
