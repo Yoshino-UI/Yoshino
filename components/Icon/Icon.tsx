@@ -43,7 +43,7 @@ export class Icon extends Component<IIconProps, IIconState> {
   }
 
   async componentWillReceiveProps(props: IIconProps) {
-    if (!this.props.type) {
+    if (!props.type) {
       return;
     }
 
