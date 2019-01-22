@@ -116,7 +116,7 @@ export class Form extends Component<IFormProps, IFormState> {
       }
     });
     if (flag) {
-      return this.state.value;
+      return this.value;
     }
     return flag;
   }
