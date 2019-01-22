@@ -41,7 +41,7 @@ export interface IFormState {
 export class Form extends Component<IFormProps, IFormState> {
   static Validator = Validator;
   checkers: {[index: string]: () => boolean | string} =  {};
-  value: {[index: string]: any} = {};
+  value: any = {};
   preCls = 'yoshino-form';
 
   static defaultProps = {
