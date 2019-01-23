@@ -1,3 +1,12 @@
+## [0.8.14](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.13...v0.8.14) (2019-01-23)
+
+
+### Features
+
+* **form:** support deafaultValue ([7ca7def](https://github.com/Yoshino-UI/Yoshino/commit/7ca7def))
+
+
+
 ## [0.8.13](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.12...v0.8.13) (2019-01-22)
 
 

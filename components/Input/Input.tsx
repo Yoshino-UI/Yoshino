@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IAbstractInput} from '../template/component';
 
-export interface IInputProps extends IAbstractInput<string | number> {
+export interface IInputProps extends IAbstractInput<string> {
   /**
    * 组件大小
    */
