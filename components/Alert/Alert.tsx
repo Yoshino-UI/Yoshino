@@ -1,4 +1,4 @@
-
+// tslint:disable no-any
 import {Component, ReactNode} from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
@@ -31,6 +31,14 @@ export interface IAlertProps extends IBaseComponent {
    * onClose
    */
   onClose?: () => void;
+  /**
+   * 动画
+   */
+  Animation?: any;
+  /**
+   * 动画属性
+   */
+  animationProps?: any;
 }
 
 export interface IAlertState {
@@ -74,7 +82,8 @@ export class Alert extends Component<IAlertProps, IAlertState> {
   render() {
     const {
       className, style, showIcon,
-      type, closable,
+      type, closable, Animation,
+      animationProps,
       icon, title, ...otherProps
     } = this.props;
     const {show} = this.state;
@@ -99,42 +108,54 @@ export class Alert extends Component<IAlertProps, IAlertState> {
       `${preCls}-title`,
       {[`${preCls}-has-icon-description`]: showIcon && !!this.props.children}
     );
-    return (
+
+    const content = (
+      <div
+        className={clsName}
+        style={{
+          ...style,
+        }}
+        {...otherProps}
+      >
+      {
+        showIcon &&  (icon || type !== 'normal') ? (
+          <span className={`${preCls}-icon`}>
+            {icon ? icon : (<Icon type={defaultIcon[type]}/>)}
+          </span>
+        ) : null
+      }
+      <div className={desClsName}>
+        <p className={`${preCls}-message`}>{title}</p>
+        {
+          this.props.children ? (
+            <p className={`${preCls}-description`}>{this.props.children}</p>
+          ) : null
+        }
+      </div>
+      {
+        closable ? (
+          <span className={`${preCls}-close`} onClick={this.closeAlert}>
+            <Icon type='md-close'/>
+          </span>
+        ) : null
+      }
+      </div>
+    );
+    return !Animation ? (
       <Expand
         timeout={this.duration}
         active={show}
       >
-            <div
-              className={clsName}
-              style={{
-                ...style,
-              }}
-              {...otherProps}
-            >
-            {
-              showIcon &&  (icon || type !== 'normal') ? (
-                <span className={`${preCls}-icon`}>
-                  {icon ? icon : (<Icon type={defaultIcon[type]}/>)}
-                </span>
-              ) : null
-            }
-            <div className={desClsName}>
-              <p className={`${preCls}-message`}>{title}</p>
-              {
-                this.props.children ? (
-                  <p className={`${preCls}-description`}>{this.props.children}</p>
-                ) : null
-              }
-            </div>
-            {
-              closable ? (
-                <span className={`${preCls}-close`} onClick={this.closeAlert}>
-                  <Icon type='md-close'/>
-                </span>
-              ) : null
-            }
-            </div>
+        {content}
       </Expand>
+    ) : (
+      <Animation
+        {...animationProps}
+        timeout={this.duration}
+        active={show}
+      >
+        {content}
+      </Animation>
     );
   }
 }

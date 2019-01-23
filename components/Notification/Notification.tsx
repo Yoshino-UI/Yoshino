@@ -3,6 +3,7 @@ import { IAlertProps } from '../Alert/Alert';
 import * as React from 'react';
 import {ReactNode} from 'react';
 import {render} from 'react-dom';
+import Transitions from '../Transitions';
 
 export interface INotification  {
   key?: string | number;
@@ -82,13 +83,13 @@ const updateContainer = () => {
   render((
     <React.Fragment>
       {
-        notificationStack.map((item, index) => React.cloneElement(item.element, {
+        notificationStack.map((item) => React.cloneElement(item.element, {
           ref: (v: Alert) => {
             if (v) {
               item.ref = v;
             }
           },
-          key: index,
+          key: item.key,
         }))
       }
     </React.Fragment>
@@ -108,8 +109,7 @@ const renderNotifications = (
     key, duration, message, icon,
     ...otherProps
   } = props;
-  const alertKey = key || (new Date().getDate() * Math.random());
-
+  const alertKey = key || (new Date().getTime() * Math.random());
   const timeoutId = window.setTimeout(() => {
     closeNotification(alertKey);
   }, props.duration || config.duration);
@@ -121,7 +121,13 @@ const renderNotifications = (
     closable: true,
   };
   const alert = (
-    <Alert {...alertProps}>{message || null}</Alert>
+    <Alert
+      {...alertProps}
+      Animation={Transitions.Slide}
+      animationProps={{direction: 'right'}}
+    >
+      {message || null}
+    </Alert>
   );
   notificationStack.push({
     key: alertKey,
@@ -133,16 +139,16 @@ const renderNotifications = (
 };
 
 const closeNotification = (key: string | number) => {
-  for (let index = 0; index < notificationStack.length; index++) {
-    const item = notificationStack[index];
+  for (const notification of notificationStack) {
+    const item = notification;
     if (item.key === key) {
-      const ref = notificationStack[index].ref as Alert;
+      const ref = item.ref as Alert;
       ref.closeAlert();
       setTimeout(() => {
-        notificationStack.splice(index, 1);
+        notificationStack.splice(notificationStack.indexOf(item), 1);
         updateContainer();
       }, Alert.duration);
-      return;
+      break;
     }
   }
 };

@@ -1,3 +1,12 @@
+## [0.8.13](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.12...v0.8.13) (2019-01-22)
+
+
+### Bug Fixes
+
+* **icon:** fix props.type undefined bug ([15f3a9b](https://github.com/Yoshino-UI/Yoshino/commit/15f3a9b))
+
+
+
 ## [0.8.12](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.11...v0.8.12) (2019-01-22)
 
 
