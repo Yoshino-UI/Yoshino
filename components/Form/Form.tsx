@@ -27,6 +27,10 @@ export interface IFormProps extends IBaseComponent {
    * 值为空时默认提示文案
    */
   requiredMsg?: string;
+  /**
+   * 默认值
+   */
+  defaultValue?: any;
 }
 
 export interface IFormState {
@@ -57,6 +61,7 @@ export class Form extends Component<IFormProps, IFormState> {
     },
     rt: false,
     requiredMsg: '${name}不能为空',
+    defaultValue: {},
   };
 
   static childContextTypes = {
@@ -69,10 +74,11 @@ export class Form extends Component<IFormProps, IFormState> {
     labelCol: PropTypes.object,
     rt: PropTypes.bool,
     requiredMsg: PropTypes.string,
+    defaultValue: PropTypes.object,
   };
 
   getChildContext() {
-    const { row, wrapperCol, labelCol, rt, requiredMsg } = this.props;
+    const { row, wrapperCol, labelCol, rt, requiredMsg, defaultValue } = this.props;
     return {
       onChange: this.onChange,
       onDelete: this.onDelete,
@@ -83,6 +89,7 @@ export class Form extends Component<IFormProps, IFormState> {
       labelCol,
       rt,
       requiredMsg,
+      defaultValue,
     };
   }
 

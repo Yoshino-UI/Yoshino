@@ -22,6 +22,10 @@ export default class extends React.Component {
               this.form = v;
             }
           }}
+          defaultValue={{
+            nickname: 'shana',
+            phone: 11111
+          }}
         >
           <Validator
             name='nickname'

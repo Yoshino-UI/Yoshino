@@ -83,6 +83,7 @@ export class Validator extends Component<IValidatorProps, IValidatorState> {
     labelCol: PropTypes.object,
     rt: PropTypes.bool,
     requiredMsg: PropTypes.string,
+    defaultValue: PropTypes.object,
   };
 
   static defaultProps = {
@@ -101,7 +102,14 @@ export class Validator extends Component<IValidatorProps, IValidatorState> {
     const {
       name, value,
     } = this.props;
-    this.context.onChange(name, value);
+    const parentValue = this.context.defaultValue[name];
+    if (parentValue !== undefined) {
+      this.setState({value: parentValue}, () => {
+        this.context.onChange(name, parentValue);
+      });
+    } else {
+      this.context.onChange(name, value);
+    }
     this.context.onPushChecker(name, this.onCheck);
   }
 
