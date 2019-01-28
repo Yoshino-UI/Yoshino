@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
 import {IOptionProps} from './Option';
-import { BasicValue } from './Select';
+import { BasicValue, Value } from './Select';
 
 export interface IOptionGroupProps extends IBaseComponent {
   /**
@@ -20,9 +20,15 @@ export interface IOptionGroupProps extends IBaseComponent {
    */
   active?: BasicValue;
   /**
-   * 用于通知父组件 - 子代值发生变化
+   * context
    */
-  onChange?: (value: BasicValue) => void;
+  // tslint:disable-next-line no-any
+  ctx?: IContext;
+}
+
+export interface IContext {
+  onChange: (value: BasicValue) => void;
+  value: Value;
 }
 
 export interface IOptionGroupState {
@@ -37,17 +43,10 @@ export class OptionGroup extends Component<IOptionGroupProps, IOptionGroupState>
 
   static displayName = 'OptionGroup';
 
-  onChange = (value: BasicValue) => {
-    const {onChange} = this.props;
-    if (onChange) {
-      onChange(value);
-    }
-  }
-
   render() {
     const {
       className, style, children,
-      label, onChange,
+      label, onChange, ctx,
       ...otherProps} = this.props;
     const preCls = 'yoshino-select-option-group';
     const clsName = classNames(
@@ -64,7 +63,7 @@ export class OptionGroup extends Component<IOptionGroupProps, IOptionGroupState>
           {
             React.Children.map(children, (ele: React.ReactElement<IOptionProps>) => {
               return React.cloneElement(ele, {
-                onChange: this.onChange,
+                ctx,
               });
             })
           }

@@ -1,6 +1,8 @@
 @import './var.less';
 
 @select-prefix-cls: ~"@{css-prefix}-select";
+@select-option-group-prefix-cls: ~"@{css-prefix}-select-option-group";
+@select-option-prefix-cls: ~"@{css-prefix}-select-option";
 
 .@{select-prefix-cls} {
   position: relative;
@@ -42,6 +44,10 @@
 
   &-large {
     font-size: @select-font-size-large;
+  }
+
+  &-tag {
+    margin-right: 4px;
   }
 
   // 单选
@@ -144,7 +150,7 @@
   }
 }
 
-.@{select-prefix-cls}-option-group {
+.@{select-option-group-prefix-cls} {
   font-size: @select-option-group-font-size;
 
   &-title {
@@ -160,7 +166,7 @@
   }
 }
 
-.@{select-prefix-cls}-option {
+.@{select-option-prefix-cls} {
   cursor: pointer;
   font-size: @select-option-font-size;
   padding: @select-option-padding;
@@ -168,6 +174,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
 
   &:hover {
     background: @primary-color-choosed;
@@ -179,6 +186,23 @@
     &:hover {
       background: none;
       cursor: not-allowed;
+    }
+  }
+
+  &-icon {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(-50%, -50%);
+  }
+
+  &-choosed {
+    background: #fafafa;
+
+    .@{select-option-prefix-cls}-icon {
+      display: block;
+      color: @primary-color;
     }
   }
 }

@@ -1,9 +1,9 @@
-
 import { Component, ReactNode } from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import { BasicValue } from './Select';
+import { BasicValue, Value } from './Select';
+import Icon from '../Icon';
 
 export interface IOptionProps extends IBaseComponent {
   /**
@@ -23,6 +23,16 @@ export interface IOptionProps extends IBaseComponent {
    * 用于通知父组件 - 子代值发生变化
    */
   onChange?: (value: BasicValue) => void;
+  /**
+   * context
+   */
+  // tslint:disable-next-line no-any
+  ctx?: IContext;
+}
+
+export interface IContext {
+  onChange: (value: BasicValue) => void;
+  value: Value;
 }
 
 export interface IOptionState {
@@ -38,8 +48,9 @@ export class Option extends Component<IOptionProps, IOptionState> {
   static displayName = 'Option';
 
   onChange = (value: BasicValue) => {
-    const {onChange, disabled} = this.props;
-    if (onChange && !disabled) {
+    const { disabled, ctx} = this.props;
+    if (ctx && !disabled) {
+      const { onChange } = ctx;
       onChange(value);
     }
   }
@@ -47,13 +58,16 @@ export class Option extends Component<IOptionProps, IOptionState> {
   render() {
     const {
       className, style, children, onChange,
-      value, disabled,
+      value, disabled, ctx,
       ...otherProps} = this.props;
     const preCls = 'yoshino-select-option';
+    const values = ctx!.value;
+    const isChoosed = Array.isArray(values) && values.indexOf(value) !== -1;
     const clsName = classNames(
       preCls, className,
       {
         [`${preCls}-disabled`]: disabled,
+        [`${preCls}-choosed`]: isChoosed,
       }
     );
     return (
@@ -64,6 +78,10 @@ export class Option extends Component<IOptionProps, IOptionState> {
         onClick={() => this.onChange(value)}
       >
         {children}
+        <Icon
+          className={`${preCls}-icon`}
+          type='md-checkmark'
+        />
       </li>
     );
   }

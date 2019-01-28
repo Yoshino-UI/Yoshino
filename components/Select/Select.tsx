@@ -176,7 +176,10 @@ export class Select extends Component<ISelectProps, ISelectState> {
           {
             React.Children.map(children, (ele: React.ReactElement<IOptionProps | IOptionGroupProps>) => {
               return React.cloneElement(ele, {
-                onChange: this.onChange,
+                ctx: {
+                  onChange: this.onChange,
+                  value: values,
+                }
               });
             })
           }
@@ -218,7 +221,7 @@ export class Select extends Component<ISelectProps, ISelectState> {
                           <Tag
                             key={item + ''}
                             closeable
-                            style={{marginRight: 4}}
+                            className={`${preCls}-tag`}
                             onClose={() => {
                               // 执行tag动画
                               setTimeout(() => {
