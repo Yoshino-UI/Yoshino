@@ -1,12 +1,3 @@
-## [0.8.16](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.15...v0.8.16) (2019-01-23)
-
-
-### Bug Fixes
-
-* **input:** value -> string ([ef60641](https://github.com/Yoshino-UI/Yoshino/commit/ef60641))
-
-
-
 ## [0.8.15](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.14...v0.8.15) (2019-01-23)
 
 

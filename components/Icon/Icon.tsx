@@ -3,7 +3,7 @@ import { Component } from 'react';
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {IBaseComponent} from '../template/component';
-import Archer from './archerConfig';
+import Archer from 'archer-svgs';
 
 export interface IIconProps extends IBaseComponent {
   /**
@@ -20,11 +20,11 @@ export interface IIconState {
   svgHtml: string;
 }
 
+const svgTarget = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons/svg/';
 /**
  * **图标**-展示对应的矢量化图标。
  */
 export class Icon extends Component<IIconProps, IIconState> {
-  static Archer: typeof Archer;
   state = {
     svgHtml: ''
   };
@@ -36,7 +36,7 @@ export class Icon extends Component<IIconProps, IIconState> {
     }
 
     // tslint:disable-next-line no-any
-    const svg = await Archer.downloadSvg(`${this.props.type}`);
+    const svg = await Archer.fetchSvg(`${svgTarget}${this.props.type}.svg`);
     this.setState({
       svgHtml: svg,
     });
@@ -49,7 +49,7 @@ export class Icon extends Component<IIconProps, IIconState> {
 
     if (this.props.type !== props.type) {
       // tslint:disable-next-line no-any
-      const svg = await Archer.downloadSvg(`${props.type}`);
+      const svg = await Archer.fetchSvg(`${svgTarget}${props.type}.svg`);
       this.setState({
         svgHtml: svg,
       });
@@ -73,7 +73,5 @@ export class Icon extends Component<IIconProps, IIconState> {
     );
   }
 }
-
-Icon.Archer = Archer;
 
 export default Icon;
