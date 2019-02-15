@@ -21,7 +21,7 @@ export interface IIconState {
 }
 
 const svgTarget = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons/svg/';
-const svgCaches: {[index: string]: string} = {};
+const archer = new Archer();
 
 /**
  * **图标**-展示对应的矢量化图标。
@@ -32,14 +32,7 @@ export class Icon extends Component<IIconProps, IIconState> {
   };
 
   getSvg = async (type: string) => {
-    let svg: string;
-    if (type in svgCaches) {
-      svg = svgCaches[type];
-    } else {
-      svg = await Archer.fetchSvg(`${svgTarget}${type}.svg`);
-      svgCaches[type] = svg;
-    }
-    return svg;
+    return await archer.fetchSvg(`${svgTarget}${type}.svg`);
   }
 
   async componentDidMount() {

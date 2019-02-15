@@ -1,3 +1,12 @@
+## [0.8.21](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.20...v0.8.21) (2019-02-15)
+
+
+### Bug Fixes
+
+* **icon:** add cache ([c1e23c0](https://github.com/Yoshino-UI/Yoshino/commit/c1e23c0))
+
+
+
 ## [0.8.20](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.19...v0.8.20) (2019-02-15)
 
 
