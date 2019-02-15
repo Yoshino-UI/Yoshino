@@ -78,10 +78,14 @@ export class Option extends Component<IOptionProps, IOptionState> {
         onClick={() => this.onChange(value)}
       >
         {children}
-        <Icon
-          className={`${preCls}-icon`}
-          type='md-checkmark'
-        />
+        {
+          isChoosed ? (
+            <Icon
+              className={`${preCls}-icon`}
+              type='md-checkmark'
+            />
+          ) : null
+        }
       </li>
     );
   }

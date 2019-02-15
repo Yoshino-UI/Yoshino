@@ -190,7 +190,8 @@
   }
 
   &-icon {
-    display: none;
+    display: block;
+    color: @primary-color;
     position: absolute;
     top: 50%;
     right: 10px;
@@ -199,10 +200,5 @@
 
   &-choosed {
     background: #fafafa;
-
-    .@{select-option-prefix-cls}-icon {
-      display: block;
-      color: @primary-color;
-    }
   }
 }

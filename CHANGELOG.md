@@ -1,3 +1,12 @@
+## [0.8.20](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.19...v0.8.20) (2019-02-15)
+
+
+### Features
+
+* Icon support svgCache ([1059441](https://github.com/Yoshino-UI/Yoshino/commit/1059441))
+
+
+
 ## [0.8.19](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.18...v0.8.19) (2019-01-29)
 
 
