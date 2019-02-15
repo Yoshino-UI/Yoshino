@@ -37,6 +37,7 @@ export class Icon extends Component<IIconProps, IIconState> {
       svg = svgCaches[type];
     } else {
       svg = await Archer.fetchSvg(`${svgTarget}${type}.svg`);
+      svgCaches[type] = svg;
     }
     return svg;
   }
