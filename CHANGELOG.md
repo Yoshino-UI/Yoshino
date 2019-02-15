@@ -1,3 +1,30 @@
+## [0.8.18](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.17...v0.8.18) (2019-01-29)
+
+
+### Features
+
+* **icon:** support archer-svgs ([4ea2818](https://github.com/Yoshino-UI/Yoshino/commit/4ea2818))
+
+
+
+## [0.8.17](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.16...v0.8.17) (2019-01-28)
+
+
+### Features
+
+* **select:** add `checkmark` for choosed opt ([fa8185c](https://github.com/Yoshino-UI/Yoshino/commit/fa8185c))
+
+
+
+## [0.8.16](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.15...v0.8.16) (2019-01-23)
+
+
+### Bug Fixes
+
+* **input:** value -> string ([ef60641](https://github.com/Yoshino-UI/Yoshino/commit/ef60641))
+
+
+
 ## [0.8.15](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.14...v0.8.15) (2019-01-23)
 
 

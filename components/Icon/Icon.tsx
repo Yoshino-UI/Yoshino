@@ -21,6 +21,8 @@ export interface IIconState {
 }
 
 const svgTarget = 'https://unpkg.com/ionicons@4.4.2/dist/ionicons/svg/';
+const svgCaches: {[index: string]: string} = {};
+
 /**
  * **图标**-展示对应的矢量化图标。
  */
@@ -29,6 +31,16 @@ export class Icon extends Component<IIconProps, IIconState> {
     svgHtml: ''
   };
 
+  getSvg = async (type: string) => {
+    let svg: string;
+    if (type in svgCaches) {
+      svg = svgCaches[type];
+    } else {
+      svg = await Archer.fetchSvg(`${svgTarget}${type}.svg`);
+    }
+    return svg;
+  }
+
   async componentDidMount() {
     // 不使用ionicons图标时不进行加载，提高性能
     if (!this.props.type) {
@@ -36,7 +48,7 @@ export class Icon extends Component<IIconProps, IIconState> {
     }
 
     // tslint:disable-next-line no-any
-    const svg = await Archer.fetchSvg(`${svgTarget}${this.props.type}.svg`);
+    const svg = await this.getSvg(this.props.type);
     this.setState({
       svgHtml: svg,
     });
@@ -49,7 +61,7 @@ export class Icon extends Component<IIconProps, IIconState> {
 
     if (this.props.type !== props.type) {
       // tslint:disable-next-line no-any
-      const svg = await Archer.fetchSvg(`${svgTarget}${props.type}.svg`);
+      const svg = await this.getSvg(props.type);
       this.setState({
         svgHtml: svg,
       });
