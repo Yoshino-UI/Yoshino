@@ -1,3 +1,12 @@
+## [0.8.22](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.21...v0.8.22) (2019-02-15)
+
+
+### Bug Fixes
+
+* optimize Select.Option ([5e09339](https://github.com/Yoshino-UI/Yoshino/commit/5e09339))
+
+
+
 ## [0.8.21](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.20...v0.8.21) (2019-02-15)
 
 

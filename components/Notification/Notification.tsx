@@ -40,7 +40,7 @@ let flag = false;
 const container = document.createElement('div');
 container.setAttribute('class', 'notification-container');
 container.style.position = 'fixed';
-container.style.zIndex = '999';
+container.style.zIndex = '1000';
 
 const notificationStack: IStack[] = [];
 
