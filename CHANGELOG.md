@@ -1,3 +1,7 @@
+## [0.8.23](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.22...v0.8.23) (2019-02-18)
+
+
+
 ## [0.8.22](https://github.com/Yoshino-UI/Yoshino/compare/v0.8.21...v0.8.22) (2019-02-15)
 
 
